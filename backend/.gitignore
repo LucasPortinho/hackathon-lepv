@@ -1,0 +1,13 @@
+# Dependências
+node_modules/
+
+# Código compilado
+dist/
+
+# Variáveis de ambiente
+.env
+
+# Arquivos do SQLite e logs
+*.db
+*.db-journal
+*.sqlite
