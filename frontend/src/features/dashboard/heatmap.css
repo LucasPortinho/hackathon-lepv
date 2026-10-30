@@ -1,0 +1,109 @@
+.hm-card { background: var(--paper); border: var(--bw) solid var(--ink); box-shadow: var(--hard); }
+.hm-tools { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; padding: var(--s-3) var(--s-4); border-bottom: var(--bw) solid var(--ink); min-height: 4.25rem; }
+.hm-tools .spacer { flex: 1; }
+.hm-scroll { overflow: auto; max-height: max(22rem, calc(100dvh - 27rem)); overscroll-behavior: contain; }
+.hm-skeleton { display: grid; grid-template-columns: 12.5rem repeat(9, 1fr); grid-auto-rows: 1.875rem; gap: 2px; padding: 2px; }
+
+/* The grid is drawn by the cells, so sticky headers keep their rules while scrolling. */
+.hm { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; }
+.hm th, .hm td { padding: 0; border-right: var(--bw) solid var(--ink); border-bottom: var(--bw) solid var(--ink); background: var(--paper); }
+.hm th:last-child, .hm td:last-child { border-right: 0; }
+.hm tbody tr:last-child th, .hm tbody tr:last-child td { border-bottom: 0; }
+.hm th { font-weight: 600; }
+.hm thead th { position: sticky; top: 0; z-index: 2; vertical-align: bottom; font-size: var(--text-xs); }
+.hm thead th.hm-corner { left: 0; z-index: 3; width: 12.5rem; text-align: left; padding: var(--s-2) var(--s-3); font-weight: var(--weight-strong); }
+.hm th:last-child { width: 4rem; }
+.hm-col { display: grid; place-items: center; width: 100%; height: 2.5rem; text-align: center; line-height: 1.1; padding: 0.25rem; font-weight: var(--weight-strong); overflow: hidden; }
+.hm-col:hover, th[data-active='true'] .hm-col { background: var(--ink); color: var(--paper); }
+.hm-col:focus-visible, .hm-name button:focus-visible { outline-offset: -3px; }
+.hm-sort { position: absolute; right: 2px; bottom: 2px; display: grid; place-items: center; width: 1rem; height: 1rem; background: var(--paper); color: var(--ink); opacity: 0; }
+.hm-sort svg { width: 0.75rem; height: 0.75rem; }
+.hm-sort[data-on='true'], th:hover .hm-sort, .hm-sort:focus-visible { opacity: 1; }
+.hm-name { position: sticky; left: 0; z-index: 1; text-align: left; }
+.hm-name button { display: block; width: 100%; height: 1.875rem; text-align: left; font-weight: 600; font-size: var(--text-md); padding: 0 var(--s-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hm-cell { display: grid; place-items: center; width: 100%; height: 1.875rem; font-family: var(--font-data); font-size: 0.8125rem; font-weight: 600; position: relative; }
+.hm-cell:focus-visible { outline: var(--bw-heavy) solid var(--ink); outline-offset: -3px; box-shadow: inset 0 0 0 4px var(--paper); z-index: 1; }
+.hm-cell[data-na='true'] { background: repeating-linear-gradient(45deg, var(--ink) 0 1px, var(--paper) 1px 5px); color: var(--ink); }
+.hm-cell[data-na='true'] > span { background: var(--paper); padding: 0 0.2rem; }
+.hm-avg { text-align: center; font-family: var(--font-data); font-weight: 700; }
+.hm[data-values='false'] .hm-cell:not([data-na='true']) > span { opacity: 0; }
+
+/* Focus discipline: the row and column under the pointer or keyboard get black rails.
+   Written with data attributes so hovering never re-renders the grid. */
+.hm tbody tr:hover .hm-name button, .hm tbody tr:focus-within .hm-name button, .hm tbody tr[data-active='true'] .hm-name button { background: var(--ink); color: var(--paper); font-weight: var(--weight-strong); }
+.hm tbody tr:hover .hm-cell:not(:focus-visible), .hm tbody tr:focus-within .hm-cell:not(:focus-visible) { box-shadow: inset 0 3px 0 var(--ink), inset 0 -3px 0 var(--ink); }
+.hm tbody td .hm-cell:hover { outline: var(--bw-heavy) solid var(--ink); outline-offset: -3px; box-shadow: inset 0 0 0 4px var(--paper); z-index: 1; }
+
+.hm[data-hc='0'] .hm-cell[data-c='0']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='0'] .hm-col[data-c='0'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='1'] .hm-cell[data-c='1']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='1'] .hm-col[data-c='1'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='2'] .hm-cell[data-c='2']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='2'] .hm-col[data-c='2'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='3'] .hm-cell[data-c='3']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='3'] .hm-col[data-c='3'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='4'] .hm-cell[data-c='4']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='4'] .hm-col[data-c='4'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='5'] .hm-cell[data-c='5']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='5'] .hm-col[data-c='5'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='6'] .hm-cell[data-c='6']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='6'] .hm-col[data-c='6'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='7'] .hm-cell[data-c='7']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='7'] .hm-col[data-c='7'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='8'] .hm-cell[data-c='8']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='8'] .hm-col[data-c='8'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='9'] .hm-cell[data-c='9']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='9'] .hm-col[data-c='9'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='10'] .hm-cell[data-c='10']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='10'] .hm-col[data-c='10'] { background: var(--ink); color: var(--paper); }
+.hm[data-hc='11'] .hm-cell[data-c='11']:not(:hover):not(:focus-visible) { box-shadow: inset 3px 0 0 var(--ink), inset -3px 0 0 var(--ink); }
+.hm[data-hc='11'] .hm-col[data-c='11'] { background: var(--ink); color: var(--paper); }
+
+/* The threshold takes colour away, leaving only what is below it. Values stay readable. */
+.hm-cell[data-faded='true'] { background: var(--paper); color: var(--gray-1); font-weight: 450; }
+
+/* Pattern overlays, so bands stay separable with no colour at all. */
+.hm[data-patterns='true'] .hm-cell[data-pattern='dots'] { background-image: radial-gradient(#000 1px, transparent 1.2px); background-size: 6px 6px; }
+.hm[data-patterns='true'] .hm-cell[data-pattern='lines'] { background-image: repeating-linear-gradient(45deg, #000 0 1px, transparent 1px 5px); }
+.hm[data-patterns='true'] .hm-cell[data-pattern='cross'] { background-image: repeating-linear-gradient(45deg, #fff 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, #fff 0 1px, transparent 1px 5px); }
+.hm[data-patterns='true'] .hm-cell[data-faded='true'] { background-image: none; }
+.hm[data-patterns='true'] .hm-cell[data-pattern] > span { background: var(--paper); color: var(--ink); padding: 0 0.2rem; }
+
+.legend { display: flex; align-items: center; gap: var(--s-4); font-size: var(--text-xs); font-weight: 600; }
+.legend-scale { width: 13rem; padding-bottom: 1.05rem; position: relative; }
+.legend-bar { position: relative; height: 1rem; border: var(--bw) solid var(--ink); overflow: hidden; }
+.legend-cut { position: absolute; top: 0; bottom: 0; right: 0; background: var(--paper); border-left: var(--bw) solid var(--ink); }
+.legend-ticks li { position: absolute; bottom: 0; translate: -50% 0; font-family: var(--font-data); line-height: 1; }
+.legend-ticks li:first-child { translate: 0 0; }
+.legend-ticks li:last-child { translate: -100% 0; }
+.legend-none { display: inline-flex; align-items: center; gap: var(--s-2); white-space: nowrap; }
+.legend-none i { width: 1.5rem; height: 1rem; border: var(--bw) solid var(--ink); background: repeating-linear-gradient(45deg, var(--ink) 0 1px, var(--paper) 1px 5px); }
+
+.threshold { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--text-sm); font-weight: 700; }
+.threshold input[type='range'] { width: 5rem; accent-color: var(--ink); height: 1rem; }
+.threshold output { font-family: var(--font-data); font-weight: 700; min-width: 1.5rem; text-align: right; }
+.readout { font-family: var(--font-data); font-size: var(--text-sm); font-weight: 600; }
+.hm-options { width: 17rem; padding: var(--s-4); display: grid; gap: var(--s-3); max-height: none; }
+
+.hm-tip { position: fixed; z-index: var(--z-toast); pointer-events: none; background: var(--ink); color: var(--paper); padding: 0.35rem 0.6rem; font-size: var(--text-sm); font-weight: 600; max-width: 16rem; translate: -50% calc(-100% - 8px); }
+.hm-tip[data-below='true'] { translate: -50% 8px; }
+.hm-tip b { font-family: var(--font-data); font-size: var(--text-base); margin-left: var(--s-2); }
+.hm-tip small { display: block; font-size: var(--text-xs); font-weight: 450; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: var(--bw) solid var(--ink); box-shadow: var(--hard); margin-bottom: var(--s-5); }
+.kpi { padding: var(--s-3) var(--s-5); border-right: var(--bw) solid var(--ink); }
+.kpi:last-child { border-right: 0; }
+.kpi strong { display: block; font-size: var(--text-3xl); font-weight: var(--weight-display); font-stretch: var(--width-display); line-height: 1.05; letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; }
+.kpi span.kpi-label { font-size: var(--text-sm); font-weight: 600; }
+.dash-filters { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+.dash-filters .select-trigger { width: auto; min-width: 9rem; max-width: 16rem; }
+.review-note { margin-bottom: var(--s-5); font-weight: 600; }
+
+.insight h2 { font-size: var(--text-xl); padding-right: var(--s-8); }
+.insight-stat { font-size: var(--text-4xl); font-weight: var(--weight-display); font-stretch: var(--width-display); letter-spacing: var(--tracking-tight); line-height: 1; margin: var(--s-4) 0 var(--s-1); }
+.insight section { margin-top: var(--s-6); }
+.insight h3 { font-size: var(--text-base); margin-bottom: var(--s-3); }
+.insight li button { display: flex; justify-content: space-between; gap: var(--s-3); width: 100%; padding: 0.35rem 0.5rem; font-weight: 600; }
+.insight li button b { font-family: var(--font-data); }
+.insight li button:hover { background: var(--ink); color: var(--paper); }
+@media (max-width: 64rem) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .kpi:nth-child(2) { border-right: 0; } .kpi:nth-child(-n + 2) { border-bottom: var(--bw) solid var(--ink); } }

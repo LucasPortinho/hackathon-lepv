@@ -1,0 +1,115 @@
+/* Design tokens: the only place raw values live. Components consume the semantic layer.
+   Black and white. The score scale in lib/score.ts is the only colour in the product. */
+:root {
+  /* Type */
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, monospace;
+  --font-reading: 'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-ui: var(--font-sans);
+  --font-data: var(--font-mono);
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4rem;
+  --weight-body: 450;
+  --weight-strong: 700;
+  --weight-display: 800;
+  --width-display: 112%;
+  --leading-tight: 1.05;
+  --leading-ui: 1.4;
+  --leading-read: 1.6;
+  --tracking-tight: -0.025em;
+  --measure: 62ch;
+
+  /* Spacing, 4px base */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+
+  /* Radius: one rule, zero. Size names stay so every component shares it. */
+  --radius: 0;
+  --r-xs: var(--radius);
+  --r-sm: var(--radius);
+  --r-md: var(--radius);
+  --r-lg: var(--radius);
+  --r-xl: var(--radius);
+  --r-full: var(--radius);
+
+  /* Border */
+  --bw: 2px;
+  --bw-heavy: 3px;
+
+  /* Layout */
+  --sidebar-w: 16rem;
+  --sidebar-w-collapsed: 4.5rem;
+  --sheet-w-profile: 43rem;
+  --sheet-w-insight: 25rem;
+  --topbar-h: 4rem;
+  --z-sheet: 30;
+  --z-overlay: 50;
+  --z-toast: 70;
+
+  /* Palette: black, white, two greys. */
+  --ink: #000000;
+  --paper: #ffffff;
+  --gray-1: #595959; /* secondary text, 7:1 on white */
+  --gray-2: #d9d9d9; /* disabled and loading fills */
+
+  /* Semantic */
+  --bg: var(--paper);
+  --bg-shell: var(--paper);
+  --surface: var(--paper);
+  --surface-sunk: var(--gray-2);
+  --surface-hover: var(--gray-2);
+  --surface-sheet: var(--paper);
+  --surface-sheet-settled: var(--paper);
+  --line: var(--ink);
+  --line-quiet: var(--gray-2);
+  --text: var(--ink);
+  --text-2: var(--gray-1);
+  --text-3: var(--gray-1);
+  --accent: var(--ink);
+  --accent-strong: var(--ink);
+  --accent-wash: var(--paper);
+  --on-accent: var(--paper);
+  --caution: var(--ink);
+  --caution-wash: var(--paper);
+  --danger: var(--ink);
+  --danger-wash: var(--paper);
+  --selection: var(--ink);
+  --on-selection: var(--paper);
+  --score-none: var(--paper);
+
+  /* Shadow: hard offset, no blur, ever. */
+  --offset: 4px;
+  --offset-hover: 6px;
+  --hard: var(--offset) var(--offset) 0 var(--ink);
+  --hard-hover: var(--offset-hover) var(--offset-hover) 0 var(--ink);
+  --shadow-xs: none;
+  --shadow-sm: var(--hard);
+  --shadow-md: var(--hard);
+  --shadow-lg: 8px 8px 0 var(--ink);
+  --shadow-sheet: -6px 0 0 var(--ink);
+
+  color-scheme: light;
+}
+
+/* Dark is the same two inks, swapped. */
+[data-theme='dark'] {
+  --ink: #ffffff;
+  --paper: #000000;
+  --gray-1: #a6a6a6;
+  --gray-2: #333333;
+  color-scheme: dark;
+}

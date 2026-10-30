@@ -1,0 +1,65 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--ink) var(--paper);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-ui);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3, h4 { font-weight: var(--weight-strong); line-height: var(--leading-tight); text-wrap: balance; }
+h1 { font-weight: var(--weight-display); font-stretch: var(--width-display); letter-spacing: var(--tracking-tight); }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+.link { color: var(--ink); font-weight: var(--weight-strong); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
+::selection { background: var(--selection); color: var(--on-selection); }
+:focus { outline: none; }
+:focus-visible { outline: var(--bw-heavy) solid var(--ink); outline-offset: 2px; }
+input, textarea { caret-color: var(--accent); }
+::placeholder { color: var(--text-3); opacity: 1; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--ink); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.prose { max-width: var(--measure); line-height: var(--leading-read); }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.muted { color: var(--text-2); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Reading options: applied at the root so every screen follows them. */
+[data-font='reading'] { --font-ui: var(--font-reading); }
+[data-spacing='comfortable'] {
+  --leading-ui: 1.6;
+  --leading-read: 1.85;
+  --measure: 54ch;
+  letter-spacing: 0.012em;
+  word-spacing: 0.06em;
+}
+
+/* Reduced motion covers CSS too. Framer springs are handled by MotionConfig. */
+[data-motion='reduce'] *, [data-motion='reduce'] *::before, [data-motion='reduce'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.skip-link {
+  position: fixed; left: var(--s-3); top: -4rem; z-index: var(--z-toast);
+  background: var(--paper); padding: var(--s-2) var(--s-4); border: var(--bw) solid var(--ink);
+}
+.skip-link:focus { top: var(--s-3); }
+
+@media (forced-colors: active) {
+  :focus-visible { outline: 2px solid CanvasText; }
+}
