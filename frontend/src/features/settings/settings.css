@@ -1,0 +1,7 @@
+.settings { display: grid; gap: var(--s-4); max-width: 46rem; }
+.settings h2 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+.set-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-5); padding: var(--s-3) 0; flex-wrap: wrap; }
+.set-row h3 { font-size: var(--text-md); font-weight: 600; }
+.set-row p { color: var(--text-2); font-size: var(--text-sm); max-width: 38ch; }
+.set-dl { display: grid; grid-template-columns: 6rem 1fr; gap: var(--s-2) var(--s-4); }
+.set-dl dt { color: var(--text-2); }
