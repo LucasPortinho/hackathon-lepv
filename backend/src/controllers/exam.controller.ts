@@ -13,6 +13,7 @@ export const list = controller(read(empty, z.object({ classId: id.optional(), gr
 });
 export const bank = controller(read(empty, noQuery), () => exams.listBank());
 export const detail = controller(read(idParams, noQuery), ({ params }, teacherId) => exams.getExam(teacherId, params.id));
+export const remove = controller(read(idParams, noQuery), ({ params }, teacherId) => exams.deleteExam(teacherId, params.id), 204);
 export const create = controller(request(empty, noQuery, newExamBody), ({ body }, teacherId) => exams.createExam(teacherId, body), 201);
 export const move = controller(request(idParams, noQuery, moveExamBody), ({ params, body }, teacherId) =>
   exams.moveExam(teacherId, params.id, body.groupId), 204);

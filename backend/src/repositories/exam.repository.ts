@@ -85,3 +85,4 @@ export const findGroup = (groupId: string): ExamGroup | undefined =>
 export const insertGroup = (group: ExamGroup) => db.insert(examGroups).values(group).run();
 
 export const removeByClass = (classId: string) => db.delete(exams).where(eq(exams.classId, classId)).run();
+export const remove = (examId: string) => db.delete(exams).where(eq(exams.id, examId)).run();

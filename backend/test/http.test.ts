@@ -159,6 +159,34 @@ describe('alunos e perfis', () => {
 });
 
 describe('criação de provas e geração de adaptações', () => {
+  it('exclui somente a prova do professor e seus registros dependentes', async () => {
+    const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const other = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const path = '/exams/' + exam.id;
+    const batch = (await request('/uploads/batch', { method: 'POST', body: {
+      examId: exam.id, files: [{ name: 'respostas.pdf', size: 1, kind: 'respostas' }],
+    } })).body;
+    assert.equal((await request(`/uploads/batch/${batch.id}/sheets`, { method: 'POST', body: {
+      sheets: [{ studentId: 'ana', readStatus: 'completa' }],
+    } })).status, 204);
+    db.$client.prepare(`INSERT INTO exam_answers (sheet_id, exam_id, question_id, answer, awarded_points)
+      SELECT id, exam_id, 'q1', 'Resposta', 1 FROM exam_answer_sheets WHERE exam_id = ?`).run(exam.id);
+    assert.equal((await request(path + '/adapt', { method: 'POST', body: { needs: ['dislexia'] } })).status, 200);
+    assert.equal((await request(path, { method: 'DELETE', teacher: 't2' })).status, 404);
+    assert.equal((await request(path)).status, 200);
+    const deleted = await request(path, { method: 'DELETE' });
+    assert.equal(deleted.status, 204);
+    assert.equal(deleted.body, undefined);
+    assert.equal((await request(path)).status, 404);
+    assert.equal((await request(path, { method: 'DELETE' })).status, 404);
+    assert.equal((await request('/exams/' + other.id)).status, 200);
+    assert.ok((await request('/questions/bank')).body.some((q: { id: string }) => q.id === 'q1'));
+    for (const table of ['exam_questions', 'exam_versions', 'adaptations', 'upload_batches', 'exam_answer_sheets', 'exam_answers']) {
+      assert.equal(db.$client.prepare(`SELECT count(*) AS n FROM ${table} WHERE exam_id = ?`).get(exam.id)?.n, 0);
+    }
+    assert.deepEqual(db.$client.pragma('foreign_key_check'), []);
+  });
+
   it('aceita questões do frontend, questões manuais e questionIds do planejamento', async () => {
     const group = await request('/classes/c1/groups', { method: 'POST', body: { name: 'Bimestre HTTP' } });
     assert.equal(group.status, 201);

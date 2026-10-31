@@ -6,6 +6,7 @@ export const examRouter = Router();
 examRouter.get('/', exams.list);
 examRouter.post('/', exams.create);
 examRouter.get('/:id', exams.detail);
+examRouter.delete('/:id', exams.remove);
 examRouter.put('/:id/questions/:questionId/key', exams.setKey);
 examRouter.put('/:id/solution', express.raw({ type: () => true, limit: '25mb' }), exams.uploadSolution);
 examRouter.get('/:id/corrections', exams.listCorrections);

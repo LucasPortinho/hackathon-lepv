@@ -21,6 +21,9 @@ export const insertSheets = (sheets: AnswerSheet[]) => {
 export const listSheets = (batchId: string) =>
   db.select().from(examAnswerSheets).where(eq(examAnswerSheets.batchId, batchId)).all();
 
+export const removeByExam = (examId: string) =>
+  db.delete(uploadBatches).where(eq(uploadBatches.examId, examId)).run();
+
 export const listExamSheets = (examId: string) =>
   db.select().from(examAnswerSheets).where(eq(examAnswerSheets.examId, examId)).all();
 
