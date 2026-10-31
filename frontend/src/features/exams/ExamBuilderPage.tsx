@@ -31,6 +31,8 @@ export function ExamBuilderPage() {
   const [statement, setStatement] = useState('');
   const [subtopicId, setSubtopicId] = useState('st-senos');
   const [points, setPoints] = useState(1);
+  const [answerKey, setAnswerKey] = useState('');
+  const [solution, setSolution] = useState('');
   const [saving, setSaving] = useState(false);
   const [touched, setTouched] = useState(false);
 
@@ -44,8 +46,10 @@ export function ExamBuilderPage() {
   const toggle = (q: Question) => setItems((x) => (selected(q) ? x.filter((i) => i.key !== q.id) : [...x, { ...q, key: q.id }]));
   const addManual = () => {
     if (!statement.trim()) return;
-    setItems((x) => [...x, { key: `m-${Date.now()}`, statement: statement.trim(), subtopicId, points }]);
+    setItems((x) => [...x, { key: `m-${Date.now()}`, statement: statement.trim(), subtopicId, points, answerKey: answerKey.trim() || undefined, solution: solution.trim() || undefined }]);
     setStatement('');
+    setAnswerKey('');
+    setSolution('');
   };
   const move = (i: number, d: number) => setItems((x) => {
     const n = [...x];
@@ -115,6 +119,8 @@ export function ExamBuilderPage() {
                     <Select label="Subtópico" value={subtopicId} onChange={setSubtopicId} options={topics.map((t) => ({ value: t.id, label: t.name }))} />
                     <Field label="Pontos" htmlFor="pt"><input id="pt" className="input" type="number" min={0.5} step={0.5} value={points} onChange={(e) => setPoints(Number(e.target.value))} /></Field>
                   </div>
+                  <Field label="Gabarito (opcional)" htmlFor="gab" hint="Alternativa certa ou resposta final. Também dá para enviar a resolução escaneada depois de salvar a prova."><input id="gab" className="input" value={answerKey} onChange={(e) => setAnswerKey(e.target.value)} placeholder="Ex.: B" /></Field>
+                  <Field label="Resolução (opcional)" htmlFor="res"><textarea id="res" className="textarea" value={solution} onChange={(e) => setSolution(e.target.value)} placeholder="Como você resolveria esta questão" /></Field>
                   <div><Button variant="secondary" disabled={!statement.trim()} onClick={addManual}><Plus />Adicionar à prova</Button></div>
                 </div>
               )}

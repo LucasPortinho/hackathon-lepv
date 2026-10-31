@@ -143,7 +143,7 @@ function SendAnswers({ diagnosticId }: { diagnosticId: string }) {
     if (!list?.length) return;
     setBusy(true);
     try {
-      const batchId = await uploadFiles({ diagnosticId }, [...list].map((file) => ({ file, kind: 'gabarito' as const })));
+      const batchId = await uploadFiles({ diagnosticId }, [...list]);
       const summary = await processBatch(batchId);
       toast(`${summary.sheets} folhas lidas. ${summary.partial.length ? `${summary.partial.length} para conferir.` : 'Resultados incorporados aos perfis.'}`);
     } finally {

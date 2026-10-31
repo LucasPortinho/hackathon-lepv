@@ -7,6 +7,7 @@ import type { SheetReadStatus } from '../../types/domain';
 import { gradeSheet, identifySheet, matchStudent, type GradableQuestion, type GradedAnswer } from '../agents/correction.agent';
 import { ConflictError } from '../shared/errors';
 
+export const ACCEPTED_FILES = /\.(pdf|png|jpe?g)$/i;
 const UPLOAD_DIR = process.env.UPLOAD_DIR ?? 'uploads';
 const UNREADABLE = 'Não foi possível ler esta folha.';
 const UNIDENTIFIED = 'Aluno não identificado.';
@@ -38,7 +39,7 @@ async function pagesOf(path: string): Promise<(Buffer | null)[]> {
 
 /** Páginas das folhas de resposta do lote; `null` marca um arquivo que não abriu. */
 export async function loadAnswerPages(batchId: string) {
-  const files = uploadRepository.listFiles(batchId).filter((f) => f.kind === 'gabarito' && f.storagePath && !f.error);
+  const files = uploadRepository.listFiles(batchId).filter((f) => f.kind === 'respostas' && f.storagePath && !f.error);
   if (!files.length) throw new ConflictError('Envie ao menos um arquivo com as folhas de resposta.');
   return (await mapLimit(files, AGENT_CONCURRENCY, (f) => pagesOf(f.storagePath!))).flat();
 }

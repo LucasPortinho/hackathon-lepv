@@ -1,8 +1,10 @@
 import { and, asc, desc, eq, inArray, type SQL } from 'drizzle-orm';
 import { db } from '../db';
-import { classes, examGroups, examPartialReads, examQuestions, exams, examVersionNeeds, examVersions, examVersionStudents } from '../db/schema';
+import { classes, examGroups, examKeySources, examPartialReads, examQuestions, exams, examVersionNeeds, examVersions, examVersionStudents } from '../db/schema';
 import { groupBy } from '../lib/collections';
 import type { Exam, ExamGroup, ExamStatus, ExamVersion } from '../types/domain';
+
+type KeySource = (typeof examKeySources)[number];
 
 const versionKey = (row: { examId: string; versionId: string }) => `${row.examId}:${row.versionId}`;
 
@@ -53,6 +55,13 @@ export function insert(exam: { id: string; title: string; classId: string; subje
 
 export const setStatus = (examId: string, status: ExamStatus) =>
   db.update(exams).set({ status }).where(eq(exams.id, examId)).run();
+
+export const listQuestionKeys = (examId: string) =>
+  db.select({ questionId: examQuestions.questionId, answerKey: examQuestions.answerKey, solution: examQuestions.solution, keySource: examQuestions.keySource })
+    .from(examQuestions).where(eq(examQuestions.examId, examId)).all();
+
+export const setQuestionKey = (examId: string, questionId: string, key: { answerKey: string | null; solution: string | null; keySource: KeySource | null }) =>
+  db.update(examQuestions).set(key).where(and(eq(examQuestions.examId, examId), eq(examQuestions.questionId, questionId))).run();
 
 export const setGroup = (examId: string, groupId: string | null) =>
   db.update(exams).set({ groupId }).where(eq(exams.id, examId)).run();

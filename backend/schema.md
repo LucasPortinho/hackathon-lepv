@@ -675,7 +675,7 @@ Metadados dos arquivos enviados: tamanho, categoria, progresso, localização e 
 | `batch_id` | `TEXT` | Não | — | FK | Lote de envio associado. |
 | `name` | `TEXT` | Não | — | — | Nome para apresentação. |
 | `size` | `INTEGER` | Não | — | — | Tamanho do arquivo em bytes. |
-| `kind` | `TEXT` | Não | — | — | Categoria do arquivo; gabarito identifica as folhas de resposta no frontend. |
+| `kind` | `TEXT` | Não | — | — | Categoria do arquivo; `respostas` identifica as provas respondidas pelos alunos, as únicas corrigidas. |
 | `progress` | `REAL` | Não | `0` | — | Percentual de envio entre 0 e 100. |
 | `storage_path` | `TEXT` | Sim | — | — | Caminho ou chave do arquivo no armazenamento. |
 | `error` | `TEXT` | Sim | — | — | Erro ocorrido no envio ou validação. |
@@ -684,7 +684,7 @@ Chave primária: `id`.
 
 - FK `(batch_id)` → `upload_batches(id)`; exclusão: `CASCADE`.
 - Validação: `size >= 0`.
-- Validação: `kind IN ('prova', 'gabarito')`.
+- Validação: `kind IN ('prova', 'respostas')`.
 - Validação: `progress BETWEEN 0 AND 100`.
 - Índice `upload_files_batch_idx`: `(batch_id)`.
 
@@ -864,7 +864,8 @@ Os enums do TypeScript ajudam na compilação; os `CHECK`s correspondentes tamb�
 | `diagnosticStepIds` | `pedagogico`, `adaptacao`, `criador`, `respostas`, `devolutiva` |
 | `stepStatuses` | `pendente`, `executando`, `concluido`, `ignorado` |
 | `uploadPhases` | `envio`, `processando`, `resultado` |
-| `uploadFileKinds` | `prova`, `gabarito` |
+| `uploadFileKinds` | `prova`, `respostas` |
+| `examKeySources` | `professor`, `resolucao` |
 | `sheetReadStatuses` | `pendente`, `completa`, `parcial`, `erro` |
 | `agentIds` | `pedagogico`, `adaptacao`, `criador`, `correcao` |
 | `agentRunStatuses` | `pendente`, `executando`, `concluido`, `atencao` |
@@ -917,7 +918,7 @@ As views não armazenam cópias dos dados. `studentCount`, `partialReads` e `Ada
 ### Envios e leitura
 
 - Cada lote pertence a exatamente um destino: `exam_id` ou `diagnostic_id`.
-- Arquivos de prova e folhas de resposta são identificados por `kind`; no frontend, `gabarito` é a categoria das respostas.
+- Arquivos de prova e folhas de resposta são identificados por `kind`. O gabarito do professor não é um arquivo de lote: fica em `exam_questions`.
 - Folhas de provas podem registrar nome e leitura antes de identificar o aluno. Informar uma versão exige também um aluno e uma atribuição válida daquela versão.
 - As chaves compostas impedem ligar uma folha a um lote de outra prova ou diagnóstico e impedem respostas de itens ou questões de outro contexto.
 
@@ -1000,3 +1001,17 @@ A migração está em `src/db/migrations/0002-creator-metadata.ts`. O startup us
 `migrateSchema()` para adicionar colunas em bancos da versão 1 sem reset ou seed,
 preservando os registros, views e triggers existentes. Novos bancos já nascem na
 versão 2. Versões desconhecidas diferentes de zero causam erro em vez de reset.
+
+## Gabarito da prova e memória do perfil (versão 3)
+
+O gabarito informado pelo professor fica em `exam_questions` (`answer_key`, `solution`, `key_source`), e não em
+`questions`: a questão do banco é compartilhada entre provas. Vale para a prova, nesta ordem: o que está em
+`exam_questions`; depois o gabarito da própria questão. A resolução digitada e a escaneada gravam nos mesmos campos, com
+`key_source` `professor` ou `resolucao`, e o corretor lê sempre daí. A leitura da resolução não sobrescreve o que foi digitado.
+
+`profile_history` guarda o perfil aprovado ou editado pelo professor antes de um novo resultado substituí-lo. Rascunhos
+não entram. O PED recebe as últimas revisões e as respostas corrigidas mais recentes de `exam_answers` para definir as
+competências pelo erro observado.
+
+A migração `0003-exam-answer-keys` é aditiva, exceto por `upload_files`, que é recriada para trocar `gabarito` por
+`respostas` no CHECK de `kind`, preservando os dados.

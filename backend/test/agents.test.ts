@@ -7,6 +7,7 @@ import { parseJson } from '../src/lib/llm';
 import { adaptQuestions } from '../src/services/agents/adaptation.agent';
 import { gradeSheet, identifySheet, matchStudent } from '../src/services/agents/correction.agent';
 import { analyzeStudent, type AnalysisInput } from '../src/services/agents/pedagogical.agent';
+import { readSolution } from '../src/services/agents/solution.agent';
 import type { Need, PedagogicalProfile, Question, Student } from '../src/types/domain';
 
 const reply = (value: unknown): ModelFn => async () => '```json\n' + JSON.stringify(value) + '\n```';
@@ -37,6 +38,30 @@ describe('agentes com modelo simulado', () => {
   it('rejeita adaptação incompleta para acionar as regras de reserva', async () => {
     await assert.rejects(adaptQuestions([question], [tea], reply({ itens: [{ indice: 0, adaptar: true, texto: '' }] })));
     await assert.rejects(adaptQuestions([question], [tea], async () => 'sem json'));
+  });
+
+  it('junta a resolução que continua na página seguinte e ignora índices fora da prova', async () => {
+    const pages = [{ questoes: [{ indice: 0, gabarito: 'B', resolucao: 'início' }] }, { questoes: [{ indice: 0, gabarito: null, resolucao: 'fim' }, { indice: 7, gabarito: 'Z' }, { indice: 1, gabarito: ' ' }] }];
+    const model: ModelFn = async () => JSON.stringify(pages.shift());
+    const { keys, failedPages } = await readSolution([png, png], ['a', 'b'], model);
+    assert.deepEqual(keys, [{ index: 0, answerKey: 'B', solution: 'início\nfim' }]);
+    assert.equal(failedPages, 0);
+  });
+
+  it('conta a página que falhou sem perder as outras', async () => {
+    let calls = 0;
+    const model: ModelFn = async () => { if (calls++ === 0) throw new Error('falhou'); return '{"questoes":[{"indice":0,"gabarito":"B"}]}'; };
+    const { keys, failedPages } = await readSolution([png, png], ['a'], model);
+    assert.equal(keys.length, 1);
+    assert.equal(failedPages, 1);
+  });
+
+  it('o corretor recebe as alternativas e o gabarito do professor', async () => {
+    let prompt = '';
+    const spy: ModelFn = async (messages: ChatMessage[]) => { prompt = JSON.stringify(messages[1].content); return '{"respostas":[]}'; };
+    await gradeSheet(png, [{ ...question, alternatives: ['alfa', 'beta'], answerKey: 'B' }], spy);
+    assert.match(prompt, /beta/);
+    assert.match(prompt, /gabarito/);
   });
 
   it('o PED preserva nota e variação, e aprofunda o texto', async () => {

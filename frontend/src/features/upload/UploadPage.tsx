@@ -1,11 +1,12 @@
 import { FileUp, LayoutGrid, Trash2 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
 import { Badge, Button, ButtonLink, Card, Counter, Select, toast } from '@/components/ui';
-import { listExams } from '@/api/exams/exam.api';
-import { fileSize } from '@/lib/format';
+import { getExam, listExams } from '@/api/exams/exam.api';
+import { fileSize, plural } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
 import { processBatch, uploadFiles } from '@/api/uploads/upload.api';
@@ -13,28 +14,31 @@ import type { UploadSummary } from '@/types/domain';
 import { StageTrack } from './StageTrack';
 import './upload.css';
 
-interface Item { id: number; name: string; size: number; kind: 'prova' | 'gabarito'; file: File; progress: number; error?: string }
+interface Item { id: number; name: string; size: number; file: File; progress: number; error?: string }
 
-const STAGES = ['Lendo as folhas de resposta', 'Reconhecendo as marcações', 'Relacionando aos subtópicos', 'Montando os perfis'];
+const STAGES = ['Lendo as provas dos alunos', 'Corrigindo pelo seu gabarito', 'Relacionando aos subtópicos', 'Definindo as competências'];
 const ACCEPTED = /\.(pdf|png|jpe?g)$/i;
 
 let nextId = 1;
 
 export function UploadPage() {
-  useCrumbs([{ label: 'Provas', to: '/provas' }, { label: 'Enviar corrigidas' }]);
+  useCrumbs([{ label: 'Provas', to: '/provas' }, { label: 'Enviar provas dos alunos' }]);
   const [items, setItems] = useState<Item[]>([]);
   const [over, setOver] = useState(false);
   const [phase, setPhase] = useState<'envio' | 'processando' | 'resultado'>('envio');
   const [stage, setStage] = useState(0);
   const [summary, setSummary] = useState<UploadSummary | null>(null);
-  const [exam, setExam] = useState('e-leis');
+  const [params] = useSearchParams();
+  const [exam, setExam] = useState(params.get('prova') ?? 'e-leis');
   const exams = useQuery(listExams, []);
   const options = (exams.data ?? []).filter((e) => e.status !== 'em_adaptacao').map((e) => ({ value: e.id, label: `${e.title} · ${e.className}` }));
   const examId = options.some((o) => o.value === exam) ? exam : (options[0]?.value ?? '');
+  const detail = useQuery(() => (examId ? getExam(examId) : Promise.resolve(null)), [examId]);
+  const withoutKey = detail.data?.questions.filter((q) => !q.keySource).length ?? 0;
   const timers = useRef<number[]>([]);
   useEffect(() => () => timers.current.forEach(clearInterval), []);
 
-  const add = (files: Pick<Item, 'name' | 'size' | 'kind' | 'file'>[]) => {
+  const add = (files: Pick<Item, 'name' | 'size' | 'file'>[]) => {
     const fresh = files.map((f) => ({ ...f, id: nextId++, progress: 0, error: ACCEPTED.test(f.name) ? undefined : 'Formato não aceito. Use PDF, PNG ou JPG.' }));
     setItems((x) => [...x, ...fresh]);
     fresh.filter((f) => !f.error).forEach((f) => {
@@ -46,7 +50,7 @@ export function UploadPage() {
     });
   };
 
-  const fromFiles = (list: FileList | null) => list && add([...list].map((file) => ({ file, name: file.name, size: file.size, kind: /^prova/i.test(file.name) && !/resposta|gabarito|folha/i.test(file.name) ? 'prova' : 'gabarito' })));
+  const fromFiles = (list: FileList | null) => list && add([...list].map((file) => ({ file, name: file.name, size: file.size })));
   const ready = items.filter((i) => !i.error);
   const allDone = ready.length > 0 && ready.every((i) => i.progress >= 100);
 
@@ -60,7 +64,7 @@ export function UploadPage() {
   const start = async () => {
     setPhase('processando');
     try {
-      const batchId = await uploadFiles({ examId }, ready);
+      const batchId = await uploadFiles({ examId }, ready.map((i) => i.file));
       const [result] = await Promise.all([processBatch(batchId), showStages()]);
       setSummary(result);
       setPhase('resultado');
@@ -73,17 +77,18 @@ export function UploadPage() {
 
   return (
     <>
-      <PageHeader title="Enviar provas corrigidas" />
+      <PageHeader title="Enviar provas dos alunos" />
       <AnimatePresence mode="wait" initial={false}>
         {phase === 'envio' && (
           <motion.div key="envio" className="up-grid" exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
             <div style={{ display: 'grid', gap: 'var(--s-3)' }}>
               <Select label="A qual prova estes arquivos pertencem?" value={examId} onChange={setExam} options={options} />
+              {withoutKey > 0 && <p className="key-warning"><Badge tone="caution">{plural(withoutKey, 'questão sem gabarito', 'questões sem gabarito')}</Badge> <span className="muted">A IA resolverá por conta própria. Para corrigir pelo seu critério, <Link to={`/provas/${examId}`}>informe o gabarito ou envie sua resolução</Link>.</span></p>}
               <label className="drop" data-over={over} onDragOver={(e) => { e.preventDefault(); setOver(true); }} onDragLeave={() => setOver(false)} onDrop={(e) => { e.preventDefault(); setOver(false); fromFiles(e.dataTransfer.files); }}>
                 <input className="sr-only" type="file" multiple accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => fromFiles(e.target.files)} />
                 <FileUp aria-hidden />
                 <h2>Arraste os arquivos para cá</h2>
-                <p className="muted">ou clique para escolher. Folhas de resposta em PDF, PNG ou JPG, uma por aluno em cada página.</p>
+                <p className="muted">ou clique para escolher. Provas respondidas pelos alunos em PDF, PNG ou JPG, com um aluno por página. A resolução do professor vai na página da prova.</p>
               </label>
             </div>
             <Card>
@@ -94,7 +99,7 @@ export function UploadPage() {
                     {items.map((f) => (
                       <motion.li key={f.id} className="file" layout transition={springs.glide} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                         <span className="file-name truncate" title={f.name}>{f.name}</span>
-                        <Badge tone={f.error ? 'danger' : undefined}>{f.error ? 'Erro' : f.kind === 'prova' ? 'Prova' : 'Respostas'}</Badge>
+                        {f.error ? <Badge tone="danger">Erro</Badge> : <span />}
                         <Button variant="ghost" size="sm" icon aria-label={`Remover ${f.name}`} onClick={() => setItems((x) => x.filter((i) => i.id !== f.id))}><Trash2 /></Button>
                         <small style={{ gridColumn: '1 / -1' }}>{f.error ?? `${fileSize(f.size)}${f.progress >= 100 ? ' · enviado' : ` · ${Math.round(f.progress)}%`}`}</small>
                         {!f.error && <div className="file-bar" role="progressbar" aria-label={`Envio de ${f.name}`} aria-valuenow={Math.round(f.progress)} aria-valuemin={0} aria-valuemax={100}><motion.i animate={{ width: `${f.progress}%` }} transition={{ duration: 0.16, ease: 'linear' }} /></div>}
@@ -103,14 +108,14 @@ export function UploadPage() {
                   </AnimatePresence>
                 </ul>
               )}
-              <div className="up-foot"><Button variant="primary" disabled={!allDone} onClick={start}>Processar arquivos</Button></div>
+              <div className="up-foot"><Button variant="primary" disabled={!allDone} onClick={start}>Corrigir provas</Button></div>
             </Card>
           </motion.div>
         )}
         {phase === 'processando' && (
           <motion.div key="proc" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
             <Card><div className="processing" aria-live="polite">
-              <h2>A IA está montando os perfis dos alunos</h2>
+              <h2>A IA está corrigindo as provas</h2>
               <StageTrack stages={STAGES} current={stage} />
               <p className="muted">Isso leva alguns instantes. Você pode continuar navegando; avisaremos quando terminar.</p>
             </div></Card>

@@ -220,7 +220,7 @@ describe('diagnósticos e registro de folhas', () => {
 
   it('registra metadados, recebe o conteúdo do arquivo e guarda as folhas', async () => {
     const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
-    const batch = await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'respostas.pdf', size: 1024, kind: 'gabarito' }] } });
+    const batch = await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'respostas.pdf', size: 1024, kind: 'respostas' }] } });
     assert.equal(batch.status, 201);
     assert.equal(batch.body.files[0].progress, 0);
     const content = (fileId: string, body: BodyInit, teacher = 't1') =>
@@ -305,7 +305,7 @@ describe('atividade, busca e notificações', () => {
 
   it('processa o lote com o agente simulado e marca notificações', async () => {
     const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
-    const batch = (await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'a.pdf', size: 1, kind: 'gabarito' }] } })).body;
+    const batch = (await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'a.pdf', size: 1, kind: 'respostas' }] } })).body;
     const processed = await request(`/uploads/batch/${batch.id}/process`, { method: 'POST' });
     assert.equal(processed.status, 200);
     assert.equal(processed.body.sheets, 4);

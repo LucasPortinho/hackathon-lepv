@@ -4,6 +4,7 @@ import { agentsEnabled } from '../../lib/llm';
 import { meanOrNull, scoreLookup } from '../../lib/score';
 import * as catalogRepository from '../../repositories/catalog.repository';
 import * as classRepository from '../../repositories/class.repository';
+import * as evidenceRepository from '../../repositories/evidence.repository';
 import * as examRepository from '../../repositories/exam.repository';
 import * as profileRepository from '../../repositories/profile.repository';
 import * as scoreRepository from '../../repositories/score.repository';
@@ -15,6 +16,10 @@ import { recordRun } from '../agent-runs/agent-run.service';
 import { needLabeler, periodWindow } from '../catalog/catalog.service';
 import { loadClassScores, type ClassScores } from '../shared/class-scores';
 import { requireClass, requireStudent, requireSubject } from '../shared/guards';
+
+// Teto do contexto do PED: o histórico cresce a cada prova, e o que é recente pesa mais.
+const EVIDENCE_LIMIT = 40;
+const HISTORY_LIMIT = 3;
 
 function loadProfileInputs(student: Student, subjectId: string) {
   const { current, previous } = periodWindow();
@@ -42,7 +47,11 @@ function loadAnalysisInput(student: Student, subjectId: string): AnalysisInput {
   const { current } = periodWindow();
   const scores = loadProfileInputs(student, subjectId).map(({ subtopic, value, previous }) =>
     ({ subtopicId: subtopic.id, subtopic: subtopic.name, value, previous, classAverage: average(subtopic.id, current.id) }));
-  return { student, scores, subject: requireSubject(subjectId).name, needLabel: needLabeler() };
+  return {
+    student, scores, subject: requireSubject(subjectId).name, needLabel: needLabeler(),
+    evidence: evidenceRepository.listByStudent(student.id, subjectId, EVIDENCE_LIMIT),
+    history: profileRepository.listHistory(student.id, subjectId, HISTORY_LIMIT),
+  };
 }
 
 const isDraft = (studentId: string, subjectId: string) =>

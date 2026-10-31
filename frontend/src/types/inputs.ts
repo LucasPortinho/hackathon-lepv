@@ -7,7 +7,7 @@ export interface StudentInput { name: string; classId: string; declaredNeeds: Ne
 
 export interface DashboardQuery { classId: string; subjectId: string; periodId: string }
 
-export interface ManualQuestion { statement: string; subtopicId: string; points: number }
+export interface ManualQuestion { statement: string; subtopicId: string; points: number; answerKey?: string; solution?: string }
 
 export interface NewExam {
   title: string;
@@ -18,4 +18,4 @@ export interface NewExam {
   questions: (Question | ManualQuestion)[];
 }
 
-export interface NewFile { name: string; size: number; kind: 'prova' | 'gabarito' }
+export interface NewFile { name: string; size: number; kind: 'respostas' }

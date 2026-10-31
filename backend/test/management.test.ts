@@ -53,7 +53,7 @@ describe('turmas', () => {
     const before = { students: count(schema.students), other: listStudents(T, 'mat').filter((s) => s.student.classId !== 'c-2b').length };
     const exam = exams.createExam(T, { title: 'Prova', classId: 'c-2b', subjectId: 'mat', groupId: 'g-b1', date: '2026-11-12', questions: [{ id: 'q1' }] });
     await adaptations.generateAdaptations(T, exam.id, ['dislexia']);
-    const batch = createBatch(T, 'e-leis', [{ name: 'a.pdf', size: 1, kind: 'gabarito' }]);
+    const batch = createBatch(T, 'e-leis', [{ name: 'a.pdf', size: 1, kind: 'respostas' }]);
     await processBatch(T, batch.id);
     const published = await inReview('c-2b', ['st-senos']);
     approveAll(T, published.id);

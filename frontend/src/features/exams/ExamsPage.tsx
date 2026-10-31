@@ -21,7 +21,7 @@ export function ExamsPage() {
   const [status, setStatus] = useState('todas');
   const list = useMemo(() => (q.data ?? []).filter((e) => (status === 'todas' || e.status === status) && normalize(e.title + e.className).includes(normalize(text))), [q.data, status, text]);
   const actions = <>
-    <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar corrigidas</ButtonLink>
+    <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar provas dos alunos</ButtonLink>
     <ButtonLink variant="primary" to="/provas/nova"><Plus />Nova prova</ButtonLink>
   </>;
   return (

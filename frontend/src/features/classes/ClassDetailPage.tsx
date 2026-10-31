@@ -113,7 +113,7 @@ export function ClassDetailPage() {
           <Button variant="ghost" onClick={() => setRemoving(true)}><Trash2 />Excluir</Button>
           <Button variant="secondary" onClick={() => setEditing(true)}><Pencil />Editar</Button>
           <ButtonLink variant="secondary" to={`/alunos?turma=${classId}`}><Users />Alunos</ButtonLink>
-          <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar corrigidas</ButtonLink>
+          <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar provas dos alunos</ButtonLink>
           <ButtonLink variant="primary" to={newExamTo}><Plus />Nova prova</ButtonLink>
         </>}
       />
