@@ -12,7 +12,6 @@ const PAGES: SearchResult[] = [
   { id: 'p-u', kind: 'pagina', label: 'Enviar provas corrigidas', to: '/provas/enviar' },
   { id: 'p-ad', kind: 'pagina', label: 'Avaliações Diagnósticas', to: '/diagnosticas' },
   { id: 'p-a', kind: 'pagina', label: 'Alunos', to: '/alunos' },
-  { id: 'p-g', kind: 'pagina', label: 'Agentes IA', to: '/agentes' },
   { id: 'p-c', kind: 'pagina', label: 'Configurações', to: '/configuracoes' },
 ];
 

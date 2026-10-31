@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { AppShell } from '@/components/shell/AppShell';
 import { ErrorState } from '@/components/ui';
-import { AgentsPage } from '@/features/agents/AgentsPage';
 import { ClassDetailPage } from '@/features/classes/ClassDetailPage';
 import { ClassesPage } from '@/features/classes/ClassesPage';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
@@ -35,7 +34,6 @@ const router = createBrowserRouter([
       { path: 'diagnosticas/:diagnosticId', element: <DiagnosticDetailPage /> },
       { path: 'alunos', element: <StudentsPage /> },
       { path: 'alunos/:studentId', element: <StudentPage /> },
-      { path: 'agentes', element: <AgentsPage /> },
       { path: 'configuracoes', element: <SettingsPage /> },
       { path: '*', element: <ErrorState message="Esta página não existe" /> },
     ],

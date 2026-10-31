@@ -1,4 +1,4 @@
-import { Bot, ClipboardList, FileText, GraduationCap, LayoutGrid, Settings, Users, type LucideIcon } from 'lucide-react';
+import { ClipboardList, FileText, GraduationCap, LayoutGrid, Settings, Users, type LucideIcon } from 'lucide-react';
 
 export const APP_NAME = 'Aula';
 
@@ -8,6 +8,5 @@ export const NAV: { to: string; label: string; icon: LucideIcon }[] = [
   { to: '/provas', label: 'Provas', icon: FileText },
   { to: '/diagnosticas', label: 'Avaliações Diagnósticas', icon: ClipboardList },
   { to: '/alunos', label: 'Alunos', icon: Users },
-  { to: '/agentes', label: 'Agentes IA', icon: Bot },
   { to: '/configuracoes', label: 'Configurações', icon: Settings },
 ];
