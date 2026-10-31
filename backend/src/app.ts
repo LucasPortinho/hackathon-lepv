@@ -4,7 +4,7 @@ import { errorHandler, notFound } from './http/errors';
 import { createApiRouter } from './routes';
 
 /** A fábrica não abre porta. O professor da demo é definido pelo backend. */
-export function createApp(options: { teacherId: string; corsOrigin?: string }) {
+export function createApp(options: { teacherId: string; corsOrigin?: string | string[] }) {
   const app = express();
   app.disable('x-powered-by');
   app.set('query parser', 'simple');

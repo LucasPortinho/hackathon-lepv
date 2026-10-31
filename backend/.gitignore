@@ -9,6 +9,7 @@ dist/
 
 # Arquivos do SQLite e logs
 *.db
+!/deploy/seed.db
 *.db-journal
 *.sqlite
 # Arquivos enviados e folhas de exemplo da demonstração

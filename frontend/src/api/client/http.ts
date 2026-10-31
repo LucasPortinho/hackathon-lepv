@@ -1,7 +1,8 @@
 import { changed } from './invalidation';
 import { getScenario, SLOW_MS } from './scenario';
 
-export const BASE = '/api/v1';
+// Sem VITE_API_URL, o caminho relativo usa o proxy do Vite no desenvolvimento.
+export const BASE = `${(import.meta.env.VITE_API_URL ?? '').replace(/\/+$/, '')}/api/v1`;
 const GENERIC_ERROR = 'Não foi possível concluir a operação.';
 
 export class ApiError extends Error {

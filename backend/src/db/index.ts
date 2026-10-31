@@ -1,9 +1,16 @@
 import 'dotenv/config';
+import { copyFileSync, existsSync } from 'node:fs';
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import * as schema from './schema';
 
-const sqlite = new Database(process.env.DATABASE_PATH ?? 'sqlite.db');
+const databasePath = process.env.DATABASE_PATH ?? 'sqlite.db';
+const seedPath = process.env.SEED_DATABASE_PATH;
+
+// Precisa vir antes de abrir o banco: `new Database` criaria um arquivo vazio.
+if (seedPath && !existsSync(databasePath)) copyFileSync(seedPath, databasePath);
+
+const sqlite = new Database(databasePath);
 sqlite.pragma('foreign_keys = ON');
 
 export const db = drizzle(sqlite, { schema });
