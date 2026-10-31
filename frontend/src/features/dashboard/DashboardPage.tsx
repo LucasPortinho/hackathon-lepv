@@ -10,7 +10,7 @@ import { StudentSheet } from '@/features/students/StudentSheet';
 import { plural } from '@/lib/format';
 import { usePrefs } from '@/lib/prefs';
 import { useQuery } from '@/lib/useQuery';
-import { classById, listPeriods, listSubjects, subjectName } from '@/api/catalog/catalog.store';
+import { classById, defaultClassId, listPeriods, listSubjects, subjectName } from '@/api/catalog/catalog.store';
 import { listClasses } from '@/api/classes/class.api';
 import { getDashboard } from '@/api/dashboard/dashboard.api';
 import { Heatmap } from './Heatmap';
@@ -35,7 +35,7 @@ export function DashboardPage() {
   const nav = useNavigate();
   const { reduced } = usePrefs();
 
-  const classId = params.get('turma') ?? 'c-2b';
+  const classId = params.get('turma') ?? defaultClassId();
   const subjectId = params.get('disciplina') ?? 'mat';
   const periodId = params.get('periodo') ?? 'b3';
   const subtopicId = params.get('subtopico') ?? undefined;

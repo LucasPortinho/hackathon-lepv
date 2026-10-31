@@ -1,8 +1,9 @@
 import { controller } from '../http/controller';
-import { empty, profileReviewBody, read, request, studentParams, subjectQuery } from '../http/schemas';
+import { empty, noQuery, profileReviewBody, read, request, studentBody, studentParams, subjectQuery } from '../http/schemas';
 import * as review from '../services/profiles/profile-review.service';
 import * as profiles from '../services/profiles/profile.service';
 import { requireSubject } from '../services/shared/guards';
+import * as students from '../services/students/student.service';
 
 export const list = controller(read(empty, subjectQuery), ({ query }, teacherId) => {
   requireSubject(query.subjectId);
@@ -19,3 +20,6 @@ export const reviewProfile = controller(request(studentParams, subjectQuery, pro
   else if (body.reviewStatus === 'rascunho') review.reopenProfile(teacherId, studentId, subjectId);
   else review.saveProfileEdit(teacherId, studentId, subjectId, body.summary, body.gapNotes);
 }, 204);
+export const create = controller(request(empty, noQuery, studentBody), ({ body }, teacherId) => students.createStudent(teacherId, body), 201);
+export const update = controller(request(studentParams, noQuery, studentBody), ({ params, body }, teacherId) => students.updateStudent(teacherId, params.studentId, body));
+export const remove = controller(read(studentParams, noQuery), ({ params }, teacherId) => students.deleteStudent(teacherId, params.studentId), 204);

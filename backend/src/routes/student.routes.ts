@@ -6,3 +6,6 @@ studentRouter.get('/', students.list);
 studentRouter.get('/:studentId', students.detail);
 studentRouter.get('/:studentId/profile', students.profile);
 studentRouter.patch('/:studentId/profile/review', students.reviewProfile);
+studentRouter.post('/', students.create);
+studentRouter.put('/:studentId', students.update);
+studentRouter.delete('/:studentId', students.remove);

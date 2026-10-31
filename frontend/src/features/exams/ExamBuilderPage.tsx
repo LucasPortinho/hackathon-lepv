@@ -8,7 +8,7 @@ import { Async, Badge, Button, Card, Checkbox, EmptyState, Field, Select, Skelet
 import { plural } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { listSubtopics, subtopicById } from '@/api/catalog/catalog.store';
+import { defaultClassId, listSubtopics, subtopicById } from '@/api/catalog/catalog.store';
 import { listClasses } from '@/api/classes/class.api';
 import { createExam, listBank, listGroups } from '@/api/exams/exam.api';
 import type { NewExam } from '@/types/inputs';
@@ -22,7 +22,7 @@ export function ExamBuilderPage() {
   const [params] = useSearchParams();
   const nav = useNavigate();
   const [title, setTitle] = useState('');
-  const [classId, setClassId] = useState(params.get('turma') ?? 'c-2b');
+  const [classId, setClassId] = useState(params.get('turma') ?? defaultClassId());
   const [groupId, setGroupId] = useState(params.get('pasta') ?? 'nenhuma');
   const [date, setDate] = useState('2026-11-19');
   const [tab, setTab] = useState<'banco' | 'manual'>('banco');

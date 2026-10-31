@@ -318,4 +318,31 @@ describe('atividade, busca e notificações', () => {
     assert.equal((await request('/notifications/read', { method: 'PATCH' })).status, 204);
     assert.equal((await request('/notifications?unreadOnly=true')).body.length, 0);
   });
+
+  it('expõe turmas, alunos e recusas respeitando o professor', async () => {
+    const body = { name: 'HTTP', level: 'Médio', school: 'Colégio', year: 2026, subjectIds: ['mat'] };
+    const created = await request('/classes', { method: 'POST', body });
+    assert.equal(created.status, 201);
+    assert.equal((await request('/classes', { method: 'POST', body: { ...body, name: '' } })).status, 400);
+    assert.equal((await request('/classes', { method: 'POST', body: { ...body, subjectIds: [] } })).status, 400);
+    const path = '/classes/' + created.body.id;
+    assert.equal((await request(path, { method: 'PUT', teacher: 't2', body })).status, 404);
+    assert.equal((await request(path, { method: 'PUT', body: { ...body, name: 'Outro' } })).body.name, 'Outro');
+
+    const student = await request('/students', { method: 'POST', body: { name: 'Novo', classId: created.body.id, declaredNeeds: ['tdah'] } });
+    assert.equal(student.status, 201);
+    assert.equal((await request('/students', { method: 'POST', body: { name: 'Novo', classId: created.body.id, declaredNeeds: ['inventada'] } })).status, 400);
+    assert.equal((await request('/students', { method: 'POST', teacher: 't2', body: { name: 'Novo', classId: created.body.id, declaredNeeds: [] } })).status, 404);
+    const studentPath = '/students/' + student.body.id;
+    assert.deepEqual((await request(studentPath, { method: 'PUT', body: { name: 'Novo', classId: created.body.id, declaredNeeds: [] } })).body.declaredNeeds, []);
+    assert.equal((await request(studentPath, { method: 'DELETE', teacher: 't2' })).status, 404);
+    assert.equal((await request(studentPath, { method: 'DELETE' })).status, 204);
+
+    assert.equal((await request(path, { method: 'DELETE', teacher: 't2' })).status, 404);
+    assert.equal((await request(path, { method: 'DELETE' })).status, 204);
+    assert.equal((await request(path)).status, 404);
+
+    const d = (await request('/diagnostics', { method: 'POST', body: { classId: 'c1', subtopicIds: ['st-cossenos'] } })).body;
+    assert.equal((await request('/diagnostics/' + d.id, { method: 'DELETE' })).status, 409);
+  });
 });

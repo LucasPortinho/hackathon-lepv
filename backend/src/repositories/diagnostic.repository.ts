@@ -87,3 +87,17 @@ export const setApproved = (diagnosticId: string, studentId: string, approved: b
 
 export const approveAll = (diagnosticId: string) =>
   db.update(diagnosticStudents).set({ approved: true }).where(eq(diagnosticStudents.diagnosticId, diagnosticId)).run();
+
+/** Alunos e itens saem antes: os itens têm RESTRICT sobre os subtópicos que o CASCADE apagaria. */
+function removeWhere(ids: string[]) {
+  db.delete(diagnosticStudents).where(inArray(diagnosticStudents.diagnosticId, ids)).run();
+  db.delete(diagnostics).where(inArray(diagnostics.id, ids)).run();
+}
+
+export const remove = (id: string) => removeWhere([id]);
+
+export const removeByClass = (classId: string) =>
+  removeWhere(db.select({ id: diagnostics.id }).from(diagnostics).where(eq(diagnostics.classId, classId)).all().map((d) => d.id));
+
+export const removeStudent = (diagnosticId: string, studentId: string) =>
+  db.delete(diagnosticStudents).where(and(eq(diagnosticStudents.diagnosticId, diagnosticId), eq(diagnosticStudents.studentId, studentId))).run();

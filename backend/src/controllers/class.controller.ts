@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { controller } from '../http/controller';
-import { classParams, empty, groupBody, id, noQuery, read, request, year } from '../http/schemas';
+import { classBody, classParams, empty, groupBody, id, noQuery, read, request, year } from '../http/schemas';
 import * as classes from '../services/classes/class.service';
 import * as exams from '../services/exams/exam.service';
 import * as profiles from '../services/profiles/profile.service';
@@ -20,3 +20,6 @@ export const listGroups = controller(read(classParams, noQuery), ({ params }, te
 export const createGroup = controller(request(classParams, noQuery, groupBody), ({ params, body }, teacherId) =>
   exams.createGroup(teacherId, params.classId, body.name), 201);
 export const listExams = controller(read(classParams, noQuery), ({ params }, teacherId) => exams.listClassExams(teacherId, params.classId));
+export const create = controller(request(empty, noQuery, classBody), ({ body }, teacherId) => classes.createClass(teacherId, body), 201);
+export const update = controller(request(classParams, noQuery, classBody), ({ params, body }, teacherId) => classes.updateClass(teacherId, params.classId, body));
+export const remove = controller(read(classParams, noQuery), ({ params }, teacherId) => classes.deleteClass(teacherId, params.classId), 204);

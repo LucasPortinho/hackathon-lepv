@@ -35,6 +35,7 @@ function buildGap(student: Student, { subtopic }: ScoredInput, index: number): C
 
 function buildSummary(student: Student, strong: ScoredInput[], weak: ScoredInput[]) {
   const n = firstName(student.name);
+  if (!strong.length) return `${n} ainda não tem notas neste bimestre.`;
   return weak.length
     ? `${n} tem bom domínio de ${strong.map((s) => s.subtopic.name).join(' e ')}. O próximo passo é fortalecer ${weak[0].subtopic.name}.`
     : `${n} mostra domínio consistente nos subtópicos deste bimestre. Vale propor desafios de aplicação.`;

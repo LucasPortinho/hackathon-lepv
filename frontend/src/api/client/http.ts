@@ -10,7 +10,7 @@ export class ApiError extends Error {
   }
 }
 
-type Method = 'GET' | 'POST' | 'PUT' | 'PATCH';
+type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 async function connect(method: Method, path: string, body: unknown) {
   try {
@@ -56,6 +56,14 @@ export async function get<T>(path: string, options: { empty?: T } = {}): Promise
 /** Escritas ignoram os cenários: a demonstração nunca perde uma aprovação. */
 export async function mutate<T = void>(method: Exclude<Method, 'GET'>, path: string, body?: unknown): Promise<T> {
   const result = await send<T>(method, path, body);
+  changed();
+  return result;
+}
+
+/** Escrita que também muda o catálogo: as telas só atualizam depois de ele estar em dia. */
+export async function mutateCatalog<T = void>(method: Exclude<Method, 'GET'>, path: string, body: unknown, reload: () => Promise<void>): Promise<T> {
+  const result = await send<T>(method, path, body);
+  await reload();
   changed();
   return result;
 }

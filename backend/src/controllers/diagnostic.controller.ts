@@ -28,3 +28,6 @@ export const approveStudent = controller(request(idParams.extend(studentParams.s
 export const approveAll = controller(read(idParams, noQuery), ({ params }, teacherId) => review.approveAll(teacherId, params.id), 204);
 export const publish = controller(read(idParams, noQuery), ({ params }, teacherId) => review.publishDiagnostic(teacherId, params.id), 204);
 export const answers = controller(read(idParams, noQuery), ({ params }, teacherId) => receiveAnswers(teacherId, params.id), 204);
+export const reject = controller(read(idParams, noQuery), ({ params }, teacherId) => review.rejectDiagnostic(teacherId, params.id), 204);
+export const rejectStudent = controller(read(idParams.extend(studentParams.shape), noQuery), ({ params }, teacherId) =>
+  review.rejectForStudent(teacherId, params.id, params.studentId), 204);

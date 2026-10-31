@@ -1,19 +1,21 @@
 import { DndContext, PointerSensor, TouchSensor, useDraggable, useDroppable, useSensor, useSensors, type DragEndEvent } from '@dnd-kit/core';
-import { FileText, Folder, FolderOpen, FolderPlus, LayoutGrid, List, MoreHorizontal, Plus, Upload } from 'lucide-react';
+import { FileText, Folder, FolderOpen, FolderPlus, LayoutGrid, List, MoreHorizontal, Pencil, Plus, Trash2, Upload, Users } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { DropdownMenu } from 'radix-ui';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
-import { Async, Badge, Button, ButtonLink, Card, Dialog, EmptyState, ErrorState, Field, Segmented, Skeleton, toast } from '@/components/ui';
+import { Async, Badge, Button, ButtonLink, Card, ConfirmDialog, Dialog, EmptyState, ErrorState, Field, Segmented, Skeleton, toast } from '@/components/ui';
 import { formatDate, plural } from '@/lib/format';
 import { springs, variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
 import { classById } from '@/api/catalog/catalog.store';
+import { deleteClass } from '@/api/classes/class.api';
 import { createGroup, listClassExams, listGroups, moveExam } from '@/api/exams/exam.api';
 import type { ExamWithClass } from '@/types/domain';
 import type { ExamGroup } from '@/types/domain';
+import { ClassDialog } from './ClassDialog';
 import { StatusBadge } from '@/features/exams/StatusBadge';
 import './classes.css';
 
@@ -65,6 +67,9 @@ export function ClassDetailPage() {
   const [open, setOpen] = useState<string | null>(groupId ?? null);
   const [view, setView] = useState<'grade' | 'lista'>('grade');
   const [adding, setAdding] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [removing, setRemoving] = useState(false);
+  const nav = useNavigate();
   const [name, setName] = useState('');
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }), useSensor(TouchSensor, { activationConstraint: { delay: 180, tolerance: 8 } }));
 
@@ -72,6 +77,12 @@ export function ClassDetailPage() {
   useCrumbs([{ label: 'Turmas', to: '/turmas' }, { label: cls?.name ?? 'Turma', to: `/turmas/${classId}` }, ...(openGroup ? [{ label: openGroup.name }] : [])]);
 
   if (!cls) return <ErrorState message="Turma não encontrada" />;
+
+  const removeClass = async () => {
+    await deleteClass(classId);
+    toast('Turma excluída');
+    nav('/turmas');
+  };
 
   const move = (examId: string, target: string) => {
     const exam = exams.data?.find((e) => e.id === examId);
@@ -99,9 +110,17 @@ export function ClassDetailPage() {
         title={cls.name}
         description={`${cls.level} · ${cls.school} · ${cls.studentCount ? plural(cls.studentCount, 'aluno', 'alunos') : 'sem alunos'}`}
         actions={<>
+          <Button variant="ghost" onClick={() => setRemoving(true)}><Trash2 />Excluir</Button>
+          <Button variant="secondary" onClick={() => setEditing(true)}><Pencil />Editar</Button>
+          <ButtonLink variant="secondary" to={`/alunos?turma=${classId}`}><Users />Alunos</ButtonLink>
           <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar corrigidas</ButtonLink>
           <ButtonLink variant="primary" to={newExamTo}><Plus />Nova prova</ButtonLink>
         </>}
+      />
+      {editing && <ClassDialog cls={cls} onClose={() => setEditing(false)} />}
+      <ConfirmDialog
+        open={removing} onOpenChange={setRemoving} title={`Excluir ${cls.name}?`} confirmLabel="Excluir turma" onConfirm={removeClass}
+        description={`Isso não pode ser desfeito. Serão apagados ${plural(cls.studentCount, 'aluno', 'alunos')}, com notas e perfis, ${plural(exams.data?.length ?? 0, 'prova', 'provas')}, as pastas, as folhas enviadas e as avaliações diagnósticas da turma.`}
       />
       <DndContext sensors={sensors} onDragEnd={onDragEnd}>
         <Async
