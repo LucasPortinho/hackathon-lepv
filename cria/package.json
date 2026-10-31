@@ -1,0 +1,13 @@
+{
+  "name": "cria",
+  "version": "0.1.0",
+  "description": "Agente CRIA: cria questoes personalizadas a partir do diagnostico do PED",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=../.env src/run.js",
+    "dry": "node src/run.js --dry"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
