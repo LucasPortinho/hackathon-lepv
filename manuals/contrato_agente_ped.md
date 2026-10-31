@@ -345,13 +345,13 @@ forneça a nota e o período correspondente; não deve substituir essa nota por
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| [pedagogical.agent.ts](src/services/agents/pedagogical.agent.ts) | Tipos de entrada, prompt, JSON de saída e conversão da resposta. |
-| [pedagogical.rules.ts](src/services/agents/pedagogical.rules.ts) | Cálculo do perfil inicial e seleção das lacunas. |
-| [pedagogical.notes.ts](src/services/agents/pedagogical.notes.ts) | Textos e pré-requisitos de reserva da demonstração. |
-| [profile.service.ts](src/services/profiles/profile.service.ts) | Montagem dos dados de análise, chamada do PED e proteção da revisão humana. |
-| [profile.repository.ts](src/repositories/profile.repository.ts) | Persistência dos perfis e das lacunas. |
-| [diagnostic-agent.service.ts](src/services/diagnostics/diagnostic-agent.service.ts) | Seleção dos alunos e montagem da entrada do CRIA. |
-| [diagnostic-creator.service.ts](src/services/diagnostics/diagnostic-creator.service.ts) | Contexto para o CRIA e gravação dos itens gerados. |
-| [creator.agent.ts](src/services/agents/creator.agent.ts) | Entrada do CRIA e escolha do foco no pré-requisito. |
-| [domain.ts](src/types/domain.ts) | Tipos de aluno, perfil, lacuna e diagnóstico. |
-| [agents.test.ts](test/agents.test.ts) | Testes de preservação das notas, das lacunas e das necessidades declaradas. |
+| [pedagogical.agent.ts](../backend/src/services/agents/pedagogical.agent.ts) | Tipos de entrada, prompt, JSON de saída e conversão da resposta. |
+| [pedagogical.rules.ts](../backend/src/services/agents/pedagogical.rules.ts) | Cálculo do perfil inicial e seleção das lacunas. |
+| [pedagogical.notes.ts](../backend/src/services/agents/pedagogical.notes.ts) | Textos e pré-requisitos de reserva da demonstração. |
+| [profile.service.ts](../backend/src/services/profiles/profile.service.ts) | Montagem dos dados de análise, chamada do PED e proteção da revisão humana. |
+| [profile.repository.ts](../backend/src/repositories/profile.repository.ts) | Persistência dos perfis e das lacunas. |
+| [diagnostic-agent.service.ts](../backend/src/services/diagnostics/diagnostic-agent.service.ts) | Seleção dos alunos e montagem da entrada do CRIA. |
+| [diagnostic-creator.service.ts](../backend/src/services/diagnostics/diagnostic-creator.service.ts) | Contexto para o CRIA e gravação dos itens gerados. |
+| [creator.agent.ts](../backend/src/services/agents/creator.agent.ts) | Entrada do CRIA e escolha do foco no pré-requisito. |
+| [domain.ts](../backend/src/types/domain.ts) | Tipos de aluno, perfil, lacuna e diagnóstico. |
+| [agents.test.ts](../backend/test/agents.test.ts) | Testes de preservação das notas, das lacunas e das necessidades declaradas. |
