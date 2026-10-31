@@ -32,8 +32,9 @@ Não há dependências para instalar.
 ```
 
 - `score`: de 1 a 100.
-- `causa`: `"tecnica"` ou `"neurodivergencia"`. O CRIA só volta ao pré-requisito quando é `"tecnica"`.
-- `prerequisito` e `contexto`: opcionais.
+- `causa`: `"tecnica"` ou `"necessidade"` (mesmos valores de `reading_kind` do banco). O CRIA só volta ao pré-requisito quando é `"tecnica"`.
+- `prerequisito`: vem do PED. Opcional.
+- `contexto`: texto livre que o professor escreve (região, interesses da turma). Opcional.
 
 ## Saída
 
