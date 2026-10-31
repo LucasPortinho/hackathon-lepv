@@ -2,6 +2,7 @@ import { transaction } from '../../db';
 import { newId } from '../../lib/ids';
 import * as examRepository from '../../repositories/exam.repository';
 import * as questionRepository from '../../repositories/question.repository';
+import * as uploadRepository from '../../repositories/upload.repository';
 import type { Exam, ExamGroup, ExamQuestion, KeySource, Question } from '../../types/domain';
 import type { NewExam } from '../../types/inputs';
 import { ValidationError } from '../shared/errors';
@@ -51,6 +52,14 @@ export function moveExam(teacherId: string, examId: string, groupId: string | nu
   const exam = requireExam(teacherId, examId);
   if (groupId !== null) requireGroupOfClass(groupId, exam.classId);
   examRepository.setGroup(examId, groupId);
+}
+
+export function deleteExam(teacherId: string, examId: string) {
+  requireExam(teacherId, examId);
+  transaction(() => {
+    uploadRepository.removeByExam(examId);
+    examRepository.remove(examId);
+  });
 }
 
 export function createGroup(teacherId: string, classId: string, name: string): ExamGroup {
