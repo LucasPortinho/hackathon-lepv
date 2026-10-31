@@ -1,0 +1,3152 @@
+{
+  "disciplina": "História",
+  "etapa": "Ensino Fundamental",
+  "versao": "1.0.0",
+  "gerado_em": "2026-10-31",
+  "fonte_habilidades": "bncc-mcp 0.1.0 (lista oficial de habilidades da BNCC)",
+  "notas": {
+    "ano": "'ano' é o primeiro ano em que a habilidade é trabalhada; 'anos' lista todos (códigos como EF15LP01 abrangem do 1º ao 5º).",
+    "pre_requisitos": "Apenas pré-requisitos DIRETOS. Os indiretos são obtidos percorrendo o grafo recursivamente.",
+    "nivel": "Profundidade no grafo: 0 = sem pré-requisitos; nível N = maior cadeia de pré-requisitos até a habilidade.",
+    "ordem": "Posição numa ordenação topológica (desempate por ano e código). Ordenar qualquer subconjunto por este campo dá uma sequência de estudo válida.",
+    "palavras_chave": "Termos usados por alunos e professores, para casar lacunas descritas em texto livre com códigos.",
+    "objeto_conhecimento": "O CSV de origem tem objetos de conhecimento desalinhados; estes códigos foram corrigidos conforme a BNCC oficial: EF06HI06, EF07HI15, EF09HI25, EF09HI26, EF09HI33"
+  },
+  "unidades_tematicas": [
+    "A comunidade e seus registros",
+    "A história recente",
+    "A invenção do mundo clássico e o contraponto com outras sociedades",
+    "A noção de espaço público e privado",
+    "A organização do poder e as dinâmicas do mundo colonial americano",
+    "As formas de registrar as experiências da comunidade",
+    "As pessoas e os grupos que compõem a cidade e o município",
+    "As questões históricas relativas às migrações",
+    "Circulação de pessoas, produtos e culturas",
+    "Configurações do mundo no século XIX",
+    "História: tempo, espaço e formas de registros",
+    "Humanismos, Renascimentos e o Novo Mundo",
+    "Lógicas comerciais e mercantis da modernidade",
+    "Lógicas de organização política",
+    "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+    "Mundo pessoal: eu, meu grupo social e meu tempo",
+    "Mundo pessoal: meu lugar no mundo",
+    "O Brasil no século XIX",
+    "O lugar em que vive",
+    "O mundo contemporâneo: o Antigo Regime em crise",
+    "O mundo moderno e a conexão entre sociedades africanas, americanas e europeias",
+    "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+    "O trabalho e a sustentabilidade na comunidade",
+    "Os processos de independência nas Américas",
+    "Povos e culturas: meu lugar no mundo e meu grupo social",
+    "Registros da história: linguagens e culturas",
+    "Totalitarismos e conflitos mundiais",
+    "Trabalho e formas de organização social e cultural",
+    "Transformações e permanências nas trajetórias dos grupos humanos"
+  ],
+  "total_habilidades": 151,
+  "habilidades": {
+    "EF01HI01": {
+      "nome": "Meu crescimento e lembranças: passado, presente e futuro",
+      "descricao_bncc": "Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: meu lugar no mundo",
+      "objeto_conhecimento": "As fases da vida e a ideia de temporalidade (passado, presente, futuro)",
+      "palavras_chave": [
+        "passado",
+        "presente",
+        "futuro",
+        "lembranças",
+        "fases da vida"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 0
+    },
+    "EF01HI02": {
+      "nome": "Minha história e a história da família e da comunidade",
+      "descricao_bncc": "Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: meu lugar no mundo",
+      "objeto_conhecimento": "As diferentes formas de organização da família e da comunidade: os vínculos pessoais e as relações de amizade",
+      "palavras_chave": [
+        "história pessoal",
+        "família",
+        "comunidade"
+      ],
+      "pre_requisitos": [
+        "EF01HI01"
+      ],
+      "nivel": 1,
+      "ordem": 1
+    },
+    "EF01HI03": {
+      "nome": "Papéis e responsabilidades na família, escola e comunidade",
+      "descricao_bncc": "Descrever e distinguir os seus papéis e responsabilidades relacionados à família, à escola e à comunidade.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: meu lugar no mundo",
+      "objeto_conhecimento": "As diferentes formas de organização da família e da comunidade: os vínculos pessoais e as relações de amizade",
+      "palavras_chave": [
+        "papéis sociais",
+        "responsabilidades",
+        "família",
+        "escola"
+      ],
+      "pre_requisitos": [
+        "EF01HI02"
+      ],
+      "nivel": 2,
+      "ordem": 2
+    },
+    "EF01HI04": {
+      "nome": "Diferenças entre ambientes doméstico, escolar e comunitário",
+      "descricao_bncc": "Identificar as diferenças entre os variados ambientes em que vive (doméstico, escolar e da comunidade), reconhecendo as especificidades dos hábitos e das regras que os regem.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: meu lugar no mundo",
+      "objeto_conhecimento": "A escola e a diversidade do grupo social envolvido",
+      "palavras_chave": [
+        "regras",
+        "hábitos",
+        "casa",
+        "escola"
+      ],
+      "pre_requisitos": [
+        "EF01HI03"
+      ],
+      "nivel": 3,
+      "ordem": 3
+    },
+    "EF01HI05": {
+      "nome": "Brincadeiras de hoje e de outras épocas",
+      "descricao_bncc": "Identificar semelhanças e diferenças entre jogos e brincadeiras atuais e de outras épocas e lugares.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: eu, meu grupo social e meu tempo",
+      "objeto_conhecimento": "A vida em casa, a vida na escola e formas de representação social e espacial: os jogos e brincadeiras como forma de interação social e espacial",
+      "palavras_chave": [
+        "brincadeiras antigas",
+        "jogos",
+        "outras épocas"
+      ],
+      "pre_requisitos": [
+        "EF01HI01"
+      ],
+      "nivel": 1,
+      "ordem": 4
+    },
+    "EF01HI06": {
+      "nome": "Histórias da família e da escola e seus sujeitos",
+      "descricao_bncc": "Conhecer as histórias da família e da escola e identificar o papel desempenhado por diferentes sujeitos em diferentes espaços.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: eu, meu grupo social e meu tempo",
+      "objeto_conhecimento": "A vida em família: diferentes configurações e vínculos",
+      "palavras_chave": [
+        "história da escola",
+        "história da família"
+      ],
+      "pre_requisitos": [
+        "EF01HI02"
+      ],
+      "nivel": 2,
+      "ordem": 5
+    },
+    "EF01HI07": {
+      "nome": "Mudanças e permanências na organização familiar",
+      "descricao_bncc": "Identificar mudanças e permanências nas formas de organização familiar.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: eu, meu grupo social e meu tempo",
+      "objeto_conhecimento": "A vida em família: diferentes configurações e vínculos",
+      "palavras_chave": [
+        "mudanças e permanências",
+        "configurações familiares"
+      ],
+      "pre_requisitos": [
+        "EF01HI06"
+      ],
+      "nivel": 3,
+      "ordem": 6
+    },
+    "EF01HI08": {
+      "nome": "Comemorações escolares, familiares e comunitárias",
+      "descricao_bncc": "Reconhecer o significado das comemorações e festas escolares, diferenciando-as das datas festivas comemoradas no âmbito familiar ou da comunidade.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo pessoal: eu, meu grupo social e meu tempo",
+      "objeto_conhecimento": "A escola, sua representação espacial, sua história e seu papel na comunidade",
+      "palavras_chave": [
+        "festas",
+        "datas comemorativas",
+        "comemorações"
+      ],
+      "pre_requisitos": [
+        "EF01HI04"
+      ],
+      "nivel": 4,
+      "ordem": 7
+    },
+    "EF02HI01": {
+      "nome": "Espaços de convivência e grupos sociais",
+      "descricao_bncc": "Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "A noção do “Eu” e do “Outro”: comunidade, convivências e interações entre pessoas",
+      "palavras_chave": [
+        "sociabilidade",
+        "grupos sociais",
+        "parentesco"
+      ],
+      "pre_requisitos": [
+        "EF01HI03"
+      ],
+      "nivel": 3,
+      "ordem": 8
+    },
+    "EF02HI02": {
+      "nome": "Práticas e papéis sociais em diferentes comunidades",
+      "descricao_bncc": "Identificar e descrever práticas e papéis sociais que as pessoas exercem em diferentes comunidades.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "A noção do “Eu” e do “Outro”: comunidade, convivências e interações entre pessoas",
+      "palavras_chave": [
+        "papéis sociais",
+        "comunidades"
+      ],
+      "pre_requisitos": [
+        "EF02HI01"
+      ],
+      "nivel": 4,
+      "ordem": 9
+    },
+    "EF02HI03": {
+      "nome": "Mudança, pertencimento e memória no cotidiano",
+      "descricao_bncc": "Selecionar situações cotidianas que remetam à percepção de mudança, pertencimento e memória.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "A noção do “Eu” e do “Outro”: comunidade, convivências e interações entre pessoas",
+      "palavras_chave": [
+        "memória",
+        "pertencimento",
+        "mudança"
+      ],
+      "pre_requisitos": [
+        "EF01HI07"
+      ],
+      "nivel": 4,
+      "ordem": 10
+    },
+    "EF02HI04": {
+      "nome": "Objetos e documentos pessoais como fontes de memória",
+      "descricao_bncc": "Selecionar e compreender o significado de objetos e documentos pessoais como fontes de memórias e histórias nos âmbitos pessoal, familiar, escolar e comunitário.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "A noção do “Eu” e do “Outro”: registros de experiências pessoais e da comunidade no tempo e no espaço",
+      "palavras_chave": [
+        "fontes históricas",
+        "documentos pessoais",
+        "memória"
+      ],
+      "pre_requisitos": [
+        "EF02HI03"
+      ],
+      "nivel": 5,
+      "ordem": 11
+    },
+    "EF02HI05": {
+      "nome": "Função e significado de objetos e documentos",
+      "descricao_bncc": "Selecionar objetos e documentos pessoais e de grupos próximos ao seu convívio e compreender sua função, seu uso e seu significado.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "Formas de registrar e narrar histórias (marcos de memória materiais e imateriais)",
+      "palavras_chave": [
+        "objetos antigos",
+        "documentos",
+        "significado"
+      ],
+      "pre_requisitos": [
+        "EF02HI04"
+      ],
+      "nivel": 6,
+      "ordem": 12
+    },
+    "EF02HI06": {
+      "nome": "Organização temporal de fatos: antes, durante, depois",
+      "descricao_bncc": "Identificar e organizar, temporalmente, fatos da vida cotidiana, usando noções relacionadas ao tempo (antes, durante, ao mesmo tempo e depois).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "O tempo como medida",
+      "palavras_chave": [
+        "antes",
+        "depois",
+        "ao mesmo tempo",
+        "ordem cronológica"
+      ],
+      "pre_requisitos": [
+        "EF01HI01"
+      ],
+      "nivel": 1,
+      "ordem": 13
+    },
+    "EF02HI07": {
+      "nome": "Marcadores de tempo: relógio e calendário",
+      "descricao_bncc": "Identificar e utilizar diferentes marcadores do tempo presentes na comunidade, como relógio e calendário.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "A comunidade e seus registros",
+      "objeto_conhecimento": "O tempo como medida",
+      "palavras_chave": [
+        "calendário",
+        "relógio",
+        "marcadores de tempo"
+      ],
+      "pre_requisitos": [
+        "EF02HI06"
+      ],
+      "nivel": 2,
+      "ordem": 14
+    },
+    "EF02HI08": {
+      "nome": "Histórias da família e da comunidade em diferentes fontes",
+      "descricao_bncc": "Compilar histórias da família e/ou da comunidade registradas em diferentes fontes.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "As formas de registrar as experiências da comunidade",
+      "objeto_conhecimento": "As fontes: relatos orais, objetos, imagens (pinturas, fotografias, vídeos), músicas, escrita, tecnologias digitais de informação e comunicação e inscrições nas paredes, ruas e espaços sociais",
+      "palavras_chave": [
+        "fontes",
+        "relatos orais",
+        "fotografias"
+      ],
+      "pre_requisitos": [
+        "EF02HI05"
+      ],
+      "nivel": 7,
+      "ordem": 15
+    },
+    "EF02HI09": {
+      "nome": "Preservação e descarte de objetos e documentos",
+      "descricao_bncc": "Identificar objetos e documentos pessoais que remetam à própria experiência no âmbito da família e/ou da comunidade, discutindo as razões pelas quais alguns objetos são preservados e outros são descartados.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "As formas de registrar as experiências da comunidade",
+      "objeto_conhecimento": "As fontes: relatos orais, objetos, imagens (pinturas, fotografias, vídeos), músicas, escrita, tecnologias digitais de informação e comunicação e inscrições nas paredes, ruas e espaços sociais",
+      "palavras_chave": [
+        "preservação",
+        "objetos",
+        "memória"
+      ],
+      "pre_requisitos": [
+        "EF02HI05"
+      ],
+      "nivel": 7,
+      "ordem": 16
+    },
+    "EF02HI10": {
+      "nome": "Formas de trabalho na comunidade",
+      "descricao_bncc": "Identificar diferentes formas de trabalho existentes na comunidade em que vive, seus significados, suas especificidades e importância.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "O trabalho e a sustentabilidade na comunidade",
+      "objeto_conhecimento": "A sobrevivência e a relação com a natureza",
+      "palavras_chave": [
+        "trabalho",
+        "profissões",
+        "comunidade"
+      ],
+      "pre_requisitos": [
+        "EF02HI02"
+      ],
+      "nivel": 5,
+      "ordem": 17
+    },
+    "EF02HI11": {
+      "nome": "Impactos ambientais do trabalho na comunidade",
+      "descricao_bncc": "Identificar impactos no ambiente causados pelas diferentes formas de trabalho existentes na comunidade em que vive.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "O trabalho e a sustentabilidade na comunidade",
+      "objeto_conhecimento": "A sobrevivência e a relação com a natureza",
+      "palavras_chave": [
+        "impacto ambiental",
+        "trabalho",
+        "natureza"
+      ],
+      "pre_requisitos": [
+        "EF02HI10"
+      ],
+      "nivel": 6,
+      "ordem": 18
+    },
+    "EF03HI01": {
+      "nome": "Grupos populacionais e formação da cidade",
+      "descricao_bncc": "Identificar os grupos populacionais que formam a cidade, o município e a região, as relações estabelecidas entre eles e os eventos que marcam a formação da cidade, como fenômenos migratórios (vida rural/vida urbana), desmatamentos, estabelecimento de grandes empresas etc.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "As pessoas e os grupos que compõem a cidade e o município",
+      "objeto_conhecimento": "O “Eu”, o “Outro” e os diferentes grupos sociais e étnicos que compõem a cidade e os municípios: os desafios sociais, culturais e ambientais do lugar onde vive",
+      "palavras_chave": [
+        "formação da cidade",
+        "migração",
+        "grupos populacionais"
+      ],
+      "pre_requisitos": [
+        "EF02HI02"
+      ],
+      "nivel": 5,
+      "ordem": 19
+    },
+    "EF03HI02": {
+      "nome": "Acontecimentos da cidade registrados em fontes",
+      "descricao_bncc": "Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "As pessoas e os grupos que compõem a cidade e o município",
+      "objeto_conhecimento": "O “Eu”, o “Outro” e os diferentes grupos sociais e étnicos que compõem a cidade e os municípios: os desafios sociais, culturais e ambientais do lugar onde vive",
+      "palavras_chave": [
+        "história local",
+        "fontes",
+        "registros"
+      ],
+      "pre_requisitos": [
+        "EF02HI08",
+        "EF03HI01"
+      ],
+      "nivel": 8,
+      "ordem": 20
+    },
+    "EF03HI03": {
+      "nome": "Pontos de vista e diversidade cultural no lugar onde vive",
+      "descricao_bncc": "Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "As pessoas e os grupos que compõem a cidade e o município",
+      "objeto_conhecimento": "O “Eu”, o “Outro” e os diferentes grupos sociais e étnicos que compõem a cidade e os municípios: os desafios sociais, culturais e ambientais do lugar onde vive",
+      "palavras_chave": [
+        "pontos de vista",
+        "culturas africanas",
+        "culturas indígenas",
+        "migrantes"
+      ],
+      "pre_requisitos": [
+        "EF03HI01"
+      ],
+      "nivel": 6,
+      "ordem": 21
+    },
+    "EF03HI04": {
+      "nome": "Patrimônios históricos e culturais da cidade",
+      "descricao_bncc": "Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "As pessoas e os grupos que compõem a cidade e o município",
+      "objeto_conhecimento": "Os patrimônios históricos e culturais da cidade e/ou do município em que vive",
+      "palavras_chave": [
+        "patrimônio histórico",
+        "patrimônio cultural"
+      ],
+      "pre_requisitos": [
+        "EF03HI02"
+      ],
+      "nivel": 9,
+      "ordem": 22
+    },
+    "EF03HI05": {
+      "nome": "Marcos históricos do lugar onde vive",
+      "descricao_bncc": "Identificar os marcos históricos do lugar em que vive e compreender seus significados.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O lugar em que vive",
+      "objeto_conhecimento": "A produção dos marcos da memória: os lugares de memória (ruas, praças, escolas, monumentos, museus etc.)",
+      "palavras_chave": [
+        "marcos históricos",
+        "monumentos"
+      ],
+      "pre_requisitos": [
+        "EF03HI02"
+      ],
+      "nivel": 9,
+      "ordem": 23
+    },
+    "EF03HI06": {
+      "nome": "Registros de memória na cidade (ruas, monumentos)",
+      "descricao_bncc": "Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O lugar em que vive",
+      "objeto_conhecimento": "A produção dos marcos da memória: os lugares de memória (ruas, praças, escolas, monumentos, museus etc.)",
+      "palavras_chave": [
+        "nomes de ruas",
+        "monumentos",
+        "lugares de memória"
+      ],
+      "pre_requisitos": [
+        "EF03HI05"
+      ],
+      "nivel": 10,
+      "ordem": 24
+    },
+    "EF03HI07": {
+      "nome": "Semelhanças e diferenças entre comunidades da região",
+      "descricao_bncc": "Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O lugar em que vive",
+      "objeto_conhecimento": "A produção dos marcos da memória: formação cultural da população",
+      "palavras_chave": [
+        "comunidades",
+        "grupos sociais"
+      ],
+      "pre_requisitos": [
+        "EF03HI03"
+      ],
+      "nivel": 7,
+      "ordem": 25
+    },
+    "EF03HI08": {
+      "nome": "Modos de vida na cidade e no campo, ontem e hoje",
+      "descricao_bncc": "Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O lugar em que vive",
+      "objeto_conhecimento": "A produção dos marcos da memória: a cidade e o campo, aproximações e diferenças",
+      "palavras_chave": [
+        "cidade e campo",
+        "vida rural",
+        "vida urbana"
+      ],
+      "pre_requisitos": [
+        "EF02HI03",
+        "EF03HI01"
+      ],
+      "nivel": 6,
+      "ordem": 26
+    },
+    "EF03HI09": {
+      "nome": "Espaços públicos e suas funções",
+      "descricao_bncc": "Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "A noção de espaço público e privado",
+      "objeto_conhecimento": "A cidade, seus espaços públicos e privados e suas áreas de conservação ambiental",
+      "palavras_chave": [
+        "espaço público",
+        "prefeitura",
+        "câmara de vereadores",
+        "praças"
+      ],
+      "pre_requisitos": [
+        "EF01HI04"
+      ],
+      "nivel": 4,
+      "ordem": 27
+    },
+    "EF03HI10": {
+      "nome": "Espaço doméstico, público e áreas de conservação",
+      "descricao_bncc": "Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "A noção de espaço público e privado",
+      "objeto_conhecimento": "A cidade, seus espaços públicos e privados e suas áreas de conservação ambiental",
+      "palavras_chave": [
+        "público e privado",
+        "áreas de conservação"
+      ],
+      "pre_requisitos": [
+        "EF03HI09"
+      ],
+      "nivel": 5,
+      "ordem": 28
+    },
+    "EF03HI11": {
+      "nome": "Trabalho na cidade e no campo e uso de tecnologia",
+      "descricao_bncc": "Identificar diferenças entre formas de trabalho realizadas na cidade e no campo, considerando também o uso da tecnologia nesses diferentes contextos.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "A noção de espaço público e privado",
+      "objeto_conhecimento": "A cidade e suas atividades: trabalho, cultura e lazer",
+      "palavras_chave": [
+        "trabalho rural",
+        "trabalho urbano",
+        "tecnologia"
+      ],
+      "pre_requisitos": [
+        "EF02HI10",
+        "EF03HI08"
+      ],
+      "nivel": 7,
+      "ordem": 29
+    },
+    "EF03HI12": {
+      "nome": "Trabalho e lazer: mudanças e permanências",
+      "descricao_bncc": "Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "A noção de espaço público e privado",
+      "objeto_conhecimento": "A cidade e suas atividades: trabalho, cultura e lazer",
+      "palavras_chave": [
+        "trabalho e lazer",
+        "mudanças e permanências"
+      ],
+      "pre_requisitos": [
+        "EF03HI11"
+      ],
+      "nivel": 8,
+      "ordem": 30
+    },
+    "EF04HI01": {
+      "nome": "História como ação humana no tempo e no espaço",
+      "descricao_bncc": "Reconhecer a história como resultado da ação do ser humano no tempo e no espaço, com base na identificação de mudanças e permanências ao longo do tempo.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Transformações e permanências nas trajetórias dos grupos humanos",
+      "objeto_conhecimento": "A ação das pessoas, grupos sociais e comunidades no tempo e no espaço: nomadismo, agricultura, escrita, navegações, indústria, entre outras",
+      "palavras_chave": [
+        "história",
+        "ação humana",
+        "mudanças e permanências"
+      ],
+      "pre_requisitos": [
+        "EF03HI12"
+      ],
+      "nivel": 9,
+      "ordem": 31
+    },
+    "EF04HI02": {
+      "nome": "Grandes marcos da história da humanidade",
+      "descricao_bncc": "Identificar mudanças e permanências ao longo do tempo, discutindo os sentidos dos grandes marcos da história da humanidade (nomadismo, desenvolvimento da agricultura e do pastoreio, criação da indústria etc.).",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Transformações e permanências nas trajetórias dos grupos humanos",
+      "objeto_conhecimento": "A ação das pessoas, grupos sociais e comunidades no tempo e no espaço: nomadismo, agricultura, escrita, navegações, indústria, entre outras",
+      "palavras_chave": [
+        "nomadismo",
+        "agricultura",
+        "pastoreio",
+        "indústria",
+        "marcos históricos"
+      ],
+      "pre_requisitos": [
+        "EF04HI01"
+      ],
+      "nivel": 10,
+      "ordem": 32
+    },
+    "EF04HI03": {
+      "nome": "Transformações da cidade ao longo do tempo",
+      "descricao_bncc": "Identificar as transformações ocorridas na cidade ao longo do tempo e discutir suas interferências nos modos de vida de seus habitantes, tomando como ponto de partida o presente.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Transformações e permanências nas trajetórias dos grupos humanos",
+      "objeto_conhecimento": "O passado e o presente: a noção de permanência e as lentas transformações sociais e culturais",
+      "palavras_chave": [
+        "transformações urbanas",
+        "história da cidade"
+      ],
+      "pre_requisitos": [
+        "EF04HI01"
+      ],
+      "nivel": 10,
+      "ordem": 33
+    },
+    "EF04HI04": {
+      "nome": "Nomadismo e fixação das primeiras comunidades",
+      "descricao_bncc": "Identificar as relações entre os indivíduos e a natureza e discutir o significado do nomadismo e da fixação das primeiras comunidades humanas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Circulação de pessoas, produtos e culturas",
+      "objeto_conhecimento": "A circulação de pessoas e as transformações no meio natural",
+      "palavras_chave": [
+        "nômades",
+        "sedentarização",
+        "primeiras comunidades"
+      ],
+      "pre_requisitos": [
+        "EF04HI02"
+      ],
+      "nivel": 11,
+      "ordem": 34
+    },
+    "EF04HI05": {
+      "nome": "Ocupação do campo e intervenções na natureza",
+      "descricao_bncc": "Relacionar os processos de ocupação do campo a intervenções na natureza, avaliando os resultados dessas intervenções.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Circulação de pessoas, produtos e culturas",
+      "objeto_conhecimento": "A circulação de pessoas e as transformações no meio natural",
+      "palavras_chave": [
+        "ocupação do campo",
+        "intervenção na natureza"
+      ],
+      "pre_requisitos": [
+        "EF02HI11",
+        "EF04HI04"
+      ],
+      "nivel": 12,
+      "ordem": 35
+    },
+    "EF04HI06": {
+      "nome": "Deslocamento de pessoas e mercadorias",
+      "descricao_bncc": "Identificar as transformações ocorridas nos processos de deslocamento das pessoas e mercadorias, analisando as formas de adaptação ou marginalização.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Circulação de pessoas, produtos e culturas",
+      "objeto_conhecimento": "A invenção do comércio e a circulação de produtos",
+      "palavras_chave": [
+        "comércio",
+        "mercadorias",
+        "deslocamentos"
+      ],
+      "pre_requisitos": [
+        "EF04HI02"
+      ],
+      "nivel": 11,
+      "ordem": 36
+    },
+    "EF04HI07": {
+      "nome": "Caminhos terrestres, fluviais e marítimos e o comércio",
+      "descricao_bncc": "Identificar e descrever a importância dos caminhos terrestres, fluviais e marítimos para a dinâmica da vida comercial.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Circulação de pessoas, produtos e culturas",
+      "objeto_conhecimento": "As rotas terrestres, fluviais e marítimas e seus impactos para a formação de cidades e as transformações do meio natural",
+      "palavras_chave": [
+        "rotas comerciais",
+        "rios",
+        "mar",
+        "estradas"
+      ],
+      "pre_requisitos": [
+        "EF04HI06"
+      ],
+      "nivel": 12,
+      "ordem": 37
+    },
+    "EF04HI08": {
+      "nome": "Transformações nos meios de comunicação",
+      "descricao_bncc": "Identificar as transformações ocorridas nos meios de comunicação (cultura oral, imprensa, rádio, televisão, cinema, internet e demais tecnologias digitais de informação e comunicação) e discutir seus significados para os diferentes grupos ou estratos sociais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Circulação de pessoas, produtos e culturas",
+      "objeto_conhecimento": "O mundo da tecnologia: a integração de pessoas e as exclusões sociais e culturais",
+      "palavras_chave": [
+        "imprensa",
+        "rádio",
+        "televisão",
+        "internet",
+        "comunicação"
+      ],
+      "pre_requisitos": [
+        "EF04HI01"
+      ],
+      "nivel": 10,
+      "ordem": 38
+    },
+    "EF04HI09": {
+      "nome": "Motivações dos processos migratórios",
+      "descricao_bncc": "Identificar as motivações dos processos migratórios em diferentes tempos e espaços e avaliar o papel desempenhado pela migração nas regiões de destino.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "As questões históricas relativas às migrações",
+      "objeto_conhecimento": "O surgimento da espécie humana no continente africano e sua expansão pelo mundo",
+      "palavras_chave": [
+        "migração",
+        "imigração",
+        "motivos para migrar"
+      ],
+      "pre_requisitos": [
+        "EF04HI04"
+      ],
+      "nivel": 12,
+      "ordem": 39
+    },
+    "EF04HI10": {
+      "nome": "Fluxos populacionais e formação da sociedade brasileira",
+      "descricao_bncc": "Analisar diferentes fluxos populacionais e suas contribuições para a formação da sociedade brasileira.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "As questões históricas relativas às migrações",
+      "objeto_conhecimento": "Os processos migratórios para a formação do Brasil: os grupos indígenas, a presença portuguesa e a diáspora forçada dos africanos",
+      "palavras_chave": [
+        "indígenas",
+        "africanos",
+        "europeus",
+        "formação do povo brasileiro"
+      ],
+      "pre_requisitos": [
+        "EF03HI03",
+        "EF04HI09"
+      ],
+      "nivel": 13,
+      "ordem": 40
+    },
+    "EF04HI11": {
+      "nome": "Migração interna e internacional na sociedade atual",
+      "descricao_bncc": "Analisar, na sociedade em que vive, a existência ou não de mudanças associadas à migração (interna e internacional).",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "As questões históricas relativas às migrações",
+      "objeto_conhecimento": "Os processos migratórios do final do século XIX e início do século XX no Brasil",
+      "palavras_chave": [
+        "migração interna",
+        "imigrantes",
+        "êxodo rural"
+      ],
+      "pre_requisitos": [
+        "EF04HI10"
+      ],
+      "nivel": 14,
+      "ordem": 41
+    },
+    "EF05HI01": {
+      "nome": "Formação das culturas e dos povos e o espaço ocupado",
+      "descricao_bncc": "Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Povos e culturas: meu lugar no mundo e meu grupo social",
+      "objeto_conhecimento": "O que forma um povo: do nomadismo aos primeiros povos sedentarizados",
+      "palavras_chave": [
+        "povos",
+        "culturas",
+        "sedentarização"
+      ],
+      "pre_requisitos": [
+        "EF04HI04"
+      ],
+      "nivel": 12,
+      "ordem": 42
+    },
+    "EF05HI02": {
+      "nome": "Organização do poder político e a ideia de Estado",
+      "descricao_bncc": "Identificar os mecanismos de organização do poder político com vistas à compreensão da ideia de Estado e/ou de outras formas de ordenação social.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Povos e culturas: meu lugar no mundo e meu grupo social",
+      "objeto_conhecimento": "As formas de organização social e política: a noção de Estado",
+      "palavras_chave": [
+        "Estado",
+        "poder político",
+        "organização social"
+      ],
+      "pre_requisitos": [
+        "EF05HI01"
+      ],
+      "nivel": 13,
+      "ordem": 43
+    },
+    "EF05HI03": {
+      "nome": "Culturas e religiões na identidade dos povos antigos",
+      "descricao_bncc": "Analisar o papel das culturas e das religiões na composição identitária dos povos antigos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Povos e culturas: meu lugar no mundo e meu grupo social",
+      "objeto_conhecimento": "O papel das religiões e da cultura para a formação dos povos antigos",
+      "palavras_chave": [
+        "religião",
+        "povos antigos",
+        "identidade"
+      ],
+      "pre_requisitos": [
+        "EF05HI01"
+      ],
+      "nivel": 13,
+      "ordem": 44
+    },
+    "EF05HI04": {
+      "nome": "Cidadania, diversidade e direitos humanos",
+      "descricao_bncc": "Associar a noção de cidadania com os princípios de respeito à diversidade, à pluralidade e aos direitos humanos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Povos e culturas: meu lugar no mundo e meu grupo social",
+      "objeto_conhecimento": "Cidadania, diversidade cultural e respeito às diferenças sociais, culturais e históricas",
+      "palavras_chave": [
+        "cidadania",
+        "diversidade",
+        "direitos humanos"
+      ],
+      "pre_requisitos": [
+        "EF03HI07",
+        "EF05HI02"
+      ],
+      "nivel": 14,
+      "ordem": 45
+    },
+    "EF05HI05": {
+      "nome": "Cidadania como conquista histórica de direitos",
+      "descricao_bncc": "Associar o conceito de cidadania à conquista de direitos dos povos e das sociedades, compreendendo-o como conquista histórica.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Povos e culturas: meu lugar no mundo e meu grupo social",
+      "objeto_conhecimento": "Cidadania, diversidade cultural e respeito às diferenças sociais, culturais e históricas",
+      "palavras_chave": [
+        "cidadania",
+        "conquista de direitos"
+      ],
+      "pre_requisitos": [
+        "EF05HI04"
+      ],
+      "nivel": 15,
+      "ordem": 46
+    },
+    "EF05HI06": {
+      "nome": "Linguagens e tecnologias de comunicação",
+      "descricao_bncc": "Comparar o uso de diferentes linguagens e tecnologias no processo de comunicação e avaliar os significados sociais, políticos e culturais atribuídos a elas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Registros da história: linguagens e culturas",
+      "objeto_conhecimento": "O surgimento da escrita e a noção de fonte para a transmissão de saberes, culturas e histórias",
+      "palavras_chave": [
+        "escrita",
+        "linguagens",
+        "comunicação"
+      ],
+      "pre_requisitos": [
+        "EF04HI08"
+      ],
+      "nivel": 11,
+      "ordem": 47
+    },
+    "EF05HI07": {
+      "nome": "Produção dos marcos de memória e grupos ausentes",
+      "descricao_bncc": "Identificar os processos de produção, hierarquização e difusão dos marcos de memória e discutir a presença e/ou a ausência de diferentes grupos que compõem a sociedade na nomeação desses marcos de memória.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Registros da história: linguagens e culturas",
+      "objeto_conhecimento": "O surgimento da escrita e a noção de fonte para a transmissão de saberes, culturas e histórias",
+      "palavras_chave": [
+        "marcos de memória",
+        "memória",
+        "exclusão"
+      ],
+      "pre_requisitos": [
+        "EF03HI06"
+      ],
+      "nivel": 11,
+      "ordem": 48
+    },
+    "EF05HI08": {
+      "nome": "Formas de marcar o tempo em distintas sociedades",
+      "descricao_bncc": "Identificar formas de marcação da passagem do tempo em distintas sociedades, incluindo os povos indígenas originários e os povos africanos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Registros da história: linguagens e culturas",
+      "objeto_conhecimento": "O surgimento da escrita e a noção de fonte para a transmissão de saberes, culturas e histórias",
+      "palavras_chave": [
+        "calendários",
+        "tempo",
+        "povos indígenas",
+        "povos africanos"
+      ],
+      "pre_requisitos": [
+        "EF02HI07",
+        "EF05HI01"
+      ],
+      "nivel": 13,
+      "ordem": 49
+    },
+    "EF05HI09": {
+      "nome": "Pontos de vista em diferentes fontes, inclusive orais",
+      "descricao_bncc": "Comparar pontos de vista sobre temas que impactam a vida cotidiana no tempo presente, por meio do acesso a diferentes fontes, incluindo orais.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Registros da história: linguagens e culturas",
+      "objeto_conhecimento": "O surgimento da escrita e a noção de fonte para a transmissão de saberes, culturas e histórias",
+      "palavras_chave": [
+        "fontes",
+        "pontos de vista",
+        "fontes orais"
+      ],
+      "pre_requisitos": [
+        "EF02HI08",
+        "EF03HI03"
+      ],
+      "nivel": 8,
+      "ordem": 50
+    },
+    "EF05HI10": {
+      "nome": "Patrimônios materiais e imateriais da humanidade",
+      "descricao_bncc": "Inventariar os patrimônios materiais e imateriais da humanidade e analisar mudanças e permanências desses patrimônios ao longo do tempo.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Registros da história: linguagens e culturas",
+      "objeto_conhecimento": "Os patrimônios materiais e imateriais da humanidade",
+      "palavras_chave": [
+        "patrimônio material",
+        "patrimônio imaterial",
+        "UNESCO"
+      ],
+      "pre_requisitos": [
+        "EF03HI04"
+      ],
+      "nivel": 10,
+      "ordem": 51
+    },
+    "EF06HI01": {
+      "nome": "Noção de tempo e periodização histórica",
+      "descricao_bncc": "Identificar diferentes formas de compreensão da noção de tempo e de periodização dos processos históricos (continuidades e rupturas).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "História: tempo, espaço e formas de registros",
+      "objeto_conhecimento": "A questão do tempo, sincronias e diacronias: reflexões sobre o sentido das cronologias",
+      "palavras_chave": [
+        "periodização",
+        "tempo histórico",
+        "continuidades e rupturas",
+        "linha do tempo"
+      ],
+      "pre_requisitos": [
+        "EF05HI08"
+      ],
+      "nivel": 14,
+      "ordem": 52
+    },
+    "EF06HI02": {
+      "nome": "Produção do saber histórico e fontes",
+      "descricao_bncc": "Identificar a gênese da produção do saber histórico e analisar o significado das fontes que originaram determinadas formas de registro em sociedades e épocas distintas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "História: tempo, espaço e formas de registros",
+      "objeto_conhecimento": "Formas de registro da história e da produção do conhecimento histórico",
+      "palavras_chave": [
+        "fontes históricas",
+        "historiografia",
+        "documentos"
+      ],
+      "pre_requisitos": [
+        "EF05HI09",
+        "EF06HI01"
+      ],
+      "nivel": 15,
+      "ordem": 53
+    },
+    "EF06HI03": {
+      "nome": "Origem da espécie humana e mitos de fundação",
+      "descricao_bncc": "Identificar as hipóteses científicas sobre o surgimento da espécie humana e sua historicidade e analisar os significados dos mitos de fundação.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "História: tempo, espaço e formas de registros",
+      "objeto_conhecimento": "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+      "palavras_chave": [
+        "evolução humana",
+        "origem do ser humano",
+        "mitos de fundação"
+      ],
+      "pre_requisitos": [
+        "EF06HI02"
+      ],
+      "nivel": 16,
+      "ordem": 54
+    },
+    "EF06HI04": {
+      "nome": "Teorias sobre a origem do homem americano",
+      "descricao_bncc": "Conhecer as teorias sobre a origem do homem americano.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "História: tempo, espaço e formas de registros",
+      "objeto_conhecimento": "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+      "palavras_chave": [
+        "povoamento da América",
+        "estreito de Bering",
+        "homem americano"
+      ],
+      "pre_requisitos": [
+        "EF06HI03"
+      ],
+      "nivel": 17,
+      "ordem": 55
+    },
+    "EF06HI05": {
+      "nome": "Transformações da natureza por diferentes sociedades",
+      "descricao_bncc": "Descrever modificações da natureza e da paisagem realizadas por diferentes tipos de sociedade, com destaque para os povos indígenas originários e povos africanos, e discutir a natureza e a lógica das transformações ocorridas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "História: tempo, espaço e formas de registros",
+      "objeto_conhecimento": "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+      "palavras_chave": [
+        "paisagem",
+        "povos indígenas",
+        "povos africanos"
+      ],
+      "pre_requisitos": [
+        "EF04HI05",
+        "EF06HI03"
+      ],
+      "nivel": 17,
+      "ordem": 56
+    },
+    "EF06HI06": {
+      "nome": "Rotas de povoamento do território americano",
+      "descricao_bncc": "Identificar geograficamente as rotas de povoamento no território americano.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "A invenção do mundo clássico e o contraponto com outras sociedades",
+      "objeto_conhecimento": "As origens da humanidade, seus deslocamentos e os processos de sedentarização",
+      "palavras_chave": [
+        "rotas de povoamento",
+        "América"
+      ],
+      "pre_requisitos": [
+        "EF06HI04"
+      ],
+      "nivel": 18,
+      "ordem": 57
+    },
+    "EF06HI07": {
+      "nome": "Sociedades antigas da África, Oriente Médio e Américas",
+      "descricao_bncc": "Identificar aspectos e formas de registro das sociedades antigas na África, no Oriente Médio e nas Américas, distinguindo alguns significados presentes na cultura material e na tradição oral dessas sociedades.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "A invenção do mundo clássico e o contraponto com outras sociedades",
+      "objeto_conhecimento": "Povos da Antiguidade na África (egípcios), no Oriente Médio (mesopotâmicos) e nas Américas (pré-colombianos)",
+      "palavras_chave": [
+        "Egito",
+        "Mesopotâmia",
+        "sociedades antigas",
+        "cultura material"
+      ],
+      "pre_requisitos": [
+        "EF05HI03",
+        "EF06HI02"
+      ],
+      "nivel": 16,
+      "ordem": 58
+    },
+    "EF06HI08": {
+      "nome": "Astecas, maias, incas e povos indígenas brasileiros",
+      "descricao_bncc": "Identificar os espaços territoriais ocupados e os aportes culturais, científicos, sociais e econômicos dos astecas, maias e incas e dos povos indígenas de diversas regiões brasileiras.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "A invenção do mundo clássico e o contraponto com outras sociedades",
+      "objeto_conhecimento": "Os povos indígenas originários do atual território brasileiro e seus hábitos culturais e sociais",
+      "palavras_chave": [
+        "astecas",
+        "maias",
+        "incas",
+        "povos indígenas"
+      ],
+      "pre_requisitos": [
+        "EF06HI06",
+        "EF06HI07"
+      ],
+      "nivel": 19,
+      "ordem": 59
+    },
+    "EF06HI09": {
+      "nome": "Antiguidade Clássica e tradição ocidental",
+      "descricao_bncc": "Discutir o conceito de Antiguidade Clássica, seu alcance e limite na tradição ocidental, assim como os impactos sobre outras sociedades e culturas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "A invenção do mundo clássico e o contraponto com outras sociedades",
+      "objeto_conhecimento": "O Ocidente Clássico: aspectos da cultura na Grécia e em Roma",
+      "palavras_chave": [
+        "Antiguidade Clássica",
+        "Grécia",
+        "Roma"
+      ],
+      "pre_requisitos": [
+        "EF06HI07"
+      ],
+      "nivel": 17,
+      "ordem": 60
+    },
+    "EF06HI10": {
+      "nome": "Formação da Grécia Antiga e a pólis",
+      "descricao_bncc": "Explicar a formação da Grécia Antiga, com ênfase na formação da pólis e nas transformações políticas, sociais e culturais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "As noções de cidadania e política na Grécia e em Roma • \u0007Domínios e expansão das culturas grega e romana • \u0007Significados do conceito de “império” e as lógicas de conquista, conflito e negociação dessa forma de organização política As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+      "palavras_chave": [
+        "Grécia Antiga",
+        "pólis",
+        "Atenas",
+        "Esparta",
+        "democracia"
+      ],
+      "pre_requisitos": [
+        "EF05HI02",
+        "EF06HI09"
+      ],
+      "nivel": 18,
+      "ordem": 61
+    },
+    "EF06HI11": {
+      "nome": "Formação de Roma: monarquia e república",
+      "descricao_bncc": "Caracterizar o processo de formação da Roma Antiga e suas configurações sociais e políticas nos períodos monárquico e republicano.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "As noções de cidadania e política na Grécia e em Roma • \u0007Domínios e expansão das culturas grega e romana • \u0007Significados do conceito de “império” e as lógicas de conquista, conflito e negociação dessa forma de organização política As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+      "palavras_chave": [
+        "Roma Antiga",
+        "república romana",
+        "monarquia",
+        "patrícios e plebeus"
+      ],
+      "pre_requisitos": [
+        "EF05HI02",
+        "EF06HI09"
+      ],
+      "nivel": 18,
+      "ordem": 62
+    },
+    "EF06HI12": {
+      "nome": "Cidadania e exclusão na Grécia e em Roma",
+      "descricao_bncc": "Associar o conceito de cidadania a dinâmicas de inclusão e exclusão na Grécia e Roma antigas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "As noções de cidadania e política na Grécia e em Roma • \u0007Domínios e expansão das culturas grega e romana • \u0007Significados do conceito de “império” e as lógicas de conquista, conflito e negociação dessa forma de organização política As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+      "palavras_chave": [
+        "cidadania antiga",
+        "inclusão e exclusão"
+      ],
+      "pre_requisitos": [
+        "EF05HI05",
+        "EF06HI10",
+        "EF06HI11"
+      ],
+      "nivel": 19,
+      "ordem": 63
+    },
+    "EF06HI13": {
+      "nome": "Conceito de império no mundo antigo",
+      "descricao_bncc": "Conceituar “império” no mundo antigo, com vistas à análise das diferentes formas de equilíbrio e desequilíbrio entre as partes envolvidas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "As noções de cidadania e política na Grécia e em Roma • \u0007Domínios e expansão das culturas grega e romana • \u0007Significados do conceito de “império” e as lógicas de conquista, conflito e negociação dessa forma de organização política As diferentes formas de organização política na África: reinos, impérios, cidades-estados e sociedades linhageiras ou aldeias",
+      "palavras_chave": [
+        "império",
+        "Império Romano"
+      ],
+      "pre_requisitos": [
+        "EF06HI11"
+      ],
+      "nivel": 19,
+      "ordem": 64
+    },
+    "EF06HI14": {
+      "nome": "Contato, adaptação e exclusão entre populações",
+      "descricao_bncc": "Identificar e analisar diferentes formas de contato, adaptação ou exclusão entre populações em diferentes tempos e espaços.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "A passagem do mundo antigo para o mundo medieval A fragmentação do poder político na Idade Média",
+      "palavras_chave": [
+        "contato entre povos",
+        "povos bárbaros",
+        "fim do Império Romano"
+      ],
+      "pre_requisitos": [
+        "EF06HI13"
+      ],
+      "nivel": 20,
+      "ordem": 65
+    },
+    "EF06HI15": {
+      "nome": "Circulação de pessoas, produtos e culturas no Mediterrâneo",
+      "descricao_bncc": "Descrever as dinâmicas de circulação de pessoas, produtos e culturas no Mediterrâneo e seu significado.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Lógicas de organização política",
+      "objeto_conhecimento": "O Mediterrâneo como espaço de interação entre as sociedades da Europa, da África e do Oriente Médio",
+      "palavras_chave": [
+        "Mediterrâneo",
+        "comércio",
+        "trocas culturais"
+      ],
+      "pre_requisitos": [
+        "EF04HI07",
+        "EF06HI13"
+      ],
+      "nivel": 20,
+      "ordem": 66
+    },
+    "EF06HI16": {
+      "nome": "Senhores e servos: trabalho e vida social",
+      "descricao_bncc": "Caracterizar e comparar as dinâmicas de abastecimento e as formas de organização do trabalho e da vida social em diferentes sociedades e períodos, com destaque para as relações entre senhores e servos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Trabalho e formas de organização social e cultural",
+      "objeto_conhecimento": "Senhores e servos no mundo antigo e no medieval Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) Lógicas comerciais na Antiguidade romana e no mundo medieval",
+      "palavras_chave": [
+        "feudalismo",
+        "senhores e servos",
+        "Idade Média"
+      ],
+      "pre_requisitos": [
+        "EF06HI14"
+      ],
+      "nivel": 21,
+      "ordem": 67
+    },
+    "EF06HI17": {
+      "nome": "Escravidão, servidão e trabalho livre no mundo antigo",
+      "descricao_bncc": "Diferenciar escravidão, servidão e trabalho livre no mundo antigo.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Trabalho e formas de organização social e cultural",
+      "objeto_conhecimento": "Senhores e servos no mundo antigo e no medieval Escravidão e trabalho livre em diferentes temporalidades e espaços (Roma Antiga, Europa medieval e África) Lógicas comerciais na Antiguidade romana e no mundo medieval",
+      "palavras_chave": [
+        "escravidão antiga",
+        "servidão",
+        "trabalho livre"
+      ],
+      "pre_requisitos": [
+        "EF06HI12",
+        "EF06HI16"
+      ],
+      "nivel": 22,
+      "ordem": 68
+    },
+    "EF06HI18": {
+      "nome": "Religião cristã na Idade Média",
+      "descricao_bncc": "Analisar o papel da religião cristã na cultura e nos modos de organização social no período medieval.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Trabalho e formas de organização social e cultural",
+      "objeto_conhecimento": "O papel da religião cristã, dos mosteiros e da cultura na Idade Média",
+      "palavras_chave": [
+        "Igreja",
+        "cristianismo",
+        "mosteiros",
+        "Idade Média"
+      ],
+      "pre_requisitos": [
+        "EF06HI16"
+      ],
+      "nivel": 22,
+      "ordem": 69
+    },
+    "EF06HI19": {
+      "nome": "Papel das mulheres na Antiguidade e na Idade Média",
+      "descricao_bncc": "Descrever e analisar os diferentes papéis sociais das mulheres no mundo antigo e nas sociedades medievais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Trabalho e formas de organização social e cultural",
+      "objeto_conhecimento": "O papel da mulher na Grécia e em Roma, e no período medieval",
+      "palavras_chave": [
+        "mulheres",
+        "papéis sociais",
+        "Antiguidade",
+        "Idade Média"
+      ],
+      "pre_requisitos": [
+        "EF06HI12",
+        "EF06HI16"
+      ],
+      "nivel": 22,
+      "ordem": 70
+    },
+    "EF07HI01": {
+      "nome": "Modernidade e suas lógicas de inclusão e exclusão",
+      "descricao_bncc": "Explicar o significado de “modernidade” e suas lógicas de inclusão e exclusão, com base em uma concepção europeia.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "O mundo moderno e a conexão entre sociedades africanas, americanas e europeias",
+      "objeto_conhecimento": "A construção da ideia de modernidade e seus impactos na concepção de História",
+      "palavras_chave": [
+        "modernidade",
+        "Idade Moderna",
+        "eurocentrismo"
+      ],
+      "pre_requisitos": [
+        "EF06HI18"
+      ],
+      "nivel": 23,
+      "ordem": 71
+    },
+    "EF07HI02": {
+      "nome": "Conexões entre sociedades no contexto das navegações",
+      "descricao_bncc": "Identificar conexões e interações entre as sociedades do Novo Mundo, da Europa, da África e da Ásia no contexto das navegações e indicar a complexidade e as interações que ocorrem nos Oceanos Atlântico, Índico e Pacífico.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "O mundo moderno e a conexão entre sociedades africanas, americanas e europeias",
+      "objeto_conhecimento": "A ideia de “Novo Mundo” ante o Mundo Antigo: permanências e rupturas de saberes e práticas na emergência do mundo moderno",
+      "palavras_chave": [
+        "Grandes Navegações",
+        "Novo Mundo",
+        "oceanos"
+      ],
+      "pre_requisitos": [
+        "EF06HI15",
+        "EF07HI01"
+      ],
+      "nivel": 24,
+      "ordem": 72
+    },
+    "EF07HI03": {
+      "nome": "Sociedades africanas e americanas antes dos europeus",
+      "descricao_bncc": "Identificar aspectos e processos específicos das sociedades africanas e americanas antes da chegada dos europeus, com destaque para as formas de organização social e o desenvolvimento de saberes e técnicas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "O mundo moderno e a conexão entre sociedades africanas, americanas e europeias",
+      "objeto_conhecimento": "Saberes dos povos africanos e pré-colombianos expressos na cultura material e imaterial",
+      "palavras_chave": [
+        "África pré-colonial",
+        "sociedades pré-colombianas",
+        "saberes e técnicas"
+      ],
+      "pre_requisitos": [
+        "EF06HI08"
+      ],
+      "nivel": 20,
+      "ordem": 73
+    },
+    "EF07HI04": {
+      "nome": "Humanismos e Renascimentos",
+      "descricao_bncc": "Identificar as principais características dos Humanismos e dos Renascimentos e analisar seus significados.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Humanismos, Renascimentos e o Novo Mundo",
+      "objeto_conhecimento": "Humanismos: uma nova visão de ser humano e de mundo",
+      "palavras_chave": [
+        "Renascimento",
+        "Humanismo",
+        "antropocentrismo"
+      ],
+      "pre_requisitos": [
+        "EF07HI01"
+      ],
+      "nivel": 24,
+      "ordem": 74
+    },
+    "EF07HI05": {
+      "nome": "Reformas religiosas",
+      "descricao_bncc": "Identificar e relacionar as vinculações entre as reformas religiosas e os processos culturais e sociais do período moderno na Europa e na América.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Humanismos, Renascimentos e o Novo Mundo",
+      "objeto_conhecimento": "Reformas religiosas: a cristandade fragmentada",
+      "palavras_chave": [
+        "Reforma Protestante",
+        "Contrarreforma",
+        "Lutero"
+      ],
+      "pre_requisitos": [
+        "EF07HI04"
+      ],
+      "nivel": 25,
+      "ordem": 75
+    },
+    "EF07HI06": {
+      "nome": "Navegações no Atlântico e no Pacífico (séculos XIV a XVI)",
+      "descricao_bncc": "Comparar as navegações no Atlântico e no Pacífico entre os séculos XIV e XVI.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Humanismos, Renascimentos e o Novo Mundo",
+      "objeto_conhecimento": "As descobertas científicas e a expansão marítima",
+      "palavras_chave": [
+        "expansão marítima",
+        "navegações portuguesas",
+        "navegações espanholas"
+      ],
+      "pre_requisitos": [
+        "EF07HI02",
+        "EF07HI04"
+      ],
+      "nivel": 25,
+      "ordem": 76
+    },
+    "EF07HI07": {
+      "nome": "Formação das monarquias europeias e centralização",
+      "descricao_bncc": "Descrever os processos de formação e consolidação das monarquias e suas principais características com vistas à compreensão das razões da centralização política.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "A formação e o funcionamento das monarquias europeias: a lógica da centralização política e os conflitos na Europa",
+      "palavras_chave": [
+        "absolutismo",
+        "monarquias nacionais",
+        "centralização política"
+      ],
+      "pre_requisitos": [
+        "EF07HI01"
+      ],
+      "nivel": 24,
+      "ordem": 77
+    },
+    "EF07HI08": {
+      "nome": "Sociedades americanas na época da conquista",
+      "descricao_bncc": "Descrever as formas de organização das sociedades americanas no tempo da conquista com vistas à compreensão dos mecanismos de alianças, confrontos e resistências.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "A conquista da América e as formas de organização política dos indígenas e europeus: conflitos, dominação e conciliação",
+      "palavras_chave": [
+        "conquista da América",
+        "alianças",
+        "resistências"
+      ],
+      "pre_requisitos": [
+        "EF07HI03",
+        "EF07HI06"
+      ],
+      "nivel": 26,
+      "ordem": 78
+    },
+    "EF07HI09": {
+      "nome": "Impactos da conquista europeia e resistências ameríndias",
+      "descricao_bncc": "Analisar os diferentes impactos da conquista europeia da América para as populações ameríndias e identificar as formas de resistência.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "A conquista da América e as formas de organização política dos indígenas e europeus: conflitos, dominação e conciliação",
+      "palavras_chave": [
+        "colonização",
+        "genocídio indígena",
+        "resistência indígena"
+      ],
+      "pre_requisitos": [
+        "EF07HI08"
+      ],
+      "nivel": 27,
+      "ordem": 79
+    },
+    "EF07HI10": {
+      "nome": "Interpretações sobre sociedades americanas no período colonial",
+      "descricao_bncc": "Analisar, com base em documentos históricos, diferentes interpretações sobre as dinâmicas das sociedades americanas no período colonial.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "Resistências indígenas, invasões e expansão na América portuguesa",
+      "palavras_chave": [
+        "período colonial",
+        "documentos históricos",
+        "interpretações"
+      ],
+      "pre_requisitos": [
+        "EF07HI09"
+      ],
+      "nivel": 28,
+      "ordem": 80
+    },
+    "EF07HI11": {
+      "nome": "Formação do território da América portuguesa",
+      "descricao_bncc": "Analisar a formação histórico-geográfica do território da América portuguesa por meio de mapas históricos.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "Resistências indígenas, invasões e expansão na América portuguesa",
+      "palavras_chave": [
+        "Brasil colônia",
+        "mapas históricos",
+        "Tratado de Tordesilhas",
+        "bandeirantes"
+      ],
+      "pre_requisitos": [
+        "EF07HI09"
+      ],
+      "nivel": 28,
+      "ordem": 81
+    },
+    "EF07HI12": {
+      "nome": "Distribuição territorial da população brasileira em diferentes épocas",
+      "descricao_bncc": "Identificar a distribuição territorial da população brasileira em diferentes épocas, considerando a diversidade étnico-racial e étnico-cultural (indígena, africana, europeia e asiática).",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "A organização do poder e as dinâmicas do mundo colonial americano",
+      "objeto_conhecimento": "Resistências indígenas, invasões e expansão na América portuguesa",
+      "palavras_chave": [
+        "população brasileira",
+        "diversidade étnico-racial"
+      ],
+      "pre_requisitos": [
+        "EF04HI10",
+        "EF07HI11"
+      ],
+      "nivel": 29,
+      "ordem": 82
+    },
+    "EF07HI13": {
+      "nome": "Lógicas mercantis europeias no Atlântico",
+      "descricao_bncc": "Caracterizar a ação dos europeus e suas lógicas mercantis visando ao domínio no mundo atlântico.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Lógicas comerciais e mercantis da modernidade",
+      "objeto_conhecimento": "As lógicas mercantis e o domínio europeu sobre os mares e o contraponto Oriental",
+      "palavras_chave": [
+        "mercantilismo",
+        "comércio atlântico",
+        "metrópole e colônia"
+      ],
+      "pre_requisitos": [
+        "EF07HI06",
+        "EF07HI07"
+      ],
+      "nivel": 26,
+      "ordem": 83
+    },
+    "EF07HI14": {
+      "nome": "Dinâmicas comerciais de sociedades americanas e africanas",
+      "descricao_bncc": "Descrever as dinâmicas comerciais das sociedades americanas e africanas e analisar suas interações com outras sociedades do Ocidente e do Oriente.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Lógicas comerciais e mercantis da modernidade",
+      "objeto_conhecimento": "As lógicas mercantis e o domínio europeu sobre os mares e o contraponto Oriental",
+      "palavras_chave": [
+        "comércio africano",
+        "trocas comerciais"
+      ],
+      "pre_requisitos": [
+        "EF07HI03",
+        "EF07HI13"
+      ],
+      "nivel": 27,
+      "ordem": 84
+    },
+    "EF07HI15": {
+      "nome": "Escravidão moderna, escravismo antigo e servidão medieval",
+      "descricao_bncc": "Discutir o conceito de escravidão moderna e suas distinções em relação ao escravismo antigo e à servidão medieval.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Lógicas comerciais e mercantis da modernidade",
+      "objeto_conhecimento": "A escravidão moderna e o tráfico de escravizados",
+      "palavras_chave": [
+        "escravidão moderna",
+        "escravismo",
+        "servidão"
+      ],
+      "pre_requisitos": [
+        "EF06HI17",
+        "EF07HI13"
+      ],
+      "nivel": 27,
+      "ordem": 85
+    },
+    "EF07HI16": {
+      "nome": "Tráfico de escravizados",
+      "descricao_bncc": "Analisar os mecanismos e as dinâmicas de comércio de escravizados em suas diferentes fases, identificando os agentes responsáveis pelo tráfico e as regiões e zonas africanas de procedência dos escravizados.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Lógicas comerciais e mercantis da modernidade",
+      "objeto_conhecimento": "A escravidão moderna e o tráfico de escravizados",
+      "palavras_chave": [
+        "tráfico negreiro",
+        "escravizados",
+        "África",
+        "diáspora africana"
+      ],
+      "pre_requisitos": [
+        "EF07HI14",
+        "EF07HI15"
+      ],
+      "nivel": 28,
+      "ordem": 86
+    },
+    "EF07HI17": {
+      "nome": "Passagem do mercantilismo ao capitalismo",
+      "descricao_bncc": "Discutir as razões da passagem do mercantilismo para o capitalismo.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Lógicas comerciais e mercantis da modernidade",
+      "objeto_conhecimento": "A emergência do capitalismo",
+      "palavras_chave": [
+        "capitalismo",
+        "mercantilismo",
+        "burguesia"
+      ],
+      "pre_requisitos": [
+        "EF07HI13"
+      ],
+      "nivel": 27,
+      "ordem": 87
+    },
+    "EF08HI01": {
+      "nome": "Iluminismo e liberalismo",
+      "descricao_bncc": "Identificar os principais aspectos conceituais do iluminismo e do liberalismo e discutir a relação entre eles e a organização do mundo contemporâneo.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O mundo contemporâneo: o Antigo Regime em crise",
+      "objeto_conhecimento": "A questão do iluminismo e da ilustração",
+      "palavras_chave": [
+        "Iluminismo",
+        "liberalismo",
+        "Montesquieu",
+        "Rousseau",
+        "Locke"
+      ],
+      "pre_requisitos": [
+        "EF07HI05",
+        "EF07HI07"
+      ],
+      "nivel": 26,
+      "ordem": 88
+    },
+    "EF08HI02": {
+      "nome": "Revoluções inglesas e Revolução Gloriosa",
+      "descricao_bncc": "Identificar as particularidades político-sociais da Inglaterra do século XVII e analisar os desdobramentos posteriores à Revolução Gloriosa.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O mundo contemporâneo: o Antigo Regime em crise",
+      "objeto_conhecimento": "As revoluções inglesas e os princípios do liberalismo",
+      "palavras_chave": [
+        "Revolução Inglesa",
+        "Revolução Gloriosa",
+        "monarquia parlamentar"
+      ],
+      "pre_requisitos": [
+        "EF08HI01"
+      ],
+      "nivel": 27,
+      "ordem": 89
+    },
+    "EF08HI03": {
+      "nome": "Revolução Industrial",
+      "descricao_bncc": "Analisar os impactos da Revolução Industrial na produção e circulação de povos, produtos e culturas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O mundo contemporâneo: o Antigo Regime em crise",
+      "objeto_conhecimento": "Revolução Industrial e seus impactos na produção e circulação de povos, produtos e culturas",
+      "palavras_chave": [
+        "Revolução Industrial",
+        "fábricas",
+        "máquina a vapor",
+        "operários"
+      ],
+      "pre_requisitos": [
+        "EF07HI17",
+        "EF08HI02"
+      ],
+      "nivel": 28,
+      "ordem": 90
+    },
+    "EF08HI04": {
+      "nome": "Revolução Francesa e seus desdobramentos",
+      "descricao_bncc": "Identificar e relacionar os processos da Revolução Francesa e seus desdobramentos na Europa e no mundo.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O mundo contemporâneo: o Antigo Regime em crise",
+      "objeto_conhecimento": "Revolução Francesa e seus desdobramentos",
+      "palavras_chave": [
+        "Revolução Francesa",
+        "Bastilha",
+        "Napoleão",
+        "Antigo Regime"
+      ],
+      "pre_requisitos": [
+        "EF08HI01"
+      ],
+      "nivel": 27,
+      "ordem": 91
+    },
+    "EF08HI05": {
+      "nome": "Conjurações mineira e baiana",
+      "descricao_bncc": "Explicar os movimentos e as rebeliões da América portuguesa, articulando as temáticas locais e suas interfaces com processos ocorridos na Europa e nas Américas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O mundo contemporâneo: o Antigo Regime em crise",
+      "objeto_conhecimento": "Rebeliões na América portuguesa: as conjurações mineira e baiana",
+      "palavras_chave": [
+        "Inconfidência Mineira",
+        "Conjuração Baiana",
+        "Tiradentes"
+      ],
+      "pre_requisitos": [
+        "EF07HI11",
+        "EF08HI04"
+      ],
+      "nivel": 29,
+      "ordem": 92
+    },
+    "EF08HI06": {
+      "nome": "Conceitos de Estado, nação, território, governo e país",
+      "descricao_bncc": "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Independências na América espanhola",
+      "palavras_chave": [
+        "Estado",
+        "nação",
+        "território",
+        "governo"
+      ],
+      "pre_requisitos": [
+        "EF05HI02"
+      ],
+      "nivel": 14,
+      "ordem": 93
+    },
+    "EF08HI07": {
+      "nome": "Processos de independência nas Américas",
+      "descricao_bncc": "Identificar e contextualizar as especificidades dos diversos processos de independência nas Américas, seus aspectos populacionais e suas conformações territoriais.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "• \u0007A revolução dos escravizados em São Domingo e seus múltiplos significados e desdobramentos: o caso do Haiti",
+      "palavras_chave": [
+        "independência dos Estados Unidos",
+        "independências americanas"
+      ],
+      "pre_requisitos": [
+        "EF08HI01",
+        "EF08HI06"
+      ],
+      "nivel": 27,
+      "ordem": 94
+    },
+    "EF08HI08": {
+      "nome": "Líderes das independências hispano-americanas",
+      "descricao_bncc": "Conhecer o ideário dos líderes dos movimentos independentistas e seu papel nas revoluções que levaram à independência das colônias hispano-americanas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "Bolívar",
+        "San Martín",
+        "América espanhola"
+      ],
+      "pre_requisitos": [
+        "EF08HI07"
+      ],
+      "nivel": 28,
+      "ordem": 95
+    },
+    "EF08HI09": {
+      "nome": "Pan-americanismo",
+      "descricao_bncc": "Conhecer as características e os principais pensadores do Pan-americanismo.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "pan-americanismo",
+        "Bolívar"
+      ],
+      "pre_requisitos": [
+        "EF08HI08"
+      ],
+      "nivel": 29,
+      "ordem": 96
+    },
+    "EF08HI10": {
+      "nome": "Revolução de São Domingo (Haiti)",
+      "descricao_bncc": "Identificar a Revolução de São Domingo como evento singular e desdobramento da Revolução Francesa e avaliar suas implicações.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "Haiti",
+        "São Domingo",
+        "revolução dos escravizados"
+      ],
+      "pre_requisitos": [
+        "EF07HI16",
+        "EF08HI04"
+      ],
+      "nivel": 29,
+      "ordem": 97
+    },
+    "EF08HI11": {
+      "nome": "Grupos sociais e étnicos nas lutas de independência",
+      "descricao_bncc": "Identificar e explicar os protagonismos e a atuação de diferentes grupos sociais e étnicos nas lutas de independência no Brasil, na América espanhola e no Haiti.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "independência do Brasil",
+        "Haiti",
+        "protagonismo popular"
+      ],
+      "pre_requisitos": [
+        "EF08HI08",
+        "EF08HI10"
+      ],
+      "nivel": 30,
+      "ordem": 98
+    },
+    "EF08HI12": {
+      "nome": "Do Brasil de 1808 à independência de 1822",
+      "descricao_bncc": "Caracterizar a organização política e social no Brasil desde a chegada da Corte portuguesa, em 1808, até 1822 e seus desdobramentos para a história política brasileira.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "chegada da família real",
+        "1808",
+        "independência do Brasil",
+        "Dom Pedro I"
+      ],
+      "pre_requisitos": [
+        "EF08HI05",
+        "EF08HI07"
+      ],
+      "nivel": 30,
+      "ordem": 99
+    },
+    "EF08HI13": {
+      "nome": "Independências latino-americanas e formas de governo",
+      "descricao_bncc": "Analisar o processo de independência em diferentes países latino-americanos e comparar as formas de governo neles adotadas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "Os caminhos até a independência do Brasil",
+      "palavras_chave": [
+        "república",
+        "monarquia",
+        "América Latina"
+      ],
+      "pre_requisitos": [
+        "EF08HI08",
+        "EF08HI12"
+      ],
+      "nivel": 31,
+      "ordem": 100
+    },
+    "EF08HI14": {
+      "nome": "Tutela indígena e população negra no fim da colônia",
+      "descricao_bncc": "Discutir a noção da tutela dos grupos indígenas e a participação dos negros na sociedade brasileira do final do período colonial, identificando permanências na forma de preconceitos, estereótipos e violências sobre as populações indígenas e negras no Brasil e nas Américas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Os processos de independência nas Américas",
+      "objeto_conhecimento": "A tutela da população indígena, a escravidão dos negros e a tutela dos egressos da escravidão",
+      "palavras_chave": [
+        "tutela indígena",
+        "preconceito",
+        "população negra"
+      ],
+      "pre_requisitos": [
+        "EF07HI12",
+        "EF07HI16"
+      ],
+      "nivel": 30,
+      "ordem": 101
+    },
+    "EF08HI15": {
+      "nome": "Disputas políticas no Primeiro e no Segundo Reinado",
+      "descricao_bncc": "Identificar e analisar o equilíbrio das forças e os sujeitos envolvidos nas disputas políticas durante o Primeiro e o Segundo Reinado.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "O Período Regencial e as contestações ao poder central",
+      "palavras_chave": [
+        "Primeiro Reinado",
+        "Período Regencial",
+        "Segundo Reinado",
+        "Dom Pedro II"
+      ],
+      "pre_requisitos": [
+        "EF08HI12"
+      ],
+      "nivel": 31,
+      "ordem": 102
+    },
+    "EF08HI16": {
+      "nome": "Rebeliões contra o poder central no Império",
+      "descricao_bncc": "Identificar, comparar e analisar a diversidade política, social e regional nas rebeliões e nos movimentos contestatórios ao poder centralizado.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "O Brasil do Segundo Reinado: política e economia",
+      "palavras_chave": [
+        "Cabanagem",
+        "Balaiada",
+        "Farroupilha",
+        "Sabinada",
+        "revoltas regenciais"
+      ],
+      "pre_requisitos": [
+        "EF08HI15"
+      ],
+      "nivel": 32,
+      "ordem": 103
+    },
+    "EF08HI17": {
+      "nome": "Fronteiras, território e conflitos no Império",
+      "descricao_bncc": "Relacionar as transformações territoriais, em razão de questões de fronteiras, com as tensões e conflitos durante o Império.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "• \u0007A Lei de Terras e seus desdobramentos na política do Segundo Reinado",
+      "palavras_chave": [
+        "fronteiras",
+        "Lei de Terras",
+        "território"
+      ],
+      "pre_requisitos": [
+        "EF08HI15"
+      ],
+      "nivel": 32,
+      "ordem": 104
+    },
+    "EF08HI18": {
+      "nome": "Guerra do Paraguai",
+      "descricao_bncc": "Identificar as questões internas e externas sobre a atuação do Brasil na Guerra do Paraguai e discutir diferentes versões sobre o conflito.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "• \u0007Territórios e fronteiras: a Guerra do Paraguai",
+      "palavras_chave": [
+        "Guerra do Paraguai",
+        "Tríplice Aliança"
+      ],
+      "pre_requisitos": [
+        "EF08HI17"
+      ],
+      "nivel": 33,
+      "ordem": 105
+    },
+    "EF08HI19": {
+      "nome": "Legado da escravidão nas Américas",
+      "descricao_bncc": "Formular questionamentos sobre o legado da escravidão nas Américas, com base na seleção e consulta de fontes de diferentes naturezas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "O escravismo no Brasil do século XIX: plantations e revoltas de escravizados, abolicionismo e políticas migratórias no Brasil Imperial",
+      "palavras_chave": [
+        "escravidão",
+        "abolição",
+        "revoltas de escravizados",
+        "plantations"
+      ],
+      "pre_requisitos": [
+        "EF08HI10",
+        "EF08HI14"
+      ],
+      "nivel": 31,
+      "ordem": 106
+    },
+    "EF08HI20": {
+      "nome": "Legados da escravidão e ações afirmativas",
+      "descricao_bncc": "Identificar e relacionar aspectos das estruturas sociais da atualidade com os legados da escravidão no Brasil e discutir a importância de ações afirmativas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "O escravismo no Brasil do século XIX: plantations e revoltas de escravizados, abolicionismo e políticas migratórias no Brasil Imperial",
+      "palavras_chave": [
+        "racismo estrutural",
+        "ações afirmativas",
+        "cotas"
+      ],
+      "pre_requisitos": [
+        "EF08HI19"
+      ],
+      "nivel": 32,
+      "ordem": 107
+    },
+    "EF08HI21": {
+      "nome": "Políticas oficiais sobre os indígenas no Império",
+      "descricao_bncc": "Identificar e analisar as políticas oficiais com relação ao indígena durante o Império.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "Políticas de extermínio do indígena durante o Império",
+      "palavras_chave": [
+        "política indigenista",
+        "indígenas no Império"
+      ],
+      "pre_requisitos": [
+        "EF08HI14",
+        "EF08HI15"
+      ],
+      "nivel": 32,
+      "ordem": 108
+    },
+    "EF08HI22": {
+      "nome": "Culturas e artes na identidade nacional do século XIX",
+      "descricao_bncc": "Discutir o papel das culturas letradas, não letradas e das artes na produção das identidades no Brasil do século XIX.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O Brasil no século XIX",
+      "objeto_conhecimento": "A produção do imaginário nacional brasileiro: cultura popular, representações visuais, letras e o Romantismo no Brasil",
+      "palavras_chave": [
+        "Romantismo",
+        "identidade nacional",
+        "indianismo"
+      ],
+      "pre_requisitos": [
+        "EF08HI15"
+      ],
+      "nivel": 32,
+      "ordem": 109
+    },
+    "EF08HI23": {
+      "nome": "Ideologias raciais e imperialismo",
+      "descricao_bncc": "Estabelecer relações causais entre as ideologias raciais e o determinismo no contexto do imperialismo europeu e seus impactos na África e na Ásia.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Configurações do mundo no século XIX",
+      "objeto_conhecimento": "Nacionalismo, revoluções e as novas nações europeias",
+      "palavras_chave": [
+        "imperialismo",
+        "racismo científico",
+        "determinismo"
+      ],
+      "pre_requisitos": [
+        "EF08HI03"
+      ],
+      "nivel": 29,
+      "ordem": 110
+    },
+    "EF08HI24": {
+      "nome": "Exploração econômica da África no imperialismo",
+      "descricao_bncc": "Reconhecer os principais produtos, utilizados pelos europeus, procedentes do continente africano durante o imperialismo e analisar os impactos sobre as comunidades locais na forma de organização e exploração econômica.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Configurações do mundo no século XIX",
+      "objeto_conhecimento": "Uma nova ordem econômica: as demandas do capitalismo industrial e o lugar das economias africanas e asiáticas nas dinâmicas globais",
+      "palavras_chave": [
+        "partilha da África",
+        "exploração colonial",
+        "matérias-primas"
+      ],
+      "pre_requisitos": [
+        "EF08HI23"
+      ],
+      "nivel": 30,
+      "ordem": 111
+    },
+    "EF08HI25": {
+      "nome": "Estados Unidos e América Latina no século XIX",
+      "descricao_bncc": "Caracterizar e contextualizar aspectos das relações entre os Estados Unidos da América e a América Latina no século XIX.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Configurações do mundo no século XIX",
+      "objeto_conhecimento": "Os Estados Unidos da América e a América Latina no século XIX",
+      "palavras_chave": [
+        "Doutrina Monroe",
+        "Estados Unidos",
+        "América Latina"
+      ],
+      "pre_requisitos": [
+        "EF08HI09",
+        "EF08HI13"
+      ],
+      "nivel": 32,
+      "ordem": 112
+    },
+    "EF08HI26": {
+      "nome": "Resistência ao imperialismo na África e Ásia",
+      "descricao_bncc": "Identificar e contextualizar o protagonismo das populações locais na resistência ao imperialismo na África e Ásia.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Configurações do mundo no século XIX",
+      "objeto_conhecimento": "O imperialismo europeu e a partilha da África e da Ásia",
+      "palavras_chave": [
+        "resistência",
+        "imperialismo",
+        "Ásia",
+        "África"
+      ],
+      "pre_requisitos": [
+        "EF08HI24"
+      ],
+      "nivel": 31,
+      "ordem": 113
+    },
+    "EF08HI27": {
+      "nome": "Discursos civilizatórios e seus impactos nas Américas",
+      "descricao_bncc": "Identificar as tensões e os significados dos discursos civilizatórios, avaliando seus impactos negativos para os povos indígenas originários e as populações negras nas Américas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Configurações do mundo no século XIX",
+      "objeto_conhecimento": "Pensamento e cultura no século XIX: darwinismo e racismo",
+      "palavras_chave": [
+        "discurso civilizatório",
+        "darwinismo social",
+        "racismo"
+      ],
+      "pre_requisitos": [
+        "EF08HI21",
+        "EF08HI23"
+      ],
+      "nivel": 33,
+      "ordem": 114
+    },
+    "EF09HI01": {
+      "nome": "Emergência da República no Brasil",
+      "descricao_bncc": "Descrever e contextualizar os principais aspectos sociais, culturais, econômicos e políticos da emergência da República no Brasil.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "Experiências republicanas e práticas autoritárias: as tensões e disputas do mundo contemporâneo A proclamação da República e seus primeiros desdobramentos",
+      "palavras_chave": [
+        "Proclamação da República",
+        "1889",
+        "República Velha"
+      ],
+      "pre_requisitos": [
+        "EF08HI15",
+        "EF08HI19"
+      ],
+      "nivel": 32,
+      "ordem": 115
+    },
+    "EF09HI02": {
+      "nome": "Ciclos da história republicana até 1954",
+      "descricao_bncc": "Caracterizar e compreender os ciclos da história republicana, identificando particularidades da história local e regional até 1954.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "Experiências republicanas e práticas autoritárias: as tensões e disputas do mundo contemporâneo A proclamação da República e seus primeiros desdobramentos",
+      "palavras_chave": [
+        "Primeira República",
+        "Era Vargas",
+        "coronelismo"
+      ],
+      "pre_requisitos": [
+        "EF09HI01"
+      ],
+      "nivel": 33,
+      "ordem": 116
+    },
+    "EF09HI03": {
+      "nome": "Inserção dos negros no pós-abolição",
+      "descricao_bncc": "Identificar os mecanismos de inserção dos negros na sociedade brasileira pós-abolição e avaliar os seus resultados.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "A questão da inserção dos negros no período republicano do pós-abolição Os movimentos sociais e a imprensa negra; a cultura afro-brasileira como elemento de resistência e superação das discriminações",
+      "palavras_chave": [
+        "pós-abolição",
+        "Lei Áurea",
+        "população negra"
+      ],
+      "pre_requisitos": [
+        "EF08HI20",
+        "EF09HI01"
+      ],
+      "nivel": 33,
+      "ordem": 117
+    },
+    "EF09HI04": {
+      "nome": "Participação da população negra na formação do Brasil",
+      "descricao_bncc": "Discutir a importância da participação da população negra na formação econômica, política e social do Brasil.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "A questão da inserção dos negros no período republicano do pós-abolição Os movimentos sociais e a imprensa negra; a cultura afro-brasileira como elemento de resistência e superação das discriminações",
+      "palavras_chave": [
+        "população negra",
+        "cultura afro-brasileira"
+      ],
+      "pre_requisitos": [
+        "EF09HI03"
+      ],
+      "nivel": 34,
+      "ordem": 118
+    },
+    "EF09HI05": {
+      "nome": "Urbanização e modernização no início da República",
+      "descricao_bncc": "Identificar os processos de urbanização e modernização da sociedade brasileira e avaliar suas contradições e impactos na região em que vive.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "Primeira República e suas características Contestações e dinâmicas da vida cultural no Brasil entre 1900 e 1930",
+      "palavras_chave": [
+        "urbanização",
+        "modernização",
+        "industrialização"
+      ],
+      "pre_requisitos": [
+        "EF08HI03",
+        "EF09HI02"
+      ],
+      "nivel": 34,
+      "ordem": 119
+    },
+    "EF09HI06": {
+      "nome": "Trabalhismo e Era Vargas",
+      "descricao_bncc": "Identificar e discutir o papel do trabalhismo como força política, social e cultural no Brasil, em diferentes escalas (nacional, regional, cidade, comunidade).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "O período varguista e suas contradições A emergência da vida urbana e a segregação espacial O trabalhismo e seu protagonismo político",
+      "palavras_chave": [
+        "Vargas",
+        "trabalhismo",
+        "CLT",
+        "Estado Novo"
+      ],
+      "pre_requisitos": [
+        "EF09HI05"
+      ],
+      "nivel": 35,
+      "ordem": 120
+    },
+    "EF09HI07": {
+      "nome": "Pautas indígenas e afrodescendentes na República",
+      "descricao_bncc": "Identificar e explicar, em meio a lógicas de inclusão e exclusão, as pautas dos povos indígenas, no contexto republicano (até 1964), e das populações afrodescendentes.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "A questão indígena durante a República (até 1964)",
+      "palavras_chave": [
+        "questão indígena",
+        "SPI",
+        "afrodescendentes"
+      ],
+      "pre_requisitos": [
+        "EF08HI27",
+        "EF09HI02"
+      ],
+      "nivel": 34,
+      "ordem": 121
+    },
+    "EF09HI08": {
+      "nome": "Debate sobre diversidade no Brasil do século XX",
+      "descricao_bncc": "Identificar as transformações ocorridas no debate sobre as questões da diversidade no Brasil durante o século XX e compreender o significado das mudanças de abordagem em relação ao tema.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "Anarquismo e protagonismo feminino",
+      "palavras_chave": [
+        "diversidade",
+        "democracia racial",
+        "feminismo"
+      ],
+      "pre_requisitos": [
+        "EF09HI04",
+        "EF09HI07"
+      ],
+      "nivel": 35,
+      "ordem": 122
+    },
+    "EF09HI09": {
+      "nome": "Conquistas de direitos e movimentos sociais",
+      "descricao_bncc": "Relacionar as conquistas de direitos políticos, sociais e civis à atuação de movimentos sociais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O nascimento da República no Brasil e os processos históricos até a metade do século XX",
+      "objeto_conhecimento": "Anarquismo e protagonismo feminino",
+      "palavras_chave": [
+        "movimentos sociais",
+        "voto feminino",
+        "direitos civis"
+      ],
+      "pre_requisitos": [
+        "EF09HI08"
+      ],
+      "nivel": 36,
+      "ordem": 123
+    },
+    "EF09HI10": {
+      "nome": "Capitalismo, crises e Primeira Guerra Mundial",
+      "descricao_bncc": "Identificar e relacionar as dinâmicas do capitalismo e suas crises, os grandes conflitos mundiais e os conflitos vivenciados na Europa.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "O mundo em conflito: a Primeira Guerra Mundial A questão da Palestina A Revolução Russa A crise capitalista de 1929",
+      "palavras_chave": [
+        "Primeira Guerra Mundial",
+        "crise do capitalismo",
+        "conflitos mundiais"
+      ],
+      "pre_requisitos": [
+        "EF08HI23"
+      ],
+      "nivel": 30,
+      "ordem": 124
+    },
+    "EF09HI11": {
+      "nome": "Revolução Russa",
+      "descricao_bncc": "Identificar as especificidades e os desdobramentos mundiais da Revolução Russa e seu significado histórico.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "O mundo em conflito: a Primeira Guerra Mundial A questão da Palestina A Revolução Russa A crise capitalista de 1929",
+      "palavras_chave": [
+        "Revolução Russa",
+        "socialismo",
+        "bolcheviques",
+        "URSS"
+      ],
+      "pre_requisitos": [
+        "EF09HI10"
+      ],
+      "nivel": 31,
+      "ordem": 125
+    },
+    "EF09HI12": {
+      "nome": "Crise de 1929",
+      "descricao_bncc": "Analisar a crise capitalista de 1929 e seus desdobramentos em relação à economia global.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "O mundo em conflito: a Primeira Guerra Mundial A questão da Palestina A Revolução Russa A crise capitalista de 1929",
+      "palavras_chave": [
+        "crise de 1929",
+        "quebra da bolsa",
+        "Grande Depressão"
+      ],
+      "pre_requisitos": [
+        "EF09HI10"
+      ],
+      "nivel": 31,
+      "ordem": 126
+    },
+    "EF09HI13": {
+      "nome": "Fascismo, nazismo e Holocausto",
+      "descricao_bncc": "Descrever e contextualizar os processos da emergência do fascismo e do nazismo, a consolidação dos estados totalitários e as práticas de extermínio (como o holocausto).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "A emergência do fascismo e do nazismo A Segunda Guerra Mundial Judeus e outras vítimas do holocausto",
+      "palavras_chave": [
+        "fascismo",
+        "nazismo",
+        "totalitarismo",
+        "Holocausto",
+        "Segunda Guerra Mundial"
+      ],
+      "pre_requisitos": [
+        "EF09HI11",
+        "EF09HI12"
+      ],
+      "nivel": 32,
+      "ordem": 127
+    },
+    "EF09HI14": {
+      "nome": "Colonialismo e resistências na África e na Ásia no século XX",
+      "descricao_bncc": "Caracterizar e discutir as dinâmicas do colonialismo no continente africano e asiático e as lógicas de resistência das populações locais diante das questões internacionais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "As guerras mundiais, a crise do colonialismo e o advento dos nacionalismos africanos e asiáticos",
+      "palavras_chave": [
+        "colonialismo",
+        "nacionalismos",
+        "resistência"
+      ],
+      "pre_requisitos": [
+        "EF08HI26",
+        "EF09HI10"
+      ],
+      "nivel": 32,
+      "ordem": 128
+    },
+    "EF09HI15": {
+      "nome": "Criação da ONU",
+      "descricao_bncc": "Discutir as motivações que levaram à criação da Organização das Nações Unidas (ONU) no contexto do pós-guerra e os propósitos dessa organização.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "A Organização das Nações Unidas (ONU) e a questão dos Direitos Humanos",
+      "palavras_chave": [
+        "ONU",
+        "pós-guerra",
+        "Nações Unidas"
+      ],
+      "pre_requisitos": [
+        "EF09HI13"
+      ],
+      "nivel": 33,
+      "ordem": 129
+    },
+    "EF09HI16": {
+      "nome": "Declaração dos Direitos Humanos e defesa da dignidade",
+      "descricao_bncc": "Relacionar a Carta dos Direitos Humanos ao processo de afirmação dos direitos fundamentais e de defesa da dignidade humana, valorizando as instituições voltadas para a defesa desses direitos e para a identificação dos agentes responsáveis por sua violação.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Totalitarismos e conflitos mundiais",
+      "objeto_conhecimento": "A Organização das Nações Unidas (ONU) e a questão dos Direitos Humanos",
+      "palavras_chave": [
+        "Direitos Humanos",
+        "dignidade humana",
+        "Declaração Universal"
+      ],
+      "pre_requisitos": [
+        "EF05HI04",
+        "EF09HI15"
+      ],
+      "nivel": 34,
+      "ordem": 130
+    },
+    "EF09HI17": {
+      "nome": "Brasil a partir de 1946",
+      "descricao_bncc": "Identificar e analisar processos sociais, econômicos, culturais e políticos do Brasil a partir de 1946.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "O Brasil da era JK e o ideal de uma nação moderna: a urbanização e seus desdobramentos em um país em transformação",
+      "palavras_chave": [
+        "Brasil pós-1946",
+        "democracia de 1946",
+        "JK"
+      ],
+      "pre_requisitos": [
+        "EF09HI06"
+      ],
+      "nivel": 36,
+      "ordem": 131
+    },
+    "EF09HI18": {
+      "nome": "Transformações urbanas e culturais entre 1946 e 1964",
+      "descricao_bncc": "Descrever e analisar as relações entre as transformações urbanas e seus impactos na cultura brasileira entre 1946 e 1964 e na produção das desigualdades regionais e sociais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "O Brasil da era JK e o ideal de uma nação moderna: a urbanização e seus desdobramentos em um país em transformação",
+      "palavras_chave": [
+        "era JK",
+        "Brasília",
+        "urbanização",
+        "bossa nova"
+      ],
+      "pre_requisitos": [
+        "EF09HI17"
+      ],
+      "nivel": 37,
+      "ordem": 132
+    },
+    "EF09HI19": {
+      "nome": "Ditadura civil-militar no Brasil",
+      "descricao_bncc": "Identificar e compreender o processo que resultou na ditadura civil-militar no Brasil e discutir a emergência de questões relacionadas à memória e à justiça sobre os casos de violação dos direitos humanos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A ditadura civil-militar e os processos de resistência",
+      "palavras_chave": [
+        "ditadura militar",
+        "golpe de 1964",
+        "AI-5",
+        "memória e justiça"
+      ],
+      "pre_requisitos": [
+        "EF09HI17",
+        "EF09HI28"
+      ],
+      "nivel": 37,
+      "ordem": 134
+    },
+    "EF09HI20": {
+      "nome": "Resistências durante a ditadura civil-militar",
+      "descricao_bncc": "Discutir os processos de resistência e as propostas de reorganização da sociedade brasileira durante a ditadura civil-militar.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "As questões indígena e negra e a ditadura",
+      "palavras_chave": [
+        "resistência",
+        "censura",
+        "luta armada",
+        "movimento estudantil"
+      ],
+      "pre_requisitos": [
+        "EF09HI19"
+      ],
+      "nivel": 38,
+      "ordem": 135
+    },
+    "EF09HI21": {
+      "nome": "Demandas indígenas e quilombolas na ditadura",
+      "descricao_bncc": "Identificar e relacionar as demandas indígenas e quilombolas como forma de contestação ao modelo desenvolvimentista da ditadura.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "As questões indígena e negra e a ditadura",
+      "palavras_chave": [
+        "quilombolas",
+        "indígenas",
+        "desenvolvimentismo"
+      ],
+      "pre_requisitos": [
+        "EF09HI07",
+        "EF09HI19"
+      ],
+      "nivel": 38,
+      "ordem": 136
+    },
+    "EF09HI22": {
+      "nome": "Mobilização social e Constituição de 1988",
+      "descricao_bncc": "Discutir o papel da mobilização da sociedade brasileira do final do período ditatorial até a Constituição de 1988.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A Constituição de 1988 e a emancipação das cidadanias (analfabetos, indígenas, negros, jovens etc.)",
+      "palavras_chave": [
+        "Diretas Já",
+        "redemocratização",
+        "Constituinte"
+      ],
+      "pre_requisitos": [
+        "EF09HI20"
+      ],
+      "nivel": 39,
+      "ordem": 137
+    },
+    "EF09HI23": {
+      "nome": "Direitos na Constituição de 1988 e cidadania",
+      "descricao_bncc": "Identificar direitos civis, políticos e sociais expressos na Constituição de 1988 e relacioná-los à noção de cidadania e ao pacto da sociedade brasileira de combate a diversas formas de preconceito, como o racismo.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A Constituição de 1988 e a emancipação das cidadanias (analfabetos, indígenas, negros, jovens etc.)",
+      "palavras_chave": [
+        "Constituição de 1988",
+        "direitos civis",
+        "direitos sociais",
+        "racismo"
+      ],
+      "pre_requisitos": [
+        "EF09HI16",
+        "EF09HI22"
+      ],
+      "nivel": 40,
+      "ordem": 138
+    },
+    "EF09HI24": {
+      "nome": "Brasil de 1989 aos dias atuais",
+      "descricao_bncc": "Analisar as transformações políticas, econômicas, sociais e culturais de 1989 aos dias atuais, identificando questões prioritárias para a promoção da cidadania e dos valores democráticos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A história recente do Brasil: transformações políticas, econômicas, sociais e culturais de 1989 aos dias atuais",
+      "palavras_chave": [
+        "Nova República",
+        "impeachment",
+        "Plano Real",
+        "democracia"
+      ],
+      "pre_requisitos": [
+        "EF09HI23"
+      ],
+      "nivel": 41,
+      "ordem": 139
+    },
+    "EF09HI25": {
+      "nome": "Protagonismo da sociedade civil após 1989",
+      "descricao_bncc": "Relacionar as transformações da sociedade brasileira aos protagonismos da sociedade civil após 1989.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A história recente do Brasil: transformações políticas, econômicas, sociais e culturais de 1989 aos dias atuais",
+      "palavras_chave": [
+        "sociedade civil",
+        "ONGs",
+        "movimentos sociais"
+      ],
+      "pre_requisitos": [
+        "EF09HI09",
+        "EF09HI24"
+      ],
+      "nivel": 42,
+      "ordem": 140
+    },
+    "EF09HI26": {
+      "nome": "Violência contra populações marginalizadas e cultura de paz",
+      "descricao_bncc": "Discutir e analisar as causas da violência contra populações marginalizadas (negros, indígenas, mulheres, homossexuais, camponeses, pobres etc.) com vistas à tomada de consciência e à construção de uma cultura de paz, empatia e respeito às pessoas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "A questão da violência contra populações marginalizadas",
+      "palavras_chave": [
+        "violência",
+        "racismo",
+        "machismo",
+        "homofobia",
+        "cultura de paz"
+      ],
+      "pre_requisitos": [
+        "EF09HI23"
+      ],
+      "nivel": 41,
+      "ordem": 141
+    },
+    "EF09HI27": {
+      "nome": "Brasil no cenário internacional da globalização",
+      "descricao_bncc": "Relacionar aspectos das mudanças econômicas, culturais e sociais ocorridas no Brasil a partir da década de 1990 ao papel do País no cenário internacional na era da globalização.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Modernização, ditadura civil-militar e redemocratização: o Brasil após 1946",
+      "objeto_conhecimento": "O Brasil e suas relações internacionais na era da globalização",
+      "palavras_chave": [
+        "globalização",
+        "Brasil anos 1990",
+        "relações internacionais"
+      ],
+      "pre_requisitos": [
+        "EF09HI24",
+        "EF09HI32"
+      ],
+      "nivel": 42,
+      "ordem": 146
+    },
+    "EF09HI28": {
+      "nome": "Guerra Fria",
+      "descricao_bncc": "Identificar e analisar aspectos da Guerra Fria, seus principais conflitos e as tensões geopolíticas no interior dos blocos liderados por soviéticos e estadunidenses.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "A Guerra Fria: confrontos de dois modelos políticos",
+      "palavras_chave": [
+        "Guerra Fria",
+        "EUA e URSS",
+        "capitalismo e socialismo",
+        "Muro de Berlim"
+      ],
+      "pre_requisitos": [
+        "EF09HI15"
+      ],
+      "nivel": 34,
+      "ordem": 133
+    },
+    "EF09HI29": {
+      "nome": "Ditaduras na América Latina e movimentos de contestação",
+      "descricao_bncc": "Descrever e analisar as experiências ditatoriais na América Latina, seus procedimentos e vínculos com o poder, em nível nacional e internacional, e a atuação de movimentos de contestação às ditaduras.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "As experiências ditatoriais na América Latina",
+      "palavras_chave": [
+        "ditaduras latino-americanas",
+        "Operação Condor",
+        "Pinochet"
+      ],
+      "pre_requisitos": [
+        "EF08HI25",
+        "EF09HI28"
+      ],
+      "nivel": 35,
+      "ordem": 142
+    },
+    "EF09HI30": {
+      "nome": "Comparação entre regimes ditatoriais latino-americanos",
+      "descricao_bncc": "Comparar as características dos regimes ditatoriais latino-americanos, com especial atenção para a censura política, a opressão e o uso da força, bem como para as reformas econômicas e sociais e seus impactos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "As experiências ditatoriais na América Latina",
+      "palavras_chave": [
+        "censura",
+        "repressão",
+        "ditaduras"
+      ],
+      "pre_requisitos": [
+        "EF09HI29"
+      ],
+      "nivel": 36,
+      "ordem": 143
+    },
+    "EF09HI31": {
+      "nome": "Descolonização da África e da Ásia",
+      "descricao_bncc": "Descrever e avaliar os processos de descolonização na África e na Ásia.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "Os processos de descolonização na África e na Ásia",
+      "palavras_chave": [
+        "descolonização",
+        "independências africanas",
+        "apartheid"
+      ],
+      "pre_requisitos": [
+        "EF09HI14",
+        "EF09HI28"
+      ],
+      "nivel": 35,
+      "ordem": 144
+    },
+    "EF09HI32": {
+      "nome": "Globalização: mudanças, permanências e críticas",
+      "descricao_bncc": "Analisar mudanças e permanências associadas ao processo de globalização, considerando os argumentos dos movimentos críticos às políticas globais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "O fim da Guerra Fria e o processo de globalização",
+      "palavras_chave": [
+        "globalização",
+        "fim da Guerra Fria",
+        "neoliberalismo"
+      ],
+      "pre_requisitos": [
+        "EF09HI28"
+      ],
+      "nivel": 35,
+      "ordem": 145
+    },
+    "EF09HI33": {
+      "nome": "Tecnologias digitais e relações políticas",
+      "descricao_bncc": "Analisar as transformações nas relações políticas locais e globais geradas pelo desenvolvimento das tecnologias digitais de informação e comunicação.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "O fim da Guerra Fria e o processo de globalização",
+      "palavras_chave": [
+        "tecnologias digitais",
+        "internet",
+        "redes sociais"
+      ],
+      "pre_requisitos": [
+        "EF04HI08",
+        "EF09HI32"
+      ],
+      "nivel": 36,
+      "ordem": 147
+    },
+    "EF09HI34": {
+      "nome": "Políticas econômicas na América Latina",
+      "descricao_bncc": "Discutir as motivações da adoção de diferentes políticas econômicas na América Latina, assim como seus impactos sociais nos países da região.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "Políticas econômicas na América Latina",
+      "palavras_chave": [
+        "neoliberalismo",
+        "políticas econômicas",
+        "América Latina"
+      ],
+      "pre_requisitos": [
+        "EF09HI30",
+        "EF09HI32"
+      ],
+      "nivel": 37,
+      "ordem": 148
+    },
+    "EF09HI35": {
+      "nome": "Terrorismo e conflitos do século XXI",
+      "descricao_bncc": "Analisar os aspectos relacionados ao fenômeno do terrorismo na contemporaneidade, incluindo os movimentos migratórios e os choques entre diferentes grupos e culturas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "Os conflitos do século XXI e a questão do terrorismo",
+      "palavras_chave": [
+        "terrorismo",
+        "11 de setembro",
+        "migrações",
+        "conflitos"
+      ],
+      "pre_requisitos": [
+        "EF09HI32"
+      ],
+      "nivel": 36,
+      "ordem": 149
+    },
+    "EF09HI36": {
+      "nome": "Diversidades identitárias no século XXI e combate ao preconceito",
+      "descricao_bncc": "Identificar e discutir as diversidades identitárias e seus significados históricos no início do século XXI, combatendo qualquer forma de preconceito e violência.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "A história recente",
+      "objeto_conhecimento": "As pautas dos povos indígenas no século XXI e suas formas de inserção no debate local, regional, nacional e internacional",
+      "palavras_chave": [
+        "identidade",
+        "diversidade",
+        "preconceito",
+        "povos indígenas"
+      ],
+      "pre_requisitos": [
+        "EF09HI26"
+      ],
+      "nivel": 42,
+      "ordem": 150
+    }
+  }
+}

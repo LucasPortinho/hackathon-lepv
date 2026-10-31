@@ -5,7 +5,7 @@ import type { CompetencyGap, Evidence, GapReading, NeedId, PedagogicalProfile, P
 // Agente pedagógico (PED): aprofunda o rascunho das regras. Nota, variação e quais lacunas existem
 // continuam calculadas em código; o modelo interpreta. Recebe dados puros e não acessa o banco.
 export interface ScoreLine { subtopicId: string; subtopic: string; value: number | null; previous: number | null; classAverage: number }
-export interface AnalysisInput { student: Student; subject: string; scores: ScoreLine[]; needLabel: (id: NeedId) => string; evidence?: Evidence[]; history?: ProfileMemory[] }
+export interface AnalysisInput { student: Student; subject: string; scores: ScoreLine[]; needLabel: (id: NeedId) => string; evidence?: Evidence[]; history?: ProfileMemory[]; prerequisites?: Record<string, string[]> }
 
 const SYSTEM_PROMPT = `Você é o PED, agente pedagógico de uma plataforma para professores.
 Você recebe as notas de um aluno por subtópico (1 a 100), a média da turma, as lacunas já identificadas,
@@ -16,7 +16,7 @@ Regras:
 - Baseie-se somente nos dados recebidos. Não invente provas, comportamentos ou fatos sobre o aluno.
 - Defina a competência pelo que o aluno errou em "evidencias", citando a dificuldade observada, e não só pelo nome do subtópico.
 - Compare com "perfis_revisados": diga o que evoluiu, o que persiste, e mantenha a linha do professor quando os dados a sustentarem.
-- Para cada lacuna, indique o pré-requisito de base: o conteúdo anterior cuja falta explicaria a dificuldade.
+- Para cada lacuna, indique o pré-requisito de base: escolha, sem alterar o texto, um item de "pre_requisitos_bncc" cuja falta explicaria a dificuldade. Se a lista estiver vazia, descreva o conteúdo anterior.
 - "leitura" é "tecnica", ou "necessidade" SOMENTE se uma necessidade da lista "necessidades_declaradas" puder se relacionar à lacuna.
 - Nunca sugira diagnóstico nem necessidade que não esteja declarada. Use linguagem de hipótese ("pode se relacionar").
 - Escreva em português do Brasil, em frases curtas, referindo-se ao aluno pelo primeiro nome.
@@ -34,19 +34,27 @@ function toReading(raw: RawGap, student: Student): GapReading {
   return raw.leitura === 'necessidade' && need ? { kind: 'necessidade', needId: need } : { kind: 'tecnica' };
 }
 
-function mergeGap(gap: CompetencyGap, raw: RawGap | undefined, student: Student): CompetencyGap {
+/** Havendo grafo, o modelo escolhe dentro dele: nenhum pré-requisito fora da BNCC chega ao professor. */
+function toPrerequisite(raw: RawGap, gap: CompetencyGap, known: string[]) {
+  const answer = raw.pre_requisito?.trim();
+  if (!answer) return gap.prerequisite;
+  if (!known.length) return answer;
+  return known.find((label) => answer.startsWith(label.split(' · ')[0])) ?? gap.prerequisite;
+}
+
+function mergeGap(gap: CompetencyGap, raw: RawGap | undefined, student: Student, known: string[]): CompetencyGap {
   if (!raw) return gap;
   return {
     ...gap,
     competency: raw.competencia?.trim() || gap.competency,
-    prerequisite: raw.pre_requisito?.trim() || gap.prerequisite,
+    prerequisite: toPrerequisite(raw, gap, known),
     reading: toReading(raw, student),
     note: raw.observacao?.trim() || gap.note,
     suggestion: raw.sugestao?.trim() || gap.suggestion,
   };
 }
 
-function buildPrompt({ student, subject, scores, needLabel, evidence = [], history = [] }: AnalysisInput, draft: PedagogicalProfile) {
+function buildPrompt({ student, subject, scores, needLabel, evidence = [], history = [], prerequisites = {} }: AnalysisInput, draft: PedagogicalProfile) {
   return JSON.stringify({
     aluno: firstName(student.name),
     disciplina: subject,
@@ -54,7 +62,7 @@ function buildPrompt({ student, subject, scores, needLabel, evidence = [], histo
     nota_geral: draft.overall,
     variacao: draft.delta,
     notas: scores.map(({ subtopic, value, previous, classAverage }) => ({ subtopico: subtopic, nota: value, nota_anterior: previous, media_turma: classAverage })),
-    lacunas: draft.gaps.map((g) => ({ subtopico_id: g.subtopicId, competencia: g.competency })),
+    lacunas: draft.gaps.map((g) => ({ subtopico_id: g.subtopicId, competencia: g.competency, pre_requisitos_bncc: prerequisites[g.subtopicId] ?? [] })),
     evidencias: evidence.map((e) => ({ prova: e.source, data: e.date, subtopico: e.subtopic, enunciado: e.statement, resposta: e.answer, pontos: e.earned, valor: e.max, comentario: e.feedback })),
     perfis_revisados: history.map((h) => ({ data: h.recordedAt, nota_geral: h.overall, leitura: h.summary, competencias: h.competencies })),
   }, null, 2);
@@ -68,6 +76,6 @@ export async function analyzeStudent(input: AnalysisInput, draft: PedagogicalPro
     ...draft,
     summary: raw.resumo.trim(),
     strengths: Array.isArray(raw.pontos_fortes) && raw.pontos_fortes.length ? raw.pontos_fortes : draft.strengths,
-    gaps: draft.gaps.map((g) => mergeGap(g, rawGaps.find((r) => r.subtopico_id === g.subtopicId), input.student)),
+    gaps: draft.gaps.map((g) => mergeGap(g, rawGaps.find((r) => r.subtopico_id === g.subtopicId), input.student, input.prerequisites?.[g.subtopicId] ?? [])),
   };
 }

@@ -24,7 +24,7 @@ export const listByTeacher = (teacherId: string) => query(eq(classes.teacherId, 
 export const findOwned = (teacherId: string, classId: string): Class | undefined =>
   query(and(eq(classes.teacherId, teacherId), eq(classes.id, classId)))[0];
 
-export type ClassFields = Pick<Class, 'name' | 'level' | 'school' | 'year'>;
+export type ClassFields = Pick<Class, 'name' | 'level' | 'school' | 'year'> & { grade?: number | null };
 
 export function insert(teacherId: string, id: string, fields: ClassFields, subjectIds: string[]) {
   db.insert(classes).values({ ...fields, id, teacherId }).run();

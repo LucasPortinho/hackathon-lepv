@@ -18,7 +18,7 @@ export function EvolutionChart({ data, name }: { data: EvolutionPoint[]; name: s
     <figure>
       <div className="line-legend" aria-hidden>
         <span><svg viewBox="0 0 20 8"><line x1="0" x2="20" y1="4" y2="4" stroke="var(--ink)" strokeWidth="3" /></svg>{name}</span>
-        <span><svg viewBox="0 0 20 8"><line x1="0" x2="20" y1="4" y2="4" stroke="var(--gray-1)" strokeWidth="2" strokeDasharray="4 3" /></svg>Média da turma</span>
+        <span><svg viewBox="0 0 20 8"><line x1="0" x2="20" y1="4" y2="4" stroke="var(--data)" strokeWidth="2" strokeDasharray="4 3" /></svg>Média da turma</span>
         <b>{point.label}: {point.student ?? 'sem dados'}{point.classAverage !== null ? ` · turma ${point.classAverage}` : ''}</b>
       </div>
       <svg className="line-chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Evolução de ${name}: ${data.map((d) => `${d.label}, ${d.student ?? 'sem dados'}`).join('; ')}.`} onPointerLeave={() => setHover(null)}>
@@ -26,7 +26,7 @@ export function EvolutionChart({ data, name }: { data: EvolutionPoint[]; name: s
           <g key={v}><line className="grid" x1={L} x2={W - R} y1={y(v)} y2={y(v)} /><text x={0} y={y(v) + 4}>{v}</text></g>
         ))}
         <line x1={x(active)} x2={x(active)} y1={T} y2={H - B} stroke="var(--ink)" strokeDasharray="2 3" />
-        <polyline points={path('classAverage')} fill="none" stroke="var(--gray-1)" strokeWidth="2" strokeDasharray="4 3" />
+        <polyline points={path('classAverage')} fill="none" stroke="var(--data)" strokeWidth="2" strokeDasharray="4 3" />
         <polyline points={path('student')} fill="none" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="miter" />
         {data.map((d, i) => (
           <g key={d.periodId}>

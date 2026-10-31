@@ -10,7 +10,7 @@ import { StudentSheet } from '@/features/students/StudentSheet';
 import { plural } from '@/lib/format';
 import { usePrefs } from '@/lib/prefs';
 import { useQuery } from '@/lib/useQuery';
-import { classById, defaultClassId, listPeriods, listSubjects, subjectName } from '@/api/catalog/catalog.store';
+import { classById, defaultClassId, defaultSubjectOf, listPeriods, listSubjects, subjectName } from '@/api/catalog/catalog.store';
 import { listClasses } from '@/api/classes/class.api';
 import { getDashboard } from '@/api/dashboard/dashboard.api';
 import { Heatmap } from './Heatmap';
@@ -36,7 +36,9 @@ export function DashboardPage() {
   const { reduced } = usePrefs();
 
   const classId = params.get('turma') ?? defaultClassId();
-  const subjectId = params.get('disciplina') ?? 'mat';
+  const cls = classById(classId);
+  const requestedSubject = params.get('disciplina');
+  const subjectId = requestedSubject && (!cls || cls.subjectIds.includes(requestedSubject)) ? requestedSubject : defaultSubjectOf(cls);
   const periodId = params.get('periodo') ?? 'b3';
   const subtopicId = params.get('subtopico') ?? undefined;
   const query = useMemo(() => ({ classId, subjectId, periodId }), [classId, subjectId, periodId]);
@@ -46,7 +48,6 @@ export function DashboardPage() {
   const [origin, setOrigin] = useState<OriginRect | null>(null);
   const openedByCell = useRef(false);
 
-  const cls = classById(classId);
   useCrumbs([{ label: 'Dashboard', to: '/dashboard' }, { label: cls?.name ?? '' }]);
 
   const search = params.toString() ? `?${params.toString()}` : '';
@@ -89,7 +90,7 @@ export function DashboardPage() {
         actions={
           <div className="dash-filters">
             <Select hideLabel label="Turma" value={classId} onChange={(v) => setParam('turma', v)} options={classOptions.length ? classOptions : [{ value: classId, label: cls?.name ?? '' }]} />
-            <Select hideLabel label="Disciplina" value={subjectId} onChange={(v) => setParam('disciplina', v)} options={listSubjects().map((s) => ({ value: s.id, label: s.name }))} />
+            <Select hideLabel label="Disciplina" value={subjectId} onChange={(v) => setParam('disciplina', v)} options={listSubjects().filter((s) => !cls || cls.subjectIds.includes(s.id)).map((s) => ({ value: s.id, label: s.name }))} />
             <Select hideLabel label="Período" value={periodId} onChange={(v) => setParam('periodo', v)} options={listPeriods().map((p) => ({ value: p.id, label: p.name }))} />
           </div>
         }
@@ -97,7 +98,7 @@ export function DashboardPage() {
       <Async
         query={q}
         skeleton={<DashSkeleton />}
-        isEmpty={(d) => d.rows.length === 0}
+        isEmpty={(d) => d.rows.length === 0 || d.subtopics.length === 0}
         empty={
           <div className="card">
             <EmptyState icon={<LayoutGrid />} title={cls && cls.studentCount === 0 ? `${cls.name} ainda não tem alunos` : 'Ainda não há resultados para este filtro'} actions={<ButtonLink variant="primary" to="/provas/enviar"><Upload />Enviar provas corrigidas</ButtonLink>}>

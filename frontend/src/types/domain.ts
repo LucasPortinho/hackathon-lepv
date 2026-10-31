@@ -4,7 +4,7 @@ export type NeedId = 'daltonismo' | 'tdah' | 'tea' | 'dislexia' | 'discalculia';
 
 export interface Subject { id: ID; name: string }
 
-export interface Subtopic { id: ID; subjectId: ID; name: string; short: string }
+export interface Subtopic { id: ID; subjectId: ID; name: string; short: string; unit: string; years: number[]; description: string; keywords: string[] }
 
 export interface Period { id: ID; name: string }
 
@@ -14,6 +14,7 @@ export interface Class {
   level: string;
   school: string;
   year: number;
+  grade: number | null;
   subjectIds: ID[];
   studentCount: number;
 }
@@ -125,6 +126,7 @@ export interface CompetencyGap {
   id: ID;
   subtopicId: ID;
   competency: string;
+  prerequisite?: string;
   reading: GapReading;
   note: string;
   suggestion: string;

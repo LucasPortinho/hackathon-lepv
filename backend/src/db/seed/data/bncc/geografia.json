@@ -1,0 +1,2562 @@
+{
+  "disciplina": "Geografia",
+  "etapa": "Ensino Fundamental",
+  "versao": "1.0.0",
+  "gerado_em": "2026-10-31",
+  "fonte_habilidades": "bncc-mcp 0.1.0 (lista oficial de habilidades da BNCC)",
+  "notas": {
+    "ano": "'ano' é o primeiro ano em que a habilidade é trabalhada; 'anos' lista todos (códigos como EF15LP01 abrangem do 1º ao 5º).",
+    "pre_requisitos": "Apenas pré-requisitos DIRETOS. Os indiretos são obtidos percorrendo o grafo recursivamente.",
+    "nivel": "Profundidade no grafo: 0 = sem pré-requisitos; nível N = maior cadeia de pré-requisitos até a habilidade.",
+    "ordem": "Posição numa ordenação topológica (desempate por ano e código). Ordenar qualquer subconjunto por este campo dá uma sequência de estudo válida.",
+    "palavras_chave": "Termos usados por alunos e professores, para casar lacunas descritas em texto livre com códigos."
+  },
+  "unidades_tematicas": [
+    "Conexões e escalas",
+    "Formas de representação e pensamento espacial",
+    "Mundo do trabalho",
+    "Natureza, ambientes e qualidade de vida",
+    "O sujeito e seu lugar no mundo"
+  ],
+  "total_habilidades": 123,
+  "habilidades": {
+    "EF01GE01": {
+      "nome": "Características dos lugares de vivência (moradia, escola)",
+      "descricao_bncc": "Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "O modo de vida das crianças em diferentes lugares",
+      "palavras_chave": [
+        "lugar de vivência",
+        "moradia",
+        "escola",
+        "semelhanças e diferenças"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 0
+    },
+    "EF01GE02": {
+      "nome": "Brincadeiras de diferentes épocas e lugares",
+      "descricao_bncc": "Identificar semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "O modo de vida das crianças em diferentes lugares",
+      "palavras_chave": [
+        "brincadeiras",
+        "jogos",
+        "outros lugares"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 1
+    },
+    "EF01GE03": {
+      "nome": "Usos do espaço público para lazer",
+      "descricao_bncc": "Identificar e relatar semelhanças e diferenças de usos do espaço público (praças, parques) para o lazer e diferentes manifestações.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Situações de convívio em diferentes lugares",
+      "palavras_chave": [
+        "espaço público",
+        "praças",
+        "parques",
+        "lazer"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 2
+    },
+    "EF01GE04": {
+      "nome": "Regras de convívio em diferentes espaços",
+      "descricao_bncc": "Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.).",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Situações de convívio em diferentes lugares",
+      "palavras_chave": [
+        "regras de convivência",
+        "sala de aula"
+      ],
+      "pre_requisitos": [
+        "EF01GE03"
+      ],
+      "nivel": 2,
+      "ordem": 3
+    },
+    "EF01GE05": {
+      "nome": "Ritmos naturais: dia e noite, temperatura e umidade",
+      "descricao_bncc": "Observar e descrever ritmos naturais (dia e noite, variação de temperatura e umidade etc.) em diferentes escalas espaciais e temporais, comparando a sua realidade com outras.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Ciclos naturais e a vida cotidiana",
+      "palavras_chave": [
+        "dia e noite",
+        "temperatura",
+        "umidade",
+        "ritmos da natureza"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 4
+    },
+    "EF01GE06": {
+      "nome": "Tipos de moradia e objetos: técnicas e materiais",
+      "descricao_bncc": "Descrever e comparar diferentes tipos de moradia ou objetos de uso cotidiano (brinquedos, roupas, mobiliários), considerando técnicas e materiais utilizados em sua produção.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Diferentes tipos de trabalho existentes no seu dia a dia",
+      "palavras_chave": [
+        "moradia",
+        "materiais",
+        "objetos do cotidiano"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 5
+    },
+    "EF01GE07": {
+      "nome": "Atividades de trabalho da comunidade",
+      "descricao_bncc": "Descrever atividades de trabalho relacionadas com o dia a dia da sua comunidade.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Diferentes tipos de trabalho existentes no seu dia a dia",
+      "palavras_chave": [
+        "trabalho",
+        "profissões",
+        "comunidade"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 6
+    },
+    "EF01GE08": {
+      "nome": "Mapas mentais e desenhos de itinerários",
+      "descricao_bncc": "Criar mapas mentais e desenhos com base em itinerários, contos literários, histórias inventadas e brincadeiras.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Pontos de referência",
+      "palavras_chave": [
+        "mapa mental",
+        "itinerário",
+        "desenho do caminho"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 7
+    },
+    "EF01GE09": {
+      "nome": "Mapas simples e referenciais espaciais (corpo como referência)",
+      "descricao_bncc": "Elaborar e utilizar mapas simples para localizar elementos do local de vivência, considerando referenciais espaciais (frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) e tendo o corpo como referência.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Pontos de referência",
+      "palavras_chave": [
+        "frente e atrás",
+        "esquerda e direita",
+        "mapa simples",
+        "localização"
+      ],
+      "pre_requisitos": [
+        "EF01GE08"
+      ],
+      "nivel": 1,
+      "ordem": 8
+    },
+    "EF01GE10": {
+      "nome": "Lugares de vivência e ritmos da natureza (chuva, vento, calor)",
+      "descricao_bncc": "Descrever características de seus lugares de vivência relacionadas aos ritmos da natureza (chuva, vento, calor etc.).",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Condições de vida nos lugares de vivência",
+      "palavras_chave": [
+        "chuva",
+        "vento",
+        "calor",
+        "tempo atmosférico"
+      ],
+      "pre_requisitos": [
+        "EF01GE05"
+      ],
+      "nivel": 1,
+      "ordem": 9
+    },
+    "EF01GE11": {
+      "nome": "Vestuário e alimentação conforme a variação do clima",
+      "descricao_bncc": "Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Condições de vida nos lugares de vivência",
+      "palavras_chave": [
+        "roupas",
+        "estações",
+        "hábitos alimentares",
+        "clima"
+      ],
+      "pre_requisitos": [
+        "EF01GE10"
+      ],
+      "nivel": 2,
+      "ordem": 10
+    },
+    "EF02GE01": {
+      "nome": "História das migrações no bairro",
+      "descricao_bncc": "Descrever a história das migrações no bairro ou comunidade em que vive.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Convivência e interações entre pessoas na comunidade",
+      "palavras_chave": [
+        "migração",
+        "bairro",
+        "comunidade"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 11
+    },
+    "EF02GE02": {
+      "nome": "Costumes e tradições de diferentes populações do bairro",
+      "descricao_bncc": "Comparar costumes e tradições de diferentes populações inseridas no bairro ou comunidade em que vive, reconhecendo a importância do respeito às diferenças.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Convivência e interações entre pessoas na comunidade",
+      "palavras_chave": [
+        "costumes",
+        "tradições",
+        "respeito às diferenças"
+      ],
+      "pre_requisitos": [
+        "EF02GE01"
+      ],
+      "nivel": 2,
+      "ordem": 12
+    },
+    "EF02GE03": {
+      "nome": "Meios de transporte e comunicação e seus riscos",
+      "descricao_bncc": "Comparar diferentes meios de transporte e de comunicação, indicando o seu papel na conexão entre lugares, e discutir os riscos para a vida e para o ambiente e seu uso responsável.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Riscos e cuidados nos meios de transporte e de comunicação",
+      "palavras_chave": [
+        "meios de transporte",
+        "meios de comunicação",
+        "trânsito"
+      ],
+      "pre_requisitos": [
+        "EF01GE03"
+      ],
+      "nivel": 2,
+      "ordem": 13
+    },
+    "EF02GE04": {
+      "nome": "Modos de viver e relação com a natureza em diferentes lugares",
+      "descricao_bncc": "Reconhecer semelhanças e diferenças nos hábitos, nas relações com a natureza e no modo de viver de pessoas em diferentes lugares.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Experiências da comunidade no tempo e no espaço",
+      "palavras_chave": [
+        "modos de vida",
+        "hábitos",
+        "natureza"
+      ],
+      "pre_requisitos": [
+        "EF01GE11",
+        "EF02GE02"
+      ],
+      "nivel": 3,
+      "ordem": 14
+    },
+    "EF02GE05": {
+      "nome": "Mudanças e permanências em imagens de um lugar",
+      "descricao_bncc": "Analisar mudanças e permanências, comparando imagens de um mesmo lugar em diferentes tempos.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Mudanças e permanências",
+      "palavras_chave": [
+        "mudanças e permanências",
+        "fotografias antigas",
+        "paisagem"
+      ],
+      "pre_requisitos": [
+        "EF01GE01"
+      ],
+      "nivel": 1,
+      "ordem": 15
+    },
+    "EF02GE06": {
+      "nome": "Dia e noite e as atividades sociais",
+      "descricao_bncc": "Relacionar o dia e a noite a diferentes tipos de atividades sociais (horário escolar, comercial, sono etc.).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Tipos de trabalho em lugares e tempos diferentes",
+      "palavras_chave": [
+        "dia e noite",
+        "horários",
+        "atividades sociais"
+      ],
+      "pre_requisitos": [
+        "EF01GE05"
+      ],
+      "nivel": 1,
+      "ordem": 16
+    },
+    "EF02GE07": {
+      "nome": "Atividades extrativas, agropecuárias e industriais e impactos",
+      "descricao_bncc": "Descrever as atividades extrativas (minerais, agropecuárias e industriais) de diferentes lugares, identificando os impactos ambientais.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Tipos de trabalho em lugares e tempos diferentes",
+      "palavras_chave": [
+        "extrativismo",
+        "agropecuária",
+        "indústria",
+        "impactos ambientais"
+      ],
+      "pre_requisitos": [
+        "EF01GE07"
+      ],
+      "nivel": 2,
+      "ordem": 17
+    },
+    "EF02GE08": {
+      "nome": "Representação da paisagem: desenhos, mapas mentais e maquetes",
+      "descricao_bncc": "Identificar e elaborar diferentes formas de representação (desenhos, mapas mentais, maquetes) para representar componentes da paisagem dos lugares de vivência.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Localização, orientação e representação espacial",
+      "palavras_chave": [
+        "maquete",
+        "mapa mental",
+        "paisagem"
+      ],
+      "pre_requisitos": [
+        "EF01GE09"
+      ],
+      "nivel": 2,
+      "ordem": 18
+    },
+    "EF02GE09": {
+      "nome": "Visão vertical e oblíqua: imagens aéreas, mapas e fotos",
+      "descricao_bncc": "Identificar objetos e lugares de vivência (escola e moradia) em imagens aéreas e mapas (visão vertical) e fotografias (visão oblíqua).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Localização, orientação e representação espacial",
+      "palavras_chave": [
+        "visão vertical",
+        "visão oblíqua",
+        "imagem aérea"
+      ],
+      "pre_requisitos": [
+        "EF02GE08"
+      ],
+      "nivel": 3,
+      "ordem": 19
+    },
+    "EF02GE10": {
+      "nome": "Localização em representações da sala e da escola",
+      "descricao_bncc": "Aplicar princípios de localização e posição de objetos (referenciais espaciais, como frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) por meio de representações espaciais da sala de aula e da escola.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Localização, orientação e representação espacial",
+      "palavras_chave": [
+        "localização",
+        "planta da sala",
+        "referenciais espaciais"
+      ],
+      "pre_requisitos": [
+        "EF02GE08"
+      ],
+      "nivel": 3,
+      "ordem": 20
+    },
+    "EF02GE11": {
+      "nome": "Usos do solo e da água no campo e na cidade",
+      "descricao_bncc": "Reconhecer a importância do solo e da água para a vida, identificando seus diferentes usos (plantação e extração de materiais, entre outras possibilidades) e os impactos desses usos no cotidiano da cidade e do campo.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Os usos dos recursos naturais: solo e água no campo e na cidade",
+      "palavras_chave": [
+        "solo",
+        "água",
+        "recursos naturais"
+      ],
+      "pre_requisitos": [
+        "EF02GE07"
+      ],
+      "nivel": 3,
+      "ordem": 21
+    },
+    "EF03GE01": {
+      "nome": "Aspectos culturais de grupos sociais na cidade e no campo",
+      "descricao_bncc": "Identificar e comparar aspectos culturais dos grupos sociais de seus lugares de vivência, seja na cidade, seja no campo.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "A cidade e o campo: aproximações e diferenças",
+      "palavras_chave": [
+        "cultura",
+        "cidade e campo",
+        "grupos sociais"
+      ],
+      "pre_requisitos": [
+        "EF02GE02"
+      ],
+      "nivel": 3,
+      "ordem": 22
+    },
+    "EF03GE02": {
+      "nome": "Contribuições culturais e econômicas de grupos de diferentes origens",
+      "descricao_bncc": "Identificar, em seus lugares de vivência, marcas de contribuição cultural e econômica de grupos de diferentes origens.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "A cidade e o campo: aproximações e diferenças",
+      "palavras_chave": [
+        "diversidade cultural",
+        "imigrantes",
+        "contribuições"
+      ],
+      "pre_requisitos": [
+        "EF03GE01"
+      ],
+      "nivel": 4,
+      "ordem": 23
+    },
+    "EF03GE03": {
+      "nome": "Modos de vida de povos e comunidades tradicionais",
+      "descricao_bncc": "Reconhecer os diferentes modos de vida de povos e comunidades tradicionais em distintos lugares.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "A cidade e o campo: aproximações e diferenças",
+      "palavras_chave": [
+        "povos tradicionais",
+        "indígenas",
+        "quilombolas",
+        "ribeirinhos"
+      ],
+      "pre_requisitos": [
+        "EF03GE01"
+      ],
+      "nivel": 4,
+      "ordem": 24
+    },
+    "EF03GE04": {
+      "nome": "Paisagens naturais e antrópicas e suas transformações",
+      "descricao_bncc": "Explicar como os processos naturais e históricos atuam na produção e na mudança das paisagens naturais e antrópicas nos seus lugares de vivência, comparando-os a outros lugares.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Paisagens naturais e antrópicas em transformação",
+      "palavras_chave": [
+        "paisagem natural",
+        "paisagem modificada",
+        "transformação da paisagem"
+      ],
+      "pre_requisitos": [
+        "EF02GE04",
+        "EF02GE05"
+      ],
+      "nivel": 4,
+      "ordem": 25
+    },
+    "EF03GE05": {
+      "nome": "Produtos cultivados e extraídos da natureza",
+      "descricao_bncc": "Identificar alimentos, minerais e outros produtos cultivados e extraídos da natureza, comparando as atividades de trabalho em diferentes lugares.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Matéria-prima e indústria",
+      "palavras_chave": [
+        "matéria-prima",
+        "alimentos",
+        "minerais",
+        "extração"
+      ],
+      "pre_requisitos": [
+        "EF02GE07"
+      ],
+      "nivel": 3,
+      "ordem": 26
+    },
+    "EF03GE06": {
+      "nome": "Representações cartográficas bidimensionais e tridimensionais",
+      "descricao_bncc": "Identificar e interpretar imagens bidimensionais e tridimensionais em diferentes tipos de representação cartográfica.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Representações cartográficas",
+      "palavras_chave": [
+        "representação cartográfica",
+        "mapa",
+        "maquete"
+      ],
+      "pre_requisitos": [
+        "EF02GE09"
+      ],
+      "nivel": 4,
+      "ordem": 27
+    },
+    "EF03GE07": {
+      "nome": "Legendas e símbolos em mapas",
+      "descricao_bncc": "Reconhecer e elaborar legendas com símbolos de diversos tipos de representações em diferentes escalas cartográficas.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Representações cartográficas",
+      "palavras_chave": [
+        "legenda",
+        "símbolos",
+        "escala cartográfica"
+      ],
+      "pre_requisitos": [
+        "EF03GE06"
+      ],
+      "nivel": 5,
+      "ordem": 28
+    },
+    "EF03GE08": {
+      "nome": "Lixo, consumo consciente e reciclagem",
+      "descricao_bncc": "Relacionar a produção de lixo doméstico ou da escola aos problemas causados pelo consumo excessivo e construir propostas para o consumo consciente, considerando a ampliação de hábitos de redução, reúso e reciclagem/descarte de materiais consumidos em casa, na escola e/ou no entorno.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Produção, circulação e consumo",
+      "palavras_chave": [
+        "lixo",
+        "reciclagem",
+        "consumo consciente",
+        "3Rs"
+      ],
+      "pre_requisitos": [
+        "EF02GE11"
+      ],
+      "nivel": 4,
+      "ordem": 29
+    },
+    "EF03GE09": {
+      "nome": "Usos da água e problemas ambientais",
+      "descricao_bncc": "Investigar os usos dos recursos naturais, com destaque para os usos da água em atividades cotidianas (alimentação, higiene, cultivo de plantas etc.), e discutir os problemas ambientais provocados por esses usos.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Impactos das atividades humanas",
+      "palavras_chave": [
+        "água",
+        "desperdício",
+        "poluição"
+      ],
+      "pre_requisitos": [
+        "EF02GE11"
+      ],
+      "nivel": 4,
+      "ordem": 30
+    },
+    "EF03GE10": {
+      "nome": "Cuidados com a água na agricultura e na geração de energia",
+      "descricao_bncc": "Identificar os cuidados necessários para utilização da água na agricultura e na geração de energia de modo a garantir a manutenção do provimento de água potável.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Impactos das atividades humanas",
+      "palavras_chave": [
+        "água potável",
+        "irrigação",
+        "hidrelétrica"
+      ],
+      "pre_requisitos": [
+        "EF03GE09"
+      ],
+      "nivel": 5,
+      "ordem": 31
+    },
+    "EF03GE11": {
+      "nome": "Impactos das atividades econômicas urbanas e rurais",
+      "descricao_bncc": "Comparar impactos das atividades econômicas urbanas e rurais sobre o ambiente físico natural, assim como os riscos provenientes do uso de ferramentas e máquinas.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Impactos das atividades humanas",
+      "palavras_chave": [
+        "impactos ambientais",
+        "atividades econômicas",
+        "máquinas"
+      ],
+      "pre_requisitos": [
+        "EF02GE07",
+        "EF03GE04"
+      ],
+      "nivel": 5,
+      "ordem": 32
+    },
+    "EF04GE01": {
+      "nome": "Elementos de distintas culturas na formação da cultura brasileira",
+      "descricao_bncc": "Selecionar, em seus lugares de vivência e em suas histórias familiares e/ou da comunidade, elementos de distintas culturas (indígenas, afro-brasileiras, de outras regiões do país, latino-americanas, europeias, asiáticas etc.), valorizando o que é próprio em cada uma delas e sua contribuição para a formação da cultura local, regional e brasileira.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Território e diversidade cultural",
+      "palavras_chave": [
+        "cultura brasileira",
+        "afro-brasileira",
+        "indígena",
+        "diversidade"
+      ],
+      "pre_requisitos": [
+        "EF03GE02"
+      ],
+      "nivel": 5,
+      "ordem": 33
+    },
+    "EF04GE02": {
+      "nome": "Processos migratórios e formação da sociedade brasileira",
+      "descricao_bncc": "Descrever processos migratórios e suas contribuições para a formação da sociedade brasileira.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Processos migratórios no Brasil",
+      "palavras_chave": [
+        "migração",
+        "imigração",
+        "formação do Brasil"
+      ],
+      "pre_requisitos": [
+        "EF04GE01"
+      ],
+      "nivel": 6,
+      "ordem": 34
+    },
+    "EF04GE03": {
+      "nome": "Poder público municipal e participação social",
+      "descricao_bncc": "Distinguir funções e papéis dos órgãos do poder público municipal e canais de participação social na gestão do Município, incluindo a Câmara de Vereadores e Conselhos Municipais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Instâncias do poder público e canais de participação social",
+      "palavras_chave": [
+        "prefeitura",
+        "Câmara de Vereadores",
+        "conselhos municipais"
+      ],
+      "pre_requisitos": [
+        "EF01GE04"
+      ],
+      "nivel": 3,
+      "ordem": 35
+    },
+    "EF04GE04": {
+      "nome": "Interdependência entre campo e cidade",
+      "descricao_bncc": "Reconhecer especificidades e analisar a interdependência do campo e da cidade, considerando fluxos econômicos, de informações, de ideias e de pessoas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Relação campo e cidade",
+      "palavras_chave": [
+        "campo e cidade",
+        "fluxos",
+        "interdependência"
+      ],
+      "pre_requisitos": [
+        "EF03GE01",
+        "EF03GE05"
+      ],
+      "nivel": 4,
+      "ordem": 36
+    },
+    "EF04GE05": {
+      "nome": "Unidades político-administrativas do Brasil",
+      "descricao_bncc": "Distinguir unidades político-administrativas oficiais nacionais (Distrito, Município, Unidade da Federação e grande região), suas fronteiras e sua hierarquia, localizando seus lugares de vivência.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Unidades político-administrativas do Brasil",
+      "palavras_chave": [
+        "município",
+        "estado",
+        "região",
+        "Distrito Federal",
+        "divisão política"
+      ],
+      "pre_requisitos": [
+        "EF03GE07",
+        "EF04GE03"
+      ],
+      "nivel": 6,
+      "ordem": 37
+    },
+    "EF04GE06": {
+      "nome": "Territórios étnico-culturais (terras indígenas e quilombolas)",
+      "descricao_bncc": "Identificar e descrever territórios étnico-culturais existentes no Brasil, tais como terras indígenas e de comunidades remanescentes de quilombos, reconhecendo a legitimidade da demarcação desses territórios.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Territórios étnico-culturais",
+      "palavras_chave": [
+        "terras indígenas",
+        "quilombos",
+        "demarcação"
+      ],
+      "pre_requisitos": [
+        "EF03GE03"
+      ],
+      "nivel": 5,
+      "ordem": 38
+    },
+    "EF04GE07": {
+      "nome": "Trabalho no campo e na cidade",
+      "descricao_bncc": "Comparar as características do trabalho no campo e na cidade.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Trabalho no campo e na cidade",
+      "palavras_chave": [
+        "trabalho rural",
+        "trabalho urbano"
+      ],
+      "pre_requisitos": [
+        "EF04GE04"
+      ],
+      "nivel": 5,
+      "ordem": 39
+    },
+    "EF04GE08": {
+      "nome": "Produção, circulação e consumo de produtos",
+      "descricao_bncc": "Descrever e discutir o processo de produção (transformação de matérias- primas), circulação e consumo de diferentes produtos.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Produção, circulação e consumo",
+      "palavras_chave": [
+        "produção",
+        "circulação",
+        "consumo",
+        "matéria-prima"
+      ],
+      "pre_requisitos": [
+        "EF03GE05"
+      ],
+      "nivel": 4,
+      "ordem": 40
+    },
+    "EF04GE09": {
+      "nome": "Direções cardeais na localização",
+      "descricao_bncc": "Utilizar as direções cardeais na localização de componentes físicos e humanos nas paisagens rurais e urbanas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Sistema de orientação",
+      "palavras_chave": [
+        "pontos cardeais",
+        "norte",
+        "sul",
+        "leste",
+        "oeste",
+        "rosa dos ventos"
+      ],
+      "pre_requisitos": [
+        "EF02GE10"
+      ],
+      "nivel": 4,
+      "ordem": 41
+    },
+    "EF04GE10": {
+      "nome": "Tipos de mapas e suas finalidades",
+      "descricao_bncc": "Comparar tipos variados de mapas, identificando suas características, elaboradores, finalidades, diferenças e semelhanças.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Elementos constitutivos dos mapas",
+      "palavras_chave": [
+        "tipos de mapas",
+        "mapa político",
+        "mapa físico"
+      ],
+      "pre_requisitos": [
+        "EF03GE07"
+      ],
+      "nivel": 6,
+      "ordem": 42
+    },
+    "EF04GE11": {
+      "nome": "Paisagens naturais e antrópicas: relevo, vegetação, rios",
+      "descricao_bncc": "Identificar as características das paisagens naturais e antrópicas (relevo, cobertura vegetal, rios etc.) no ambiente em que vive, bem como a ação humana na conservação ou degradação dessas áreas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Conservação e degradação da natureza",
+      "palavras_chave": [
+        "relevo",
+        "vegetação",
+        "rios",
+        "degradação"
+      ],
+      "pre_requisitos": [
+        "EF03GE04"
+      ],
+      "nivel": 5,
+      "ordem": 43
+    },
+    "EF05GE01": {
+      "nome": "Dinâmica populacional no estado e migrações",
+      "descricao_bncc": "Descrever e analisar dinâmicas populacionais na Unidade da Federação em que vive, estabelecendo relações entre migrações e condições de infraestrutura.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Dinâmica populacional",
+      "palavras_chave": [
+        "população",
+        "migração",
+        "infraestrutura"
+      ],
+      "pre_requisitos": [
+        "EF04GE02",
+        "EF04GE05"
+      ],
+      "nivel": 7,
+      "ordem": 44
+    },
+    "EF05GE02": {
+      "nome": "Diferenças étnico-raciais e desigualdades sociais",
+      "descricao_bncc": "Identificar diferenças étnico-raciais e étnico-culturais e desigualdades sociais entre grupos em diferentes territórios.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Diferenças étnico-raciais e étnico-culturais e desigualdades sociais",
+      "palavras_chave": [
+        "desigualdade",
+        "étnico-racial",
+        "racismo"
+      ],
+      "pre_requisitos": [
+        "EF04GE06"
+      ],
+      "nivel": 6,
+      "ordem": 45
+    },
+    "EF05GE03": {
+      "nome": "Formas e funções das cidades e seu crescimento",
+      "descricao_bncc": "Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Território, redes e urbanização",
+      "palavras_chave": [
+        "cidade",
+        "urbanização",
+        "crescimento urbano"
+      ],
+      "pre_requisitos": [
+        "EF04GE04"
+      ],
+      "nivel": 5,
+      "ordem": 46
+    },
+    "EF05GE04": {
+      "nome": "Interações cidade-campo e rede urbana",
+      "descricao_bncc": "Reconhecer as características da cidade e analisar as interações entre a cidade e o campo e entre cidades na rede urbana.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Território, redes e urbanização",
+      "palavras_chave": [
+        "rede urbana",
+        "cidade e campo"
+      ],
+      "pre_requisitos": [
+        "EF05GE03"
+      ],
+      "nivel": 6,
+      "ordem": 47
+    },
+    "EF05GE05": {
+      "nome": "Trabalho e inovação tecnológica nos setores econômicos",
+      "descricao_bncc": "Identificar e comparar as mudanças dos tipos de trabalho e desenvolvimento tecnológico na agropecuária, na indústria, no comércio e nos serviços.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Trabalho e inovação tecnológica",
+      "palavras_chave": [
+        "setores da economia",
+        "agropecuária",
+        "indústria",
+        "serviços",
+        "tecnologia"
+      ],
+      "pre_requisitos": [
+        "EF04GE07",
+        "EF04GE08"
+      ],
+      "nivel": 6,
+      "ordem": 48
+    },
+    "EF05GE06": {
+      "nome": "Transformações dos meios de transporte e comunicação",
+      "descricao_bncc": "Identificar e comparar transformações dos meios de transporte e de comunicação.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Trabalho e inovação tecnológica",
+      "palavras_chave": [
+        "transporte",
+        "comunicação",
+        "inovação"
+      ],
+      "pre_requisitos": [
+        "EF02GE03"
+      ],
+      "nivel": 3,
+      "ordem": 49
+    },
+    "EF05GE07": {
+      "nome": "Tipos de energia na produção e no cotidiano",
+      "descricao_bncc": "Identificar os diferentes tipos de energia utilizados na produção industrial, agrícola e extrativa e no cotidiano das populações.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Trabalho e inovação tecnológica",
+      "palavras_chave": [
+        "fontes de energia",
+        "energia",
+        "produção"
+      ],
+      "pre_requisitos": [
+        "EF03GE10"
+      ],
+      "nivel": 6,
+      "ordem": 50
+    },
+    "EF05GE08": {
+      "nome": "Transformação de paisagens em fotos aéreas e imagens de satélite",
+      "descricao_bncc": "Analisar transformações de paisagens nas cidades, comparando sequência de fotografias, fotografias aéreas e imagens de satélite de épocas diferentes.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Mapas e imagens de satélite",
+      "palavras_chave": [
+        "imagem de satélite",
+        "fotografia aérea",
+        "paisagem urbana"
+      ],
+      "pre_requisitos": [
+        "EF03GE06",
+        "EF04GE11"
+      ],
+      "nivel": 6,
+      "ordem": 51
+    },
+    "EF05GE09": {
+      "nome": "Hierarquia entre cidades em mapas temáticos",
+      "descricao_bncc": "Estabelecer conexões e hierarquias entre diferentes cidades, utilizando mapas temáticos e representações gráficas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Representação das cidades e do espaço urbano",
+      "palavras_chave": [
+        "mapa temático",
+        "hierarquia urbana"
+      ],
+      "pre_requisitos": [
+        "EF04GE10",
+        "EF05GE04"
+      ],
+      "nivel": 7,
+      "ordem": 52
+    },
+    "EF05GE10": {
+      "nome": "Qualidade ambiental e poluição das águas",
+      "descricao_bncc": "Reconhecer e comparar atributos da qualidade ambiental e algumas formas de poluição dos cursos de água e dos oceanos (esgotos, efluentes industriais, marés negras etc.).",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Qualidade ambiental",
+      "palavras_chave": [
+        "poluição da água",
+        "esgoto",
+        "oceanos"
+      ],
+      "pre_requisitos": [
+        "EF03GE09"
+      ],
+      "nivel": 5,
+      "ordem": 53
+    },
+    "EF05GE11": {
+      "nome": "Problemas ambientais do entorno e soluções",
+      "descricao_bncc": "Identificar e descrever problemas ambientais que ocorrem no entorno da escola e da residência (lixões, indústrias poluentes, destruição do patrimônio histórico etc.), propondo soluções (inclusive tecnológicas) para esses problemas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diferentes tipos de poluição",
+      "palavras_chave": [
+        "lixão",
+        "poluição",
+        "problemas ambientais"
+      ],
+      "pre_requisitos": [
+        "EF03GE08",
+        "EF05GE10"
+      ],
+      "nivel": 6,
+      "ordem": 54
+    },
+    "EF05GE12": {
+      "nome": "Poder público e qualidade de vida (mobilidade, moradia)",
+      "descricao_bncc": "Identificar órgãos do poder público e canais de participação social responsáveis por buscar soluções para a melhoria da qualidade de vida (em áreas como meio ambiente, mobilidade, moradia e direito à cidade) e discutir as propostas implementadas por esses órgãos que afetam a comunidade em que vive.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Gestão pública da qualidade de vida",
+      "palavras_chave": [
+        "direito à cidade",
+        "mobilidade",
+        "moradia",
+        "poder público"
+      ],
+      "pre_requisitos": [
+        "EF04GE03",
+        "EF05GE11"
+      ],
+      "nivel": 7,
+      "ordem": 55
+    },
+    "EF06GE01": {
+      "nome": "Modificações das paisagens e usos dos lugares ao longo do tempo",
+      "descricao_bncc": "Comparar modificações das paisagens nos lugares de vivência e os usos desses lugares em diferentes tempos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Identidade sociocultural",
+      "palavras_chave": [
+        "paisagem",
+        "lugar",
+        "transformações"
+      ],
+      "pre_requisitos": [
+        "EF05GE08"
+      ],
+      "nivel": 7,
+      "ordem": 56
+    },
+    "EF06GE02": {
+      "nome": "Modificação das paisagens por diferentes sociedades e povos originários",
+      "descricao_bncc": "Analisar modificações de paisagens por diferentes tipos de sociedade, com destaque para os povos originários.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Identidade sociocultural",
+      "palavras_chave": [
+        "povos originários",
+        "paisagem",
+        "sociedade e natureza"
+      ],
+      "pre_requisitos": [
+        "EF06GE01"
+      ],
+      "nivel": 8,
+      "ordem": 57
+    },
+    "EF06GE03": {
+      "nome": "Movimentos da Terra, circulação atmosférica e clima",
+      "descricao_bncc": "Descrever os movimentos do planeta e sua relação com a circulação geral da atmosfera, o tempo atmosférico e os padrões climáticos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Relações entre os componentes físico-naturais",
+      "palavras_chave": [
+        "rotação",
+        "translação",
+        "clima",
+        "tempo atmosférico",
+        "circulação atmosférica"
+      ],
+      "pre_requisitos": [
+        "EF01GE05",
+        "EF04GE09"
+      ],
+      "nivel": 5,
+      "ordem": 58
+    },
+    "EF06GE04": {
+      "nome": "Ciclo da água e bacias hidrográficas",
+      "descricao_bncc": "Descrever o ciclo da água, comparando o escoamento superficial no ambiente urbano e rural, reconhecendo os principais componentes da morfologia das bacias e das redes hidrográficas e a sua localização no modelado da superfície terrestre e da cobertura vegetal.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Relações entre os componentes físico-naturais",
+      "palavras_chave": [
+        "ciclo da água",
+        "bacia hidrográfica",
+        "rios",
+        "escoamento"
+      ],
+      "pre_requisitos": [
+        "EF03GE09",
+        "EF04GE11"
+      ],
+      "nivel": 6,
+      "ordem": 59
+    },
+    "EF06GE05": {
+      "nome": "Relação entre clima, solo, relevo e vegetação",
+      "descricao_bncc": "Relacionar padrões climáticos, tipos de solo, relevo e formações vegetais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Relações entre os componentes físico-naturais",
+      "palavras_chave": [
+        "clima",
+        "relevo",
+        "solo",
+        "formações vegetais"
+      ],
+      "pre_requisitos": [
+        "EF06GE03",
+        "EF06GE04"
+      ],
+      "nivel": 7,
+      "ordem": 60
+    },
+    "EF06GE06": {
+      "nome": "Paisagens transformadas pela agropecuária e industrialização",
+      "descricao_bncc": "Identificar as características das paisagens transformadas pelo trabalho humano a partir do desenvolvimento da agropecuária e do processo de industrialização.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformação das paisagens naturais e antrópicas",
+      "palavras_chave": [
+        "agropecuária",
+        "industrialização",
+        "paisagem"
+      ],
+      "pre_requisitos": [
+        "EF05GE05",
+        "EF06GE01"
+      ],
+      "nivel": 8,
+      "ordem": 61
+    },
+    "EF06GE07": {
+      "nome": "Surgimento das cidades e interação humana com a natureza",
+      "descricao_bncc": "Explicar as mudanças na interação humana com a natureza a partir do surgimento das cidades.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformação das paisagens naturais e antrópicas",
+      "palavras_chave": [
+        "origem das cidades",
+        "urbanização"
+      ],
+      "pre_requisitos": [
+        "EF05GE03",
+        "EF06GE02"
+      ],
+      "nivel": 9,
+      "ordem": 62
+    },
+    "EF06GE08": {
+      "nome": "Escalas gráfica e numérica nos mapas",
+      "descricao_bncc": "Medir distâncias na superfície pelas escalas gráficas e numéricas dos mapas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Fenômenos naturais e sociais representados de diferentes maneiras",
+      "palavras_chave": [
+        "escala cartográfica",
+        "escala numérica",
+        "escala gráfica",
+        "distâncias"
+      ],
+      "pre_requisitos": [
+        "EF04GE10"
+      ],
+      "nivel": 7,
+      "ordem": 63
+    },
+    "EF06GE09": {
+      "nome": "Modelos tridimensionais, blocos-diagramas e perfis topográficos",
+      "descricao_bncc": "Elaborar modelos tridimensionais, blocos-diagramas e perfis topográficos e de vegetação, visando à representação de elementos e estruturas da superfície terrestre.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Fenômenos naturais e sociais representados de diferentes maneiras",
+      "palavras_chave": [
+        "perfil topográfico",
+        "curvas de nível",
+        "relevo"
+      ],
+      "pre_requisitos": [
+        "EF06GE05",
+        "EF06GE08"
+      ],
+      "nivel": 8,
+      "ordem": 64
+    },
+    "EF06GE10": {
+      "nome": "Usos do solo e dos recursos hídricos",
+      "descricao_bncc": "Explicar as diferentes formas de uso do solo (rotação de terras, terraceamento, aterros etc.) e de apropriação dos recursos hídricos (sistema de irrigação, tratamento e redes de distribuição), bem como suas vantagens e desvantagens em diferentes épocas e lugares.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Biodiversidade e ciclo hidrológico",
+      "palavras_chave": [
+        "irrigação",
+        "terraceamento",
+        "tratamento de água"
+      ],
+      "pre_requisitos": [
+        "EF06GE04"
+      ],
+      "nivel": 7,
+      "ordem": 65
+    },
+    "EF06GE11": {
+      "nome": "Interações das sociedades com a natureza e biodiversidade",
+      "descricao_bncc": "Analisar distintas interações das sociedades com a natureza, com base na distribuição dos componentes físico-naturais, incluindo as transformações da biodiversidade local e do mundo.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Biodiversidade e ciclo hidrológico",
+      "palavras_chave": [
+        "biodiversidade",
+        "sociedade e natureza"
+      ],
+      "pre_requisitos": [
+        "EF06GE02",
+        "EF06GE05"
+      ],
+      "nivel": 9,
+      "ordem": 66
+    },
+    "EF06GE12": {
+      "nome": "Consumo de água e principais bacias hidrográficas",
+      "descricao_bncc": "Identificar o consumo dos recursos hídricos e o uso das principais bacias hidrográficas no Brasil e no mundo, enfatizando as transformações nos ambientes urbanos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Biodiversidade e ciclo hidrológico",
+      "palavras_chave": [
+        "bacias hidrográficas",
+        "consumo de água",
+        "Amazonas",
+        "São Francisco"
+      ],
+      "pre_requisitos": [
+        "EF06GE10"
+      ],
+      "nivel": 8,
+      "ordem": 67
+    },
+    "EF06GE13": {
+      "nome": "Práticas humanas e dinâmica climática (ilha de calor)",
+      "descricao_bncc": "Analisar consequências, vantagens e desvantagens das práticas humanas na dinâmica climática (ilha de calor etc.).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Atividades humanas e dinâmica climática",
+      "palavras_chave": [
+        "ilha de calor",
+        "mudanças climáticas",
+        "poluição do ar"
+      ],
+      "pre_requisitos": [
+        "EF06GE03",
+        "EF06GE07"
+      ],
+      "nivel": 10,
+      "ordem": 68
+    },
+    "EF07GE01": {
+      "nome": "Estereótipos sobre paisagens e formação territorial do Brasil",
+      "descricao_bncc": "Avaliar, por meio de exemplos extraídos dos meios de comunicação, ideias e estereótipos acerca das paisagens e da formação territorial do Brasil.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Ideias e concepções sobre a formação territorial do Brasil",
+      "palavras_chave": [
+        "estereótipos",
+        "mídia",
+        "território brasileiro"
+      ],
+      "pre_requisitos": [
+        "EF04GE05",
+        "EF06GE01"
+      ],
+      "nivel": 8,
+      "ordem": 69
+    },
+    "EF07GE02": {
+      "nome": "Fluxos econômicos e populacionais na formação territorial do Brasil",
+      "descricao_bncc": "Analisar a influência dos fluxos econômicos e populacionais na formação socioeconômica e territorial do Brasil, compreendendo os conflitos e as tensões históricas e contemporâneas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Formação territorial do Brasil",
+      "palavras_chave": [
+        "formação territorial",
+        "ciclos econômicos",
+        "ocupação do território"
+      ],
+      "pre_requisitos": [
+        "EF05GE01",
+        "EF07GE01"
+      ],
+      "nivel": 9,
+      "ordem": 70
+    },
+    "EF07GE03": {
+      "nome": "Territorialidades de povos indígenas, quilombolas e tradicionais",
+      "descricao_bncc": "Selecionar argumentos que reconheçam as territorialidades dos povos indígenas originários, das comunidades remanescentes de quilombos, de povos das florestas e do cerrado, de ribeirinhos e caiçaras, entre outros grupos sociais do campo e da cidade, como direitos legais dessas comunidades.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Formação territorial do Brasil",
+      "palavras_chave": [
+        "territórios indígenas",
+        "quilombolas",
+        "povos tradicionais",
+        "direitos"
+      ],
+      "pre_requisitos": [
+        "EF04GE06",
+        "EF07GE02"
+      ],
+      "nivel": 10,
+      "ordem": 71
+    },
+    "EF07GE04": {
+      "nome": "Distribuição da população brasileira: etnia, renda, sexo e idade",
+      "descricao_bncc": "Analisar a distribuição territorial da população brasileira, considerando a diversidade étnico-cultural (indígena, africana, europeia e asiática), assim como aspectos de renda, sexo e idade nas regiões brasileiras.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Características da população brasileira",
+      "palavras_chave": [
+        "população brasileira",
+        "distribuição da população",
+        "regiões brasileiras"
+      ],
+      "pre_requisitos": [
+        "EF05GE01",
+        "EF05GE02"
+      ],
+      "nivel": 8,
+      "ordem": 72
+    },
+    "EF07GE05": {
+      "nome": "Do mercantilismo ao capitalismo",
+      "descricao_bncc": "Analisar fatos e situações representativas das alterações ocorridas entre o período mercantilista e o advento do capitalismo.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Produção, circulação e consumo de mercadorias",
+      "palavras_chave": [
+        "mercantilismo",
+        "capitalismo"
+      ],
+      "pre_requisitos": [
+        "EF05GE05"
+      ],
+      "nivel": 7,
+      "ordem": 73
+    },
+    "EF07GE06": {
+      "nome": "Produção, circulação e consumo: impactos e distribuição de riquezas",
+      "descricao_bncc": "Discutir em que medida a produção, a circulação e o consumo de mercadorias provocam impactos ambientais, assim como influem na distribuição de riquezas, em diferentes lugares.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Produção, circulação e consumo de mercadorias",
+      "palavras_chave": [
+        "consumo",
+        "desigualdade",
+        "impactos ambientais"
+      ],
+      "pre_requisitos": [
+        "EF07GE05"
+      ],
+      "nivel": 8,
+      "ordem": 74
+    },
+    "EF07GE07": {
+      "nome": "Redes de transporte e comunicação no território brasileiro",
+      "descricao_bncc": "Analisar a influência e o papel das redes de transporte e comunicação na configuração do território brasileiro.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Desigualdade social e o trabalho",
+      "palavras_chave": [
+        "rodovias",
+        "ferrovias",
+        "redes de transporte"
+      ],
+      "pre_requisitos": [
+        "EF05GE06",
+        "EF07GE02"
+      ],
+      "nivel": 10,
+      "ordem": 75
+    },
+    "EF07GE08": {
+      "nome": "Industrialização e transformações do território brasileiro",
+      "descricao_bncc": "Estabelecer relações entre os processos de industrialização e inovação tecnológica com as transformações socioeconômicas do território brasileiro.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Desigualdade social e o trabalho",
+      "palavras_chave": [
+        "industrialização brasileira",
+        "inovação tecnológica"
+      ],
+      "pre_requisitos": [
+        "EF06GE06",
+        "EF07GE05"
+      ],
+      "nivel": 9,
+      "ordem": 76
+    },
+    "EF07GE09": {
+      "nome": "Mapas temáticos e históricos do Brasil",
+      "descricao_bncc": "Interpretar e elaborar mapas temáticos e históricos, inclusive utilizando tecnologias digitais, com informações demográficas e econômicas do Brasil (cartogramas), identificando padrões espaciais, regionalizações e analogias espaciais.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Mapas temáticos do Brasil",
+      "palavras_chave": [
+        "mapas temáticos",
+        "cartogramas",
+        "regionalização"
+      ],
+      "pre_requisitos": [
+        "EF05GE09",
+        "EF06GE08"
+      ],
+      "nivel": 8,
+      "ordem": 77
+    },
+    "EF07GE10": {
+      "nome": "Gráficos de barras, setores e histogramas com dados regionais",
+      "descricao_bncc": "Elaborar e interpretar gráficos de barras, gráficos de setores e histogramas, com base em dados socioeconômicos das regiões brasileiras.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Mapas temáticos do Brasil",
+      "palavras_chave": [
+        "gráficos",
+        "histograma",
+        "dados socioeconômicos"
+      ],
+      "pre_requisitos": [
+        "EF07GE04"
+      ],
+      "nivel": 9,
+      "ordem": 78
+    },
+    "EF07GE11": {
+      "nome": "Biomas e componentes físico-naturais do Brasil",
+      "descricao_bncc": "Caracterizar dinâmicas dos componentes físico-naturais no território nacional, bem como sua distribuição e biodiversidade (Florestas Tropicais, Cerrados, Caatingas, Campos Sulinos e Matas de Araucária).",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Biodiversidade brasileira",
+      "palavras_chave": [
+        "biomas brasileiros",
+        "Amazônia",
+        "Cerrado",
+        "Caatinga",
+        "Mata Atlântica"
+      ],
+      "pre_requisitos": [
+        "EF06GE11"
+      ],
+      "nivel": 10,
+      "ordem": 79
+    },
+    "EF07GE12": {
+      "nome": "Unidades de conservação e SNUC",
+      "descricao_bncc": "Comparar unidades de conservação existentes no Município de residência e em outras localidades brasileiras, com base na organização do Sistema Nacional de Unidades de Conservação (SNUC).",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Biodiversidade brasileira",
+      "palavras_chave": [
+        "unidades de conservação",
+        "SNUC",
+        "parques nacionais"
+      ],
+      "pre_requisitos": [
+        "EF07GE11"
+      ],
+      "nivel": 11,
+      "ordem": 80
+    },
+    "EF08GE01": {
+      "nome": "Dispersão da população humana e fluxos migratórios mundiais",
+      "descricao_bncc": "Descrever as rotas de dispersão da população humana pelo planeta e os principais fluxos migratórios em diferentes períodos da história, discutindo os fatores históricos e condicionantes físico-naturais associados à distribuição da população humana pelos continentes.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Distribuição da população mundial e deslocamentos populacionais",
+      "palavras_chave": [
+        "dispersão humana",
+        "fluxos migratórios",
+        "população mundial"
+      ],
+      "pre_requisitos": [
+        "EF05GE01",
+        "EF06GE05"
+      ],
+      "nivel": 8,
+      "ordem": 81
+    },
+    "EF08GE02": {
+      "nome": "História das famílias do município e migrações mundiais",
+      "descricao_bncc": "Relacionar fatos e situações representativas da história das famílias do Município em que se localiza a escola, considerando a diversidade e os fluxos migratórios da população mundial.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Diversidade e dinâmica da população mundial e local",
+      "palavras_chave": [
+        "migração",
+        "história local",
+        "famílias"
+      ],
+      "pre_requisitos": [
+        "EF08GE01"
+      ],
+      "nivel": 9,
+      "ordem": 82
+    },
+    "EF08GE03": {
+      "nome": "Dinâmica demográfica: perfil etário e crescimento vegetativo",
+      "descricao_bncc": "Analisar aspectos representativos da dinâmica demográfica, considerando características da população (perfil etário, crescimento vegetativo e mobilidade espacial).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Diversidade e dinâmica da população mundial e local",
+      "palavras_chave": [
+        "pirâmide etária",
+        "crescimento vegetativo",
+        "demografia",
+        "natalidade"
+      ],
+      "pre_requisitos": [
+        "EF07GE10"
+      ],
+      "nivel": 10,
+      "ordem": 83
+    },
+    "EF08GE04": {
+      "nome": "Migrações na América Latina e políticas migratórias",
+      "descricao_bncc": "Compreender os fluxos de migração na América Latina (movimentos voluntários e forçados, assim como fatores e áreas de expulsão e atração) e as principais políticas migratórias da região.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Diversidade e dinâmica da população mundial e local",
+      "palavras_chave": [
+        "migração latino-americana",
+        "refugiados",
+        "políticas migratórias"
+      ],
+      "pre_requisitos": [
+        "EF08GE01"
+      ],
+      "nivel": 9,
+      "ordem": 84
+    },
+    "EF08GE05": {
+      "nome": "Estado, nação, território e conflitos contemporâneos",
+      "descricao_bncc": "Aplicar os conceitos de Estado, nação, território, governo e país para o entendimento de conflitos e tensões na contemporaneidade, com destaque para as situações geopolíticas na América e na África e suas múltiplas regionalizações a partir do pós-guerra.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "Estado",
+        "nação",
+        "território",
+        "geopolítica",
+        "conflitos"
+      ],
+      "pre_requisitos": [
+        "EF07GE02"
+      ],
+      "nivel": 10,
+      "ordem": 85
+    },
+    "EF08GE06": {
+      "nome": "Organizações mundiais e integração na América e na África",
+      "descricao_bncc": "Analisar a atuação das organizações mundiais nos processos de integração cultural e econômica nos contextos americano e africano, reconhecendo, em seus lugares de vivência, marcas desses processos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "organizações internacionais",
+        "integração econômica",
+        "ONU"
+      ],
+      "pre_requisitos": [
+        "EF08GE05"
+      ],
+      "nivel": 11,
+      "ordem": 86
+    },
+    "EF08GE07": {
+      "nome": "Ascensão dos Estados Unidos e relação com China e Brasil",
+      "descricao_bncc": "Analisar os impactos geoeconômicos, geoestratégicos e geopolíticos da ascensão dos Estados Unidos da América no cenário internacional em sua posição de liderança global e na relação com a China e o Brasil.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "Estados Unidos",
+        "China",
+        "hegemonia",
+        "geopolítica"
+      ],
+      "pre_requisitos": [
+        "EF08GE05"
+      ],
+      "nivel": 11,
+      "ordem": 87
+    },
+    "EF08GE08": {
+      "nome": "Brasil, América Latina e África na ordem mundial do pós-guerra",
+      "descricao_bncc": "Analisar a situação do Brasil e de outros países da América Latina e da África, assim como da potência estadunidense na ordem mundial do pós-guerra.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "ordem mundial",
+        "pós-guerra",
+        "Guerra Fria"
+      ],
+      "pre_requisitos": [
+        "EF08GE07"
+      ],
+      "nivel": 12,
+      "ordem": 88
+    },
+    "EF08GE09": {
+      "nome": "Padrões de produção e comércio mundial: EUA e Brics",
+      "descricao_bncc": "Analisar os padrões econômicos mundiais de produção, distribuição e intercâmbio dos produtos agrícolas e industrializados, tendo como referência os Estados Unidos da América e os países denominados de Brics (Brasil, Rússia, Índia, China e África do Sul).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "Brics",
+        "comércio internacional",
+        "produção agrícola"
+      ],
+      "pre_requisitos": [
+        "EF07GE06",
+        "EF08GE07"
+      ],
+      "nivel": 12,
+      "ordem": 89
+    },
+    "EF08GE10": {
+      "nome": "Movimentos sociais no campo e na cidade na América Latina",
+      "descricao_bncc": "Distinguir e analisar conflitos e ações dos movimentos sociais brasileiros, no campo e na cidade, comparando com outros movimentos sociais existentes nos países latino-americanos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "MST",
+        "movimentos sociais",
+        "reforma agrária"
+      ],
+      "pre_requisitos": [
+        "EF07GE03",
+        "EF07GE08"
+      ],
+      "nivel": 11,
+      "ordem": 90
+    },
+    "EF08GE11": {
+      "nome": "Conflitos de fronteira na América Latina e cooperação",
+      "descricao_bncc": "Analisar áreas de conflito e tensões nas regiões de fronteira do continente latino-americano e o papel de organismos internacionais e regionais de cooperação nesses cenários.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "fronteiras",
+        "conflitos",
+        "cooperação regional"
+      ],
+      "pre_requisitos": [
+        "EF08GE06"
+      ],
+      "nivel": 12,
+      "ordem": 91
+    },
+    "EF08GE12": {
+      "nome": "Organismos de integração americana (Mercosul, OEA)",
+      "descricao_bncc": "Compreender os objetivos e analisar a importância dos organismos de integração do território americano (Mercosul, OEA, OEI, Nafta, Unasul, Alba, Comunidade Andina, Aladi, entre outros).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Corporações e organismos internacionais e do Brasil na ordem econômica mundial",
+      "palavras_chave": [
+        "Mercosul",
+        "OEA",
+        "Nafta",
+        "blocos econômicos"
+      ],
+      "pre_requisitos": [
+        "EF08GE06"
+      ],
+      "nivel": 12,
+      "ordem": 92
+    },
+    "EF08GE13": {
+      "nome": "Ciência, tecnologia e trabalho na América e na África",
+      "descricao_bncc": "Analisar a influência do desenvolvimento científico e tecnológico na caracterização dos tipos de trabalho e na economia dos espaços urbanos e rurais da América e da África.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Os diferentes contextos e os meios técnico e tecnológico na produção",
+      "palavras_chave": [
+        "tecnologia",
+        "trabalho",
+        "economia"
+      ],
+      "pre_requisitos": [
+        "EF07GE08"
+      ],
+      "nivel": 10,
+      "ordem": 93
+    },
+    "EF08GE14": {
+      "nome": "Desconcentração e recentralização econômica (capital dos EUA e da China)",
+      "descricao_bncc": "Analisar os processos de desconcentração, descentralização e recentralização das atividades econômicas a partir do capital estadunidense e chinês em diferentes regiões no mundo, com destaque para o Brasil.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Os diferentes contextos e os meios técnico e tecnológico na produção",
+      "palavras_chave": [
+        "globalização produtiva",
+        "multinacionais",
+        "capital chinês"
+      ],
+      "pre_requisitos": [
+        "EF08GE09",
+        "EF08GE13"
+      ],
+      "nivel": 13,
+      "ordem": 94
+    },
+    "EF08GE15": {
+      "nome": "Recursos hídricos da América Latina e gestão da água",
+      "descricao_bncc": "Analisar a importância dos principais recursos hídricos da America Latina (Aquífero Guarani, Bacias do rio da Prata, do Amazonas e do Orinoco, sistemas de nuvens na Amazônia e nos Andes, entre outros) e discutir os desafios relacionados à gestão e comercialização da água.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformações do espaço na sociedade urbano-industrial na América Latina",
+      "palavras_chave": [
+        "Aquífero Guarani",
+        "Bacia do Prata",
+        "Amazonas",
+        "gestão da água"
+      ],
+      "pre_requisitos": [
+        "EF06GE12"
+      ],
+      "nivel": 9,
+      "ordem": 95
+    },
+    "EF08GE16": {
+      "nome": "Problemas das grandes cidades latino-americanas",
+      "descricao_bncc": "Analisar as principais problemáticas comuns às grandes cidades latino-americanas, particularmente aquelas relacionadas à distribuição, estrutura e dinâmica da população e às condições de vida e trabalho.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformações do espaço na sociedade urbano-industrial na América Latina",
+      "palavras_chave": [
+        "metrópoles",
+        "problemas urbanos",
+        "condições de vida"
+      ],
+      "pre_requisitos": [
+        "EF05GE03",
+        "EF08GE03"
+      ],
+      "nivel": 11,
+      "ordem": 96
+    },
+    "EF08GE17": {
+      "nome": "Segregação socioespacial urbana na América Latina",
+      "descricao_bncc": "Analisar a segregação socioespacial em ambientes urbanos da América Latina, com atenção especial ao estudo de favelas, alagados e zona de riscos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformações do espaço na sociedade urbano-industrial na América Latina",
+      "palavras_chave": [
+        "favelas",
+        "segregação socioespacial",
+        "áreas de risco"
+      ],
+      "pre_requisitos": [
+        "EF08GE16"
+      ],
+      "nivel": 12,
+      "ordem": 97
+    },
+    "EF08GE18": {
+      "nome": "Mapas sobre dinâmicas urbanas e rurais da África e América",
+      "descricao_bncc": "Elaborar mapas ou outras formas de representação cartográfica para analisar as redes e as dinâmicas urbanas e rurais, ordenamento territorial, contextos culturais, modo de vida e usos e ocupação de solos da África e América.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Cartografia: anamorfose, croquis e mapas temáticos da América e África",
+      "palavras_chave": [
+        "cartografia",
+        "uso do solo",
+        "dinâmicas urbanas"
+      ],
+      "pre_requisitos": [
+        "EF07GE09"
+      ],
+      "nivel": 9,
+      "ordem": 98
+    },
+    "EF08GE19": {
+      "nome": "Cartogramas, croquis e anamorfoses da África e América",
+      "descricao_bncc": "Interpretar cartogramas, mapas esquemáticos (croquis) e anamorfoses geográficas com informações geográficas acerca da África e América.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Cartografia: anamorfose, croquis e mapas temáticos da América e África",
+      "palavras_chave": [
+        "anamorfose",
+        "croqui",
+        "cartograma"
+      ],
+      "pre_requisitos": [
+        "EF07GE09"
+      ],
+      "nivel": 9,
+      "ordem": 99
+    },
+    "EF08GE20": {
+      "nome": "Países da América e da África: população, economia e desigualdades",
+      "descricao_bncc": "Analisar características de países e grupos de países da América e da África no que se refere aos aspectos populacionais, urbanos, políticos e econômicos, e discutir as desigualdades sociais e econômicas e as pressões sobre a natureza e suas riquezas (sua apropriação e valoração na produção e circulação), o que resulta na espoliação desses povos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Identidades e interculturalidades regionais: Estados Unidos da América, América espanhola e portuguesa e África",
+      "palavras_chave": [
+        "desigualdades",
+        "países americanos",
+        "países africanos",
+        "espoliação"
+      ],
+      "pre_requisitos": [
+        "EF08GE03",
+        "EF08GE08"
+      ],
+      "nivel": 13,
+      "ordem": 100
+    },
+    "EF08GE21": {
+      "nome": "Papel geopolítico e ambiental da Antártica",
+      "descricao_bncc": "Analisar o papel ambiental e territorial da Antártica no contexto geopolítico, sua relevância para os países da América do Sul e seu valor como área destinada à pesquisa e à compreensão do ambiente global.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Identidades e interculturalidades regionais: Estados Unidos da América, América espanhola e portuguesa e África",
+      "palavras_chave": [
+        "Antártica",
+        "pesquisa científica",
+        "geopolítica"
+      ],
+      "pre_requisitos": [
+        "EF06GE03",
+        "EF08GE06"
+      ],
+      "nivel": 12,
+      "ordem": 101
+    },
+    "EF08GE22": {
+      "nome": "Recursos naturais da América Latina e cooperação no Mercosul",
+      "descricao_bncc": "Identificar os principais recursos naturais dos países da América Latina, analisando seu uso para a produção de matéria-prima e energia e sua relevância para a cooperação entre os países do Mercosul.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na América Latina",
+      "palavras_chave": [
+        "recursos naturais",
+        "matéria-prima",
+        "energia",
+        "Mercosul"
+      ],
+      "pre_requisitos": [
+        "EF05GE07",
+        "EF08GE12"
+      ],
+      "nivel": 13,
+      "ordem": 102
+    },
+    "EF08GE23": {
+      "nome": "Paisagens latino-americanas e seus povos",
+      "descricao_bncc": "Identificar paisagens da América Latina e associá-las, por meio da cartografia, aos diferentes povos da região, com base em aspectos da geomorfologia, da biogeografia e da climatologia.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na América Latina",
+      "palavras_chave": [
+        "geomorfologia",
+        "biogeografia",
+        "climatologia",
+        "paisagens"
+      ],
+      "pre_requisitos": [
+        "EF07GE11",
+        "EF08GE19"
+      ],
+      "nivel": 11,
+      "ordem": 103
+    },
+    "EF08GE24": {
+      "nome": "Características produtivas dos países latino-americanos",
+      "descricao_bncc": "Analisar as principais características produtivas dos países latino-americanos (como exploração mineral na Venezuela; agricultura de alta especialização e exploração mineira no Chile; circuito da carne nos pampas argentinos e no Brasil; circuito da cana-de-açúcar em Cuba; polígono industrial do sudeste brasileiro e plantações de soja no centro-oeste; maquiladoras mexicanas, entre outros).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na América Latina",
+      "palavras_chave": [
+        "economia latino-americana",
+        "mineração",
+        "agronegócio",
+        "maquiladoras"
+      ],
+      "pre_requisitos": [
+        "EF08GE09",
+        "EF08GE22"
+      ],
+      "nivel": 14,
+      "ordem": 104
+    },
+    "EF09GE01": {
+      "nome": "Hegemonia europeia no mundo",
+      "descricao_bncc": "Analisar criticamente de que forma a hegemonia europeia foi exercida em várias regiões do planeta, notadamente em situações de conflito, intervenções militares e/ou influência cultural em diferentes tempos e lugares.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "A hegemonia europeia na economia, na política e na cultura",
+      "palavras_chave": [
+        "colonialismo",
+        "hegemonia europeia",
+        "imperialismo"
+      ],
+      "pre_requisitos": [
+        "EF07GE05",
+        "EF08GE05"
+      ],
+      "nivel": 11,
+      "ordem": 105
+    },
+    "EF09GE02": {
+      "nome": "Corporações internacionais e organizações econômicas",
+      "descricao_bncc": "Analisar a atuação das corporações internacionais e das organizações econômicas mundiais na vida da população em relação ao consumo, à cultura e à mobilidade.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "Corporações e organismos internacionais",
+      "palavras_chave": [
+        "multinacionais",
+        "FMI",
+        "OMC",
+        "consumo"
+      ],
+      "pre_requisitos": [
+        "EF08GE14"
+      ],
+      "nivel": 14,
+      "ordem": 106
+    },
+    "EF09GE03": {
+      "nome": "Manifestações culturais de minorias étnicas",
+      "descricao_bncc": "Identificar diferentes manifestações culturais de minorias étnicas como forma de compreender a multiplicidade cultural na escala mundial, defendendo o princípio do respeito às diferenças.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "As manifestações culturais na formação populacional",
+      "palavras_chave": [
+        "minorias étnicas",
+        "multiculturalidade",
+        "respeito às diferenças"
+      ],
+      "pre_requisitos": [
+        "EF08GE02"
+      ],
+      "nivel": 10,
+      "ordem": 107
+    },
+    "EF09GE04": {
+      "nome": "Paisagens e modos de viver na Europa, Ásia e Oceania",
+      "descricao_bncc": "Relacionar diferenças de paisagens aos modos de viver de diferentes povos na Europa, Ásia e Oceania, valorizando identidades e interculturalidades regionais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "O sujeito e seu lugar no mundo",
+      "objeto_conhecimento": "As manifestações culturais na formação populacional",
+      "palavras_chave": [
+        "Europa",
+        "Ásia",
+        "Oceania",
+        "interculturalidade"
+      ],
+      "pre_requisitos": [
+        "EF09GE03",
+        "EF09GE16"
+      ],
+      "nivel": 15,
+      "ordem": 120
+    },
+    "EF09GE05": {
+      "nome": "Integração mundial: globalização e mundialização",
+      "descricao_bncc": "Analisar fatos e situações para compreender a integração mundial (econômica, política e cultural), comparando as diferentes interpretações: globalização e mundialização.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Integração mundial e suas interpretações: globalização e mundialização",
+      "palavras_chave": [
+        "globalização",
+        "mundialização",
+        "integração mundial"
+      ],
+      "pre_requisitos": [
+        "EF09GE02"
+      ],
+      "nivel": 15,
+      "ordem": 108
+    },
+    "EF09GE06": {
+      "nome": "Divisão do mundo em Ocidente e Oriente e o sistema colonial",
+      "descricao_bncc": "Associar o critério de divisão do mundo em Ocidente e Oriente com o Sistema Colonial implantado pelas potências europeias.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "A divisão do mundo em Ocidente e Oriente",
+      "palavras_chave": [
+        "Ocidente",
+        "Oriente",
+        "sistema colonial"
+      ],
+      "pre_requisitos": [
+        "EF09GE01"
+      ],
+      "nivel": 12,
+      "ordem": 109
+    },
+    "EF09GE07": {
+      "nome": "Eurásia: componentes físicos e divisão Europa-Ásia",
+      "descricao_bncc": "Analisar os componentes físico-naturais da Eurásia e os determinantes histórico-geográficos de sua divisão em Europa e Ásia.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Intercâmbios históricos e culturais entre Europa, Ásia e Oceania",
+      "palavras_chave": [
+        "Eurásia",
+        "Montes Urais",
+        "Europa e Ásia"
+      ],
+      "pre_requisitos": [
+        "EF06GE05",
+        "EF09GE06"
+      ],
+      "nivel": 13,
+      "ordem": 110
+    },
+    "EF09GE08": {
+      "nome": "Fronteiras e conflitos na Europa, Ásia e Oceania",
+      "descricao_bncc": "Analisar transformações territoriais, considerando o movimento de fronteiras, tensões, conflitos e múltiplas regionalidades na Europa, na Ásia e na Oceania.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Intercâmbios históricos e culturais entre Europa, Ásia e Oceania",
+      "palavras_chave": [
+        "fronteiras",
+        "conflitos",
+        "União Europeia"
+      ],
+      "pre_requisitos": [
+        "EF09GE07"
+      ],
+      "nivel": 14,
+      "ordem": 111
+    },
+    "EF09GE09": {
+      "nome": "Países da Europa, Ásia e Oceania: população, economia e desigualdades",
+      "descricao_bncc": "Analisar características de países e grupos de países europeus, asiáticos e da Oceania em seus aspectos populacionais, urbanos, políticos e econômicos, e discutir suas desigualdades sociais e econômicas e pressões sobre seus ambientes físico-naturais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Conexões e escalas",
+      "objeto_conhecimento": "Intercâmbios históricos e culturais entre Europa, Ásia e Oceania",
+      "palavras_chave": [
+        "países europeus",
+        "países asiáticos",
+        "Oceania",
+        "desigualdades"
+      ],
+      "pre_requisitos": [
+        "EF08GE20",
+        "EF09GE08"
+      ],
+      "nivel": 15,
+      "ordem": 112
+    },
+    "EF09GE10": {
+      "nome": "Industrialização na Europa, Ásia e Oceania",
+      "descricao_bncc": "Analisar os impactos do processo de industrialização na produção e circulação de produtos e culturas na Europa, na Ásia e na Oceania.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformações do espaço na sociedade urbano-industrial",
+      "palavras_chave": [
+        "Revolução Industrial",
+        "industrialização",
+        "Tigres Asiáticos"
+      ],
+      "pre_requisitos": [
+        "EF07GE08",
+        "EF09GE07"
+      ],
+      "nivel": 14,
+      "ordem": 113
+    },
+    "EF09GE11": {
+      "nome": "Mudanças técnicas, trabalho no mundo e consequências no Brasil",
+      "descricao_bncc": "Relacionar as mudanças técnicas e científicas decorrentes do processo de industrialização com as transformações no trabalho em diferentes regiões do mundo e suas consequências no Brasil.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Transformações do espaço na sociedade urbano-industrial",
+      "palavras_chave": [
+        "revolução técnico-científica",
+        "trabalho",
+        "automação"
+      ],
+      "pre_requisitos": [
+        "EF08GE13",
+        "EF09GE10"
+      ],
+      "nivel": 15,
+      "ordem": 114
+    },
+    "EF09GE12": {
+      "nome": "Urbanização, agropecuária, desemprego estrutural e capital financeiro",
+      "descricao_bncc": "Relacionar o processo de urbanização às transformações da produção agropecuária, à expansão do desemprego estrutural e ao papel crescente do capital financeiro em diferentes países, com destaque para o Brasil.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Cadeias industriais e inovação no uso dos recursos naturais e matérias-primas",
+      "palavras_chave": [
+        "desemprego estrutural",
+        "capital financeiro",
+        "êxodo rural"
+      ],
+      "pre_requisitos": [
+        "EF08GE16",
+        "EF09GE11"
+      ],
+      "nivel": 16,
+      "ordem": 115
+    },
+    "EF09GE13": {
+      "nome": "Produção agropecuária e desigualdade no acesso a alimentos",
+      "descricao_bncc": "Analisar a importância da produção agropecuária na sociedade urbano-industrial ante o problema da desigualdade mundial de acesso aos recursos alimentares e à matéria-prima.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Mundo do trabalho",
+      "objeto_conhecimento": "Cadeias industriais e inovação no uso dos recursos naturais e matérias-primas",
+      "palavras_chave": [
+        "fome",
+        "segurança alimentar",
+        "agropecuária"
+      ],
+      "pre_requisitos": [
+        "EF08GE24",
+        "EF09GE12"
+      ],
+      "nivel": 17,
+      "ordem": 116
+    },
+    "EF09GE14": {
+      "nome": "Gráficos, mapas temáticos e anamorfoses sobre desigualdades mundiais",
+      "descricao_bncc": "Elaborar e interpretar gráficos de barras e de setores, mapas temáticos e esquemáticos (croquis) e anamorfoses geográficas para analisar, sintetizar e apresentar dados e informações sobre diversidade, diferenças e desigualdades sociopolíticas e geopolíticas mundiais.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Leitura e elaboração de mapas temáticos, croquis e outras formas de representação para analisar informações geográficas",
+      "palavras_chave": [
+        "mapas temáticos",
+        "anamorfose",
+        "gráficos",
+        "desigualdades mundiais"
+      ],
+      "pre_requisitos": [
+        "EF07GE10",
+        "EF08GE19"
+      ],
+      "nivel": 10,
+      "ordem": 117
+    },
+    "EF09GE15": {
+      "nome": "Regiões do mundo em mapas e projeções cartográficas",
+      "descricao_bncc": "Comparar e classificar diferentes regiões do mundo com base em informações populacionais, econômicas e socioambientais representadas em mapas temáticos e com diferentes projeções cartográficas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Formas de representação e pensamento espacial",
+      "objeto_conhecimento": "Leitura e elaboração de mapas temáticos, croquis e outras formas de representação para analisar informações geográficas",
+      "palavras_chave": [
+        "projeções cartográficas",
+        "Mercator",
+        "Peters",
+        "regionalização"
+      ],
+      "pre_requisitos": [
+        "EF09GE14"
+      ],
+      "nivel": 11,
+      "ordem": 118
+    },
+    "EF09GE16": {
+      "nome": "Domínios morfoclimáticos da Europa, Ásia e Oceania",
+      "descricao_bncc": "Identificar e comparar diferentes domínios morfoclimáticos da Europa, da Ásia e da Oceania.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na Europa, na Ásia e na Oceania",
+      "palavras_chave": [
+        "domínios morfoclimáticos",
+        "climas",
+        "vegetação"
+      ],
+      "pre_requisitos": [
+        "EF09GE07"
+      ],
+      "nivel": 14,
+      "ordem": 119
+    },
+    "EF09GE17": {
+      "nome": "Características físico-naturais e ocupação da Europa, Ásia e Oceania",
+      "descricao_bncc": "Explicar as características físico-naturais e a forma de ocupação e usos da terra em diferentes regiões da Europa, da Ásia e da Oceania.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na Europa, na Ásia e na Oceania",
+      "palavras_chave": [
+        "uso da terra",
+        "ocupação",
+        "relevo"
+      ],
+      "pre_requisitos": [
+        "EF09GE16"
+      ],
+      "nivel": 15,
+      "ordem": 121
+    },
+    "EF09GE18": {
+      "nome": "Cadeias industriais, recursos naturais e fontes de energia",
+      "descricao_bncc": "Identificar e analisar as cadeias industriais e de inovação e as consequências dos usos de recursos naturais e das diferentes fontes de energia (tais como termoelétrica, hidrelétrica, eólica e nuclear) em diferentes países.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Natureza, ambientes e qualidade de vida",
+      "objeto_conhecimento": "Diversidade ambiental e as transformações nas paisagens na Europa, na Ásia e na Oceania",
+      "palavras_chave": [
+        "fontes de energia",
+        "energia nuclear",
+        "hidrelétrica",
+        "eólica"
+      ],
+      "pre_requisitos": [
+        "EF05GE07",
+        "EF09GE10"
+      ],
+      "nivel": 15,
+      "ordem": 122
+    }
+  }
+}

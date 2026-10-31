@@ -102,3 +102,13 @@ ins.df { background: var(--accent-wash); text-decoration: underline; text-decora
   .sheet-list { position: static; }
   .sheet-list ul { max-height: 16rem; }
 }
+
+.skill-picker { min-width: 0; }
+.skill-search { position: relative; }
+.skill-search svg { position: absolute; left: var(--s-3); top: 50%; translate: 0 -50%; width: 1rem; height: 1rem; pointer-events: none; }
+.skill-search .input { padding-left: calc(var(--s-3) * 2 + 1rem); }
+.skill-list { max-height: 15rem; overflow-y: auto; overscroll-behavior: contain; border: var(--bw) solid var(--ink); padding: var(--s-2); display: grid; gap: var(--s-3); margin-top: var(--s-2); }
+.skill-list h4 { font-size: var(--text-xs); font-weight: var(--weight-strong); padding: var(--s-1) var(--s-2); }
+.skill-option { display: flex; gap: var(--s-3); width: 100%; padding: var(--s-1) var(--s-2); text-align: left; font-size: var(--text-sm); align-items: baseline; }
+.skill-option code { flex: none; font-family: var(--font-data); font-weight: 600; }
+.skill-option:hover, .skill-option[aria-pressed='true'] { background: var(--ink); color: var(--paper); }

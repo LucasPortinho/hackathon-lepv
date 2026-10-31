@@ -65,5 +65,5 @@ async function diagnosticSheets(id: string) {
   }
 }
 
-Promise.all([examSheets(process.argv[2] ?? 'e-leis'), diagnosticSheets(process.argv[3] ?? 'd-cossenos')])
+Promise.all([examSheets(process.argv[2] ?? 'e-pitagoras'), diagnosticSheets(process.argv[3] ?? 'd-pitagoras')])
   .then(() => console.log(`Folhas geradas em ${OUT}/.`));

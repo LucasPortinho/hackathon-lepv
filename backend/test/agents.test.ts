@@ -75,6 +75,14 @@ describe('agentes com modelo simulado', () => {
     assert.equal(profile.gaps[0].prerequisite, 'Frações');
   });
 
+  it('o PED só escolhe pré-requisitos do grafo da BNCC', async () => {
+    const known = { t: ['EF09MA12 · Semelhança de triângulos'] };
+    const answer = (pre_requisito: string) => reply({ resumo: 'R', lacunas: [{ subtopico_id: 't', pre_requisito }] });
+    const withGraph = { ...input, prerequisites: known };
+    assert.equal((await analyzeStudent(withGraph, draft, answer('EF09MA12'))).gaps[0].prerequisite, known.t[0]);
+    assert.equal((await analyzeStudent(withGraph, draft, answer('Frações'))).gaps[0].prerequisite, draft.gaps[0].prerequisite);
+  });
+
   it('o PED nunca atribui necessidade que não foi declarada', async () => {
     const raw = (necessidade: string) => reply({ resumo: 'R', lacunas: [{ subtopico_id: 't', leitura: 'necessidade', necessidade }] });
     assert.deepEqual((await analyzeStudent(input, draft, raw('dislexia'))).gaps[0].reading, { kind: 'tecnica' });

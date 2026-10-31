@@ -19,9 +19,10 @@ function buildRow(student: Student, topics: Subtopic[], periodId: string, scoreO
   return { student, scores, average: meanOrNull(Object.values(scores)) };
 }
 
+/** Só o que a turma já fez no período vira coluna: o catálogo da BNCC tem centenas de habilidades. */
 function buildRows({ classId, subjectId, periodId }: DashboardQuery) {
-  const topics = catalogRepository.listSubtopics(subjectId);
   const { students, scoreOf } = loadClassScores(classId);
+  const topics = catalogRepository.listSubtopics(subjectId).filter((t) => students.some((s) => scoreOf(s.id, t.id, periodId) !== null));
   return { topics, rows: students.map((s) => buildRow(s, topics, periodId, scoreOf)) };
 }
 
@@ -65,9 +66,10 @@ function countByBand(values: number[]) {
 
 export function getSubtopicInsight(teacherId: string, q: DashboardQuery, subtopicId: string): SubtopicInsight {
   requireClass(teacherId, q.classId);
-  const { rows, topics } = buildRows(q);
-  const subtopic = topics.find((t) => t.id === subtopicId);
+  const subtopic = catalogRepository.listSubtopics(q.subjectId).find((t) => t.id === subtopicId);
   if (!subtopic) throw new NotFoundError('Subtópico não encontrado.');
+  const { students, scoreOf } = loadClassScores(q.classId);
+  const rows = students.map((s) => buildRow(s, [subtopic], q.periodId, scoreOf));
   const withValue = studentsWithValue(rows, subtopicId);
   const values = withValue.map((w) => w.value);
   return {

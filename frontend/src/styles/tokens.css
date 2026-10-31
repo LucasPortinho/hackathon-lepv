@@ -1,5 +1,6 @@
 /* Design tokens: the only place raw values live. Components consume the semantic layer.
-   Black and white. The score scale in lib/score.ts is the only colour in the product. */
+   One blue family, darkest to lightest: #005187, #4d82bc, #84b6f4, #c4dafa, #fcffff.
+   The score scale in lib/score.ts stays apart: its red-to-green range belongs to the data. */
 :root {
   /* Type */
   --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
@@ -60,56 +61,60 @@
   --z-overlay: 50;
   --z-toast: 70;
 
-  /* Palette: black, white, two greys. */
-  --ink: #000000;
-  --paper: #ffffff;
-  --gray-1: #595959; /* secondary text, 7:1 on white */
-  --gray-2: #d9d9d9; /* disabled and loading fills */
+  /* Palette. Only #005187 reads as small text; the middle blues carry data, depth and surfaces. */
+  --ink: #005187; /* text, rules and filled controls: 8.3:1 on paper, 5.8:1 on tint */
+  --paper: #fcffff;
+  --ink-soft: #2a5f98; /* secondary text, derived from #4d82bc to clear 4.5:1 on paper and on tint */
+  --tint: #c4dafa; /* sunken surfaces, hover and selected fills */
+  --data: #4d82bc; /* reference marks in charts, such as the class average */
+  --depth: #84b6f4; /* hard shadows */
 
   /* Semantic */
   --bg: var(--paper);
   --bg-shell: var(--paper);
   --surface: var(--paper);
-  --surface-sunk: var(--gray-2);
-  --surface-hover: var(--gray-2);
+  --surface-sunk: var(--tint);
+  --surface-hover: var(--tint);
   --surface-sheet: var(--paper);
   --surface-sheet-settled: var(--paper);
   --line: var(--ink);
-  --line-quiet: var(--gray-2);
+  --line-quiet: var(--tint);
   --text: var(--ink);
-  --text-2: var(--gray-1);
-  --text-3: var(--gray-1);
+  --text-2: var(--ink-soft);
+  --text-3: var(--ink-soft);
   --accent: var(--ink);
   --accent-strong: var(--ink);
-  --accent-wash: var(--paper);
+  --accent-wash: var(--tint);
   --on-accent: var(--paper);
   --caution: var(--ink);
   --caution-wash: var(--paper);
   --danger: var(--ink);
   --danger-wash: var(--paper);
-  --selection: var(--ink);
-  --on-selection: var(--paper);
+  --selection: var(--tint);
+  --on-selection: var(--ink);
   --score-none: var(--paper);
 
   /* Shadow: hard offset, no blur, ever. */
   --offset: 4px;
   --offset-hover: 6px;
-  --hard: var(--offset) var(--offset) 0 var(--ink);
-  --hard-hover: var(--offset-hover) var(--offset-hover) 0 var(--ink);
+  --hard: var(--offset) var(--offset) 0 var(--depth);
+  --hard-hover: var(--offset-hover) var(--offset-hover) 0 var(--depth);
   --shadow-xs: none;
   --shadow-sm: var(--hard);
   --shadow-md: var(--hard);
-  --shadow-lg: 8px 8px 0 var(--ink);
-  --shadow-sheet: -6px 0 0 var(--ink);
+  --shadow-lg: 8px 8px 0 var(--depth);
+  --shadow-sheet: -6px 0 0 var(--depth);
 
   color-scheme: light;
 }
 
-/* Dark is the same two inks, swapped. */
+/* Dark keeps the family: only the canvas is new, a deeper shade of #005187. */
 [data-theme='dark'] {
-  --ink: #ffffff;
-  --paper: #000000;
-  --gray-1: #a6a6a6;
-  --gray-2: #333333;
+  --ink: #fcffff;
+  --paper: #001d30;
+  --ink-soft: #c4dafa;
+  --tint: #005187;
+  --data: #84b6f4;
+  --depth: #4d82bc;
   color-scheme: dark;
 }

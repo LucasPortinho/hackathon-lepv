@@ -94,7 +94,7 @@ existente de gerar e salvar um perfil quando ainda não há um.
 | `POST /classes/:classId/groups` | `{ "name": "1º Bimestre" }` | `201`, `ExamGroup` |
 | `POST /exams` | Exemplo abaixo | `201`, `Exam` |
 | `POST /exams/:id/adapt` | `{ "needs": ["dislexia", "tdah"] }` | `200`, `ExamVersion[]` |
-| `POST /diagnostics` | `{ "classId": "c1", "subtopicIds": ["st-cossenos"] }` | `201`, `Diagnostic` |
+| `POST /diagnostics` | `{ "classId": "c1", "subtopicIds": ["EF09MA13"] }` | `201`, `Diagnostic` |
 | `POST /diagnostics/:id/run-agent` | `{ "stage": "pedagogico" }`, `{}` ou sem corpo | `200`, `Diagnostic` atualizado |
 | `POST /uploads/batch` | `{ "examId": "e1", "files": [...] }` | `201`, `{ id, examId, files }` |
 | `POST /uploads/batch/:id/sheets` | `{ "sheets": [...] }` | `204`, sem corpo |
@@ -106,7 +106,7 @@ Uma prova aceita questões existentes e manuais na mesma lista, como no frontend
 
 ```json
 {
-  "title": "Prova de trigonometria",
+  "title": "Prova de geometria",
   "classId": "c1",
   "subjectId": "mat",
   "groupId": null,
@@ -232,7 +232,7 @@ Questões manuais em `POST /exams` aceitam estes campos opcionais adicionais:
 ```json
 {
   "statement": "Quanto é 2 + 2?",
-  "subtopicId": "st-cossenos",
+  "subtopicId": "EF09MA13",
   "points": 1,
   "alternatives": ["A: 2", "B: 4"],
   "answerKey": "B",
@@ -264,7 +264,7 @@ Corpo do registro de itens:
 {
   "items": [{
     "id": "cria-1",
-    "subtopicId": "st-cossenos",
+    "subtopicId": "EF09MA13",
     "statement": "Resolva x + 2 = 4.",
     "alternatives": ["A: x = 2", "B: x = 4"],
     "answerKey": "A",

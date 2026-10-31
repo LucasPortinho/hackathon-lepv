@@ -4,9 +4,10 @@ import * as schema from './schema';
 import { creatorMetadataMigration } from './migrations/0002-creator-metadata';
 import { examAnswerKeysMigration } from './migrations/0003-exam-answer-keys';
 import { sheetImagesMigration } from './migrations/0004-sheet-images';
+import { bnccSkillsMigration } from './migrations/0005-bncc-skills';
 
 // Na ordem das versões: o índice 0 leva da versão 1 para a 2.
-const MIGRATIONS = [creatorMetadataMigration, examAnswerKeysMigration, sheetImagesMigration];
+const MIGRATIONS = [creatorMetadataMigration, examAnswerKeysMigration, sheetImagesMigration, bnccSkillsMigration];
 
 // `sqliteTable` não declara STRICT nem triggers: esta é a migração explícita pedida em schema.md.
 const withStrict = (statement: string) =>

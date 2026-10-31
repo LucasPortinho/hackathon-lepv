@@ -16,7 +16,7 @@ import './upload.css';
 
 interface Item { id: number; name: string; size: number; file: File; progress: number; error?: string }
 
-const STAGES = ['Lendo as provas dos alunos', 'Corrigindo pelo seu gabarito', 'Relacionando aos subtópicos', 'Definindo as competências'];
+const STAGES = ['Lendo as provas dos alunos', 'Corrigindo pelo seu gabarito', 'Relacionando às habilidades da BNCC', 'Definindo as competências'];
 const ACCEPTED = /\.(pdf|png|jpe?g)$/i;
 
 let nextId = 1;
@@ -129,7 +129,7 @@ export function UploadPage() {
               <div className="result-grid kpis">
                 <div className="kpi"><strong><Counter value={summary.sheets} /></strong><span className="kpi-label">Folhas lidas</span></div>
                 <div className="kpi"><strong><Counter value={summary.profiles} /></strong><span className="kpi-label">Perfis atualizados</span></div>
-                <div className="kpi"><strong><Counter value={summary.subtopics} /></strong><span className="kpi-label">Subtópicos analisados</span></div>
+                <div className="kpi"><strong><Counter value={summary.subtopics} /></strong><span className="kpi-label">Habilidades analisadas</span></div>
               </div>
               <h3 style={{ fontSize: 'var(--text-base)', marginBottom: 'var(--s-2)' }}>Confira estas folhas</h3>
               <ul style={{ display: 'grid', gap: 'var(--s-1)', marginBottom: 'var(--s-5)' }}>

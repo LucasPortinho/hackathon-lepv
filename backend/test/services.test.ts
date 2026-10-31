@@ -27,7 +27,7 @@ before(createDatabase);
 
 describe('catálogo', () => {
   it('lista turmas do professor com alunos e disciplinas', () => {
-    assert.deepEqual(classes.listClasses(T), [{ id: 'c1', name: '2º ano B', level: 'Médio', school: 'Colégio', year: 2026, studentCount: 4, subjectIds: ['mat'] }]);
+    assert.deepEqual(classes.listClasses(T), [{ id: 'c1', name: '2º ano B', level: 'Médio', school: 'Colégio', year: 2026, grade: null, studentCount: 4, subjectIds: ['mat'] }]);
   });
 
   it('cria e atualiza preferências', () => {
@@ -55,6 +55,8 @@ describe('dashboard', () => {
   });
 
   it('calcula o insight do subtópico', () => {
+    assert.deepEqual(dashboard.getDashboard(T, q).subtopics.map((t) => t.id), ['st-senos', 'st-cossenos', 'st-novo']);
+    assert.equal(dashboard.getSubtopicInsight(T, { ...q, periodId: 'b2' }, 'st-senos').subtopic.id, 'st-senos');
     const i = dashboard.getSubtopicInsight(T, q, 'st-cossenos');
     assert.equal(i.average, 58);
     assert.deepEqual(i.counts, [0, 1, 0, 0, 1, 2, 0]);

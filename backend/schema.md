@@ -25,6 +25,7 @@ erDiagram
     classes ||--o{ class_subjects : oferece
     subjects ||--o{ class_subjects : participa
     subjects ||--o{ subtopics : contem
+    subtopics ||--o{ subtopic_prerequisites : depende
     students ||--o{ student_needs : declara
     needs ||--o{ student_needs : identifica
     students ||--o{ scores : recebe
@@ -91,7 +92,7 @@ Chave primária: `teacher_id`.
 
 #### `subjects`
 
-Disciplinas, como Matemática e Física.
+Disciplinas da BNCC, como Matemática e Ciências.
 
 | Campo | Tipo SQLite | Aceita NULL | Default | Chave | Significado |
 | --- | --- | --- | --- | --- | --- |
@@ -104,7 +105,7 @@ Chave primária: `id`.
 
 #### `subtopics`
 
-Subtópicos de uma disciplina, usados nas questões, notas e diagnósticos.
+Habilidades da BNCC de uma disciplina, usadas nas questões, notas e diagnósticos. O `id` é o código oficial (`EF09MA13`), e os dados vêm de `src/db/seed/data/bncc/`.
 
 | Campo | Tipo SQLite | Aceita NULL | Default | Chave | Significado |
 | --- | --- | --- | --- | --- | --- |
@@ -112,7 +113,13 @@ Subtópicos de uma disciplina, usados nas questões, notas e diagnósticos.
 | `subject_id` | `TEXT` | Não | — | FK | Disciplina associada. |
 | `name` | `TEXT` | Não | — | — | Nome para apresentação. |
 | `short` | `TEXT` | Não | — | — | Rótulo curto para heatmaps e etiquetas. |
-| `position` | `INTEGER` | Não | `0` | — | Posição na lista; ordenação começa em zero. |
+| `position` | `INTEGER` | Não | `0` | — | Campo `ordem` da BNCC: qualquer subconjunto ordenado por ele dá uma sequência de estudo válida. |
+| `unit` | `TEXT` | Não | `'Outros conteúdos'` | — | Unidade temática; agrupa as colunas do heatmap. |
+| `knowledge_object` | `TEXT` | Não | `''` | — | Objeto de conhecimento. |
+| `description` | `TEXT` | Não | `''` | — | Texto da habilidade na BNCC. |
+| `years` | `TEXT` (JSON) | Não | `'[]'` | — | Anos escolares em que a habilidade é trabalhada. |
+| `keywords` | `TEXT` (JSON) | Não | `'[]'` | — | Termos usados na busca de habilidades. |
+| `level` | `INTEGER` | Não | `0` | — | Profundidade no grafo de pré-requisitos. |
 
 Chave primária: `id`.
 
@@ -120,7 +127,25 @@ Chave primária: `id`.
 - FK `(subject_id)` → `subjects(id)`; exclusão: `RESTRICT`.
 - Validação: `length(trim(name)) > 0`.
 - Validação: `position >= 0`.
+- Validação: `length(trim(unit)) > 0`.
+- Validação: `years` e `keywords` são arrays JSON.
+- Validação: `level >= 0`.
 - Índice `subtopics_subject_idx`: `(subject_id, position)`.
+
+#### `subtopic_prerequisites`
+
+Pré-requisitos diretos de cada habilidade; os indiretos saem de percorrer o grafo.
+
+| Campo | Tipo SQLite | Aceita NULL | Default | Chave | Significado |
+| --- | --- | --- | --- | --- | --- |
+| `subtopic_id` | `TEXT` | Não | — | PK, FK | Habilidade que depende do pré-requisito. |
+| `prerequisite_id` | `TEXT` | Não | — | PK, FK | Habilidade de base. |
+
+Chave primária: `subtopic_id, prerequisite_id`.
+
+- FK `(subtopic_id)` e `(prerequisite_id)` → `subtopics(id)`; exclusão: `CASCADE`.
+- Validação: `subtopic_id != prerequisite_id`.
+- Índice `subtopic_prerequisites_prerequisite_idx`: `(prerequisite_id)`.
 
 #### `periods`
 
@@ -149,12 +174,14 @@ Turmas associadas a um professor, escola, nível de ensino e ano.
 | `level` | `TEXT` | Não | — | — | Nível de ensino. |
 | `school` | `TEXT` | Não | — | — | Nome da escola. |
 | `year` | `INTEGER` | Não | — | — | Ano letivo. |
+| `grade` | `INTEGER` | Sim | `NULL` | — | Ano escolar (1 a 9) que delimita as habilidades oferecidas; sem valor, vale toda a disciplina. |
 
 Chave primária: `id`.
 
 - FK `(teacher_id)` → `teachers(id)`; exclusão: `RESTRICT`.
 - Validação: `length(trim(name)) > 0`.
 - Validação: `year BETWEEN 1 AND 9999`.
+- Validação: `grade IS NULL OR grade BETWEEN 1 AND 9`.
 - Índice `classes_teacher_idx`: `(teacher_id, year)`.
 
 #### `class_subjects`

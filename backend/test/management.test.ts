@@ -36,9 +36,9 @@ describe('turmas', () => {
     const created = classes.createClass(T, newClass);
     assert.equal(created.studentCount, 0);
     assert.deepEqual(created.subjectIds, ['mat']);
-    const edited = classes.updateClass(T, created.id, { ...newClass, name: 'Renomeada', year: 2027, subjectIds: ['mat', 'fis'] });
+    const edited = classes.updateClass(T, created.id, { ...newClass, name: 'Renomeada', year: 2027, subjectIds: ['mat', 'cie'] });
     assert.equal(edited.name, 'Renomeada');
-    assert.deepEqual(edited.subjectIds, ['fis', 'mat']);
+    assert.deepEqual(edited.subjectIds, ['cie', 'mat']);
     classes.deleteClass(T, created.id);
     assert.throws(() => requireClass(T, created.id), NotFoundError);
   });
@@ -46,59 +46,59 @@ describe('turmas', () => {
   it('valida disciplinas e protege as que estão em uso', () => {
     assert.throws(() => classes.createClass(T, { ...newClass, subjectIds: [] }), ValidationError);
     assert.throws(() => classes.createClass(T, { ...newClass, subjectIds: ['quimica'] }), ValidationError);
-    assert.throws(() => classes.updateClass(T, 'c-2a', { ...newClass, subjectIds: ['fis'] }), ConflictError);
+    assert.throws(() => classes.updateClass(T, 'c-9a', { ...newClass, subjectIds: ['cie'] }), ConflictError);
   });
 
   it('exclui uma turma com tudo que depende dela, sem tocar nas outras', async () => {
-    const before = { students: count(schema.students), other: listStudents(T, 'mat').filter((s) => s.student.classId !== 'c-2b').length };
-    const exam = exams.createExam(T, { title: 'Prova', classId: 'c-2b', subjectId: 'mat', groupId: 'g-b1', date: '2026-11-12', questions: [{ id: 'q1' }] });
+    const before = { students: count(schema.students), other: listStudents(T, 'mat').filter((s) => s.student.classId !== 'c-9b').length };
+    const exam = exams.createExam(T, { title: 'Prova', classId: 'c-9b', subjectId: 'mat', groupId: 'g-b1', date: '2026-11-12', questions: [{ id: 'q1' }] });
     await adaptations.generateAdaptations(T, exam.id, ['dislexia']);
-    const batch = createBatch(T, 'e-leis', [{ name: 'a.pdf', size: 1, kind: 'respostas' }]);
+    const batch = createBatch(T, 'e-pitagoras', [{ name: 'a.pdf', size: 1, kind: 'respostas' }]);
     await processBatch(T, batch.id);
-    const published = await inReview('c-2b', ['st-senos']);
+    const published = await inReview('c-9b', ['EF09MA12']);
     approveAll(T, published.id);
     publishDiagnostic(T, published.id);
 
-    classes.deleteClass(T, 'c-2b');
+    classes.deleteClass(T, 'c-9b');
 
-    assert.throws(() => requireClass(T, 'c-2b'), NotFoundError);
+    assert.throws(() => requireClass(T, 'c-9b'), NotFoundError);
     assert.equal(count(schema.students), before.students - 34);
     assert.equal(listStudents(T, 'mat').length, before.other);
-    assert.ok(exams.listExams(T).every((e) => e.classId !== 'c-2b'));
-    assert.ok(diagnostics.listDiagnostics(T).every((d) => d.classId !== 'c-2b'));
+    assert.ok(exams.listExams(T).every((e) => e.classId !== 'c-9b'));
+    assert.ok(diagnostics.listDiagnostics(T).every((d) => d.classId !== 'c-9b'));
     assert.deepEqual(db.$client.pragma('foreign_key_check'), []);
-    assert.ok(exams.listExams(T).some((e) => e.classId === 'c-2a'));
+    assert.ok(exams.listExams(T).some((e) => e.classId === 'c-9a'));
   });
 });
 
 describe('alunos', () => {
   it('cria aluno sem notas sem fingir domínio do conteúdo', () => {
-    const student = students.createStudent(T, { name: 'Zeca Nunes', classId: 'c-1c', declaredNeeds: ['tea'] });
+    const student = students.createStudent(T, { name: 'Zeca Nunes', classId: 'c-8c', declaredNeeds: ['tea'] });
     assert.deepEqual(student.declaredNeeds, ['tea']);
-    assert.equal(requireClass(T, 'c-1c').studentCount, 1);
+    assert.equal(requireClass(T, 'c-8c').studentCount, 1);
     const { profile } = getStudentDetail(T, student.id, 'mat');
     assert.match(profile.summary, /ainda não tem notas/);
-    assert.equal(getDashboard(T, { classId: 'c-1c', subjectId: 'mat', periodId: 'b3' }).rows[0].average, null);
+    assert.equal(getDashboard(T, { classId: 'c-8c', subjectId: 'mat', periodId: 'b3' }).rows[0].average, null);
     students.deleteStudent(T, student.id);
-    assert.equal(requireClass(T, 'c-1c').studentCount, 0);
+    assert.equal(requireClass(T, 'c-8c').studentCount, 0);
   });
 
   it('impede trocar de turma quem tem provas, mas permite editar o resto', () => {
-    const [student] = requireClassStudents('c-2a');
-    assert.throws(() => students.updateStudent(T, student.id, { name: student.name, classId: 'c-3c', declaredNeeds: [] }), ConflictError);
-    assert.equal(students.updateStudent(T, student.id, { name: 'Novo Nome', classId: 'c-2a', declaredNeeds: ['tdah'] }).name, 'Novo Nome');
+    const [student] = requireClassStudents('c-9a');
+    assert.throws(() => students.updateStudent(T, student.id, { name: student.name, classId: 'c-9c', declaredNeeds: [] }), ConflictError);
+    assert.equal(students.updateStudent(T, student.id, { name: 'Novo Nome', classId: 'c-9a', declaredNeeds: ['tdah'] }).name, 'Novo Nome');
   });
 
   it('move de turma quem não tem vínculos', () => {
-    const student = students.createStudent(T, { name: 'Sem Vinculo', classId: 'c-1c', declaredNeeds: [] });
-    assert.equal(students.updateStudent(T, student.id, { name: student.name, classId: 'c-3c', declaredNeeds: [] }).classId, 'c-3c');
+    const student = students.createStudent(T, { name: 'Sem Vinculo', classId: 'c-8c', declaredNeeds: [] });
+    assert.equal(students.updateStudent(T, student.id, { name: student.name, classId: 'c-9c', declaredNeeds: [] }).classId, 'c-9c');
     assert.throws(() => students.updateStudent(T, student.id, { name: student.name, classId: 'inexistente', declaredNeeds: [] }), NotFoundError);
   });
 
   it('remover uma necessidade limpa as leituras que a citavam', async () => {
-    const taina = requireClassStudents('c-2a').find((s) => s.name === 'Tainá Rezende')!;
+    const taina = requireClassStudents('c-9a').find((s) => s.name === 'Tainá Rezende')!;
     db.update(schema.scores).set({ value: 30 }).run();
-    const d = await inReview('c-2a', ['st-senos']);
+    const d = await inReview('c-9a', ['EF09MA12']);
     getStudentDetail(T, taina.id, 'mat');
     db.delete(schema.studentPedagogicalProfiles).run();
     const { profile } = getStudentDetail(T, taina.id, 'mat');
@@ -106,7 +106,7 @@ describe('alunos', () => {
     const adapted = d.perStudent.find((p) => p.studentId === taina.id)!;
     assert.ok(adapted.items.some((i) => i.adaptedFor === 'dislexia'));
 
-    students.updateStudent(T, taina.id, { name: taina.name, classId: 'c-2a', declaredNeeds: [] });
+    students.updateStudent(T, taina.id, { name: taina.name, classId: 'c-9a', declaredNeeds: [] });
 
     assert.ok(getStudentDetail(T, taina.id, 'mat').profile.gaps.every((g) => g.reading.kind === 'tecnica'));
     const after = diagnostics.getDiagnostic(T, d.id).diagnostic.perStudent.find((p) => p.studentId === taina.id)!;
@@ -115,7 +115,7 @@ describe('alunos', () => {
   });
 
   it('exclui aluno com folhas, diagnóstico e perfil', async () => {
-    const d = await inReview('c-2a', ['st-senos']);
+    const d = await inReview('c-9a', ['EF09MA12']);
     approveAll(T, d.id);
     publishDiagnostic(T, d.id);
     const { studentId } = d.perStudent[0];
@@ -128,7 +128,7 @@ describe('alunos', () => {
 
 describe('recusa de avaliação diagnóstica', () => {
   it('tira um aluno, edita questão e recusa a avaliação inteira', async () => {
-    const d = await inReview('c-3c', ['st-senos']);
+    const d = await inReview('c-9c', ['EF09MA12']);
     assert.ok(d.perStudent.length > 1);
     const [first, second] = d.perStudent;
     rejectForStudent(T, d.id, first.studentId);
@@ -148,7 +148,7 @@ describe('recusa de avaliação diagnóstica', () => {
   });
 
   it('não recusa avaliação já publicada', async () => {
-    const d = await inReview('c-3c', ['st-senos']);
+    const d = await inReview('c-9c', ['EF09MA12']);
     approveAll(T, d.id);
     publishDiagnostic(T, d.id);
     assert.throws(() => rejectDiagnostic(T, d.id), ConflictError);

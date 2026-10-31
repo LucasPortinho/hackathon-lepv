@@ -56,6 +56,7 @@ export function StudentProfileBody({ detail }: { detail: StudentDetail }) {
                 <p className="prose">{g.note}</p>
                 <div className="pf-tags">
                   <span className="chip">{subject(g.subtopicId)}</span>
+                  {g.prerequisite && <span className="chip">Pré-requisito: {g.prerequisite}</span>}
                   <span className="chip">{g.reading.kind === 'tecnica' ? 'Motivo provável: técnico' : 'Motivo provável: relacionado à necessidade declarada'}</span>
                 </div>
                 <p className="pf-next">Sugestão: {g.suggestion}</p>
@@ -63,7 +64,7 @@ export function StudentProfileBody({ detail }: { detail: StudentDetail }) {
             ))}
           </section>
           <section className="pf-section" aria-labelledby="pf-comp">
-            <h3 id="pf-comp">Competências por subtópico</h3>
+            <h3 id="pf-comp">Habilidades avaliadas</h3>
             <CompetencyBars data={detail.competencies.map((c) => ({ id: c.subtopic.id, label: c.subtopic.name, value: c.value, marker: c.classAverage }))} />
           </section>
           <section className="pf-section" aria-labelledby="pf-evo">

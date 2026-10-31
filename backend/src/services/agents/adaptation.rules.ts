@@ -27,7 +27,7 @@ function makeLiteral(text: string) {
 
 function addCalculationSupport(text: string) {
   if (!/\d/.test(text)) return null;
-  return { text: `${text}\n\nVocê pode usar a tabela de senos e cossenos e a calculadora nesta questão.`, why: 'Apoio para as contas, mantendo a competência avaliada.' };
+  return { text: `${text}\n\nVocê pode usar o formulário e a calculadora nesta questão.`, why: 'Apoio para as contas, mantendo a competência avaliada.' };
 }
 
 const RULES: Record<NeedId, Rule> = {
