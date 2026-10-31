@@ -1,0 +1,217 @@
+import './env';
+import assert from 'node:assert/strict';
+import { once } from 'node:events';
+import type { Server } from 'node:http';
+import { after, before, describe, it } from 'node:test';
+import { createApp } from '../src/app';
+import { db } from '../src/db';
+import { createDatabase } from './setup';
+
+const servers: Server[] = [];
+const bases: Record<string, string> = {};
+const examInput = {
+  title: 'Prova HTTP', classId: 'c1', subjectId: 'mat', groupId: null, date: '2026-11-12',
+  questions: [{ id: 'q1' }, { id: 'q2' }],
+};
+
+before(async () => {
+  await createDatabase();
+  for (const teacherId of ['t1', 't2']) {
+    const server = createApp({ teacherId }).listen(0, '127.0.0.1');
+    servers.push(server);
+    await once(server, 'listening');
+    const address = server.address();
+    assert.ok(address && typeof address !== 'string');
+    bases[teacherId] = `http://127.0.0.1:${address.port}/api/v1`;
+  }
+});
+
+after(async () => {
+  for (const server of servers) await new Promise<void>((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+  db.$client.close();
+});
+
+async function request(path: string, options: { method?: string; body?: unknown; teacher?: string; raw?: string } = {}) {
+  const { method = 'GET', body, teacher = 't1', raw } = options;
+  const headers: Record<string, string> = {};
+  if (body !== undefined || raw !== undefined) headers['Content-Type'] = 'application/json';
+  const response = await fetch(bases[teacher] + path, { method, headers, body: raw ?? (body === undefined ? undefined : JSON.stringify(body)) });
+  const text = await response.text();
+  return { status: response.status, headers: response.headers, body: text ? JSON.parse(text) : undefined };
+}
+
+describe('contratos HTTP da demonstração', () => {
+  it('usa o professor configurado sem login e não expõe endpoints PUT/PATCH', async () => {
+    const me = await request('/teachers/me');
+    assert.equal(me.status, 200);
+    assert.equal(me.body.id, 't1');
+    assert.equal(me.body.preferences.theme, 'claro');
+    assert.equal(me.headers.get('cache-control'), 'no-store');
+    assert.equal((await request('/teachers/me', { teacher: 't2' })).body.id, 't2');
+    assert.equal((await request('/auth/login', { method: 'POST', body: {} })).status, 404);
+    assert.equal((await request('/teachers/me/preferences', { method: 'PUT', body: { theme: 'escuro' } })).status, 404);
+    assert.equal((await request('/students/ana/profile?subjectId=mat', { method: 'PATCH', body: { summary: 'Alterado' } })).status, 404);
+    assert.equal((await request('/notifications/n1/read', { method: 'PATCH' })).status, 404);
+    assert.throws(() => createApp({ teacherId: '' }), /teacherId/);
+  });
+
+  it('padroniza JSON inválido, payload excessivo, validação e rota inexistente', async () => {
+    const invalid = await request('/exams', { method: 'POST', raw: '{' });
+    assert.equal(invalid.status, 400);
+    assert.equal(invalid.body.error.code, 'INVALID_REQUEST');
+    const oversized = await request('/exams', { method: 'POST', body: { title: 'x'.repeat(1024 * 1024 + 100) } });
+    assert.equal(oversized.status, 413);
+    const validation = await request('/dashboard/heatmap');
+    assert.equal(validation.status, 400);
+    assert.equal(validation.body.error.code, 'VALIDATION_ERROR');
+    assert.ok(validation.body.error.details.some((issue: { path: string }) => issue.path === 'query.classId'));
+    assert.equal((await request('/not-found')).status, 404);
+  });
+});
+
+describe('catálogo, turmas e dashboard', () => {
+  it('expõe catálogos e limita as consultas ao professor da demo', async () => {
+    for (const path of ['/subjects', '/periods', '/needs', '/subjects/mat/subtopics', '/questions/bank']) {
+      const result = await request(path);
+      assert.equal(result.status, 200);
+      assert.ok(Array.isArray(result.body));
+    }
+    assert.equal((await request('/subjects/missing/subtopics')).status, 404);
+    const classes = await request('/classes?year=2026');
+    assert.deepEqual(classes.body.map((cls: { id: string }) => cls.id), ['c1']);
+    assert.deepEqual((await request('/classes?year=2025')).body, []);
+    assert.equal((await request('/classes?year=2026junk')).status, 400);
+    assert.equal((await request('/classes?year=2026&year=2025')).status, 400);
+    assert.equal((await request('/classes?teacherId=t2')).status, 400);
+    assert.equal((await request('/classes/c2')).status, 404);
+    assert.equal((await request('/classes/c2/students')).status, 404);
+    const students = await request('/classes/c1/students');
+    assert.equal(students.status, 200);
+    assert.equal(students.body.length, 4);
+    assert.ok(Array.isArray(students.body[0].declaredNeeds));
+  });
+
+  it('mantém DashboardData, SubtopicInsight e notas ausentes', async () => {
+    const query = '?classId=c1&subjectId=mat&periodId=b3';
+    const dashboard = await request('/dashboard/heatmap' + query);
+    assert.equal(dashboard.status, 200);
+    assert.equal(dashboard.body.rows.length, 4);
+    assert.equal(dashboard.body.rows.find((row: { student: { id: string } }) => row.student.id === 'bruno').scores['st-novo'], null);
+    assert.equal(typeof dashboard.body.kpis.attention, 'number');
+    assert.equal((await request('/dashboard/heatmap?classId=c2&subjectId=mat&periodId=b3')).status, 404);
+    const insight = await request('/dashboard/subtopics/st-cossenos/insight' + query);
+    assert.equal(insight.status, 200);
+    assert.equal(insight.body.subtopic.id, 'st-cossenos');
+    assert.equal(insight.body.counts.length, 7);
+    assert.equal((await request('/dashboard/subtopics/st-plano/insight' + query)).status, 404);
+  });
+});
+
+describe('alunos e perfis', () => {
+  it('entrega StudentSummary, StudentDetail e PedagogicalProfile', async () => {
+    const list = await request('/students?subjectId=mat');
+    assert.equal(list.status, 200);
+    assert.equal(list.body.length, 4);
+    assert.ok(list.body.every((row: { student: { classId: string } }) => row.student.classId === 'c1'));
+    const detail = await request('/students/ana?subjectId=mat');
+    assert.equal(detail.status, 200);
+    assert.equal(detail.body.student.id, 'ana');
+    assert.ok(Array.isArray(detail.body.evolution));
+    const profile = await request('/students/ana/profile?subjectId=mat');
+    assert.equal(profile.status, 200);
+    assert.equal(profile.body.studentId, 'ana');
+    assert.ok(Array.isArray(profile.body.gaps));
+    assert.equal((await request('/students/edu?subjectId=mat')).status, 404);
+    assert.equal((await request('/students/ana/profile')).status, 400);
+  });
+});
+
+describe('criação de provas e geração de adaptações', () => {
+  it('aceita questões do frontend, questões manuais e questionIds do planejamento', async () => {
+    const group = await request('/classes/c1/groups', { method: 'POST', body: { name: 'Bimestre HTTP' } });
+    assert.equal(group.status, 201);
+    const result = await request('/exams', { method: 'POST', body: {
+      ...examInput, groupId: group.body.id,
+      questions: [{ id: 'q1', key: 'q1', statement: 'Metadado do frontend', points: 2, source: 'banco' }, { statement: 'Questão manual', subtopicId: 'st-senos', points: 0.5, key: 'manual-1' }],
+    } });
+    assert.equal(result.status, 201);
+    assert.equal(result.body.questionIds.length, 2);
+    assert.equal(result.body.groupName, 'Bimestre HTTP');
+    const examId = result.body.id;
+    const detail = await request('/exams/' + examId);
+    assert.equal(detail.body.exam.id, examId);
+    assert.equal(detail.body.questions[1].source, 'manual');
+    assert.equal(detail.body.questions[1].points, 0.5);
+    assert.equal((await request(`/exams?classId=c1&groupId=${group.body.id}`)).body.length, 1);
+    const { questions: _, ...fields } = examInput;
+    assert.equal((await request('/exams', { method: 'POST', body: { ...fields, questionIds: ['q1'] } })).status, 201);
+    assert.equal((await request('/exams', { method: 'POST', body: { ...examInput, date: '2026-02-30' } })).status, 400);
+    assert.equal((await request('/exams', { method: 'POST', body: { ...examInput, classId: 'c2' } })).status, 404);
+    assert.equal((await request('/exams', { method: 'POST', body: { ...examInput, teacherId: 't2' } })).status, 400);
+    assert.equal((await request('/exams/' + examId, { teacher: 't2' })).status, 404);
+  });
+
+  it('gera versões combinadas e retorna studentNames como objeto JSON', async () => {
+    const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const path = '/exams/' + exam.id;
+    assert.equal((await request(path + '/need-counts')).body.dislexia, 1);
+    const generated = await request(path + '/adapt', { method: 'POST', body: { needs: ['dislexia', 'tdah'] } });
+    assert.equal(generated.status, 200);
+    assert.ok(generated.body.some((version: { needs: string[] }) => version.needs.length === 2));
+    const result = await request(path + '/adaptations');
+    assert.equal(result.body.studentNames.ana, 'Ana Moreira');
+    assert.ok(result.body.adaptations.length > 0);
+    assert.equal((await request(path + '/adapt', { method: 'POST', body: { needs: ['unknown'] } })).status, 400);
+    assert.equal((await request('/adaptations/' + result.body.adaptations[0].id, { method: 'PATCH', body: { decision: 'aceita' } })).status, 404);
+  });
+});
+
+describe('diagnósticos e registro de folhas', () => {
+  it('avança a geração até a revisão e preserva o contrato do detalhe', async () => {
+    assert.equal((await request('/diagnostics/suggestions?classId=c1&subjectId=mat')).status, 200);
+    const created = await request('/diagnostics', { method: 'POST', body: { classId: 'c1', subtopicIds: ['st-cossenos'] } });
+    assert.equal(created.status, 201);
+    const path = '/diagnostics/' + created.body.id;
+    assert.equal((await request(path + '/run-agent', { method: 'POST', body: { stage: 'criador' } })).status, 409);
+    let diagnostic = created.body;
+    for (let step = 0; step < 3 && diagnostic.stage !== 'revisao'; step++) {
+      const result = await request(path + '/run-agent', { method: 'POST', body: { stage: diagnostic.stage } });
+      assert.equal(result.status, 200);
+      diagnostic = result.body;
+    }
+    assert.equal(diagnostic.stage, 'revisao');
+    const detail = await request(path);
+    assert.equal(detail.body.students.ana.id, 'ana');
+    assert.ok(diagnostic.perStudent.length > 0);
+    assert.equal((await request(path + '/run-agent', { method: 'POST' })).status, 409);
+    assert.equal((await request(path, { teacher: 't2' })).status, 404);
+  });
+
+  it('registra metadados e folhas sem implementar upload binário ou OCR', async () => {
+    const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const batch = await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'respostas.pdf', size: 1024, kind: 'gabarito' }] } });
+    assert.equal(batch.status, 201);
+    assert.equal(batch.body.files[0].progress, 100);
+    const path = '/uploads/batch/' + batch.body.id;
+    const sheets = [{ studentId: 'ana', readStatus: 'completa' }, { studentId: 'bruno', readStatus: 'parcial', partialReason: 'Questão ilegível' }];
+    assert.equal((await request(path + '/sheets', { method: 'POST', body: { sheets } })).status, 204);
+    assert.equal((await request(path + '/sheets', { method: 'POST', teacher: 't2', body: { sheets } })).status, 404);
+    assert.equal((await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [] } })).status, 400);
+    assert.equal((await request('/uploads/batch', { method: 'POST', body: { diagnosticId: 'd1', files: [{ name: 'f.pdf', size: 1, kind: 'prova' }] } })).status, 400);
+  });
+});
+
+describe('atividade, busca e notificações', () => {
+  it('filtra as consultas sem modificar notificações', async () => {
+    const unread = await request('/notifications?unreadOnly=true');
+    assert.equal(unread.status, 200);
+    assert.ok(unread.body.length > 0);
+    assert.equal((await request('/notifications?unreadOnly=false')).status, 200);
+    assert.equal((await request('/notifications?unreadOnly=1')).status, 400);
+    assert.equal((await request('/agent-runs?agent=adaptacao')).status, 200);
+    assert.equal((await request('/agent-runs?agent=unknown')).status, 400);
+    const results = await request('/search?q=Ana');
+    assert.ok(results.body.some((row: { id: string }) => row.id === 'ana'));
+    assert.ok(!(await request('/search?q=Edu')).body.some((row: { id: string }) => row.id === 'edu'));
+  });
+});

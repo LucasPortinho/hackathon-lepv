@@ -1,0 +1,50 @@
+import { z } from 'zod';
+import { diagnosticStages, needIds, sheetReadStatuses } from '../db/schema';
+import { isCalendarDate } from '../lib/time';
+
+export const id = z.string().trim().min(1).max(200);
+export const text = z.string().trim().min(1).max(20000);
+export const empty = z.object({}).strict();
+export const idParams = z.object({ id });
+export const classParams = z.object({ classId: id });
+export const studentParams = z.object({ studentId: id });
+export const subjectQuery = z.object({ subjectId: id });
+export const noQuery = empty;
+export const request = <P extends z.ZodType, Q extends z.ZodType, B extends z.ZodType>(params: P, query: Q, body: B) =>
+  z.object({ params, query, body });
+export const read = <P extends z.ZodType, Q extends z.ZodType>(params: P, query: Q) =>
+  request(params, query, z.unknown());
+export const queryBoolean = z.enum(['true', 'false']).transform((value) => value === 'true');
+export const year = z.string().regex(/^\d{1,4}$/).transform(Number).pipe(z.number().int().min(1).max(9999));
+export const dashboardQuery = z.object({ classId: id, subjectId: id, periodId: id }).strict();
+
+const manualQuestion = z.object({ statement: text, subtopicId: id, points: z.number().positive().finite() });
+// Objetos Question completos do frontend são aceitos; só o id chega ao service.
+const existingQuestion = z.object({ id });
+const examFields = {
+  title: z.string().trim().min(1).max(500), classId: id, subjectId: id,
+  groupId: id.nullable().default(null), date: z.string().refine(isCalendarDate, 'Use uma data válida no formato AAAA-MM-DD.'),
+};
+export const newExamBody = z.union([
+  z.object({ ...examFields, questions: z.array(z.union([existingQuestion, manualQuestion])).min(1).max(500) }).strict(),
+  z.object({ ...examFields, questionIds: z.array(id).min(1).max(500) }).strict()
+    .transform(({ questionIds, ...fields }) => ({ ...fields, questions: questionIds.map((id) => ({ id })) })),
+]);
+export const groupBody = z.object({ name: z.string().trim().min(1).max(200) }).strict();
+export const adaptBody = z.object({ needs: z.array(z.enum(needIds)).min(1).max(5) }).strict();
+
+// Título e disciplina são derivados pelos services a partir dos subtópicos.
+export const newDiagnosticBody = z.object({ classId: id, subtopicIds: z.array(id).min(1).max(100) }).strict();
+export const runAgentBody = z.object({ stage: z.enum(diagnosticStages).optional() }).strict().default({});
+
+const file = z.object({
+  name: z.string().trim().min(1).max(255), size: z.number().int().nonnegative().safe(),
+  kind: z.enum(['prova', 'gabarito']), storagePath: z.string().min(1).max(2048).optional(),
+}).strict();
+export const batchBody = z.object({ examId: id, files: z.array(file).min(1).max(100) }).strict();
+const sheet = z.object({
+  studentId: id.optional(), studentName: z.string().trim().min(1).max(500).optional(),
+  readStatus: z.enum(sheetReadStatuses), partialReason: z.string().max(20000).optional(),
+  extractedText: z.string().max(100000).optional(),
+}).strict();
+export const sheetsBody = z.object({ sheets: z.array(sheet).min(1).max(1000) }).strict();
