@@ -59,8 +59,22 @@ Não há dependências para instalar.
 Se a causa é técnica, existe um pré-requisito e o score é menor que 60, o CRIA volta
 ao pré-requisito em vez de insistir no assunto novo (`escolherFoco` em `src/cria.js`).
 
+## Checagem dos gabaritos
+
+O modelo às vezes erra conta (já errou um arccos). Por isso, depois de gerar as questões,
+uma segunda chamada, sem ver o gabarito, escreve só a expressão que resolve cada questão.
+O código executa a expressão e compara com o gabarito. Cada questão sai com
+`verificacao.status`:
+
+- `ok`: o cálculo confere com o gabarito.
+- `divergente`: não confere (traz `calculado` e `esperado`). O CRIA tenta gerar de novo uma vez.
+- `nao_verificavel`: sem resposta numérica simples. O professor confere.
+
+O professor continua revisando tudo; a checagem só destaca o que precisa de atenção.
+
 ## Arquivos
 
+- `src/verificar.js`: checagem dos gabaritos.
 - `src/prompt.js`: instruções do agente.
 - `src/llm.js`: chamada à API da Featherless.
 - `src/cria.js`: lógica do agente (foco, validação, nova tentativa se o JSON vier quebrado).

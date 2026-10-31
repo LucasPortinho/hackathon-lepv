@@ -2,6 +2,7 @@
 
 import { SYSTEM_PROMPT, montarMensagem } from "./prompt.js";
 import { chamarModelo } from "./llm.js";
+import { verificarQuestoes } from "./verificar.js";
 
 const LIMITE_LACUNA = 60; // abaixo disso, a base está fraca: volta ao pré-requisito
 
@@ -64,16 +65,23 @@ export function montarPedido(diagnostico, quantidade = 3) {
 
 export async function criarQuestoes(diagnostico, quantidade = 3, tentativas = 2) {
   const { foco, mensagens } = montarPedido(diagnostico, quantidade);
+  let melhor = null;
   let ultimoErro;
   for (let i = 0; i < tentativas; i++) {
     try {
       const texto = await chamarModelo(mensagens);
       const resultado = extrairJson(texto);
       validarQuestoes(resultado);
-      return { aluno: diagnostico.aluno, foco, questoes: resultado.questoes };
+      await verificarQuestoes(resultado.questoes);
+      const divergentes = resultado.questoes.filter((q) => q.verificacao.status === "divergente").length;
+      if (!melhor || divergentes < melhor.divergentes) melhor = { questoes: resultado.questoes, divergentes };
+      if (divergentes === 0) break; // gabaritos conferem: não precisa tentar de novo
     } catch (erro) {
       ultimoErro = erro; // JSON malformado: tenta de novo
     }
   }
-  throw new Error(`Falha ao criar questões para ${diagnostico.aluno}: ${ultimoErro.message}`);
+  if (!melhor) {
+    throw new Error(`Falha ao criar questões para ${diagnostico.aluno}: ${ultimoErro.message}`);
+  }
+  return { aluno: diagnostico.aluno, foco, questoes: melhor.questoes };
 }
