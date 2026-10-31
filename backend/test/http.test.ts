@@ -218,17 +218,23 @@ describe('diagnósticos e registro de folhas', () => {
     assert.equal((await request(path, { teacher: 't2' })).status, 404);
   });
 
-  it('registra metadados e folhas sem implementar upload binário ou OCR', async () => {
+  it('registra metadados, recebe o conteúdo do arquivo e guarda as folhas', async () => {
     const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
     const batch = await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'respostas.pdf', size: 1024, kind: 'gabarito' }] } });
     assert.equal(batch.status, 201);
-    assert.equal(batch.body.files[0].progress, 100);
+    assert.equal(batch.body.files[0].progress, 0);
+    const content = (fileId: string, body: BodyInit, teacher = 't1') =>
+      fetch(`${bases[teacher]}/uploads/batch/${batch.body.id}/files/${fileId}/content`, { method: 'PUT', headers: { 'Content-Type': 'application/pdf' }, body });
+    assert.equal((await content(batch.body.files[0].id, 'bytes do pdf')).status, 204);
+    assert.equal((await content('missing', 'x')).status, 404);
+    assert.equal((await content(batch.body.files[0].id, 'x', 't2')).status, 404);
+    assert.equal((await content(batch.body.files[0].id, '')).status, 400);
     const path = '/uploads/batch/' + batch.body.id;
     const sheets = [{ studentId: 'ana', readStatus: 'completa' }, { studentId: 'bruno', readStatus: 'parcial', partialReason: 'Questão ilegível' }];
     assert.equal((await request(path + '/sheets', { method: 'POST', body: { sheets } })).status, 204);
     assert.equal((await request(path + '/sheets', { method: 'POST', teacher: 't2', body: { sheets } })).status, 404);
     assert.equal((await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [] } })).status, 400);
-    assert.equal((await request('/uploads/batch', { method: 'POST', body: { diagnosticId: 'd1', files: [{ name: 'f.pdf', size: 1, kind: 'prova' }] } })).status, 400);
+    assert.equal((await request('/uploads/batch', { method: 'POST', body: { diagnosticId: 'd1', files: [{ name: 'f.pdf', size: 1, kind: 'prova' }] } })).status, 404);
   });
 });
 

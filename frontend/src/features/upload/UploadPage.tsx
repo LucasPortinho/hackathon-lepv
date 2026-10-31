@@ -8,20 +8,15 @@ import { listExams } from '@/api/exams/exam.api';
 import { fileSize } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { createBatch, processBatch } from '@/api/uploads/upload.api';
+import { processBatch, uploadFiles } from '@/api/uploads/upload.api';
 import type { UploadSummary } from '@/types/domain';
 import { StageTrack } from './StageTrack';
 import './upload.css';
 
-interface Item { id: number; name: string; size: number; kind: 'prova' | 'gabarito'; progress: number; error?: string }
+interface Item { id: number; name: string; size: number; kind: 'prova' | 'gabarito'; file: File; progress: number; error?: string }
 
 const STAGES = ['Lendo as folhas de resposta', 'Reconhecendo as marcações', 'Relacionando aos subtópicos', 'Montando os perfis'];
 const ACCEPTED = /\.(pdf|png|jpe?g)$/i;
-const SAMPLE: Pick<Item, 'name' | 'size' | 'kind'>[] = [
-  { name: 'prova-lei-senos-cossenos.pdf', size: 840_000, kind: 'prova' },
-  { name: 'folhas-respostas-2B-parte1.pdf', size: 4_200_000, kind: 'gabarito' },
-  { name: 'folhas-respostas-2B-parte2.pdf', size: 3_900_000, kind: 'gabarito' },
-];
 
 let nextId = 1;
 
@@ -39,7 +34,7 @@ export function UploadPage() {
   const timers = useRef<number[]>([]);
   useEffect(() => () => timers.current.forEach(clearInterval), []);
 
-  const add = (files: Pick<Item, 'name' | 'size' | 'kind'>[]) => {
+  const add = (files: Pick<Item, 'name' | 'size' | 'kind' | 'file'>[]) => {
     const fresh = files.map((f) => ({ ...f, id: nextId++, progress: 0, error: ACCEPTED.test(f.name) ? undefined : 'Formato não aceito. Use PDF, PNG ou JPG.' }));
     setItems((x) => [...x, ...fresh]);
     fresh.filter((f) => !f.error).forEach((f) => {
@@ -51,19 +46,23 @@ export function UploadPage() {
     });
   };
 
-  const fromFiles = (list: FileList | null) => list && add([...list].map((f) => ({ name: f.name, size: f.size, kind: /resposta|gabarito|folha/i.test(f.name) ? 'gabarito' : 'prova' })));
+  const fromFiles = (list: FileList | null) => list && add([...list].map((file) => ({ file, name: file.name, size: file.size, kind: /^prova/i.test(file.name) && !/resposta|gabarito|folha/i.test(file.name) ? 'prova' : 'gabarito' })));
   const ready = items.filter((i) => !i.error);
   const allDone = ready.length > 0 && ready.every((i) => i.progress >= 100);
+
+  const showStages = async () => {
+    for (let i = 0; i < STAGES.length; i++) {
+      setStage(i);
+      await new Promise((r) => setTimeout(r, 1100));
+    }
+  };
 
   const start = async () => {
     setPhase('processando');
     try {
-      const batch = await createBatch(examId, ready.map(({ name, size, kind }) => ({ name, size, kind })));
-      for (let i = 0; i < STAGES.length; i++) {
-        setStage(i);
-        await new Promise((r) => setTimeout(r, 1100));
-      }
-      setSummary(await processBatch(batch.id));
+      const batchId = await uploadFiles({ examId }, ready);
+      const [result] = await Promise.all([processBatch(batchId), showStages()]);
+      setSummary(result);
       setPhase('resultado');
       toast('Perfis prontos para revisão');
     } catch (error) {
@@ -84,9 +83,8 @@ export function UploadPage() {
                 <input className="sr-only" type="file" multiple accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => fromFiles(e.target.files)} />
                 <FileUp aria-hidden />
                 <h2>Arraste os arquivos para cá</h2>
-                <p className="muted">ou clique para escolher. Prova e folhas de resposta, em PDF, PNG ou JPG.</p>
+                <p className="muted">ou clique para escolher. Folhas de resposta em PDF, PNG ou JPG, uma por aluno em cada página.</p>
               </label>
-              <div><Button variant="ghost" size="sm" onClick={() => add(SAMPLE)}>Usar arquivos de exemplo</Button></div>
             </div>
             <Card>
               <div className="section-bar" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 'var(--s-3)' }}><h2 style={{ fontSize: 'var(--text-lg)' }}>Arquivos</h2><span className="muted">{ready.length}</span></div>

@@ -7,6 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "db:reset": "tsx src/db/seed/run.ts",
+    "demo:sheets": "tsx scripts/demo-sheets.ts",
     "test": "tsx --test test/*.test.ts"
   },
   "keywords": [],
@@ -14,11 +15,13 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@napi-rs/canvas": "^1.1.0",
     "better-sqlite3": "^13.0.3",
     "cors": "^2.8.6",
     "dotenv": "^18.0.9",
     "drizzle-orm": "^0.45.4",
     "express": "^5.3.0",
+    "pdfjs-dist": "^6.4.299",
     "zod": "^4.6.7"
   },
   "devDependencies": {

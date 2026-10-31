@@ -11,3 +11,6 @@ dist/
 *.db
 *.db-journal
 *.sqlite
+# Arquivos enviados e folhas de exemplo da demonstração
+uploads/
+demo-sheets/

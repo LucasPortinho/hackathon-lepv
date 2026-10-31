@@ -27,7 +27,7 @@ export function getCreatorContext(teacherId: string, id: string) {
 /** Recebe a saída do CRIA sem acoplar a API a um provedor de IA. */
 export function saveCreatorItems(teacherId: string, id: string, studentId: string, items: DiagnosticItem[]) {
   const diagnostic = requireDiagnostic(teacherId, id);
-  if (diagnostic.published || !['criador', 'revisao'].includes(diagnostic.stage)) {
+  if (diagnostic.published || !['criador', 'adaptacao', 'revisao'].includes(diagnostic.stage)) {
     throw new ConflictError('A avaliação deve estar na criação ou revisão para receber questões do CRIA.');
   }
   if (!diagnostic.perStudent.some((plan) => plan.studentId === studentId)) throw new ValidationError('O aluno não faz parte desta avaliação.');

@@ -11,8 +11,8 @@ import { requireClass, requireDiagnostic } from '../shared/guards';
 
 const STEPS: Omit<DiagnosticStep, 'status'>[] = [
   { id: 'pedagogico', title: 'Agente Pedagógico', description: 'Analisa os perfis e escolhe quem se beneficia.' },
-  { id: 'adaptacao', title: 'Agente de Adaptação', description: 'Ajusta o formato para necessidades declaradas.' },
   { id: 'criador', title: 'Agente Criador', description: 'Gera as questões de cada aluno.' },
+  { id: 'adaptacao', title: 'Agente de Adaptação', description: 'Ajusta o formato para necessidades declaradas.' },
   { id: 'respostas', title: 'Alunos respondem', description: 'Você imprime, aplica e envia as respostas.' },
   { id: 'devolutiva', title: 'Devolutiva', description: 'Os resultados voltam aos perfis e ao painel.' },
 ];

@@ -10,7 +10,7 @@ Regras:
 - Adeque a dificuldade ao score (1 a 100): score baixo = comece fácil e suba aos poucos;
   score alto = questões mais desafiadoras.
 - Se houver "context" do aluno (região, interesses), use-o nos enunciados de forma natural.
-- Escreva em português do Brasil.
+- Escreva em português do Brasil, com fórmulas em texto simples, sem LaTeX.
 - Cada questão tem resolução curta, para o professor conferir o gabarito.
 
 Responda SOMENTE com um JSON válido, sem texto antes ou depois, neste formato:

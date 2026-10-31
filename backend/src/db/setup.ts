@@ -1,4 +1,3 @@
-import { generateSQLiteDrizzleJson, generateSQLiteMigration } from 'drizzle-kit/api';
 import { sql } from 'drizzle-orm';
 import { db } from '.';
 import * as schema from './schema';
@@ -8,9 +7,13 @@ import { creatorMetadataMigration } from './migrations/0002-creator-metadata';
 const withStrict = (statement: string) =>
   statement.startsWith('CREATE TABLE') ? statement.trimEnd().replace(/;?$/, ' STRICT;') : statement;
 
+// O drizzle-kit acrescenta `Array.prototype.random`, e isso quebra o leitor de PDF: só é carregado
+// quando o banco é criado, e a alteração é desfeita em seguida.
 async function generateStatements() {
-  const empty = await generateSQLiteDrizzleJson({});
-  return generateSQLiteMigration(empty, await generateSQLiteDrizzleJson(schema));
+  const { generateSQLiteDrizzleJson, generateSQLiteMigration } = await import('drizzle-kit/api');
+  const statements = await generateSQLiteMigration(await generateSQLiteDrizzleJson({}), await generateSQLiteDrizzleJson(schema));
+  delete (Array.prototype as unknown as Record<string, unknown>).random;
+  return statements;
 }
 
 export async function createSchema() {

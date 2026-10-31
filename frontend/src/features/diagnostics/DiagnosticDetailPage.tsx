@@ -1,6 +1,6 @@
 import { Check, Circle, Download, MinusCircle, Upload } from 'lucide-react';
 import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
@@ -14,7 +14,8 @@ import { advanceDiagnostic } from '@/api/diagnostics/diagnostic-agent.api';
 import { receiveAnswers } from '@/api/diagnostics/diagnostic-results.api';
 import { approveAll, approveForStudent, publishDiagnostic } from '@/api/diagnostics/diagnostic-review.api';
 import { getDiagnostic } from '@/api/diagnostics/diagnostic.api';
-import type { DiagnosticForStudent, DiagnosticStep, Student } from '@/types/domain';
+import { processBatch, uploadFiles } from '@/api/uploads/upload.api';
+import type { Diagnostic, DiagnosticForStudent, DiagnosticStep, Student } from '@/types/domain';
 import { STAGE_LABEL } from './DiagnosticsPage';
 import './diagnostics.css';
 
@@ -46,10 +47,14 @@ function StudentSheet({ diagnosticId, item, student }: { diagnosticId: string; i
       <p className="muted" style={{ marginBottom: 'var(--s-4)' }}>Foco: {item.focus}</p>
       {item.items.map((q, i) => (
         <div className="ad-q" key={q.id}>
-          <b>{i + 1}.</b> {q.statement}
-          <div style={{ marginTop: 'var(--s-2)', display: 'flex', gap: 'var(--s-2)' }}>
+          <b>{i + 1}.</b> <span style={{ whiteSpace: 'pre-line' }}>{q.statement}</span>
+          {!!q.alternatives?.length && <ul style={{ marginTop: 'var(--s-2)' }}>{q.alternatives.map((a) => <li key={a}>{a}</li>)}</ul>}
+          {q.answerKey && <p className="muted" style={{ marginTop: 'var(--s-2)' }}>Gabarito: {q.answerKey}{q.solution ? ` · ${q.solution}` : ''}</p>}
+          <div style={{ marginTop: 'var(--s-2)', display: 'flex', gap: 'var(--s-2)', flexWrap: 'wrap' }}>
             <Badge>{subtopicById(q.subtopicId).short}</Badge>
+            {q.prerequisite && <Badge>Pré-requisito: {q.prerequisite}</Badge>}
             {q.adaptedFor && <Badge>Formato: {needLabel(q.adaptedFor)}</Badge>}
+            {q.checkResult === 'divergente' && <Badge tone="danger">Confira o gabarito</Badge>}
           </div>
         </div>
       ))}
@@ -59,6 +64,39 @@ function StudentSheet({ diagnosticId, item, student }: { diagnosticId: string; i
           : <Button variant="primary" onClick={() => approveForStudent(diagnosticId, item.studentId, true)}><Check />Aprovar avaliação</Button>}
       </div>
     </motion.div>
+  );
+}
+
+/** Abre uma folha por aluno, com espaço para o nome que o agente de correção vai ler. */
+function printDiagnostic(d: Diagnostic, students: Map<string, Student>) {
+  const sheet = (plan: DiagnosticForStudent) => `<section><h1>${d.title}</h1><p>Aluno: ${students.get(plan.studentId)?.name ?? ''}</p>${plan.items.map((q, i) =>
+    `<p class="q">${i + 1}. ${q.statement}</p>${(q.alternatives ?? []).map((a) => `<p>${a}</p>`).join('')}<div class="a"></div>`).join('')}</section>`;
+  const page = open('', '_blank');
+  if (!page) return toast('Permita pop-ups para exportar a avaliação.');
+  page.document.write(`<title>${d.title}</title><style>body{font-family:sans-serif}section{break-after:page}.q{white-space:pre-line;font-weight:600}.a{height:7rem}</style>${d.perStudent.map(sheet).join('')}`);
+  page.document.close();
+  page.print();
+}
+
+function SendAnswers({ diagnosticId }: { diagnosticId: string }) {
+  const input = useRef<HTMLInputElement>(null);
+  const [busy, setBusy] = useState(false);
+  const send = async (list: FileList | null) => {
+    if (!list?.length) return;
+    setBusy(true);
+    try {
+      const batchId = await uploadFiles({ diagnosticId }, [...list].map((file) => ({ file, kind: 'gabarito' as const })));
+      const summary = await processBatch(batchId);
+      toast(`${summary.sheets} folhas lidas. ${summary.partial.length ? `${summary.partial.length} para conferir.` : 'Resultados incorporados aos perfis.'}`);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <>
+      <input ref={input} className="sr-only" type="file" multiple accept=".pdf,.png,.jpg,.jpeg" aria-label="Folhas de resposta" onChange={(e) => send(e.target.files)} />
+      <Button variant="primary" loading={busy} onClick={() => input.current?.click()}><Upload />Enviar respostas</Button>
+    </>
   );
 }
 
@@ -122,9 +160,9 @@ export function DiagnosticDetailPage() {
                 <h2 style={{ fontSize: 'var(--text-lg)' }}>Imprima, aplique e envie as respostas</h2>
                 <p className="muted" style={{ margin: 'var(--s-1) 0 var(--s-4)' }}>Cada aluno recebe a própria avaliação. Depois de aplicar, envie as respostas e os resultados voltam aos perfis.</p>
                 <div className="page-actions">
-                  <Button variant="secondary" onClick={() => toast('Exportação em PDF disponível com o backend real')}><Download />Exportar para impressão</Button>
-                  <ButtonLink variant="secondary" to="/provas/enviar"><Upload />Enviar respostas</ButtonLink>
-                  <Button variant="primary" onClick={() => { receiveAnswers(x.id); toast('Resultados incorporados aos perfis'); }}>Simular respostas recebidas</Button>
+                  <Button variant="secondary" onClick={() => printDiagnostic(x, students)}><Download />Exportar para impressão</Button>
+                  <SendAnswers diagnosticId={x.id} />
+                  <Button variant="ghost" onClick={() => { receiveAnswers(x.id); toast('Resultados incorporados aos perfis'); }}>Simular respostas recebidas</Button>
                 </div>
               </Card>
             )}

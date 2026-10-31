@@ -47,9 +47,9 @@ describe('seed da demonstração', () => {
     assert.ok(d.perStudent.some((p) => p.items.some((i) => i.adaptedFor)));
   });
 
-  it('simula a correção de um envio com folhas parciais', () => {
+  it('simula a correção de um envio com folhas parciais', async () => {
     const batch = createBatch(T, 'e-leis', [{ name: 'respostas.pdf', size: 10, kind: 'gabarito' }]);
-    const summary = processBatch(T, batch.id);
+    const summary = await processBatch(T, batch.id);
     assert.equal(summary.sheets, 34);
     assert.deepEqual(summary.partial.map((p) => p.name), ['Felipe Araújo', 'Nicole Teixeira']);
     assert.equal(summary.profiles, 34);

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { groupBy, unique } from '../src/lib/collections';
 import { meanOrNull } from '../src/lib/score';
 import { isCalendarDate } from '../src/lib/time';
-import { adaptQuestion } from '../src/services/agents/adaptation.agent';
-import { buildProfile } from '../src/services/agents/pedagogical.agent';
+import { adaptQuestion } from '../src/services/agents/adaptation.rules';
+import { buildProfile } from '../src/services/agents/pedagogical.rules';
 import { planVersions } from '../src/services/adaptations/version-planner';
 import type { NeedId, Question, Student } from '../src/types/domain';
 
