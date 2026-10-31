@@ -24,7 +24,7 @@ function NewDialog({ open, onOpenChange, preset }: { open: boolean; onOpenChange
   const classes = useQuery(listClasses, []);
   const [classId, setClassId] = useState(defaultClassId);
   const q = useQuery(() => suggestSubtopics(classId), [classId]);
-  const [sel, setSel] = useState<string[]>(preset ? [preset] : ['st-cossenos']);
+  const [sel, setSel] = useState<string[]>(preset ? [preset] : []);
   const [busy, setBusy] = useState(false);
   const start = async () => {
     setBusy(true);
@@ -44,14 +44,14 @@ function NewDialog({ open, onOpenChange, preset }: { open: boolean; onOpenChange
       <div style={{ display: 'grid', gap: 'var(--s-4)' }}>
         <Select label="Turma" value={classId} onChange={setClassId} options={(classes.data ?? []).filter((c) => c.studentCount > 0).map((c) => ({ value: c.id, label: c.name }))} placeholder="Carregando" />
         <div className="field">
-          <span className="field-label">Subtópicos, da menor média para a maior</span>
+          <span className="field-label">Habilidades avaliadas, da menor média para a maior</span>
           <Async query={q} skeleton={<Skeleton h="10rem" />}>
             {(d) => (
               <div style={{ maxHeight: '13rem', overflow: 'auto' }}>
                 {d.map(({ subtopic, average }) => (
                   <label key={subtopic.id} className="subtopic-check">
                     <Checkbox checked={sel.includes(subtopic.id)} onChange={(v) => setSel((s) => (v ? [...s, subtopic.id] : s.filter((x) => x !== subtopic.id)))} label={subtopic.name} />
-                    {subtopic.name}<b>{average}</b>
+                    <span title={subtopic.description}><code>{subtopic.short}</code> {subtopic.name}</span><b>{average}</b>
                   </label>
                 ))}
               </div>
@@ -76,7 +76,7 @@ export function DiagnosticsPage() {
       <Async
         query={q} isEmpty={(d) => d.length === 0}
         skeleton={<div className="ad-list">{[0, 1, 2].map((i) => <Skeleton key={i} h="5rem" r="var(--r-lg)" />)}</div>}
-        empty={<Card><EmptyState icon={<ClipboardList />} title="Nenhuma avaliação diagnóstica ainda" actions={<Button variant="primary" onClick={() => setOpen(true)}><Plus />Criar avaliação</Button>}>Escolha uma turma e os subtópicos. Os agentes preparam uma avaliação sob medida para você revisar.</EmptyState></Card>}
+        empty={<Card><EmptyState icon={<ClipboardList />} title="Nenhuma avaliação diagnóstica ainda" actions={<Button variant="primary" onClick={() => setOpen(true)}><Plus />Criar avaliação</Button>}>Escolha uma turma e as habilidades. Os agentes preparam uma avaliação sob medida para você revisar.</EmptyState></Card>}
       >
         {(d) => (
           <motion.ul className="ad-list" initial="hidden" animate="shown" variants={variants.listParent}>

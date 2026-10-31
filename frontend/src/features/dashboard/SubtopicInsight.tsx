@@ -18,7 +18,9 @@ export function SubtopicInsightPanel({ query, subtopicId, onOpenStudent }: { que
         const peak = Math.max(...d.counts, 1);
         return (
           <div className="insight">
+            <p className="insight-code">{d.subtopic.id} · {d.subtopic.unit}</p>
             <h2>{d.subtopic.name}</h2>
+            {d.subtopic.description && <p className="muted insight-description">{d.subtopic.description}</p>}
             <p className="insight-stat">{d.average}</p>
             <p className="muted">Média da turma{d.noData > 0 ? `, com ${plural(d.noData, 'aluno', 'alunos')} sem dados` : ''}</p>
             <section>
@@ -35,7 +37,7 @@ export function SubtopicInsightPanel({ query, subtopicId, onOpenStudent }: { que
             </section>
             <section>
               <h3>Quem pode precisar de apoio ({d.struggling.length})</h3>
-              {d.struggling.length === 0 ? <p className="muted">Todos estão com 60 ou mais neste subtópico.</p> : (
+              {d.struggling.length === 0 ? <p className="muted">Todos estão com 60 ou mais nesta habilidade.</p> : (
                 <ul>
                   {d.struggling.map((s) => (
                     <li key={s.student.id}><button onClick={() => onOpenStudent(s.student.id)}><span className="truncate">{s.student.name}</span><b>{s.value}</b></button></li>

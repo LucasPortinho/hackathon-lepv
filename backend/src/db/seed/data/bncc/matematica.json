@@ -1,0 +1,5277 @@
+{
+  "disciplina": "Matemática",
+  "etapa": "Ensino Fundamental",
+  "versao": "1.0.0",
+  "gerado_em": "2026-10-31",
+  "fonte_habilidades": "bncc-mcp 0.1.0 (lista oficial de habilidades da BNCC)",
+  "notas": {
+    "ano": "'ano' é o primeiro ano em que a habilidade é trabalhada; 'anos' lista todos (códigos como EF15LP01 abrangem do 1º ao 5º).",
+    "pre_requisitos": "Apenas pré-requisitos DIRETOS. Os indiretos são obtidos percorrendo o grafo recursivamente.",
+    "nivel": "Profundidade no grafo: 0 = sem pré-requisitos; nível N = maior cadeia de pré-requisitos até a habilidade.",
+    "ordem": "Posição numa ordenação topológica (desempate por ano e código). Ordenar qualquer subconjunto por este campo dá uma sequência de estudo válida.",
+    "palavras_chave": "Termos usados por alunos e professores, para casar lacunas descritas em texto livre com códigos."
+  },
+  "unidades_tematicas": [
+    "Geometria",
+    "Grandezas e medidas",
+    "Números",
+    "Probabilidade e estatística",
+    "Álgebra"
+  ],
+  "total_habilidades": 247,
+  "habilidades": {
+    "EF01MA01": {
+      "nome": "Números no cotidiano: quantidade, ordem e código",
+      "descricao_bncc": "Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Contagem de rotina Contagem ascendente e descendente Reconhecimento de números no contexto diário: indicação de quantidades, indicação de ordem ou indicação de código para a organização de informações",
+      "palavras_chave": [
+        "números naturais",
+        "quantidade",
+        "ordinal",
+        "ordem",
+        "código"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 0
+    },
+    "EF01MA02": {
+      "nome": "Contagem exata e aproximada",
+      "descricao_bncc": "Contar de maneira exata ou aproximada, utilizando diferentes estratégias como o pareamento e outros agrupamentos.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Quantificação de elementos de uma coleção: estimativas, contagem um a um, pareamento ou outros agrupamentos e comparação",
+      "palavras_chave": [
+        "contar",
+        "contagem",
+        "pareamento",
+        "agrupamento"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 1
+    },
+    "EF01MA03": {
+      "nome": "Comparação de quantidades (mais, menos, igual)",
+      "descricao_bncc": "Estimar e comparar quantidades de objetos de dois conjuntos (em torno de 20 elementos), por estimativa e/ou por correspondência (um a um, dois a dois) para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Quantificação de elementos de uma coleção: estimativas, contagem um a um, pareamento ou outros agrupamentos e comparação",
+      "palavras_chave": [
+        "comparar quantidades",
+        "tem mais",
+        "tem menos",
+        "mesma quantidade",
+        "correspondência um a um"
+      ],
+      "pre_requisitos": [
+        "EF01MA02"
+      ],
+      "nivel": 1,
+      "ordem": 2
+    },
+    "EF01MA04": {
+      "nome": "Contagem e registro de números até 100",
+      "descricao_bncc": "Contar a quantidade de objetos de coleções até 100 unidades e apresentar o resultado por registros verbais e simbólicos, em situações de seu interesse, como jogos, brincadeiras, materiais da sala de aula, entre outros.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Leitura, escrita e comparação de números naturais (até 100)",
+      "palavras_chave": [
+        "contar até 100",
+        "escrever números",
+        "numeral",
+        "registro numérico"
+      ],
+      "pre_requisitos": [
+        "EF01MA01",
+        "EF01MA02"
+      ],
+      "nivel": 1,
+      "ordem": 3
+    },
+    "EF01MA05": {
+      "nome": "Comparação de números de até dois algarismos e reta numérica",
+      "descricao_bncc": "Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Reta numérica",
+      "palavras_chave": [
+        "maior",
+        "menor",
+        "reta numérica",
+        "comparar números"
+      ],
+      "pre_requisitos": [
+        "EF01MA03",
+        "EF01MA04"
+      ],
+      "nivel": 2,
+      "ordem": 4
+    },
+    "EF01MA06": {
+      "nome": "Fatos básicos da adição",
+      "descricao_bncc": "Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Construção de fatos básicos da adição",
+      "palavras_chave": [
+        "adição",
+        "soma",
+        "mais",
+        "fatos básicos"
+      ],
+      "pre_requisitos": [
+        "EF01MA04"
+      ],
+      "nivel": 2,
+      "ordem": 5
+    },
+    "EF01MA07": {
+      "nome": "Composição e decomposição de números de até duas ordens",
+      "descricao_bncc": "Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Composição e decomposição de números naturais",
+      "palavras_chave": [
+        "dezena",
+        "unidade",
+        "decompor",
+        "compor",
+        "material dourado"
+      ],
+      "pre_requisitos": [
+        "EF01MA06"
+      ],
+      "nivel": 3,
+      "ordem": 6
+    },
+    "EF01MA08": {
+      "nome": "Problemas de adição e subtração (juntar, acrescentar, separar, retirar)",
+      "descricao_bncc": "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até dois algarismos, com os significados de juntar, acrescentar, separar e retirar, com o suporte de imagens e/ou material manipulável, utilizando estratégias e formas de registro pessoais.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da adição e da subtração (juntar, acrescentar, separar, retirar)",
+      "palavras_chave": [
+        "problemas de adição",
+        "problemas de subtração",
+        "juntar",
+        "tirar",
+        "retirar",
+        "continha"
+      ],
+      "pre_requisitos": [
+        "EF01MA07"
+      ],
+      "nivel": 4,
+      "ordem": 7
+    },
+    "EF01MA09": {
+      "nome": "Classificação e ordenação de objetos por atributos",
+      "descricao_bncc": "Organizar e ordenar objetos familiares ou representações por figuras, por meio de atributos, tais como cor, forma e medida.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Padrões figurais e numéricos: investigação de regularidades ou padrões em sequências",
+      "palavras_chave": [
+        "classificar",
+        "organizar",
+        "cor",
+        "forma",
+        "tamanho",
+        "seriação"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 8
+    },
+    "EF01MA10": {
+      "nome": "Padrões em sequências recursivas simples",
+      "descricao_bncc": "Descrever, após o reconhecimento e a explicitação de um padrão (ou regularidade), os elementos ausentes em sequências recursivas de números naturais, objetos ou figuras.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sequências recursivas: observação de regras usadas utilizadas em seriações numéricas (mais 1, mais 2, menos 1, menos 2, por exemplo)",
+      "palavras_chave": [
+        "sequência",
+        "padrão",
+        "regularidade",
+        "termo que falta"
+      ],
+      "pre_requisitos": [
+        "EF01MA04",
+        "EF01MA09"
+      ],
+      "nivel": 2,
+      "ordem": 9
+    },
+    "EF01MA11": {
+      "nome": "Localização em relação à própria posição",
+      "descricao_bncc": "Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Localização de objetos e de pessoas no espaço, utilizando diversos pontos de referência e vocabulário apropriado",
+      "palavras_chave": [
+        "direita",
+        "esquerda",
+        "frente",
+        "atrás",
+        "lateralidade"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 10
+    },
+    "EF01MA12": {
+      "nome": "Localização a partir de um ponto de referência",
+      "descricao_bncc": "Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Localização de objetos e de pessoas no espaço, utilizando diversos pontos de referência e vocabulário apropriado",
+      "palavras_chave": [
+        "ponto de referência",
+        "referencial",
+        "em cima",
+        "embaixo"
+      ],
+      "pre_requisitos": [
+        "EF01MA11"
+      ],
+      "nivel": 1,
+      "ordem": 11
+    },
+    "EF01MA13": {
+      "nome": "Sólidos geométricos e objetos do cotidiano",
+      "descricao_bncc": "Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais: reconhecimento e relações com objetos familiares do mundo físico",
+      "palavras_chave": [
+        "cone",
+        "cilindro",
+        "esfera",
+        "bloco retangular",
+        "figura espacial",
+        "sólido"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 12
+    },
+    "EF01MA14": {
+      "nome": "Figuras planas: círculo, quadrado, retângulo e triângulo",
+      "descricao_bncc": "Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas planas: reconhecimento do formato das faces de figuras geométricas espaciais",
+      "palavras_chave": [
+        "formas",
+        "figuras planas",
+        "círculo",
+        "quadrado",
+        "retângulo",
+        "triângulo"
+      ],
+      "pre_requisitos": [
+        "EF01MA13"
+      ],
+      "nivel": 1,
+      "ordem": 13
+    },
+    "EF01MA15": {
+      "nome": "Comparação de comprimento, massa e capacidade",
+      "descricao_bncc": "Comparar comprimentos, capacidades ou massas, utilizando termos como mais alto, mais baixo, mais comprido, mais curto, mais grosso, mais fino, mais largo, mais pesado, mais leve, cabe mais, cabe menos, entre outros, para ordenar objetos de uso cotidiano.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de comprimento, massa e capacidade: comparações e unidades de medida não convencionais",
+      "palavras_chave": [
+        "mais alto",
+        "mais baixo",
+        "mais pesado",
+        "mais leve",
+        "cabe mais",
+        "comprido",
+        "curto"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 14
+    },
+    "EF01MA16": {
+      "nome": "Sequência de acontecimentos do dia",
+      "descricao_bncc": "Relatar em linguagem verbal ou não verbal sequência de acontecimentos relativos a um dia, utilizando, quando possível, os horários dos eventos.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: unidades de medida de tempo, suas relações e o uso do calendário",
+      "palavras_chave": [
+        "rotina",
+        "antes",
+        "depois",
+        "horário dos eventos"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 15
+    },
+    "EF01MA17": {
+      "nome": "Períodos do dia, dias da semana e meses do ano",
+      "descricao_bncc": "Reconhecer e relacionar períodos do dia, dias da semana e meses do ano, utilizando calendário, quando necessário.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: unidades de medida de tempo, suas relações e o uso do calendário",
+      "palavras_chave": [
+        "calendário",
+        "dias da semana",
+        "meses do ano",
+        "manhã",
+        "tarde",
+        "noite"
+      ],
+      "pre_requisitos": [
+        "EF01MA16"
+      ],
+      "nivel": 1,
+      "ordem": 16
+    },
+    "EF01MA18": {
+      "nome": "Escrita de datas e uso do calendário",
+      "descricao_bncc": "Produzir a escrita de uma data, apresentando o dia, o mês e o ano, e indicar o dia da semana de uma data, consultando calendários.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: unidades de medida de tempo, suas relações e o uso do calendário",
+      "palavras_chave": [
+        "data",
+        "dia mês ano",
+        "calendário"
+      ],
+      "pre_requisitos": [
+        "EF01MA04",
+        "EF01MA17"
+      ],
+      "nivel": 2,
+      "ordem": 17
+    },
+    "EF01MA19": {
+      "nome": "Reconhecimento de moedas e cédulas do real",
+      "descricao_bncc": "Reconhecer e relacionar valores de moedas e cédulas do sistema monetário brasileiro para resolver situações simples do cotidiano do estudante.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Sistema monetário brasileiro: reconhecimento de cédulas e moedas",
+      "palavras_chave": [
+        "dinheiro",
+        "real",
+        "moeda",
+        "cédula",
+        "nota"
+      ],
+      "pre_requisitos": [
+        "EF01MA04"
+      ],
+      "nivel": 2,
+      "ordem": 18
+    },
+    "EF01MA20": {
+      "nome": "Noção de acaso: certo, talvez, impossível",
+      "descricao_bncc": "Classificar eventos envolvendo o acaso, tais como “acontecerá com certeza”, “talvez aconteça” e “é impossível acontecer”, em situações do cotidiano.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Noção de acaso",
+      "palavras_chave": [
+        "acaso",
+        "sorte",
+        "possível",
+        "impossível",
+        "certeza"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 19
+    },
+    "EF01MA21": {
+      "nome": "Leitura de tabelas e gráficos de colunas simples",
+      "descricao_bncc": "Ler dados expressos em tabelas e em gráficos de colunas simples.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura de tabelas e de gráficos de colunas simples",
+      "palavras_chave": [
+        "tabela",
+        "gráfico de colunas",
+        "ler gráfico"
+      ],
+      "pre_requisitos": [
+        "EF01MA05"
+      ],
+      "nivel": 3,
+      "ordem": 20
+    },
+    "EF01MA22": {
+      "nome": "Pesquisa simples e registro pessoal de dados",
+      "descricao_bncc": "Realizar pesquisa, envolvendo até duas variáveis categóricas de seu interesse e universo de até 30 elementos, e organizar dados por meio de representações pessoais.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Registros pessoais para comunicação de informações coletadas",
+      "palavras_chave": [
+        "pesquisa",
+        "coleta de dados",
+        "registro",
+        "variável categórica"
+      ],
+      "pre_requisitos": [
+        "EF01MA02",
+        "EF01MA09"
+      ],
+      "nivel": 1,
+      "ordem": 21
+    },
+    "EF02MA01": {
+      "nome": "Valor posicional e comparação de números até centenas",
+      "descricao_bncc": "Comparar e ordenar números naturais (até a ordem de centenas) pela compreensão de características do sistema de numeração decimal (valor posicional e função do zero).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Leitura, escrita, comparação e ordenação de números de até três ordens pela compreensão de características do sistema de numeração decimal (valor posicional e papel do zero)",
+      "palavras_chave": [
+        "centena",
+        "valor posicional",
+        "papel do zero",
+        "ordenar números",
+        "sistema de numeração decimal"
+      ],
+      "pre_requisitos": [
+        "EF01MA05",
+        "EF01MA07"
+      ],
+      "nivel": 4,
+      "ordem": 22
+    },
+    "EF02MA02": {
+      "nome": "Estimativa e contagem de coleções até 1000",
+      "descricao_bncc": "Fazer estimativas por meio de estratégias diversas a respeito da quantidade de objetos de coleções e registrar o resultado da contagem desses objetos (até 1000 unidades).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Leitura, escrita, comparação e ordenação de números de até três ordens pela compreensão de características do sistema de numeração decimal (valor posicional e papel do zero)",
+      "palavras_chave": [
+        "estimar",
+        "estimativa",
+        "contar até 1000"
+      ],
+      "pre_requisitos": [
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 23
+    },
+    "EF02MA03": {
+      "nome": "Comparação de quantidades: quantos a mais e quantos a menos",
+      "descricao_bncc": "Comparar quantidades de objetos de dois conjuntos, por estimativa e/ou por correspondência (um a um, dois a dois, entre outros), para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”, indicando, quando for o caso, quantos a mais e quantos a menos.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Leitura, escrita, comparação e ordenação de números de até três ordens pela compreensão de características do sistema de numeração decimal (valor posicional e papel do zero)",
+      "palavras_chave": [
+        "quantos a mais",
+        "quantos a menos",
+        "diferença"
+      ],
+      "pre_requisitos": [
+        "EF01MA03",
+        "EF01MA08"
+      ],
+      "nivel": 5,
+      "ordem": 24
+    },
+    "EF02MA04": {
+      "nome": "Composição e decomposição de números de até três ordens",
+      "descricao_bncc": "Compor e decompor números naturais de até três ordens, com suporte de material manipulável, por meio de diferentes adições.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Composição e decomposição de números naturais (até 1000)",
+      "palavras_chave": [
+        "centena dezena unidade",
+        "decompor",
+        "compor"
+      ],
+      "pre_requisitos": [
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 25
+    },
+    "EF02MA05": {
+      "nome": "Fatos básicos da adição e da subtração",
+      "descricao_bncc": "Construir fatos básicos da adição e subtração e utilizá-los no cálculo mental ou escrito.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Construção de fatos fundamentais da adição e da subtração",
+      "palavras_chave": [
+        "cálculo mental",
+        "subtração",
+        "adição",
+        "fatos básicos"
+      ],
+      "pre_requisitos": [
+        "EF01MA06"
+      ],
+      "nivel": 3,
+      "ordem": 26
+    },
+    "EF02MA06": {
+      "nome": "Problemas de adição e subtração com números de até três ordens",
+      "descricao_bncc": "Resolver e elaborar problemas de adição e de subtração, envolvendo números de até três ordens, com os significados de juntar, acrescentar, separar, retirar, utilizando estratégias pessoais.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da adição e da subtração (juntar, acrescentar, separar, retirar)",
+      "palavras_chave": [
+        "problemas",
+        "somar",
+        "subtrair",
+        "conta de mais",
+        "conta de menos"
+      ],
+      "pre_requisitos": [
+        "EF01MA08",
+        "EF02MA04",
+        "EF02MA05"
+      ],
+      "nivel": 6,
+      "ordem": 27
+    },
+    "EF02MA07": {
+      "nome": "Multiplicação como adição de parcelas iguais (por 2, 3, 4 e 5)",
+      "descricao_bncc": "Resolver e elaborar problemas de multiplicação (por 2, 3, 4 e 5) com a ideia de adição de parcelas iguais por meio de estratégias e formas de registro pessoais, utilizando ou não suporte de imagens e/ou material manipulável.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo adição de parcelas iguais (multiplicação)",
+      "palavras_chave": [
+        "multiplicação",
+        "vezes",
+        "parcelas iguais",
+        "tabuada"
+      ],
+      "pre_requisitos": [
+        "EF02MA05"
+      ],
+      "nivel": 4,
+      "ordem": 28
+    },
+    "EF02MA08": {
+      "nome": "Dobro, metade, triplo e terça parte",
+      "descricao_bncc": "Resolver e elaborar problemas envolvendo dobro, metade, triplo e terça parte, com o suporte de imagens ou material manipulável, utilizando estratégias pessoais.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo significados de dobro, metade, triplo e terça parte",
+      "palavras_chave": [
+        "dobro",
+        "metade",
+        "triplo",
+        "terça parte",
+        "terço"
+      ],
+      "pre_requisitos": [
+        "EF02MA07"
+      ],
+      "nivel": 5,
+      "ordem": 29
+    },
+    "EF02MA09": {
+      "nome": "Construção de sequências crescentes e decrescentes",
+      "descricao_bncc": "Construir sequências de números naturais em ordem crescente ou decrescente a partir de um número qualquer, utilizando uma regularidade estabelecida.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Construção de sequências repetitivas e de sequências recursivas",
+      "palavras_chave": [
+        "sequência crescente",
+        "sequência decrescente",
+        "contar de 2 em 2",
+        "regularidade"
+      ],
+      "pre_requisitos": [
+        "EF01MA10",
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 30
+    },
+    "EF02MA10": {
+      "nome": "Descrição de padrões em sequências repetitivas e recursivas",
+      "descricao_bncc": "Descrever um padrão (ou regularidade) de sequências repetitivas e de sequências recursivas, por meio de palavras, símbolos ou desenhos.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Identificação de regularidade de sequências e determinação de elementos ausentes na sequência",
+      "palavras_chave": [
+        "padrão",
+        "regularidade",
+        "regra da sequência"
+      ],
+      "pre_requisitos": [
+        "EF01MA10"
+      ],
+      "nivel": 3,
+      "ordem": 31
+    },
+    "EF02MA11": {
+      "nome": "Elementos ausentes em sequências",
+      "descricao_bncc": "Descrever os elementos ausentes em sequências repetitivas e em sequências recursivas de números naturais, objetos ou figuras.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Identificação de regularidade de sequências e determinação de elementos ausentes na sequência",
+      "palavras_chave": [
+        "termo que falta",
+        "completar sequência"
+      ],
+      "pre_requisitos": [
+        "EF02MA10"
+      ],
+      "nivel": 4,
+      "ordem": 32
+    },
+    "EF02MA12": {
+      "nome": "Localização e deslocamento com mais de um ponto de referência",
+      "descricao_bncc": "Identificar e registrar, em linguagem verbal ou não verbal, a localização e os deslocamentos de pessoas e de objetos no espaço, considerando mais de um ponto de referência, e indicar as mudanças de direção e de sentido.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Localização e movimentação de pessoas e objetos no espaço, segundo pontos de referência, e indicação de mudanças de direção e sentido",
+      "palavras_chave": [
+        "deslocamento",
+        "direção",
+        "sentido",
+        "trajeto"
+      ],
+      "pre_requisitos": [
+        "EF01MA12"
+      ],
+      "nivel": 2,
+      "ordem": 33
+    },
+    "EF02MA13": {
+      "nome": "Roteiros e plantas simples de ambientes",
+      "descricao_bncc": "Esboçar roteiros a ser seguidos ou plantas de ambientes familiares, assinalando entradas, saídas e alguns pontos de referência.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Esboço de roteiros e de plantas simples",
+      "palavras_chave": [
+        "planta",
+        "mapa",
+        "roteiro",
+        "croqui"
+      ],
+      "pre_requisitos": [
+        "EF02MA12"
+      ],
+      "nivel": 3,
+      "ordem": 34
+    },
+    "EF02MA14": {
+      "nome": "Figuras espaciais: cubo, bloco, pirâmide, cone, cilindro e esfera",
+      "descricao_bncc": "Reconhecer, nomear e comparar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera), relacionando-as com objetos do mundo físico.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera): reconhecimento e características",
+      "palavras_chave": [
+        "cubo",
+        "pirâmide",
+        "sólidos geométricos",
+        "figuras espaciais"
+      ],
+      "pre_requisitos": [
+        "EF01MA13"
+      ],
+      "nivel": 1,
+      "ordem": 35
+    },
+    "EF02MA15": {
+      "nome": "Características de figuras planas",
+      "descricao_bncc": "Reconhecer, comparar e nomear figuras planas (círculo, quadrado, retângulo e triângulo), por meio de características comuns, em desenhos apresentados em diferentes disposições ou em sólidos geométricos.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas planas (círculo, quadrado, retângulo e triângulo): reconhecimento e características",
+      "palavras_chave": [
+        "lados",
+        "figuras planas",
+        "comparar formas"
+      ],
+      "pre_requisitos": [
+        "EF01MA14"
+      ],
+      "nivel": 2,
+      "ordem": 36
+    },
+    "EF02MA16": {
+      "nome": "Medida de comprimento (metro, centímetro, milímetro)",
+      "descricao_bncc": "Estimar, medir e comparar comprimentos de lados de salas (incluindo contorno) e de polígonos, utilizando unidades de medida não padronizadas e padronizadas (metro, centímetro e milímetro) e instrumentos adequados.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medida de comprimento: unidades não padronizadas e padronizadas (metro, centímetro e milímetro)",
+      "palavras_chave": [
+        "régua",
+        "metro",
+        "centímetro",
+        "milímetro",
+        "medir comprimento"
+      ],
+      "pre_requisitos": [
+        "EF01MA15",
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 37
+    },
+    "EF02MA17": {
+      "nome": "Medidas de capacidade e massa (litro, mililitro, grama, quilograma)",
+      "descricao_bncc": "Estimar, medir e comparar capacidade e massa, utilizando estratégias pessoais e unidades de medida não padronizadas ou padronizadas (litro, mililitro, grama e quilograma).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medida de capacidade e de massa: unidades de medida não convencionais e convencionais (litro, , grama e quilograma) mililitro, cm",
+      "palavras_chave": [
+        "litro",
+        "mililitro",
+        "grama",
+        "quilo",
+        "balança"
+      ],
+      "pre_requisitos": [
+        "EF01MA15",
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 38
+    },
+    "EF02MA18": {
+      "nome": "Intervalos de tempo entre datas no calendário",
+      "descricao_bncc": "Indicar a duração de intervalos de tempo entre duas datas, como dias da semana e meses do ano, utilizando calendário, para planejamentos e organização de agenda.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: intervalo de tempo, uso do calendário, leitura de horas em relógios digitais e ordenação de datas",
+      "palavras_chave": [
+        "quantos dias faltam",
+        "duração",
+        "agenda",
+        "calendário"
+      ],
+      "pre_requisitos": [
+        "EF01MA18",
+        "EF02MA05"
+      ],
+      "nivel": 4,
+      "ordem": 39
+    },
+    "EF02MA19": {
+      "nome": "Duração de intervalos com relógio digital",
+      "descricao_bncc": "Medir a duração de um intervalo de tempo por meio de relógio digital e registrar o horário do início e do fim do intervalo.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: intervalo de tempo, uso do calendário, leitura de horas em relógios digitais e ordenação de datas",
+      "palavras_chave": [
+        "relógio digital",
+        "horas",
+        "duração",
+        "início e fim"
+      ],
+      "pre_requisitos": [
+        "EF01MA16",
+        "EF02MA05"
+      ],
+      "nivel": 4,
+      "ordem": 40
+    },
+    "EF02MA20": {
+      "nome": "Equivalência de valores entre moedas e cédulas",
+      "descricao_bncc": "Estabelecer a equivalência de valores entre moedas e cédulas do sistema monetário brasileiro para resolver situações cotidianas.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Sistema monetário brasileiro: reconhecimento de cédulas e moedas e equivalência de valores",
+      "palavras_chave": [
+        "trocar dinheiro",
+        "equivalência",
+        "real",
+        "moedas"
+      ],
+      "pre_requisitos": [
+        "EF01MA19",
+        "EF02MA06"
+      ],
+      "nivel": 7,
+      "ordem": 41
+    },
+    "EF02MA21": {
+      "nome": "Eventos prováveis, improváveis e impossíveis",
+      "descricao_bncc": "Classificar resultados de eventos cotidianos aleatórios como “pouco prováveis”, “muito prováveis”, “improváveis” e “impossíveis”.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Análise da ideia de aleatório em situações do cotidiano",
+      "palavras_chave": [
+        "provável",
+        "improvável",
+        "chance",
+        "aleatório"
+      ],
+      "pre_requisitos": [
+        "EF01MA20"
+      ],
+      "nivel": 1,
+      "ordem": 42
+    },
+    "EF02MA22": {
+      "nome": "Tabelas de dupla entrada e gráficos de colunas e barras",
+      "descricao_bncc": "Comparar informações de pesquisas apresentadas por meio de tabelas de dupla entrada e em gráficos de colunas simples ou barras, para melhor compreender aspectos da realidade próxima.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Coleta, classificação e representação de dados em tabelas simples e de dupla entrada e em gráficos de colunas",
+      "palavras_chave": [
+        "tabela de dupla entrada",
+        "gráfico de barras",
+        "gráfico de colunas"
+      ],
+      "pre_requisitos": [
+        "EF01MA21"
+      ],
+      "nivel": 4,
+      "ordem": 43
+    },
+    "EF02MA23": {
+      "nome": "Pesquisa com até três variáveis e organização em tabelas e gráficos",
+      "descricao_bncc": "Realizar pesquisa em universo de até 30 elementos, escolhendo até três variáveis categóricas de seu interesse, organizando os dados coletados em listas, tabelas e gráficos de colunas simples.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Coleta, classificação e representação de dados em tabelas simples e de dupla entrada e em gráficos de colunas",
+      "palavras_chave": [
+        "pesquisa",
+        "organizar dados",
+        "lista",
+        "gráfico"
+      ],
+      "pre_requisitos": [
+        "EF01MA22",
+        "EF02MA22"
+      ],
+      "nivel": 5,
+      "ordem": 44
+    },
+    "EF03MA01": {
+      "nome": "Leitura, escrita e comparação de números até a unidade de milhar",
+      "descricao_bncc": "Ler, escrever e comparar números naturais de até a ordem de unidade de milhar, estabelecendo relações entre os registros numéricos e em língua materna.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Leitura, escrita, comparação e ordenação de números naturais de quatro ordens",
+      "palavras_chave": [
+        "milhar",
+        "número por extenso",
+        "comparar números"
+      ],
+      "pre_requisitos": [
+        "EF02MA01"
+      ],
+      "nivel": 5,
+      "ordem": 45
+    },
+    "EF03MA02": {
+      "nome": "Sistema de numeração decimal: decomposição até quatro ordens",
+      "descricao_bncc": "Identificar características do sistema de numeração decimal, utilizando a composição e a decomposição de número natural de até quatro ordens.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Composição e decomposição de números naturais",
+      "palavras_chave": [
+        "unidade de milhar",
+        "valor posicional",
+        "decomposição"
+      ],
+      "pre_requisitos": [
+        "EF02MA04",
+        "EF03MA01"
+      ],
+      "nivel": 6,
+      "ordem": 46
+    },
+    "EF03MA03": {
+      "nome": "Fatos básicos da adição e da multiplicação",
+      "descricao_bncc": "Construir e utilizar fatos básicos da adição e da multiplicação para o cálculo mental ou escrito.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Construção de fatos fundamentais da adição, subtração e multiplicação",
+      "palavras_chave": [
+        "tabuada",
+        "cálculo mental",
+        "fatos da multiplicação"
+      ],
+      "pre_requisitos": [
+        "EF02MA07"
+      ],
+      "nivel": 5,
+      "ordem": 47
+    },
+    "EF03MA04": {
+      "nome": "Reta numérica: ordenação e operações como deslocamentos",
+      "descricao_bncc": "Estabelecer a relação entre números naturais e pontos da reta numérica para utilizá-la na ordenação dos números naturais e também na construção de fatos da adição e da subtração, relacionando-os com deslocamentos para a direita ou para a esquerda.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Reta numérica",
+      "palavras_chave": [
+        "reta numérica",
+        "ordenação",
+        "deslocamento na reta"
+      ],
+      "pre_requisitos": [
+        "EF02MA05",
+        "EF03MA01"
+      ],
+      "nivel": 6,
+      "ordem": 48
+    },
+    "EF03MA05": {
+      "nome": "Algoritmos de adição e subtração",
+      "descricao_bncc": "Utilizar diferentes procedimentos de cálculo mental e escrito, inclusive os convencionais, para resolver problemas significativos envolvendo adição e subtração com números naturais.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Procedimentos de cálculo (mental e escrito) com números naturais: adição e subtração",
+      "palavras_chave": [
+        "conta armada",
+        "vai um",
+        "empresta um",
+        "reagrupamento",
+        "algoritmo da adição",
+        "algoritmo da subtração"
+      ],
+      "pre_requisitos": [
+        "EF02MA06",
+        "EF03MA02"
+      ],
+      "nivel": 7,
+      "ordem": 49
+    },
+    "EF03MA06": {
+      "nome": "Problemas de adição e subtração: comparar e completar",
+      "descricao_bncc": "Resolver e elaborar problemas de adição e subtração com os significados de juntar, acrescentar, separar, retirar, comparar e completar quantidades, utilizando diferentes estratégias de cálculo exato ou aproximado, incluindo cálculo mental.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo significados da adição e da subtração: juntar, acrescentar, separar, retirar, comparar e completar quantidades",
+      "palavras_chave": [
+        "quanto falta",
+        "comparar",
+        "completar",
+        "problemas"
+      ],
+      "pre_requisitos": [
+        "EF02MA03",
+        "EF03MA05"
+      ],
+      "nivel": 8,
+      "ordem": 50
+    },
+    "EF03MA07": {
+      "nome": "Problemas de multiplicação (parcelas iguais e disposição retangular)",
+      "descricao_bncc": "Resolver e elaborar problemas de multiplicação (por 2, 3, 4, 5 e 10) com os significados de adição de parcelas iguais e elementos apresentados em disposição retangular, utilizando diferentes estratégias de cálculo e registros.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da multiplicação e da divisão: adição de parcelas iguais, configuração retangular, repartição em partes iguais e medida",
+      "palavras_chave": [
+        "multiplicação",
+        "tabuada",
+        "disposição retangular",
+        "vezes"
+      ],
+      "pre_requisitos": [
+        "EF03MA03"
+      ],
+      "nivel": 6,
+      "ordem": 51
+    },
+    "EF03MA08": {
+      "nome": "Divisão: repartir e medir, com e sem resto",
+      "descricao_bncc": "Resolver e elaborar problemas de divisão de um número natural por outro (até 10), com resto zero e com resto diferente de zero, com os significados de repartição equitativa e de medida, por meio de estratégias e registros pessoais.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da multiplicação e da divisão: adição de parcelas iguais, configuração retangular, repartição em partes iguais e medida",
+      "palavras_chave": [
+        "divisão",
+        "dividir",
+        "repartir",
+        "resto"
+      ],
+      "pre_requisitos": [
+        "EF02MA08",
+        "EF03MA07"
+      ],
+      "nivel": 7,
+      "ordem": 52
+    },
+    "EF03MA09": {
+      "nome": "Metade, terça, quarta, quinta e décima partes",
+      "descricao_bncc": "Associar o quociente de uma divisão com resto zero de um número natural por 2, 3, 4, 5 e 10 às ideias de metade, terça, quarta, quinta e décima partes.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Significados de metade, terça parte, quarta parte, quinta parte e décima parte",
+      "palavras_chave": [
+        "metade",
+        "um terço",
+        "um quarto",
+        "um quinto",
+        "um décimo",
+        "partes iguais"
+      ],
+      "pre_requisitos": [
+        "EF03MA08"
+      ],
+      "nivel": 8,
+      "ordem": 53
+    },
+    "EF03MA10": {
+      "nome": "Regularidades em sequências com adições ou subtrações sucessivas",
+      "descricao_bncc": "Identificar regularidades em sequências ordenadas de números naturais, resultantes da realização de adições ou subtrações sucessivas, por um mesmo número, descrever uma regra de formação da sequência e determinar elementos faltantes ou seguintes.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Identificação e descrição de regularidades em sequências numéricas recursivas",
+      "palavras_chave": [
+        "sequência",
+        "regra de formação",
+        "próximo termo"
+      ],
+      "pre_requisitos": [
+        "EF02MA09",
+        "EF02MA11"
+      ],
+      "nivel": 6,
+      "ordem": 54
+    },
+    "EF03MA11": {
+      "nome": "Ideia de igualdade em sentenças de adição e subtração",
+      "descricao_bncc": "Compreender a ideia de igualdade para escrever diferentes sentenças de adições ou de subtrações de dois números naturais que resultem na mesma soma ou diferença.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Relação de igualdade",
+      "palavras_chave": [
+        "igualdade",
+        "sinal de igual",
+        "mesma soma",
+        "mesma diferença"
+      ],
+      "pre_requisitos": [
+        "EF02MA06"
+      ],
+      "nivel": 7,
+      "ordem": 55
+    },
+    "EF03MA12": {
+      "nome": "Trajetos, croquis e maquetes",
+      "descricao_bncc": "Descrever e representar, por meio de esboços de trajetos ou utilizando croquis e maquetes, a movimentação de pessoas ou de objetos no espaço, incluindo mudanças de direção e sentido, com base em diferentes pontos de referência.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Localização e movimentação: representação de objetos e pontos de referência",
+      "palavras_chave": [
+        "trajeto",
+        "croqui",
+        "maquete",
+        "movimentação"
+      ],
+      "pre_requisitos": [
+        "EF02MA13"
+      ],
+      "nivel": 4,
+      "ordem": 56
+    },
+    "EF03MA13": {
+      "nome": "Nomeação de figuras espaciais e objetos do mundo físico",
+      "descricao_bncc": "Associar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera) a objetos do mundo físico e nomear essas figuras.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera): reconhecimento, análise de características e planificações",
+      "palavras_chave": [
+        "sólidos geométricos",
+        "nomear figuras espaciais"
+      ],
+      "pre_requisitos": [
+        "EF02MA14"
+      ],
+      "nivel": 2,
+      "ordem": 57
+    },
+    "EF03MA14": {
+      "nome": "Planificações de prismas, pirâmides, cilindros e cones",
+      "descricao_bncc": "Descrever características de algumas figuras geométricas espaciais (prismas retos, pirâmides, cilindros, cones), relacionando-as com suas planificações.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera): reconhecimento, análise de características e planificações",
+      "palavras_chave": [
+        "planificação",
+        "molde",
+        "prisma",
+        "pirâmide"
+      ],
+      "pre_requisitos": [
+        "EF02MA15",
+        "EF03MA13"
+      ],
+      "nivel": 3,
+      "ordem": 58
+    },
+    "EF03MA15": {
+      "nome": "Classificação de figuras planas por lados e vértices",
+      "descricao_bncc": "Classificar e comparar figuras planas (triângulo, quadrado, retângulo, trapézio e paralelogramo) em relação a seus lados (quantidade, posições relativas e comprimento) e vértices.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas planas (triângulo, quadrado, retângulo, trapézio e paralelogramo): reconhecimento e análise de características",
+      "palavras_chave": [
+        "trapézio",
+        "paralelogramo",
+        "vértice",
+        "lados",
+        "classificar figuras"
+      ],
+      "pre_requisitos": [
+        "EF02MA15"
+      ],
+      "nivel": 3,
+      "ordem": 59
+    },
+    "EF03MA16": {
+      "nome": "Figuras congruentes",
+      "descricao_bncc": "Reconhecer figuras congruentes, usando sobreposição e desenhos em malhas quadriculadas ou triangulares, incluindo o uso de tecnologias digitais.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Congruência de figuras geométricas planas",
+      "palavras_chave": [
+        "congruente",
+        "figuras iguais",
+        "sobreposição",
+        "malha quadriculada"
+      ],
+      "pre_requisitos": [
+        "EF03MA15"
+      ],
+      "nivel": 4,
+      "ordem": 60
+    },
+    "EF03MA17": {
+      "nome": "Resultado da medida depende da unidade",
+      "descricao_bncc": "Reconhecer que o resultado de uma medida depende da unidade de medida utilizada.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Significado de medida e de unidade de medida",
+      "palavras_chave": [
+        "unidade de medida",
+        "palmo",
+        "passo",
+        "medida"
+      ],
+      "pre_requisitos": [
+        "EF02MA16"
+      ],
+      "nivel": 6,
+      "ordem": 61
+    },
+    "EF03MA18": {
+      "nome": "Escolha da unidade e do instrumento de medida",
+      "descricao_bncc": "Escolher a unidade de medida e o instrumento mais apropriado para medições de comprimento, tempo e capacidade.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Significado de medida e de unidade de medida",
+      "palavras_chave": [
+        "instrumento de medida",
+        "régua",
+        "balança",
+        "unidade adequada"
+      ],
+      "pre_requisitos": [
+        "EF02MA17",
+        "EF02MA19",
+        "EF03MA17"
+      ],
+      "nivel": 7,
+      "ordem": 62
+    },
+    "EF03MA19": {
+      "nome": "Medição de comprimentos com unidades padronizadas",
+      "descricao_bncc": "Estimar, medir e comparar comprimentos, utilizando unidades de medida não padronizadas e padronizadas mais usuais (metro, centímetro e milímetro) e diversos instrumentos de medida.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de comprimento (unidades não convencionais e convencionais): registro, instrumentos de medida, estimativas e comparações",
+      "palavras_chave": [
+        "medir comprimento",
+        "metro",
+        "centímetro",
+        "milímetro"
+      ],
+      "pre_requisitos": [
+        "EF03MA17"
+      ],
+      "nivel": 7,
+      "ordem": 63
+    },
+    "EF03MA20": {
+      "nome": "Medição de capacidade e massa com unidades padronizadas",
+      "descricao_bncc": "Estimar e medir capacidade e massa, utilizando unidades de medida não padronizadas e padronizadas mais usuais (litro, mililitro, quilograma, grama e miligrama), reconhecendo-as em leitura de rótulos e embalagens, entre outros.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de capacidade e de massa (unidades não convencionais e convencionais): registro, estimativas e comparações",
+      "palavras_chave": [
+        "litro",
+        "mililitro",
+        "grama",
+        "miligrama",
+        "rótulos"
+      ],
+      "pre_requisitos": [
+        "EF02MA17",
+        "EF03MA17"
+      ],
+      "nivel": 7,
+      "ordem": 64
+    },
+    "EF03MA21": {
+      "nome": "Comparação de áreas por superposição",
+      "descricao_bncc": "Comparar, visualmente ou por superposição, áreas de faces de objetos, de figuras planas ou de desenhos.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Comparação de áreas por superposição",
+      "palavras_chave": [
+        "área",
+        "superfície",
+        "comparar áreas"
+      ],
+      "pre_requisitos": [
+        "EF01MA15",
+        "EF02MA15"
+      ],
+      "nivel": 3,
+      "ordem": 65
+    },
+    "EF03MA22": {
+      "nome": "Registro de horários de início, término e duração",
+      "descricao_bncc": "Ler e registrar medidas e intervalos de tempo, utilizando relógios (analógico e digital) para informar os horários de início e término de realização de uma atividade e sua duração.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: leitura de horas em relógios digitais e analógicos, duração de eventos e reconhecimento de relações entre unidades de medida de tempo",
+      "palavras_chave": [
+        "horário",
+        "duração",
+        "início",
+        "término"
+      ],
+      "pre_requisitos": [
+        "EF03MA23"
+      ],
+      "nivel": 7,
+      "ordem": 67
+    },
+    "EF03MA23": {
+      "nome": "Leitura de horas e relação entre hora, minuto e segundo",
+      "descricao_bncc": "Ler horas em relógios digitais e em relógios analógicos e reconhecer a relação entre hora e minutos e entre minuto e segundos.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: leitura de horas em relógios digitais e analógicos, duração de eventos e reconhecimento de relações entre unidades de medida de tempo",
+      "palavras_chave": [
+        "relógio analógico",
+        "ponteiros",
+        "minutos",
+        "segundos",
+        "ver as horas"
+      ],
+      "pre_requisitos": [
+        "EF02MA19",
+        "EF03MA01"
+      ],
+      "nivel": 6,
+      "ordem": 66
+    },
+    "EF03MA24": {
+      "nome": "Problemas com dinheiro: compra, venda e troca",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam a comparação e a equivalência de valores monetários do sistema brasileiro em situações de compra, venda e troca.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Sistema monetário brasileiro: estabelecimento de equivalências de um mesmo valor na utilização de diferentes cédulas e moedas",
+      "palavras_chave": [
+        "troco",
+        "compra",
+        "venda",
+        "dinheiro"
+      ],
+      "pre_requisitos": [
+        "EF02MA20",
+        "EF03MA06"
+      ],
+      "nivel": 9,
+      "ordem": 68
+    },
+    "EF03MA25": {
+      "nome": "Resultados possíveis de eventos aleatórios",
+      "descricao_bncc": "Identificar, em eventos familiares aleatórios, todos os resultados possíveis, estimando os que têm maiores ou menores chances de ocorrência.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Análise da ideia de acaso em situações do cotidiano: espaço amostral",
+      "palavras_chave": [
+        "resultados possíveis",
+        "chances",
+        "dado",
+        "moeda",
+        "espaço amostral"
+      ],
+      "pre_requisitos": [
+        "EF02MA21"
+      ],
+      "nivel": 2,
+      "ordem": 69
+    },
+    "EF03MA26": {
+      "nome": "Problemas com dados em tabelas e gráficos",
+      "descricao_bncc": "Resolver problemas cujos dados estão apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, interpretação e representação de dados em tabelas de dupla entrada e gráficos de barras",
+      "palavras_chave": [
+        "problema com tabela",
+        "problema com gráfico",
+        "interpretar gráfico"
+      ],
+      "pre_requisitos": [
+        "EF02MA22",
+        "EF03MA06"
+      ],
+      "nivel": 9,
+      "ordem": 70
+    },
+    "EF03MA27": {
+      "nome": "Leitura e comparação de dados: maior e menor frequência",
+      "descricao_bncc": "Ler, interpretar e comparar dados apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas, envolvendo resultados de pesquisas significativas, utilizando termos como maior e menor frequência, apropriando-se desse tipo de linguagem para compreender aspectos da realidade sociocultural significativos.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, interpretação e representação de dados em tabelas de dupla entrada e gráficos de barras",
+      "palavras_chave": [
+        "frequência",
+        "gráfico de barras",
+        "comparar dados"
+      ],
+      "pre_requisitos": [
+        "EF02MA22"
+      ],
+      "nivel": 5,
+      "ordem": 71
+    },
+    "EF03MA28": {
+      "nome": "Pesquisa com até 50 elementos e representação em gráficos",
+      "descricao_bncc": "Realizar pesquisa envolvendo variáveis categóricas em um universo de até 50 elementos, organizar os dados coletados utilizando listas, tabelas simples ou de dupla entrada e representá-los em gráficos de colunas simples, com e sem uso de tecnologias digitais.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Coleta, classificação e representação de dados referentes a variáveis categóricas, por meio de tabelas e gráficos",
+      "palavras_chave": [
+        "pesquisa",
+        "tabela",
+        "gráfico de colunas",
+        "variáveis categóricas"
+      ],
+      "pre_requisitos": [
+        "EF02MA23",
+        "EF03MA27"
+      ],
+      "nivel": 6,
+      "ordem": 72
+    },
+    "EF04MA01": {
+      "nome": "Números naturais até a dezena de milhar",
+      "descricao_bncc": "Ler, escrever e ordenar números naturais até a ordem de dezenas de milhar.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Sistema de numeração decimal: leitura, escrita, comparação e ordenação de números naturais de até cinco ordens",
+      "palavras_chave": [
+        "dezena de milhar",
+        "números grandes",
+        "ler e escrever números"
+      ],
+      "pre_requisitos": [
+        "EF03MA01"
+      ],
+      "nivel": 6,
+      "ordem": 73
+    },
+    "EF04MA02": {
+      "nome": "Decomposição com adições e multiplicações por potências de 10",
+      "descricao_bncc": "Mostrar, por decomposição e composição, que todo número natural pode ser escrito por meio de adições e multiplicações por potências de dez, para compreender o sistema de numeração decimal e desenvolver estratégias de cálculo.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Composição e decomposição de um número natural de até cinco ordens, por meio de adições e multiplicações por potências de 10",
+      "palavras_chave": [
+        "decomposição",
+        "potência de dez",
+        "valor posicional"
+      ],
+      "pre_requisitos": [
+        "EF03MA02",
+        "EF03MA07",
+        "EF04MA01"
+      ],
+      "nivel": 7,
+      "ordem": 74
+    },
+    "EF04MA03": {
+      "nome": "Problemas de adição e subtração com estimativa",
+      "descricao_bncc": "Resolver e elaborar problemas com números naturais envolvendo adição e subtração, utilizando estratégias diversas, como cálculo, cálculo mental e algoritmos, além de fazer estimativas do resultado.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Propriedades das operações para o desenvolvimento de diferentes estratégias de cálculo com números naturais",
+      "palavras_chave": [
+        "estimativa",
+        "arredondar",
+        "adição",
+        "subtração",
+        "algoritmo"
+      ],
+      "pre_requisitos": [
+        "EF03MA06",
+        "EF04MA01"
+      ],
+      "nivel": 9,
+      "ordem": 75
+    },
+    "EF04MA04": {
+      "nome": "Relações entre as operações para calcular",
+      "descricao_bncc": "Utilizar as relações entre adição e subtração, bem como entre multiplicação e divisão, para ampliar as estratégias de cálculo.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Propriedades das operações para o desenvolvimento de diferentes estratégias de cálculo com números naturais",
+      "palavras_chave": [
+        "operação inversa",
+        "prova real",
+        "estratégias de cálculo"
+      ],
+      "pre_requisitos": [
+        "EF03MA05",
+        "EF03MA08"
+      ],
+      "nivel": 8,
+      "ordem": 76
+    },
+    "EF04MA05": {
+      "nome": "Propriedades das operações",
+      "descricao_bncc": "Utilizar as propriedades das operações para desenvolver estratégias de cálculo.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da multiplicação e da divisão: adição de parcelas iguais, configuração retangular, proporcionalidade, repartição equitativa e medida",
+      "palavras_chave": [
+        "comutativa",
+        "associativa",
+        "distributiva",
+        "propriedades das operações"
+      ],
+      "pre_requisitos": [
+        "EF04MA04"
+      ],
+      "nivel": 9,
+      "ordem": 77
+    },
+    "EF04MA06": {
+      "nome": "Problemas de multiplicação: parcelas iguais, retangular e proporcionalidade",
+      "descricao_bncc": "Resolver e elaborar problemas envolvendo diferentes significados da multiplicação (adição de parcelas iguais, organização retangular e proporcionalidade), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da multiplicação e da divisão: adição de parcelas iguais, configuração retangular, proporcionalidade, repartição equitativa e medida",
+      "palavras_chave": [
+        "multiplicação",
+        "algoritmo da multiplicação",
+        "conta de vezes"
+      ],
+      "pre_requisitos": [
+        "EF04MA02",
+        "EF04MA05"
+      ],
+      "nivel": 10,
+      "ordem": 78
+    },
+    "EF04MA07": {
+      "nome": "Divisão com divisor de até dois algarismos",
+      "descricao_bncc": "Resolver e elaborar problemas de divisão cujo divisor tenha no máximo dois algarismos, envolvendo os significados de repartição equitativa e de medida, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas envolvendo diferentes significados da multiplicação e da divisão: adição de parcelas iguais, configuração retangular, proporcionalidade, repartição equitativa e medida",
+      "palavras_chave": [
+        "divisão",
+        "algoritmo da divisão",
+        "conta de dividir",
+        "método da chave"
+      ],
+      "pre_requisitos": [
+        "EF04MA06"
+      ],
+      "nivel": 11,
+      "ordem": 79
+    },
+    "EF04MA08": {
+      "nome": "Problemas simples de contagem (combinações)",
+      "descricao_bncc": "Resolver, com o suporte de imagem e/ou material manipulável, problemas simples de contagem, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra, utilizando estratégias e formas de registro pessoais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas de contagem",
+      "palavras_chave": [
+        "combinações",
+        "quantas possibilidades",
+        "contagem"
+      ],
+      "pre_requisitos": [
+        "EF03MA07"
+      ],
+      "nivel": 7,
+      "ordem": 80
+    },
+    "EF04MA09": {
+      "nome": "Frações unitárias (1/2, 1/3, 1/4, 1/5, 1/10, 1/100)",
+      "descricao_bncc": "Reconhecer as frações unitárias mais usuais (1/2, 1/3, 1/4, 1/5, 1/10 e 1/100) como unidades de medida menores do que uma unidade, utilizando a reta numérica como recurso.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais: frações unitárias mais usuais (1/2, 1/3, 1/4, 1/5, 1/10 e 1/100)",
+      "palavras_chave": [
+        "fração",
+        "um meio",
+        "um terço",
+        "um quarto",
+        "fração unitária"
+      ],
+      "pre_requisitos": [
+        "EF03MA04",
+        "EF03MA09"
+      ],
+      "nivel": 9,
+      "ordem": 81
+    },
+    "EF04MA10": {
+      "nome": "Décimos e centésimos e o sistema monetário",
+      "descricao_bncc": "Reconhecer que as regras do sistema de numeração decimal podem ser estendidas para a representação decimal de um número racional e relacionar décimos e centésimos com a representação do sistema monetário brasileiro.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais: representação decimal para escrever valores do sistema monetário brasileiro",
+      "palavras_chave": [
+        "número decimal",
+        "vírgula",
+        "centavos",
+        "décimos",
+        "centésimos"
+      ],
+      "pre_requisitos": [
+        "EF03MA24",
+        "EF04MA02",
+        "EF04MA09"
+      ],
+      "nivel": 10,
+      "ordem": 82
+    },
+    "EF04MA11": {
+      "nome": "Sequências de múltiplos de um número",
+      "descricao_bncc": "Identificar regularidades em sequências numéricas compostas por múltiplos de um número natural.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sequência numérica recursiva formada por múltiplos de um número natural",
+      "palavras_chave": [
+        "múltiplos",
+        "tabuada",
+        "sequência de múltiplos"
+      ],
+      "pre_requisitos": [
+        "EF03MA07",
+        "EF03MA10"
+      ],
+      "nivel": 7,
+      "ordem": 83
+    },
+    "EF04MA12": {
+      "nome": "Restos iguais na divisão e regularidades",
+      "descricao_bncc": "Reconhecer, por meio de investigações, que há grupos de números naturais para os quais as divisões por um determinado número resultam em restos iguais, identificando regularidades.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sequência numérica recursiva formada por números que deixam o mesmo resto ao ser divididos por um mesmo número natural diferente de zero",
+      "palavras_chave": [
+        "resto",
+        "divisão",
+        "regularidade",
+        "par e ímpar"
+      ],
+      "pre_requisitos": [
+        "EF03MA08",
+        "EF04MA11"
+      ],
+      "nivel": 8,
+      "ordem": 84
+    },
+    "EF04MA13": {
+      "nome": "Relações inversas entre as operações",
+      "descricao_bncc": "Reconhecer, por meio de investigações, utilizando a calculadora quando necessário, as relações inversas entre as operações de adição e de subtração e de multiplicação e de divisão, para aplicá-las na resolução de problemas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Relações entre adição e subtração e entre multiplicação e divisão",
+      "palavras_chave": [
+        "operação inversa",
+        "calculadora"
+      ],
+      "pre_requisitos": [
+        "EF04MA04"
+      ],
+      "nivel": 9,
+      "ordem": 85
+    },
+    "EF04MA14": {
+      "nome": "Igualdade preservada ao somar ou subtrair o mesmo número",
+      "descricao_bncc": "Reconhecer e mostrar, por meio de exemplos, que a relação de igualdade existente entre dois termos permanece quando se adiciona ou se subtrai um mesmo número a cada um desses termos.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Propriedades da igualdade",
+      "palavras_chave": [
+        "igualdade",
+        "equilíbrio",
+        "balança"
+      ],
+      "pre_requisitos": [
+        "EF03MA11"
+      ],
+      "nivel": 8,
+      "ordem": 86
+    },
+    "EF04MA15": {
+      "nome": "Número desconhecido em uma igualdade",
+      "descricao_bncc": "Determinar o número desconhecido que torna verdadeira uma igualdade que envolve as operações fundamentais com números naturais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Propriedades da igualdade",
+      "palavras_chave": [
+        "número desconhecido",
+        "termo desconhecido",
+        "quadradinho",
+        "valor que falta"
+      ],
+      "pre_requisitos": [
+        "EF04MA13",
+        "EF04MA14"
+      ],
+      "nivel": 10,
+      "ordem": 87
+    },
+    "EF04MA16": {
+      "nome": "Deslocamentos em malhas e mapas; retas paralelas e perpendiculares",
+      "descricao_bncc": "Descrever deslocamentos e localização de pessoas e de objetos no espaço, por meio de malhas quadriculadas e representações como desenhos, mapas, planta baixa e croquis, empregando termos como direita e esquerda, mudanças de direção e sentido, intersecção, transversais, paralelas e perpendiculares.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Localização e movimentação: pontos de referência, direção e sentido Paralelismo e perpendicularismo",
+      "palavras_chave": [
+        "malha quadriculada",
+        "paralelas",
+        "perpendiculares",
+        "planta baixa",
+        "croqui"
+      ],
+      "pre_requisitos": [
+        "EF03MA12"
+      ],
+      "nivel": 5,
+      "ordem": 88
+    },
+    "EF04MA17": {
+      "nome": "Prismas e pirâmides: planificações e atributos",
+      "descricao_bncc": "Associar prismas e pirâmides a suas planificações e analisar, nomear e comparar seus atributos, estabelecendo relações entre as representações planas e espaciais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais (prismas e pirâmides): reconhecimento, representações, planificações e características",
+      "palavras_chave": [
+        "prisma",
+        "pirâmide",
+        "planificação",
+        "faces"
+      ],
+      "pre_requisitos": [
+        "EF03MA14"
+      ],
+      "nivel": 4,
+      "ordem": 89
+    },
+    "EF04MA18": {
+      "nome": "Ângulos retos e não retos",
+      "descricao_bncc": "Reconhecer ângulos retos e não retos em figuras poligonais com o uso de dobraduras, esquadros ou softwares de geometria.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Ângulos retos e não retos: uso de dobraduras, esquadros e softwares",
+      "palavras_chave": [
+        "ângulo reto",
+        "esquadro",
+        "ângulo",
+        "dobradura"
+      ],
+      "pre_requisitos": [
+        "EF03MA15",
+        "EF04MA16"
+      ],
+      "nivel": 6,
+      "ordem": 90
+    },
+    "EF04MA19": {
+      "nome": "Simetria de reflexão",
+      "descricao_bncc": "Reconhecer simetria de reflexão em figuras e em pares de figuras geométricas planas e utilizá-la na construção de figuras congruentes, com o uso de malhas quadriculadas e de softwares de geometria.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Simetria de reflexão",
+      "palavras_chave": [
+        "simetria",
+        "eixo de simetria",
+        "espelho",
+        "reflexão"
+      ],
+      "pre_requisitos": [
+        "EF03MA16"
+      ],
+      "nivel": 5,
+      "ordem": 91
+    },
+    "EF04MA20": {
+      "nome": "Medidas de comprimento (incluindo perímetro), massa e capacidade",
+      "descricao_bncc": "Medir e estimar comprimentos (incluindo perímetros), massas e capacidades, utilizando unidades de medida padronizadas mais usuais, valorizando e respeitando a cultura local.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de comprimento, massa e capacidade: estimativas, utilização de instrumentos de medida e de unidades de medida convencionais mais usuais",
+      "palavras_chave": [
+        "perímetro",
+        "contorno",
+        "medir",
+        "massa",
+        "capacidade"
+      ],
+      "pre_requisitos": [
+        "EF03MA05",
+        "EF03MA19",
+        "EF03MA20"
+      ],
+      "nivel": 8,
+      "ordem": 92
+    },
+    "EF04MA21": {
+      "nome": "Área de figuras em malha quadriculada",
+      "descricao_bncc": "Medir, comparar e estimar área de figuras planas desenhadas em malha quadriculada, pela contagem dos quadradinhos ou de metades de quadradinho, reconhecendo que duas figuras com formatos diferentes podem ter a mesma medida de área.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Áreas de figuras construídas em malhas quadriculadas",
+      "palavras_chave": [
+        "área",
+        "quadradinhos",
+        "malha quadriculada"
+      ],
+      "pre_requisitos": [
+        "EF03MA07",
+        "EF03MA21"
+      ],
+      "nivel": 7,
+      "ordem": 93
+    },
+    "EF04MA22": {
+      "nome": "Medidas de tempo em horas, minutos e segundos",
+      "descricao_bncc": "Ler e registrar medidas e intervalos de tempo em horas, minutos e segundos em situações relacionadas ao seu cotidiano, como informar os horários de início e término de realização de uma tarefa e sua duração.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de tempo: leitura de horas em relógios digitais e analógicos, duração de eventos e relações entre unidades de medida de tempo",
+      "palavras_chave": [
+        "duração",
+        "horas",
+        "minutos",
+        "segundos"
+      ],
+      "pre_requisitos": [
+        "EF03MA22"
+      ],
+      "nivel": 8,
+      "ordem": 94
+    },
+    "EF04MA23": {
+      "nome": "Temperatura e grau Celsius",
+      "descricao_bncc": "Reconhecer temperatura como grandeza e o grau Celsius como unidade de medida a ela associada e utilizá-lo em comparações de temperaturas em diferentes regiões do Brasil ou no exterior ou, ainda, em discussões que envolvam problemas relacionados ao aquecimento global.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de temperatura em grau Celsius: construção de gráficos para indicar a variação da temperatura (mínima e máxima) medida em um dado dia ou em uma semana",
+      "palavras_chave": [
+        "temperatura",
+        "termômetro",
+        "grau Celsius"
+      ],
+      "pre_requisitos": [
+        "EF03MA17"
+      ],
+      "nivel": 7,
+      "ordem": 95
+    },
+    "EF04MA24": {
+      "nome": "Gráficos de temperaturas máximas e mínimas",
+      "descricao_bncc": "Registrar as temperaturas máxima e mínima diárias, em locais do seu cotidiano, e elaborar gráficos de colunas com as variações diárias da temperatura, utilizando, inclusive, planilhas eletrônicas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de temperatura em grau Celsius: construção de gráficos para indicar a variação da temperatura (mínima e máxima) medida em um dado dia ou em uma semana",
+      "palavras_chave": [
+        "gráfico de temperatura",
+        "planilha",
+        "máxima e mínima"
+      ],
+      "pre_requisitos": [
+        "EF03MA28",
+        "EF04MA23"
+      ],
+      "nivel": 8,
+      "ordem": 96
+    },
+    "EF04MA25": {
+      "nome": "Compra e venda: troco, desconto e formas de pagamento",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam situações de compra e venda e formas de pagamento, utilizando termos como troco e desconto, enfatizando o consumo ético, consciente e responsável.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Problemas utilizando o sistema monetário brasileiro",
+      "palavras_chave": [
+        "troco",
+        "desconto",
+        "pagamento",
+        "consumo consciente"
+      ],
+      "pre_requisitos": [
+        "EF03MA24",
+        "EF04MA03"
+      ],
+      "nivel": 10,
+      "ordem": 97
+    },
+    "EF04MA26": {
+      "nome": "Eventos aleatórios com maior chance de ocorrência",
+      "descricao_bncc": "Identificar, entre eventos aleatórios cotidianos, aqueles que têm maior chance de ocorrência, reconhecendo características de resultados mais prováveis, sem utilizar frações.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Análise de chances de eventos aleatórios",
+      "palavras_chave": [
+        "mais provável",
+        "maior chance",
+        "aleatório"
+      ],
+      "pre_requisitos": [
+        "EF03MA25"
+      ],
+      "nivel": 3,
+      "ordem": 98
+    },
+    "EF04MA27": {
+      "nome": "Análise de tabelas e gráficos com texto-síntese",
+      "descricao_bncc": "Analisar dados apresentados em tabelas simples ou de dupla entrada e em gráficos de colunas ou pictóricos, com base em informações das diferentes áreas do conhecimento, e produzir texto com a síntese de sua análise.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, interpretação e representação de dados em tabelas de dupla entrada, gráficos de colunas simples e agrupadas, gráficos de barras e colunas e gráficos pictóricos",
+      "palavras_chave": [
+        "análise de gráfico",
+        "gráfico pictórico",
+        "síntese"
+      ],
+      "pre_requisitos": [
+        "EF03MA26",
+        "EF03MA27"
+      ],
+      "nivel": 10,
+      "ordem": 99
+    },
+    "EF04MA28": {
+      "nome": "Pesquisa com variáveis categóricas e numéricas",
+      "descricao_bncc": "Realizar pesquisa envolvendo variáveis categóricas e numéricas e organizar dados coletados por meio de tabelas e gráficos de colunas simples ou agrupadas, com e sem uso de tecnologias digitais.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Diferenciação entre variáveis categóricas e variáveis numéricas Coleta, classificação e representação de dados de pesquisa realizada",
+      "palavras_chave": [
+        "variável numérica",
+        "variável categórica",
+        "colunas agrupadas",
+        "pesquisa"
+      ],
+      "pre_requisitos": [
+        "EF03MA28",
+        "EF04MA27"
+      ],
+      "nivel": 11,
+      "ordem": 100
+    },
+    "EF05MA01": {
+      "nome": "Números naturais até a centena de milhar",
+      "descricao_bncc": "Ler, escrever e ordenar números naturais até a ordem das centenas de milhar com compreensão das principais características do sistema de numeração decimal.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Sistema de numeração decimal: leitura, escrita e ordenação de números naturais (de até seis ordens)",
+      "palavras_chave": [
+        "centena de milhar",
+        "números grandes",
+        "sistema de numeração decimal"
+      ],
+      "pre_requisitos": [
+        "EF04MA02"
+      ],
+      "nivel": 8,
+      "ordem": 101
+    },
+    "EF05MA02": {
+      "nome": "Números decimais: leitura, escrita e ordenação",
+      "descricao_bncc": "Ler, escrever e ordenar números racionais na forma decimal com compreensão das principais características do sistema de numeração decimal, utilizando, como recursos, a composição e decomposição e a reta numérica.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais expressos na forma decimal e sua representação na reta numérica",
+      "palavras_chave": [
+        "decimais",
+        "vírgula",
+        "décimos",
+        "centésimos",
+        "milésimos"
+      ],
+      "pre_requisitos": [
+        "EF04MA10"
+      ],
+      "nivel": 11,
+      "ordem": 102
+    },
+    "EF05MA03": {
+      "nome": "Frações maiores e menores que a unidade",
+      "descricao_bncc": "Identificar e representar frações (menores e maiores que a unidade), associando-as ao resultado de uma divisão ou à ideia de parte de um todo, utilizando a reta numérica como recurso.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Representação fracionária dos números racionais: reconhecimento, significados, leitura e representação na reta numérica",
+      "palavras_chave": [
+        "fração",
+        "numerador",
+        "denominador",
+        "fração imprópria",
+        "parte do todo"
+      ],
+      "pre_requisitos": [
+        "EF04MA09"
+      ],
+      "nivel": 10,
+      "ordem": 103
+    },
+    "EF05MA04": {
+      "nome": "Frações equivalentes",
+      "descricao_bncc": "Identificar frações equivalentes.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Comparação e ordenação de números racionais na representação decimal e na fracionária utilizando a noção de equivalência",
+      "palavras_chave": [
+        "frações equivalentes",
+        "simplificar fração"
+      ],
+      "pre_requisitos": [
+        "EF05MA03"
+      ],
+      "nivel": 11,
+      "ordem": 104
+    },
+    "EF05MA05": {
+      "nome": "Comparação e ordenação de frações e decimais na reta",
+      "descricao_bncc": "Comparar e ordenar números racionais positivos (representações fracionária e decimal), relacionando-os a pontos na reta numérica.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Comparação e ordenação de números racionais na representação decimal e na fracionária utilizando a noção de equivalência",
+      "palavras_chave": [
+        "comparar frações",
+        "ordenar decimais",
+        "reta numérica"
+      ],
+      "pre_requisitos": [
+        "EF05MA02",
+        "EF05MA04"
+      ],
+      "nivel": 12,
+      "ordem": 105
+    },
+    "EF05MA06": {
+      "nome": "Porcentagens básicas: 10%, 25%, 50%, 75% e 100%",
+      "descricao_bncc": "Associar as representações 10%, 25%, 50%, 75% e 100% respectivamente à décima parte, quarta parte, metade, três quartos e um inteiro, para calcular porcentagens, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Cálculo de porcentagens e representação fracionária",
+      "palavras_chave": [
+        "porcentagem",
+        "por cento",
+        "%",
+        "educação financeira"
+      ],
+      "pre_requisitos": [
+        "EF04MA10",
+        "EF05MA04"
+      ],
+      "nivel": 12,
+      "ordem": 106
+    },
+    "EF05MA07": {
+      "nome": "Adição e subtração com números decimais",
+      "descricao_bncc": "Resolver e elaborar problemas de adição e subtração com números naturais e com números racionais, cuja representação decimal seja finita, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas: adição e subtração de números naturais e números racionais cuja representação decimal é finita",
+      "palavras_chave": [
+        "somar decimais",
+        "subtrair decimais",
+        "conta com vírgula"
+      ],
+      "pre_requisitos": [
+        "EF04MA03",
+        "EF05MA02"
+      ],
+      "nivel": 12,
+      "ordem": 107
+    },
+    "EF05MA08": {
+      "nome": "Multiplicação e divisão de decimais por números naturais",
+      "descricao_bncc": "Resolver e elaborar problemas de multiplicação e divisão com números naturais e com números racionais cuja representação decimal é finita (com multiplicador natural e divisor natural e diferente de zero), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas: multiplicação e divisão de números racionais cuja representação decimal é finita por números naturais",
+      "palavras_chave": [
+        "multiplicar decimal",
+        "dividir decimal"
+      ],
+      "pre_requisitos": [
+        "EF04MA07",
+        "EF05MA07"
+      ],
+      "nivel": 13,
+      "ordem": 108
+    },
+    "EF05MA09": {
+      "nome": "Princípio multiplicativo com árvore de possibilidades",
+      "descricao_bncc": "Resolver e elaborar problemas simples de contagem envolvendo o princípio multiplicativo, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra coleção, por meio de diagramas de árvore ou por tabelas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Problemas de contagem do tipo: “Se cada objeto de uma coleção A for combinado com todos os elementos de uma coleção B, quantos agrupamentos desse tipo podem ser formados?”",
+      "palavras_chave": [
+        "árvore de possibilidades",
+        "combinações",
+        "princípio multiplicativo"
+      ],
+      "pre_requisitos": [
+        "EF04MA06",
+        "EF04MA08"
+      ],
+      "nivel": 11,
+      "ordem": 109
+    },
+    "EF05MA10": {
+      "nome": "Igualdade preservada nas quatro operações (equivalência)",
+      "descricao_bncc": "Concluir, por meio de investigações, que a relação de igualdade existente entre dois membros permanece ao adicionar, subtrair, multiplicar ou dividir cada um desses membros por um mesmo número, para construir a noção de equivalência.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Propriedades da igualdade e noção de equivalência",
+      "palavras_chave": [
+        "equivalência",
+        "igualdade",
+        "balança"
+      ],
+      "pre_requisitos": [
+        "EF04MA13",
+        "EF04MA14"
+      ],
+      "nivel": 10,
+      "ordem": 110
+    },
+    "EF05MA11": {
+      "nome": "Problemas com termo desconhecido em uma igualdade",
+      "descricao_bncc": "Resolver e elaborar problemas cuja conversão em sentença matemática seja uma igualdade com uma operação em que um dos termos é desconhecido.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Propriedades da igualdade e noção de equivalência",
+      "palavras_chave": [
+        "termo desconhecido",
+        "sentença matemática",
+        "incógnita"
+      ],
+      "pre_requisitos": [
+        "EF04MA15",
+        "EF05MA10"
+      ],
+      "nivel": 11,
+      "ordem": 111
+    },
+    "EF05MA12": {
+      "nome": "Proporcionalidade direta entre grandezas",
+      "descricao_bncc": "Resolver problemas que envolvam variação de proporcionalidade direta entre duas grandezas, para associar a quantidade de um produto ao valor a pagar, alterar as quantidades de ingredientes de receitas, ampliar ou reduzir escala em mapas, entre outros.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Problemas envolvendo a partição de um todo em duas partes proporcionais",
+      "palavras_chave": [
+        "proporção",
+        "proporcional",
+        "receita",
+        "escala",
+        "valor a pagar"
+      ],
+      "pre_requisitos": [
+        "EF04MA07"
+      ],
+      "nivel": 12,
+      "ordem": 112
+    },
+    "EF05MA13": {
+      "nome": "Partilha em duas partes desiguais e ideia de razão",
+      "descricao_bncc": "Resolver problemas envolvendo a partilha de uma quantidade em duas partes desiguais, tais como dividir uma quantidade em duas partes, de modo que uma seja o dobro da outra, com compreensão da ideia de razão entre as partes e delas com o todo.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Problemas envolvendo a partição de um todo em duas partes proporcionais",
+      "palavras_chave": [
+        "razão",
+        "partilha",
+        "uma parte é o dobro da outra"
+      ],
+      "pre_requisitos": [
+        "EF05MA03",
+        "EF05MA12"
+      ],
+      "nivel": 13,
+      "ordem": 113
+    },
+    "EF05MA14": {
+      "nome": "Representações de localização no plano (mapas, planilhas, coordenadas)",
+      "descricao_bncc": "Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas, células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções de coordenadas cartesianas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Plano cartesiano: coordenadas cartesianas (1º quadrante) e representação de deslocamentos no plano cartesiano",
+      "palavras_chave": [
+        "coordenadas",
+        "mapa",
+        "planilha",
+        "localização"
+      ],
+      "pre_requisitos": [
+        "EF04MA16"
+      ],
+      "nivel": 6,
+      "ordem": 114
+    },
+    "EF05MA15": {
+      "nome": "Plano cartesiano no 1º quadrante",
+      "descricao_bncc": "Interpretar, descrever e representar a localização ou movimentação de objetos no plano cartesiano (1º quadrante), utilizando coordenadas cartesianas, indicando mudanças de direção e de sentido e giros.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Plano cartesiano: coordenadas cartesianas (1º quadrante) e representação de deslocamentos no plano cartesiano",
+      "palavras_chave": [
+        "plano cartesiano",
+        "coordenadas",
+        "eixos",
+        "par ordenado"
+      ],
+      "pre_requisitos": [
+        "EF03MA04",
+        "EF05MA14"
+      ],
+      "nivel": 7,
+      "ordem": 115
+    },
+    "EF05MA16": {
+      "nome": "Planificações de prismas, pirâmides, cilindros e cones",
+      "descricao_bncc": "Associar figuras espaciais a suas planificações (prismas, pirâmides, cilindros e cones) e analisar, nomear e comparar seus atributos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas espaciais: reconhecimento, representações, planificações e características",
+      "palavras_chave": [
+        "planificação",
+        "cilindro",
+        "cone",
+        "prisma"
+      ],
+      "pre_requisitos": [
+        "EF04MA17"
+      ],
+      "nivel": 5,
+      "ordem": 116
+    },
+    "EF05MA17": {
+      "nome": "Polígonos: lados, vértices e ângulos",
+      "descricao_bncc": "Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e desenhá-los, utilizando material de desenho ou tecnologias digitais.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Figuras geométricas planas: características, representações e ângulos",
+      "palavras_chave": [
+        "polígono",
+        "vértices",
+        "ângulos",
+        "desenhar polígonos"
+      ],
+      "pre_requisitos": [
+        "EF04MA18"
+      ],
+      "nivel": 7,
+      "ordem": 117
+    },
+    "EF05MA18": {
+      "nome": "Ampliação e redução de figuras em malhas",
+      "descricao_bncc": "Reconhecer a congruência dos ângulos e a proporcionalidade entre os lados correspondentes de figuras poligonais em situações de ampliação e de redução em malhas quadriculadas e usando tecnologias digitais.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Ampliação e redução de figuras poligonais em malhas quadriculadas: reconhecimento da congruência dos ângulos e da proporcionalidade dos lados correspondentes",
+      "palavras_chave": [
+        "ampliação",
+        "redução",
+        "proporcionalidade dos lados",
+        "malha"
+      ],
+      "pre_requisitos": [
+        "EF05MA12",
+        "EF05MA17"
+      ],
+      "nivel": 13,
+      "ordem": 118
+    },
+    "EF05MA19": {
+      "nome": "Conversão entre unidades de medida",
+      "descricao_bncc": "Resolver e elaborar problemas envolvendo medidas das grandezas comprimento, área, massa, tempo, temperatura e capacidade, recorrendo a transformações entre as unidades mais usuais em contextos socioculturais.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de comprimento, área, massa, tempo, temperatura e capacidade: utilização de unidades convencionais e relações entre as unidades de medida mais usuais",
+      "palavras_chave": [
+        "converter unidades",
+        "quilômetro",
+        "metro",
+        "quilograma",
+        "transformação de unidades"
+      ],
+      "pre_requisitos": [
+        "EF04MA20",
+        "EF04MA21",
+        "EF04MA22",
+        "EF04MA23",
+        "EF05MA08"
+      ],
+      "nivel": 14,
+      "ordem": 119
+    },
+    "EF05MA20": {
+      "nome": "Relação entre área e perímetro",
+      "descricao_bncc": "Concluir, por meio de investigações, que figuras de perímetros iguais podem ter áreas diferentes e que, também, figuras que têm a mesma área podem ter perímetros diferentes.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Áreas e perímetros de figuras poligonais: algumas relações",
+      "palavras_chave": [
+        "área",
+        "perímetro",
+        "mesma área perímetros diferentes"
+      ],
+      "pre_requisitos": [
+        "EF04MA20",
+        "EF04MA21"
+      ],
+      "nivel": 9,
+      "ordem": 120
+    },
+    "EF05MA21": {
+      "nome": "Noção de volume com empilhamento de cubos",
+      "descricao_bncc": "Reconhecer volume como grandeza associada a sólidos geométricos e medir volumes por meio de empilhamento de cubos, utilizando, preferencialmente, objetos concretos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Noção de volume",
+      "palavras_chave": [
+        "volume",
+        "cubinhos",
+        "empilhamento"
+      ],
+      "pre_requisitos": [
+        "EF04MA21",
+        "EF05MA16"
+      ],
+      "nivel": 8,
+      "ordem": 121
+    },
+    "EF05MA22": {
+      "nome": "Espaço amostral e resultados igualmente prováveis",
+      "descricao_bncc": "Apresentar todos os possíveis resultados de um experimento aleatório, estimando se esses resultados são igualmente prováveis ou não.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Espaço amostral: análise de chances de eventos aleatórios",
+      "palavras_chave": [
+        "espaço amostral",
+        "igualmente provável",
+        "equiprovável"
+      ],
+      "pre_requisitos": [
+        "EF04MA08",
+        "EF04MA26"
+      ],
+      "nivel": 8,
+      "ordem": 122
+    },
+    "EF05MA23": {
+      "nome": "Probabilidade de eventos equiprováveis",
+      "descricao_bncc": "Determinar a probabilidade de ocorrência de um resultado em eventos aleatórios, quando todos os resultados possíveis têm a mesma chance de ocorrer (equiprováveis).",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Cálculo de probabilidade de eventos equiprováveis",
+      "palavras_chave": [
+        "probabilidade",
+        "chance",
+        "fração"
+      ],
+      "pre_requisitos": [
+        "EF05MA03",
+        "EF05MA22"
+      ],
+      "nivel": 11,
+      "ordem": 123
+    },
+    "EF05MA24": {
+      "nome": "Interpretação de dados em textos, tabelas e gráficos de linhas",
+      "descricao_bncc": "Interpretar dados estatísticos apresentados em textos, tabelas e gráficos (colunas ou linhas), referentes a outras áreas do conhecimento ou a outros contextos, como saúde e trânsito, e produzir textos com o objetivo de sintetizar conclusões.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, coleta, classificação interpretação e representação de dados em tabelas de dupla entrada, gráfico de colunas agrupadas, gráficos pictóricos e gráfico de linhas",
+      "palavras_chave": [
+        "gráfico de linhas",
+        "interpretar dados"
+      ],
+      "pre_requisitos": [
+        "EF04MA27"
+      ],
+      "nivel": 11,
+      "ordem": 124
+    },
+    "EF05MA25": {
+      "nome": "Pesquisa com tabelas, gráficos e texto-síntese",
+      "descricao_bncc": "Realizar pesquisa envolvendo variáveis categóricas e numéricas, organizar dados coletados por meio de tabelas, gráficos de colunas, pictóricos e de linhas, com e sem uso de tecnologias digitais, e apresentar texto escrito sobre a finalidade da pesquisa e a síntese dos resultados.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, coleta, classificação interpretação e representação de dados em tabelas de dupla entrada, gráfico de colunas agrupadas, gráficos pictóricos e gráfico de linhas",
+      "palavras_chave": [
+        "pesquisa",
+        "relatório",
+        "gráfico de linhas"
+      ],
+      "pre_requisitos": [
+        "EF04MA28",
+        "EF05MA24"
+      ],
+      "nivel": 12,
+      "ordem": 125
+    },
+    "EF06MA01": {
+      "nome": "Comparação e ordenação de naturais e decimais na reta numérica",
+      "descricao_bncc": "Comparar, ordenar, ler e escrever números naturais e números racionais cuja representação decimal é finita, fazendo uso da reta numérica.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Sistema de numeração decimal: características, leitura, escrita e comparação de números naturais e de números racionais representados na forma decimal",
+      "palavras_chave": [
+        "ordenar decimais",
+        "reta numérica",
+        "comparar números"
+      ],
+      "pre_requisitos": [
+        "EF05MA01",
+        "EF05MA05"
+      ],
+      "nivel": 13,
+      "ordem": 126
+    },
+    "EF06MA02": {
+      "nome": "Sistema de numeração decimal e outros sistemas",
+      "descricao_bncc": "Reconhecer o sistema de numeração decimal, como o que prevaleceu no mundo ocidental, e destacar semelhanças e diferenças com outros sistemas, de modo a sistematizar suas principais características (base, valor posicional e função do zero), utilizando, inclusive, a composição e decomposição de números naturais e números racionais em sua representação decimal.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Sistema de numeração decimal: características, leitura, escrita e comparação de números naturais e de números racionais representados na forma decimal",
+      "palavras_chave": [
+        "sistema decimal",
+        "base 10",
+        "algarismos romanos",
+        "valor posicional"
+      ],
+      "pre_requisitos": [
+        "EF05MA01",
+        "EF05MA02"
+      ],
+      "nivel": 12,
+      "ordem": 127
+    },
+    "EF06MA03": {
+      "nome": "Operações com números naturais, incluindo potenciação",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam cálculos (mentais ou escritos, exatos ou aproximados) com números naturais, por meio de estratégias variadas, com compreensão dos processos neles envolvidos com e sem uso de calculadora.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Operações (adição, subtração, multiplicação, divisão e potenciação) com números naturais",
+      "palavras_chave": [
+        "quatro operações",
+        "expressão numérica",
+        "potenciação",
+        "potência"
+      ],
+      "pre_requisitos": [
+        "EF04MA07"
+      ],
+      "nivel": 12,
+      "ordem": 128
+    },
+    "EF06MA04": {
+      "nome": "Algoritmo e fluxograma (paridade)",
+      "descricao_bncc": "Construir algoritmo em linguagem natural e representá-lo por fluxograma que indique a resolução de um problema simples (por exemplo, se um número natural qualquer é par).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fluxograma para determinar a paridade de um número natural",
+      "palavras_chave": [
+        "fluxograma",
+        "algoritmo",
+        "par",
+        "ímpar"
+      ],
+      "pre_requisitos": [
+        "EF04MA12"
+      ],
+      "nivel": 9,
+      "ordem": 129
+    },
+    "EF06MA05": {
+      "nome": "Números primos, múltiplos, divisores e critérios de divisibilidade",
+      "descricao_bncc": "Classificar números naturais em primos e compostos, estabelecer relações entre números, expressas pelos termos “é múltiplo de”, “é divisor de”, “é fator de”, e estabelecer, por meio de investigações, critérios de divisibilidade por 2, 3, 4, 5, 6, 8, 9, 10, 100 e 1000.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números primos e compostos",
+      "palavras_chave": [
+        "números primos",
+        "divisibilidade",
+        "múltiplo",
+        "divisor",
+        "fator"
+      ],
+      "pre_requisitos": [
+        "EF04MA12",
+        "EF06MA03"
+      ],
+      "nivel": 13,
+      "ordem": 130
+    },
+    "EF06MA06": {
+      "nome": "Problemas com múltiplos e divisores",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam as ideias de múltiplo e de divisor.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números primos e compostos",
+      "palavras_chave": [
+        "múltiplos",
+        "divisores",
+        "problemas"
+      ],
+      "pre_requisitos": [
+        "EF06MA05"
+      ],
+      "nivel": 14,
+      "ordem": 131
+    },
+    "EF06MA07": {
+      "nome": "Frações: comparação, ordenação e equivalência",
+      "descricao_bncc": "Compreender, comparar e ordenar frações associadas às ideias de partes de inteiros e resultado de divisão, identificando frações equivalentes.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Frações: significados (parte/todo, quociente), equivalência, comparação, adição e subtração; cálculo da fração de um número natural; adição e subtração de frações",
+      "palavras_chave": [
+        "frações equivalentes",
+        "comparar frações",
+        "ordenar frações"
+      ],
+      "pre_requisitos": [
+        "EF05MA05"
+      ],
+      "nivel": 13,
+      "ordem": 132
+    },
+    "EF06MA08": {
+      "nome": "Conversão entre frações e decimais",
+      "descricao_bncc": "Reconhecer que os números racionais positivos podem ser expressos nas formas fracionária e decimal, estabelecer relações entre essas representações, passando de uma representação para outra, e relacioná-los a pontos na reta numérica.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Frações: significados (parte/todo, quociente), equivalência, comparação, adição e subtração; cálculo da fração de um número natural; adição e subtração de frações",
+      "palavras_chave": [
+        "transformar fração em decimal",
+        "decimal em fração",
+        "reta numérica"
+      ],
+      "pre_requisitos": [
+        "EF06MA01",
+        "EF06MA07"
+      ],
+      "nivel": 14,
+      "ordem": 133
+    },
+    "EF06MA09": {
+      "nome": "Fração de uma quantidade",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam o cálculo da fração de uma quantidade e cujo resultado seja um número natural, com e sem uso de calculadora.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Frações: significados (parte/todo, quociente), equivalência, comparação, adição e subtração; cálculo da fração de um número natural; adição e subtração de frações",
+      "palavras_chave": [
+        "fração de um número",
+        "calcular fração de"
+      ],
+      "pre_requisitos": [
+        "EF06MA03",
+        "EF06MA07"
+      ],
+      "nivel": 14,
+      "ordem": 134
+    },
+    "EF06MA10": {
+      "nome": "Adição e subtração de frações",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam adição ou subtração com números racionais positivos na representação fracionária.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Frações: significados (parte/todo, quociente), equivalência, comparação, adição e subtração; cálculo da fração de um número natural; adição e subtração de frações",
+      "palavras_chave": [
+        "somar frações",
+        "subtrair frações",
+        "denominadores diferentes"
+      ],
+      "pre_requisitos": [
+        "EF06MA06",
+        "EF06MA07"
+      ],
+      "nivel": 15,
+      "ordem": 135
+    },
+    "EF06MA11": {
+      "nome": "Operações com decimais e potenciação",
+      "descricao_bncc": "Resolver e elaborar problemas com números racionais positivos na representação decimal, envolvendo as quatro operações fundamentais e a potenciação, por meio de estratégias diversas, utilizando estimativas e arredondamentos para verificar a razoabilidade de respostas, com e sem uso de calculadora.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Operações (adição, subtração, multiplicação, divisão e potenciação) com números racionais",
+      "palavras_chave": [
+        "operações com decimais",
+        "arredondamento",
+        "estimativa"
+      ],
+      "pre_requisitos": [
+        "EF05MA08",
+        "EF06MA01",
+        "EF06MA03"
+      ],
+      "nivel": 14,
+      "ordem": 136
+    },
+    "EF06MA12": {
+      "nome": "Estimativa e arredondamento para potências de 10",
+      "descricao_bncc": "Fazer estimativas de quantidades e aproximar números para múltiplos da potência de 10 mais próxima.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Aproximação de números para múltiplos de potências de 10",
+      "palavras_chave": [
+        "arredondar",
+        "estimar",
+        "aproximar"
+      ],
+      "pre_requisitos": [
+        "EF06MA02"
+      ],
+      "nivel": 13,
+      "ordem": 137
+    },
+    "EF06MA13": {
+      "nome": "Porcentagem por proporcionalidade (sem regra de três)",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam porcentagens, com base na ideia de proporcionalidade, sem fazer uso da “regra de três”, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Cálculo de porcentagens por meio de estratégias diversas, sem fazer uso da “regra de três”",
+      "palavras_chave": [
+        "porcentagem",
+        "desconto",
+        "%",
+        "educação financeira"
+      ],
+      "pre_requisitos": [
+        "EF05MA06",
+        "EF05MA12",
+        "EF06MA09"
+      ],
+      "nivel": 15,
+      "ordem": 138
+    },
+    "EF06MA14": {
+      "nome": "Propriedades da igualdade para achar valores desconhecidos",
+      "descricao_bncc": "Reconhecer que a relação de igualdade matemática não se altera ao adicionar, subtrair, multiplicar ou dividir os seus dois membros por um mesmo número e utilizar essa noção para determinar valores desconhecidos na resolução de problemas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Propriedades da igualdade",
+      "palavras_chave": [
+        "igualdade",
+        "valor desconhecido",
+        "balança",
+        "princípio aditivo e multiplicativo"
+      ],
+      "pre_requisitos": [
+        "EF05MA11"
+      ],
+      "nivel": 12,
+      "ordem": 139
+    },
+    "EF06MA15": {
+      "nome": "Partilha em partes desiguais e razão entre partes",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam a partilha de uma quantidade em duas partes desiguais, envolvendo relações aditivas e multiplicativas, bem como a razão entre as partes e entre uma das partes e o todo.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Problemas que tratam da partição de um todo em duas partes desiguais, envolvendo razões entre as partes e entre uma das partes e o todo",
+      "palavras_chave": [
+        "razão",
+        "partes",
+        "partilha"
+      ],
+      "pre_requisitos": [
+        "EF05MA13",
+        "EF06MA09"
+      ],
+      "nivel": 15,
+      "ordem": 140
+    },
+    "EF06MA16": {
+      "nome": "Pares ordenados no plano cartesiano (1º quadrante)",
+      "descricao_bncc": "Associar pares ordenados de números a pontos do plano cartesiano do 1º quadrante, em situações como a localização dos vértices de um polígono.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Plano cartesiano: associação dos vértices de um polígono a pares ordenados",
+      "palavras_chave": [
+        "par ordenado",
+        "plano cartesiano",
+        "vértices de polígono"
+      ],
+      "pre_requisitos": [
+        "EF05MA15"
+      ],
+      "nivel": 8,
+      "ordem": 141
+    },
+    "EF06MA17": {
+      "nome": "Vértices, faces e arestas de prismas e pirâmides",
+      "descricao_bncc": "Quantificar e estabelecer relações entre o número de vértices, faces e arestas de prismas e pirâmides, em função do seu polígono da base, para resolver problemas e desenvolver a percepção espacial.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Prismas e pirâmides: planificações e relações entre seus elementos (vértices, faces e arestas)",
+      "palavras_chave": [
+        "arestas",
+        "faces",
+        "vértices",
+        "poliedros"
+      ],
+      "pre_requisitos": [
+        "EF05MA16"
+      ],
+      "nivel": 6,
+      "ordem": 142
+    },
+    "EF06MA18": {
+      "nome": "Polígonos regulares e não regulares",
+      "descricao_bncc": "Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e classificá-los em regulares e não regulares, tanto em suas representações no plano como em faces de poliedros.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos: classificações quanto ao número de vértices, às medidas de lados e ângulos e ao paralelismo e perpendicularismo dos lados",
+      "palavras_chave": [
+        "polígono regular",
+        "classificação de polígonos"
+      ],
+      "pre_requisitos": [
+        "EF05MA17"
+      ],
+      "nivel": 8,
+      "ordem": 143
+    },
+    "EF06MA19": {
+      "nome": "Classificação de triângulos por lados e ângulos",
+      "descricao_bncc": "Identificar características dos triângulos e classificá-los em relação às medidas dos lados e dos ângulos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos: classificações quanto ao número de vértices, às medidas de lados e ângulos e ao paralelismo e perpendicularismo dos lados",
+      "palavras_chave": [
+        "triângulo equilátero",
+        "isósceles",
+        "escaleno",
+        "triângulo retângulo",
+        "acutângulo",
+        "obtusângulo"
+      ],
+      "pre_requisitos": [
+        "EF06MA18",
+        "EF06MA25"
+      ],
+      "nivel": 9,
+      "ordem": 150
+    },
+    "EF06MA20": {
+      "nome": "Classificação de quadriláteros",
+      "descricao_bncc": "Identificar características dos quadriláteros, classificá-los em relação a lados e a ângulos e reconhecer a inclusão e a intersecção de classes entre eles.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos: classificações quanto ao número de vértices, às medidas de lados e ângulos e ao paralelismo e perpendicularismo dos lados",
+      "palavras_chave": [
+        "quadriláteros",
+        "losango",
+        "trapézio",
+        "paralelogramo",
+        "retângulo",
+        "quadrado"
+      ],
+      "pre_requisitos": [
+        "EF06MA18",
+        "EF06MA22"
+      ],
+      "nivel": 9,
+      "ordem": 146
+    },
+    "EF06MA21": {
+      "nome": "Figuras semelhantes: ampliação e redução",
+      "descricao_bncc": "Construir figuras planas semelhantes em situações de ampliação e de redução, com o uso de malhas quadriculadas, plano cartesiano ou tecnologias digitais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Construção de figuras semelhantes: ampliação e redução de figuras planas em malhas quadriculadas",
+      "palavras_chave": [
+        "semelhança",
+        "ampliar",
+        "reduzir",
+        "figuras semelhantes"
+      ],
+      "pre_requisitos": [
+        "EF05MA18",
+        "EF06MA16"
+      ],
+      "nivel": 14,
+      "ordem": 144
+    },
+    "EF06MA22": {
+      "nome": "Construção de retas paralelas e perpendiculares",
+      "descricao_bncc": "Utilizar instrumentos, como réguas e esquadros, ou softwares para representações de retas paralelas e perpendiculares e construção de quadriláteros, entre outros.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Construção de retas paralelas e perpendiculares, fazendo uso de réguas, esquadros e softwares",
+      "palavras_chave": [
+        "retas paralelas",
+        "retas perpendiculares",
+        "esquadro",
+        "régua"
+      ],
+      "pre_requisitos": [
+        "EF04MA18"
+      ],
+      "nivel": 7,
+      "ordem": 145
+    },
+    "EF06MA23": {
+      "nome": "Algoritmos para resolver situações passo a passo",
+      "descricao_bncc": "Construir algoritmo para resolver situações passo a passo (como na construção de dobraduras ou na indicação de deslocamento de um objeto no plano segundo pontos de referência e distâncias fornecidas etc.).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Construção de retas paralelas e perpendiculares, fazendo uso de réguas, esquadros e softwares",
+      "palavras_chave": [
+        "algoritmo",
+        "passo a passo",
+        "dobradura",
+        "deslocamento no plano"
+      ],
+      "pre_requisitos": [
+        "EF05MA15",
+        "EF06MA04"
+      ],
+      "nivel": 10,
+      "ordem": 147
+    },
+    "EF06MA24": {
+      "nome": "Problemas com grandezas: comprimento, massa, tempo, área, volume",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam as grandezas comprimento, massa, tempo, temperatura, área (triângulos e retângulos), capacidade e volume (sólidos formados por blocos retangulares), sem uso de fórmulas, inseridos, sempre que possível, em contextos oriundos de situações reais e/ou relacionadas às outras áreas do conhecimento.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Problemas sobre medidas envolvendo grandezas como comprimento, massa, tempo, temperatura, área, capacidade e volume",
+      "palavras_chave": [
+        "medidas",
+        "grandezas",
+        "comprimento",
+        "massa",
+        "área",
+        "volume"
+      ],
+      "pre_requisitos": [
+        "EF05MA19",
+        "EF05MA20",
+        "EF05MA21",
+        "EF06MA11"
+      ],
+      "nivel": 15,
+      "ordem": 148
+    },
+    "EF06MA25": {
+      "nome": "Ângulo como grandeza (abertura)",
+      "descricao_bncc": "Reconhecer a abertura do ângulo como grandeza associada às figuras geométricas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Ângulos: noção, usos e medida",
+      "palavras_chave": [
+        "ângulo",
+        "abertura do ângulo"
+      ],
+      "pre_requisitos": [
+        "EF05MA17"
+      ],
+      "nivel": 8,
+      "ordem": 149
+    },
+    "EF06MA26": {
+      "nome": "Problemas com a noção de ângulo",
+      "descricao_bncc": "Resolver problemas que envolvam a noção de ângulo em diferentes contextos e em situações reais, como ângulo de visão.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Ângulos: noção, usos e medida",
+      "palavras_chave": [
+        "ângulo de visão",
+        "ângulo",
+        "problemas"
+      ],
+      "pre_requisitos": [
+        "EF06MA25"
+      ],
+      "nivel": 9,
+      "ordem": 151
+    },
+    "EF06MA27": {
+      "nome": "Medida de ângulos com transferidor",
+      "descricao_bncc": "Determinar medidas da abertura de ângulos, por meio de transferidor e/ou tecnologias digitais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Ângulos: noção, usos e medida",
+      "palavras_chave": [
+        "transferidor",
+        "graus",
+        "medir ângulo"
+      ],
+      "pre_requisitos": [
+        "EF06MA25"
+      ],
+      "nivel": 9,
+      "ordem": 152
+    },
+    "EF06MA28": {
+      "nome": "Plantas baixas e vistas aéreas",
+      "descricao_bncc": "Interpretar, descrever e desenhar plantas baixas simples de residências e vistas aéreas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Plantas baixas e vistas aéreas",
+      "palavras_chave": [
+        "planta baixa",
+        "vista aérea",
+        "vista de cima"
+      ],
+      "pre_requisitos": [
+        "EF05MA18"
+      ],
+      "nivel": 14,
+      "ordem": 153
+    },
+    "EF06MA29": {
+      "nome": "Perímetro e área do quadrado ao ampliar ou reduzir os lados",
+      "descricao_bncc": "Analisar e descrever mudanças que ocorrem no perímetro e na área de um quadrado ao se ampliarem ou reduzirem, igualmente, as medidas de seus lados, para compreender que o perímetro é proporcional à medida do lado, o que não ocorre com a área.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Perímetro de um quadrado como grandeza proporcional à medida do lado",
+      "palavras_chave": [
+        "perímetro",
+        "área",
+        "proporcional",
+        "quadrado"
+      ],
+      "pre_requisitos": [
+        "EF05MA12",
+        "EF05MA20"
+      ],
+      "nivel": 13,
+      "ordem": 154
+    },
+    "EF06MA30": {
+      "nome": "Probabilidade em fração, decimal e porcentagem; experimentos",
+      "descricao_bncc": "Calcular a probabilidade de um evento aleatório, expressando-a por número racional (forma fracionária, decimal e percentual) e comparar esse número com a probabilidade obtida por meio de experimentos sucessivos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Cálculo de probabilidade como a razão entre o número de resultados favoráveis e o total de resultados possíveis em um espaço amostral equiprovável Cálculo de probabilidade por meio de muitas repetições de um experimento (frequências de ocorrências e probabilidade frequentista)",
+      "palavras_chave": [
+        "probabilidade",
+        "porcentagem",
+        "experimento",
+        "frequência"
+      ],
+      "pre_requisitos": [
+        "EF05MA06",
+        "EF05MA23",
+        "EF06MA08"
+      ],
+      "nivel": 15,
+      "ordem": 155
+    },
+    "EF06MA31": {
+      "nome": "Elementos de gráficos: título, eixos, legenda e frequências",
+      "descricao_bncc": "Identificar as variáveis e suas frequências e os elementos constitutivos (título, eixos, legendas, fontes e datas) em diferentes tipos de gráfico.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura e interpretação de tabelas e gráficos (de colunas ou barras simples ou múltiplas) referentes a variáveis categóricas e variáveis numéricas",
+      "palavras_chave": [
+        "eixos",
+        "legenda",
+        "título do gráfico",
+        "frequência",
+        "fonte"
+      ],
+      "pre_requisitos": [
+        "EF05MA24"
+      ],
+      "nivel": 12,
+      "ordem": 156
+    },
+    "EF06MA32": {
+      "nome": "Interpretação de dados de pesquisas da mídia",
+      "descricao_bncc": "Interpretar e resolver situações que envolvam dados de pesquisas sobre contextos ambientais, sustentabilidade, trânsito, consumo responsável, entre outros, apresentadas pela mídia em tabelas e em diferentes tipos de gráficos e redigir textos escritos com o objetivo de sintetizar conclusões.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura e interpretação de tabelas e gráficos (de colunas ou barras simples ou múltiplas) referentes a variáveis categóricas e variáveis numéricas",
+      "palavras_chave": [
+        "interpretar gráfico",
+        "notícia",
+        "dados da mídia"
+      ],
+      "pre_requisitos": [
+        "EF06MA31"
+      ],
+      "nivel": 13,
+      "ordem": 157
+    },
+    "EF06MA33": {
+      "nome": "Pesquisa com uso de planilhas eletrônicas",
+      "descricao_bncc": "Planejar e coletar dados de pesquisa referente a práticas sociais escolhidas pelos alunos e fazer uso de planilhas eletrônicas para registro, representação e interpretação das informações, em tabelas, vários tipos de gráficos e texto.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Construção de diferentes tipos de gráficos para representá-los e interpretação das informações",
+      "palavras_chave": [
+        "planilha",
+        "Excel",
+        "pesquisa",
+        "coleta de dados"
+      ],
+      "pre_requisitos": [
+        "EF05MA25",
+        "EF06MA31"
+      ],
+      "nivel": 13,
+      "ordem": 158
+    },
+    "EF06MA34": {
+      "nome": "Fluxogramas e relações entre objetos",
+      "descricao_bncc": "Interpretar e desenvolver fluxogramas simples, identificando as relações entre os objetos representados (por exemplo, posição de cidades considerando as estradas que as unem, hierarquia dos funcionários de uma empresa etc.).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Diferentes tipos de representação de informações: gráficos e fluxogramas",
+      "palavras_chave": [
+        "fluxograma",
+        "organograma",
+        "diagrama"
+      ],
+      "pre_requisitos": [
+        "EF06MA04"
+      ],
+      "nivel": 10,
+      "ordem": 159
+    },
+    "EF07MA01": {
+      "nome": "MMC e MDC em problemas",
+      "descricao_bncc": "Resolver e elaborar problemas com números naturais, envolvendo as noções de divisor e de múltiplo, podendo incluir máximo divisor comum ou mínimo múltiplo comum, por meio de estratégias diversas, sem a aplicação de algoritmos.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Múltiplos e divisores de um número natural",
+      "palavras_chave": [
+        "mmc",
+        "mdc",
+        "mínimo múltiplo comum",
+        "máximo divisor comum"
+      ],
+      "pre_requisitos": [
+        "EF06MA06"
+      ],
+      "nivel": 15,
+      "ordem": 160
+    },
+    "EF07MA02": {
+      "nome": "Acréscimos e decréscimos percentuais",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam porcentagens, como os que lidam com acréscimos e decréscimos simples, utilizando estratégias pessoais, cálculo mental e calculadora, no contexto de educação financeira, entre outros.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Cálculo de porcentagens e de acréscimos e decréscimos simples",
+      "palavras_chave": [
+        "aumento",
+        "desconto",
+        "acréscimo",
+        "porcentagem"
+      ],
+      "pre_requisitos": [
+        "EF06MA13"
+      ],
+      "nivel": 16,
+      "ordem": 161
+    },
+    "EF07MA03": {
+      "nome": "Números inteiros: comparação, reta numérica, adição e subtração",
+      "descricao_bncc": "Comparar e ordenar números inteiros em diferentes contextos, incluindo o histórico, associá-los a pontos da reta numérica e utilizá-los em situações que envolvam adição e subtração.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números inteiros: usos, história, ordenação, associação com pontos da reta numérica e operações",
+      "palavras_chave": [
+        "números negativos",
+        "inteiros",
+        "reta numérica",
+        "saldo"
+      ],
+      "pre_requisitos": [
+        "EF06MA01",
+        "EF06MA03"
+      ],
+      "nivel": 14,
+      "ordem": 162
+    },
+    "EF07MA04": {
+      "nome": "Operações com números inteiros",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam operações com números inteiros.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números inteiros: usos, história, ordenação, associação com pontos da reta numérica e operações",
+      "palavras_chave": [
+        "regra de sinais",
+        "multiplicação de negativos",
+        "divisão de inteiros"
+      ],
+      "pre_requisitos": [
+        "EF07MA03"
+      ],
+      "nivel": 15,
+      "ordem": 163
+    },
+    "EF07MA05": {
+      "nome": "Resolução de um problema por diferentes algoritmos",
+      "descricao_bncc": "Resolver um mesmo problema utilizando diferentes algoritmos.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fração e seus significados: como parte de inteiros, resultado da divisão, razão e operador",
+      "palavras_chave": [
+        "estratégias diferentes",
+        "algoritmo"
+      ],
+      "pre_requisitos": [
+        "EF06MA03",
+        "EF06MA04"
+      ],
+      "nivel": 13,
+      "ordem": 164
+    },
+    "EF07MA06": {
+      "nome": "Problemas de mesma estrutura e mesmo procedimento",
+      "descricao_bncc": "Reconhecer que as resoluções de um grupo de problemas que têm a mesma estrutura podem ser obtidas utilizando os mesmos procedimentos.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fração e seus significados: como parte de inteiros, resultado da divisão, razão e operador",
+      "palavras_chave": [
+        "generalização",
+        "mesmo procedimento"
+      ],
+      "pre_requisitos": [
+        "EF07MA05"
+      ],
+      "nivel": 14,
+      "ordem": 165
+    },
+    "EF07MA07": {
+      "nome": "Fluxograma dos passos de resolução de problemas",
+      "descricao_bncc": "Representar por meio de um fluxograma os passos utilizados para resolver um grupo de problemas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fração e seus significados: como parte de inteiros, resultado da divisão, razão e operador",
+      "palavras_chave": [
+        "fluxograma",
+        "passos de resolução"
+      ],
+      "pre_requisitos": [
+        "EF06MA34",
+        "EF07MA06"
+      ],
+      "nivel": 15,
+      "ordem": 166
+    },
+    "EF07MA08": {
+      "nome": "Frações: parte, quociente, razão e operador",
+      "descricao_bncc": "Comparar e ordenar frações associadas às ideias de partes de inteiros, resultado da divisão, razão e operador.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fração e seus significados: como parte de inteiros, resultado da divisão, razão e operador",
+      "palavras_chave": [
+        "significados de fração",
+        "razão",
+        "operador",
+        "comparar frações"
+      ],
+      "pre_requisitos": [
+        "EF06MA15"
+      ],
+      "nivel": 16,
+      "ordem": 167
+    },
+    "EF07MA09": {
+      "nome": "Associação entre razão e fração",
+      "descricao_bncc": "Utilizar, na resolução de problemas, a associação entre razão e fração, como a fração 2/3 para expressar a razão de duas partes de uma grandeza para três partes da mesma ou três partes de outra grandeza.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Fração e seus significados: como parte de inteiros, resultado da divisão, razão e operador",
+      "palavras_chave": [
+        "razão",
+        "fração",
+        "proporção"
+      ],
+      "pre_requisitos": [
+        "EF07MA08"
+      ],
+      "nivel": 17,
+      "ordem": 168
+    },
+    "EF07MA10": {
+      "nome": "Números racionais na reta numérica (incluindo negativos)",
+      "descricao_bncc": "Comparar e ordenar números racionais em diferentes contextos e associá-los a pontos da reta numérica.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais na representação fracionária e na decimal: usos, ordenação e associação com pontos da reta numérica e operações",
+      "palavras_chave": [
+        "racionais",
+        "reta numérica",
+        "negativos",
+        "ordenar racionais"
+      ],
+      "pre_requisitos": [
+        "EF06MA08",
+        "EF07MA03"
+      ],
+      "nivel": 15,
+      "ordem": 169
+    },
+    "EF07MA11": {
+      "nome": "Multiplicação e divisão de números racionais",
+      "descricao_bncc": "Compreender e utilizar a multiplicação e a divisão de números racionais, a relação entre elas e suas propriedades operatórias.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais na representação fracionária e na decimal: usos, ordenação e associação com pontos da reta numérica e operações",
+      "palavras_chave": [
+        "multiplicar frações",
+        "dividir frações",
+        "inverso",
+        "racionais"
+      ],
+      "pre_requisitos": [
+        "EF06MA10",
+        "EF06MA11",
+        "EF07MA04",
+        "EF07MA10"
+      ],
+      "nivel": 16,
+      "ordem": 170
+    },
+    "EF07MA12": {
+      "nome": "Problemas com operações entre números racionais",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam as operações com números racionais.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números racionais na representação fracionária e na decimal: usos, ordenação e associação com pontos da reta numérica e operações",
+      "palavras_chave": [
+        "operações com frações",
+        "operações com decimais",
+        "racionais"
+      ],
+      "pre_requisitos": [
+        "EF07MA11"
+      ],
+      "nivel": 17,
+      "ordem": 171
+    },
+    "EF07MA13": {
+      "nome": "Variável e incógnita na linguagem algébrica",
+      "descricao_bncc": "Compreender a ideia de variável, representada por letra ou símbolo, para expressar relação entre duas grandezas, diferenciando-a da ideia de incógnita.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Linguagem algébrica: variável e incógnita",
+      "palavras_chave": [
+        "letra",
+        "variável",
+        "incógnita",
+        "álgebra",
+        "linguagem algébrica"
+      ],
+      "pre_requisitos": [
+        "EF05MA12",
+        "EF06MA14"
+      ],
+      "nivel": 13,
+      "ordem": 172
+    },
+    "EF07MA14": {
+      "nome": "Sequências recursivas e não recursivas",
+      "descricao_bncc": "Classificar sequências em recursivas e não recursivas, reconhecendo que o conceito de recursão está presente não apenas na matemática, mas também nas artes e na literatura.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Linguagem algébrica: variável e incógnita",
+      "palavras_chave": [
+        "recursão",
+        "sequência recursiva"
+      ],
+      "pre_requisitos": [
+        "EF04MA11"
+      ],
+      "nivel": 8,
+      "ordem": 173
+    },
+    "EF07MA15": {
+      "nome": "Simbologia algébrica para regularidades em sequências",
+      "descricao_bncc": "Utilizar a simbologia algébrica para expressar regularidades encontradas em sequências numéricas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Linguagem algébrica: variável e incógnita",
+      "palavras_chave": [
+        "termo geral",
+        "expressão algébrica",
+        "generalização"
+      ],
+      "pre_requisitos": [
+        "EF07MA13",
+        "EF07MA14"
+      ],
+      "nivel": 14,
+      "ordem": 174
+    },
+    "EF07MA16": {
+      "nome": "Equivalência de expressões algébricas",
+      "descricao_bncc": "Reconhecer se duas expressões algébricas obtidas para descrever a regularidade de uma mesma sequência numérica são ou não equivalentes.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Equivalência de expressões algébricas: identificação da regularidade de uma sequência numérica",
+      "palavras_chave": [
+        "expressões equivalentes",
+        "expressão algébrica"
+      ],
+      "pre_requisitos": [
+        "EF07MA15"
+      ],
+      "nivel": 15,
+      "ordem": 175
+    },
+    "EF07MA17": {
+      "nome": "Proporcionalidade direta e inversa com sentenças algébricas",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam variação de proporcionalidade direta e de proporcionalidade inversa entre duas grandezas, utilizando sentença algébrica para expressar a relação entre elas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Problemas envolvendo grandezas diretamente proporcionais e grandezas inversamente proporcionais",
+      "palavras_chave": [
+        "diretamente proporcional",
+        "inversamente proporcional",
+        "regra de três"
+      ],
+      "pre_requisitos": [
+        "EF07MA09",
+        "EF07MA13"
+      ],
+      "nivel": 18,
+      "ordem": 176
+    },
+    "EF07MA18": {
+      "nome": "Equações do 1º grau (ax + b = c)",
+      "descricao_bncc": "Resolver e elaborar problemas que possam ser representados por equações polinomiais de 1º grau, redutíveis à forma ax + b = c, fazendo uso das propriedades da igualdade.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Equações polinomiais do 1º grau",
+      "palavras_chave": [
+        "equação",
+        "achar o x",
+        "primeiro grau",
+        "ax + b = c",
+        "incógnita"
+      ],
+      "pre_requisitos": [
+        "EF07MA11",
+        "EF07MA13"
+      ],
+      "nivel": 17,
+      "ordem": 177
+    },
+    "EF07MA19": {
+      "nome": "Transformações por multiplicação das coordenadas",
+      "descricao_bncc": "Realizar transformações de polígonos representados no plano cartesiano, decorrentes da multiplicação das coordenadas de seus vértices por um número inteiro.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Transformações geométricas de polígonos no plano cartesiano: multiplicação das coordenadas por um número inteiro e obtenção de simétricos em relação aos eixos e à origem",
+      "palavras_chave": [
+        "transformação",
+        "coordenadas",
+        "ampliação no plano"
+      ],
+      "pre_requisitos": [
+        "EF06MA21",
+        "EF07MA04"
+      ],
+      "nivel": 16,
+      "ordem": 178
+    },
+    "EF07MA20": {
+      "nome": "Simétricos em relação aos eixos e à origem no plano cartesiano",
+      "descricao_bncc": "Reconhecer e representar, no plano cartesiano, o simétrico de figuras em relação aos eixos e à origem.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Transformações geométricas de polígonos no plano cartesiano: multiplicação das coordenadas por um número inteiro e obtenção de simétricos em relação aos eixos e à origem",
+      "palavras_chave": [
+        "simétrico",
+        "plano cartesiano",
+        "quatro quadrantes",
+        "reflexão"
+      ],
+      "pre_requisitos": [
+        "EF04MA19",
+        "EF06MA16",
+        "EF07MA03"
+      ],
+      "nivel": 15,
+      "ordem": 179
+    },
+    "EF07MA21": {
+      "nome": "Simetrias de translação, rotação e reflexão",
+      "descricao_bncc": "Reconhecer e construir figuras obtidas por simetrias de translação, rotação e reflexão, usando instrumentos de desenho ou softwares de geometria dinâmica e vincular esse estudo a representações planas de obras de arte, elementos arquitetônicos, entre outros.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Simetrias de translação, rotação e reflexão",
+      "palavras_chave": [
+        "translação",
+        "rotação",
+        "reflexão",
+        "simetria"
+      ],
+      "pre_requisitos": [
+        "EF04MA19",
+        "EF06MA25"
+      ],
+      "nivel": 9,
+      "ordem": 180
+    },
+    "EF07MA22": {
+      "nome": "Circunferência como lugar geométrico (compasso)",
+      "descricao_bncc": "Construir circunferências, utilizando compasso, reconhecê-las como lugar geométrico e utilizá-las para fazer composições artísticas e resolver problemas que envolvam objetos equidistantes.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "A circunferência como lugar geométrico",
+      "palavras_chave": [
+        "circunferência",
+        "compasso",
+        "raio",
+        "centro",
+        "equidistante"
+      ],
+      "pre_requisitos": [
+        "EF06MA22"
+      ],
+      "nivel": 8,
+      "ordem": 181
+    },
+    "EF07MA23": {
+      "nome": "Ângulos formados por paralelas cortadas por transversal",
+      "descricao_bncc": "Verificar relações entre os ângulos formados por retas paralelas cortadas por uma transversal, com e sem uso de softwares de geometria dinâmica.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Relações entre os ângulos formados por retas paralelas intersectadas por uma transversal",
+      "palavras_chave": [
+        "alternos internos",
+        "correspondentes",
+        "transversal",
+        "paralelas"
+      ],
+      "pre_requisitos": [
+        "EF06MA22",
+        "EF06MA27"
+      ],
+      "nivel": 10,
+      "ordem": 182
+    },
+    "EF07MA24": {
+      "nome": "Triângulos: construção, condição de existência e soma dos ângulos (180°)",
+      "descricao_bncc": "Construir triângulos, usando régua e compasso, reconhecer a condição de existência do triângulo quanto à medida dos lados e verificar que a soma das medidas dos ângulos internos de um triângulo é 180°.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Triângulos: construção, condição de existência e soma das medidas dos ângulos internos",
+      "palavras_chave": [
+        "soma dos ângulos internos",
+        "180 graus",
+        "desigualdade triangular",
+        "condição de existência"
+      ],
+      "pre_requisitos": [
+        "EF06MA19",
+        "EF06MA27",
+        "EF07MA22"
+      ],
+      "nivel": 10,
+      "ordem": 183
+    },
+    "EF07MA25": {
+      "nome": "Rigidez geométrica dos triângulos",
+      "descricao_bncc": "Reconhecer a rigidez geométrica dos triângulos e suas aplicações, como na construção de estruturas arquitetônicas (telhados, estruturas metálicas e outras) ou nas artes plásticas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Triângulos: construção, condição de existência e soma das medidas dos ângulos internos",
+      "palavras_chave": [
+        "rigidez",
+        "estruturas",
+        "triângulo"
+      ],
+      "pre_requisitos": [
+        "EF06MA19"
+      ],
+      "nivel": 10,
+      "ordem": 184
+    },
+    "EF07MA26": {
+      "nome": "Algoritmo para construir um triângulo dados os três lados",
+      "descricao_bncc": "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um triângulo qualquer, conhecidas as medidas dos três lados.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Triângulos: construção, condição de existência e soma das medidas dos ângulos internos",
+      "palavras_chave": [
+        "construção de triângulo",
+        "fluxograma"
+      ],
+      "pre_requisitos": [
+        "EF07MA07",
+        "EF07MA24"
+      ],
+      "nivel": 16,
+      "ordem": 185
+    },
+    "EF07MA27": {
+      "nome": "Ângulos internos e externos de polígonos regulares",
+      "descricao_bncc": "Calcular medidas de ângulos internos de polígonos regulares, sem o uso de fórmulas, e estabelecer relações entre ângulos internos e externos de polígonos, preferencialmente vinculadas à construção de mosaicos e de ladrilhamentos.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos regulares: quadrado e triângulo equilátero",
+      "palavras_chave": [
+        "ângulo interno",
+        "ângulo externo",
+        "mosaicos",
+        "ladrilhamento"
+      ],
+      "pre_requisitos": [
+        "EF07MA24"
+      ],
+      "nivel": 11,
+      "ordem": 186
+    },
+    "EF07MA28": {
+      "nome": "Algoritmo para construir polígono regular",
+      "descricao_bncc": "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um polígono regular (como quadrado e triângulo equilátero), conhecida a medida de seu lado.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos regulares: quadrado e triângulo equilátero",
+      "palavras_chave": [
+        "fluxograma",
+        "polígono regular",
+        "quadrado",
+        "triângulo equilátero"
+      ],
+      "pre_requisitos": [
+        "EF07MA07",
+        "EF07MA27"
+      ],
+      "nivel": 16,
+      "ordem": 187
+    },
+    "EF07MA29": {
+      "nome": "Problemas de medição e aproximação",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam medidas de grandezas inseridos em contextos oriundos de situações cotidianas ou de outras áreas do conhecimento, reconhecendo que toda medida empírica é aproximada.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Problemas envolvendo medições",
+      "palavras_chave": [
+        "medida aproximada",
+        "medição",
+        "erro de medida"
+      ],
+      "pre_requisitos": [
+        "EF06MA12",
+        "EF06MA24"
+      ],
+      "nivel": 16,
+      "ordem": 188
+    },
+    "EF07MA30": {
+      "nome": "Volume de blocos retangulares",
+      "descricao_bncc": "Resolver e elaborar problemas de cálculo de medida do volume de blocos retangulares, envolvendo as unidades usuais (metro cúbico, decímetro cúbico e centímetro cúbico).",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Cálculo de volume de blocos retangulares, utilizando unidades de medida convencionais mais usuais",
+      "palavras_chave": [
+        "volume",
+        "metro cúbico",
+        "centímetro cúbico",
+        "paralelepípedo"
+      ],
+      "pre_requisitos": [
+        "EF06MA24"
+      ],
+      "nivel": 16,
+      "ordem": 189
+    },
+    "EF07MA31": {
+      "nome": "Expressões de área de triângulos e quadriláteros",
+      "descricao_bncc": "Estabelecer expressões de cálculo de área de triângulos e de quadriláteros.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Equivalência de área de figuras planas: cálculo de áreas de figuras que podem ser decompostas por outras, cujas áreas podem ser facilmente determinadas como triângulos e quadriláteros",
+      "palavras_chave": [
+        "área do triângulo",
+        "área do retângulo",
+        "área do trapézio",
+        "base vezes altura",
+        "fórmula de área"
+      ],
+      "pre_requisitos": [
+        "EF06MA19",
+        "EF06MA20",
+        "EF06MA24",
+        "EF07MA13"
+      ],
+      "nivel": 16,
+      "ordem": 190
+    },
+    "EF07MA32": {
+      "nome": "Área de figuras por decomposição",
+      "descricao_bncc": "Resolver e elaborar problemas de cálculo de medida de área de figuras planas que podem ser decompostas por quadrados, retângulos e/ou triângulos, utilizando a equivalência entre áreas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Equivalência de área de figuras planas: cálculo de áreas de figuras que podem ser decompostas por outras, cujas áreas podem ser facilmente determinadas como triângulos e quadriláteros",
+      "palavras_chave": [
+        "decompor figura",
+        "área composta",
+        "equivalência de áreas"
+      ],
+      "pre_requisitos": [
+        "EF07MA31"
+      ],
+      "nivel": 17,
+      "ordem": 191
+    },
+    "EF07MA33": {
+      "nome": "O número π e o comprimento da circunferência",
+      "descricao_bncc": "Estabelecer o número como a razão entre a medida de uma circunferência e seu diâmetro, para compreender e resolver problemas, inclusive os de natureza histórica.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medida do comprimento da circunferência",
+      "palavras_chave": [
+        "pi",
+        "π",
+        "comprimento da circunferência",
+        "diâmetro"
+      ],
+      "pre_requisitos": [
+        "EF06MA11",
+        "EF07MA09",
+        "EF07MA22"
+      ],
+      "nivel": 18,
+      "ordem": 192
+    },
+    "EF07MA34": {
+      "nome": "Experimentos aleatórios e estimativa de probabilidade por frequência",
+      "descricao_bncc": "Planejar e realizar experimentos aleatórios ou simulações que envolvem cálculo de probabilidades ou estimativas por meio de frequência de ocorrências.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Experimentos aleatórios: espaço amostral e estimativa de probabilidade por meio de frequência de ocorrências",
+      "palavras_chave": [
+        "frequência relativa",
+        "simulação",
+        "probabilidade",
+        "experimento"
+      ],
+      "pre_requisitos": [
+        "EF06MA30"
+      ],
+      "nivel": 16,
+      "ordem": 193
+    },
+    "EF07MA35": {
+      "nome": "Média estatística e amplitude",
+      "descricao_bncc": "Compreender, em contextos significativos, o significado de média estatística como indicador da tendência de uma pesquisa, calcular seu valor e relacioná-lo, intuitivamente, com a amplitude do conjunto de dados.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Estatística: média e amplitude de um conjunto de dados",
+      "palavras_chave": [
+        "média aritmética",
+        "média",
+        "amplitude"
+      ],
+      "pre_requisitos": [
+        "EF06MA11",
+        "EF06MA32"
+      ],
+      "nivel": 15,
+      "ordem": 194
+    },
+    "EF07MA36": {
+      "nome": "Pesquisa censitária ou amostral",
+      "descricao_bncc": "Planejar e realizar pesquisa envolvendo tema da realidade social, identificando a necessidade de ser censitária ou de usar amostra, e interpretar os dados para comunicá-los por meio de relatório escrito, tabelas e gráficos, com o apoio de planilhas eletrônicas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Pesquisa amostral e pesquisa censitária Planejamento de pesquisa, coleta e organização dos dados, construção de tabelas e gráficos e interpretação das informações",
+      "palavras_chave": [
+        "amostra",
+        "censo",
+        "pesquisa"
+      ],
+      "pre_requisitos": [
+        "EF06MA33"
+      ],
+      "nivel": 14,
+      "ordem": 195
+    },
+    "EF07MA37": {
+      "nome": "Gráficos de setores",
+      "descricao_bncc": "Interpretar e analisar dados apresentados em gráfico de setores divulgados pela mídia e compreender quando é possível ou conveniente sua utilização.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Gráficos de setores: interpretação, pertinência e construção para representar conjunto de dados",
+      "palavras_chave": [
+        "gráfico de pizza",
+        "gráfico de setores",
+        "porcentagem"
+      ],
+      "pre_requisitos": [
+        "EF06MA13",
+        "EF06MA25",
+        "EF06MA32"
+      ],
+      "nivel": 16,
+      "ordem": 196
+    },
+    "EF08MA01": {
+      "nome": "Potências de expoente inteiro e notação científica",
+      "descricao_bncc": "Efetuar cálculos com potências de expoentes inteiros e aplicar esse conhecimento na representação de números em notação científica.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Notação científica",
+      "palavras_chave": [
+        "notação científica",
+        "potência de expoente negativo",
+        "expoente",
+        "potências"
+      ],
+      "pre_requisitos": [
+        "EF06MA11",
+        "EF06MA12",
+        "EF07MA04"
+      ],
+      "nivel": 16,
+      "ordem": 197
+    },
+    "EF08MA02": {
+      "nome": "Potenciação e radiciação (expoente fracionário)",
+      "descricao_bncc": "Resolver e elaborar problemas usando a relação entre potenciação e radiciação, para representar uma raiz como potência de expoente fracionário.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Potenciação e radiciação",
+      "palavras_chave": [
+        "raiz quadrada",
+        "radiciação",
+        "raiz",
+        "expoente fracionário"
+      ],
+      "pre_requisitos": [
+        "EF07MA11",
+        "EF08MA01"
+      ],
+      "nivel": 17,
+      "ordem": 198
+    },
+    "EF08MA03": {
+      "nome": "Princípio multiplicativo da contagem",
+      "descricao_bncc": "Resolver e elaborar problemas de contagem cuja resolução envolva a aplicação do princípio multiplicativo.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "O princípio multiplicativo da contagem",
+      "palavras_chave": [
+        "contagem",
+        "combinatória",
+        "possibilidades",
+        "princípio fundamental da contagem"
+      ],
+      "pre_requisitos": [
+        "EF05MA09"
+      ],
+      "nivel": 12,
+      "ordem": 199
+    },
+    "EF08MA04": {
+      "nome": "Problemas de porcentagem",
+      "descricao_bncc": "Resolver e elaborar problemas, envolvendo cálculo de porcentagens, incluindo o uso de tecnologias digitais.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Porcentagens",
+      "palavras_chave": [
+        "porcentagem",
+        "calculadora",
+        "percentual"
+      ],
+      "pre_requisitos": [
+        "EF07MA02"
+      ],
+      "nivel": 17,
+      "ordem": 200
+    },
+    "EF08MA05": {
+      "nome": "Dízima periódica e fração geratriz",
+      "descricao_bncc": "Reconhecer e utilizar procedimentos para a obtenção de uma fração geratriz para uma dízima periódica.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Dízimas periódicas: fração geratriz",
+      "palavras_chave": [
+        "dízima periódica",
+        "fração geratriz"
+      ],
+      "pre_requisitos": [
+        "EF07MA18"
+      ],
+      "nivel": 18,
+      "ordem": 201
+    },
+    "EF08MA06": {
+      "nome": "Valor numérico de expressões algébricas",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam cálculo do valor numérico de expressões algébricas, utilizando as propriedades das operações.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Valor numérico de expressões algébricas",
+      "palavras_chave": [
+        "valor numérico",
+        "substituir a letra",
+        "expressão algébrica"
+      ],
+      "pre_requisitos": [
+        "EF07MA12",
+        "EF07MA16"
+      ],
+      "nivel": 18,
+      "ordem": 202
+    },
+    "EF08MA07": {
+      "nome": "Equação de 1º grau com duas incógnitas como reta",
+      "descricao_bncc": "Associar uma equação linear de 1º grau com duas incógnitas a uma reta no plano cartesiano.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Associação de uma equação linear de 1º grau a uma reta no plano cartesiano",
+      "palavras_chave": [
+        "reta",
+        "equação com duas incógnitas",
+        "gráfico da equação"
+      ],
+      "pre_requisitos": [
+        "EF07MA18",
+        "EF07MA20"
+      ],
+      "nivel": 18,
+      "ordem": 203
+    },
+    "EF08MA08": {
+      "nome": "Sistemas de equações do 1º grau",
+      "descricao_bncc": "Resolver e elaborar problemas relacionados ao seu contexto próximo, que possam ser representados por sistemas de equações de 1º grau com duas incógnitas e interpretá-los, utilizando, inclusive, o plano cartesiano como recurso.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sistema de equações polinomiais de 1º grau: resolução algébrica e representação no plano cartesiano",
+      "palavras_chave": [
+        "sistema de equações",
+        "método da substituição",
+        "método da adição"
+      ],
+      "pre_requisitos": [
+        "EF08MA07"
+      ],
+      "nivel": 19,
+      "ordem": 204
+    },
+    "EF08MA09": {
+      "nome": "Equação do 2º grau do tipo ax² = b",
+      "descricao_bncc": "Resolver e elaborar, com e sem uso de tecnologias, problemas que possam ser representados por equações polinomiais de 2º grau do tipo ax2 = b.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Equação polinomial de 2º grau do tipo ax = b",
+      "palavras_chave": [
+        "equação do segundo grau incompleta",
+        "x ao quadrado",
+        "ax² = b"
+      ],
+      "pre_requisitos": [
+        "EF07MA18",
+        "EF08MA02"
+      ],
+      "nivel": 18,
+      "ordem": 205
+    },
+    "EF08MA10": {
+      "nome": "Regularidade de sequências não recursivas e fluxograma",
+      "descricao_bncc": "Identificar a regularidade de uma sequência numérica ou figural não recursiva e construir um algoritmo por meio de um fluxograma que permita indicar os números ou as figuras seguintes.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sequências recursivas e não recursivas",
+      "palavras_chave": [
+        "sequência não recursiva",
+        "fluxograma",
+        "sequência figural"
+      ],
+      "pre_requisitos": [
+        "EF07MA07",
+        "EF07MA15"
+      ],
+      "nivel": 16,
+      "ordem": 206
+    },
+    "EF08MA11": {
+      "nome": "Regularidade de sequências recursivas e fluxograma",
+      "descricao_bncc": "Identificar a regularidade de uma sequência numérica recursiva e construir um algoritmo por meio de um fluxograma que permita indicar os números seguintes.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Sequências recursivas e não recursivas",
+      "palavras_chave": [
+        "sequência recursiva",
+        "fluxograma"
+      ],
+      "pre_requisitos": [
+        "EF07MA07",
+        "EF07MA15"
+      ],
+      "nivel": 16,
+      "ordem": 207
+    },
+    "EF08MA12": {
+      "nome": "Natureza da variação entre grandezas e sua representação gráfica",
+      "descricao_bncc": "Identificar a natureza da variação de duas grandezas, diretamente, inversamente proporcionais ou não proporcionais, expressando a relação existente por meio de sentença algébrica e representá-la no plano cartesiano.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Variação de grandezas: diretamente proporcionais, inversamente proporcionais ou não proporcionais",
+      "palavras_chave": [
+        "diretamente proporcional",
+        "inversamente proporcional",
+        "não proporcional",
+        "gráfico"
+      ],
+      "pre_requisitos": [
+        "EF06MA16",
+        "EF07MA17"
+      ],
+      "nivel": 19,
+      "ordem": 208
+    },
+    "EF08MA13": {
+      "nome": "Problemas com grandezas direta ou inversamente proporcionais",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam grandezas diretamente ou inversamente proporcionais, por meio de estratégias variadas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Variação de grandezas: diretamente proporcionais, inversamente proporcionais ou não proporcionais",
+      "palavras_chave": [
+        "regra de três",
+        "proporção",
+        "grandezas proporcionais"
+      ],
+      "pre_requisitos": [
+        "EF07MA17"
+      ],
+      "nivel": 19,
+      "ordem": 209
+    },
+    "EF08MA14": {
+      "nome": "Congruência de triângulos e propriedades de quadriláteros",
+      "descricao_bncc": "Demonstrar propriedades de quadriláteros por meio da identificação da congruência de triângulos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Congruência de triângulos e demonstrações de propriedades de quadriláteros",
+      "palavras_chave": [
+        "congruência de triângulos",
+        "casos de congruência",
+        "LAL",
+        "ALA",
+        "LLL"
+      ],
+      "pre_requisitos": [
+        "EF03MA16",
+        "EF06MA20",
+        "EF07MA24"
+      ],
+      "nivel": 11,
+      "ordem": 210
+    },
+    "EF08MA15": {
+      "nome": "Construções geométricas: mediatriz, bissetriz e ângulos notáveis",
+      "descricao_bncc": "Construir, utilizando instrumentos de desenho ou softwares de geometria dinâmica, mediatriz, bissetriz, ângulos de 90°, 60°, 45° e 30° e polígonos regulares.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Construções geométricas: ângulos de 90°, 60°, 45° e 30° e polígonos regulares",
+      "palavras_chave": [
+        "mediatriz",
+        "bissetriz",
+        "compasso",
+        "ângulos de 30 45 60 90"
+      ],
+      "pre_requisitos": [
+        "EF07MA27"
+      ],
+      "nivel": 12,
+      "ordem": 211
+    },
+    "EF08MA16": {
+      "nome": "Algoritmo para construir hexágono regular",
+      "descricao_bncc": "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um hexágono regular de qualquer área, a partir da medida do ângulo central e da utilização de esquadros e compasso.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Construções geométricas: ângulos de 90°, 60°, 45° e 30° e polígonos regulares",
+      "palavras_chave": [
+        "hexágono regular",
+        "fluxograma",
+        "ângulo central"
+      ],
+      "pre_requisitos": [
+        "EF07MA28",
+        "EF08MA15"
+      ],
+      "nivel": 17,
+      "ordem": 212
+    },
+    "EF08MA17": {
+      "nome": "Mediatriz e bissetriz como lugares geométricos",
+      "descricao_bncc": "Aplicar os conceitos de mediatriz e bissetriz como lugares geométricos na resolução de problemas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Mediatriz e bissetriz como lugares geométricos: construção e problemas",
+      "palavras_chave": [
+        "lugar geométrico",
+        "equidistante",
+        "mediatriz",
+        "bissetriz"
+      ],
+      "pre_requisitos": [
+        "EF08MA15"
+      ],
+      "nivel": 13,
+      "ordem": 213
+    },
+    "EF08MA18": {
+      "nome": "Composição de transformações geométricas",
+      "descricao_bncc": "Reconhecer e construir figuras obtidas por composições de transformações geométricas (translação, reflexão e rotação), com o uso de instrumentos de desenho ou de softwares de geometria dinâmica.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Transformações geométricas: simetrias de translação, reflexão e rotação",
+      "palavras_chave": [
+        "translação",
+        "rotação",
+        "reflexão",
+        "composição de transformações"
+      ],
+      "pre_requisitos": [
+        "EF07MA21"
+      ],
+      "nivel": 10,
+      "ordem": 214
+    },
+    "EF08MA19": {
+      "nome": "Área de quadriláteros, triângulos e círculos",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam medidas de área de figuras geométricas, utilizando expressões de cálculo de área (quadriláteros, triângulos e círculos), em situações como determinar medida de terrenos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Área do círculo e comprimento de sua circunferência",
+      "palavras_chave": [
+        "área do círculo",
+        "pi r ao quadrado",
+        "área",
+        "terrenos"
+      ],
+      "pre_requisitos": [
+        "EF07MA32",
+        "EF07MA33"
+      ],
+      "nivel": 19,
+      "ordem": 215
+    },
+    "EF08MA20": {
+      "nome": "Relação entre litro, decímetro cúbico e metro cúbico",
+      "descricao_bncc": "Reconhecer a relação entre um litro e um decímetro cúbico e a relação entre litro e metro cúbico, para resolver problemas de cálculo de capacidade de recipientes.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de capacidade",
+      "palavras_chave": [
+        "litro",
+        "decímetro cúbico",
+        "capacidade",
+        "metro cúbico"
+      ],
+      "pre_requisitos": [
+        "EF07MA30"
+      ],
+      "nivel": 17,
+      "ordem": 216
+    },
+    "EF08MA21": {
+      "nome": "Volume de recipientes em forma de bloco retangular",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam o cálculo do volume de recipiente cujo formato é o de um bloco retangular.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Medidas de capacidade",
+      "palavras_chave": [
+        "volume de caixa",
+        "capacidade de recipiente"
+      ],
+      "pre_requisitos": [
+        "EF08MA20"
+      ],
+      "nivel": 18,
+      "ordem": 217
+    },
+    "EF08MA22": {
+      "nome": "Probabilidade com espaço amostral e soma das probabilidades igual a 1",
+      "descricao_bncc": "Calcular a probabilidade de eventos, com base na construção do espaço amostral, utilizando o princípio multiplicativo, e reconhecer que a soma das probabilidades de todos os elementos do espaço amostral é igual a 1.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Soma das probabilidades de todos os elementos de um espaço amostral",
+      "palavras_chave": [
+        "espaço amostral",
+        "soma das probabilidades",
+        "probabilidade"
+      ],
+      "pre_requisitos": [
+        "EF07MA34",
+        "EF08MA03"
+      ],
+      "nivel": 17,
+      "ordem": 218
+    },
+    "EF08MA23": {
+      "nome": "Adequação de diferentes tipos de gráfico",
+      "descricao_bncc": "Avaliar a adequação de diferentes tipos de gráficos para representar um conjunto de dados de uma pesquisa.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Gráficos de barras, colunas, linhas ou setores e seus elementos constitutivos e adequação para determinado conjunto de dados",
+      "palavras_chave": [
+        "tipo de gráfico",
+        "escolha de gráfico"
+      ],
+      "pre_requisitos": [
+        "EF07MA37"
+      ],
+      "nivel": 17,
+      "ordem": 219
+    },
+    "EF08MA24": {
+      "nome": "Classes de frequência de variável contínua",
+      "descricao_bncc": "Classificar as frequências de uma variável contínua de uma pesquisa em classes, de modo que resumam os dados de maneira adequada para a tomada de decisões.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Organização dos dados de uma variável contínua em classes",
+      "palavras_chave": [
+        "intervalos de classe",
+        "variável contínua",
+        "histograma",
+        "tabela de frequência"
+      ],
+      "pre_requisitos": [
+        "EF07MA35"
+      ],
+      "nivel": 16,
+      "ordem": 220
+    },
+    "EF08MA25": {
+      "nome": "Média, moda e mediana",
+      "descricao_bncc": "Obter os valores de medidas de tendência central de uma pesquisa estatística (média, moda e mediana) com a compreensão de seus significados e relacioná-los com a dispersão de dados, indicada pela amplitude.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Medidas de tendência central e de dispersão",
+      "palavras_chave": [
+        "média",
+        "moda",
+        "mediana",
+        "medidas de tendência central"
+      ],
+      "pre_requisitos": [
+        "EF07MA35"
+      ],
+      "nivel": 16,
+      "ordem": 221
+    },
+    "EF08MA26": {
+      "nome": "Pesquisas amostrais e técnicas de amostragem",
+      "descricao_bncc": "Selecionar razões, de diferentes naturezas (física, ética ou econômica), que justificam a realização de pesquisas amostrais e não censitárias, e reconhecer que a seleção da amostra pode ser feita de diferentes maneiras (amostra casual simples, sistemática e estratificada).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Planejamento e execução de pesquisa amostral",
+      "palavras_chave": [
+        "amostra casual simples",
+        "sistemática",
+        "estratificada",
+        "amostragem"
+      ],
+      "pre_requisitos": [
+        "EF07MA36"
+      ],
+      "nivel": 15,
+      "ordem": 222
+    },
+    "EF08MA27": {
+      "nome": "Pesquisa amostral com relatório",
+      "descricao_bncc": "Planejar e executar pesquisa amostral, selecionando uma técnica de amostragem adequada, e escrever relatório que contenha os gráficos apropriados para representar os conjuntos de dados, destacando aspectos como as medidas de tendência central, a amplitude e as conclusões.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Planejamento e execução de pesquisa amostral",
+      "palavras_chave": [
+        "pesquisa amostral",
+        "relatório"
+      ],
+      "pre_requisitos": [
+        "EF08MA23",
+        "EF08MA25",
+        "EF08MA26"
+      ],
+      "nivel": 18,
+      "ordem": 223
+    },
+    "EF09MA01": {
+      "nome": "Segmentos cujo comprimento não é racional (incomensuráveis)",
+      "descricao_bncc": "Reconhecer que, uma vez fixada uma unidade de comprimento, existem segmentos de reta cujo comprimento não é expresso por número racional (como as medidas de diagonais de um polígono e alturas de um triângulo, quando se toma a medida de cada lado como unidade).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Necessidade dos números reais para medir qualquer segmento de reta",
+      "palavras_chave": [
+        "incomensurável",
+        "diagonal do quadrado",
+        "medida não racional"
+      ],
+      "pre_requisitos": [
+        "EF08MA02"
+      ],
+      "nivel": 18,
+      "ordem": 224
+    },
+    "EF09MA02": {
+      "nome": "Números irracionais e sua localização na reta",
+      "descricao_bncc": "Reconhecer um número irracional como um número real cuja representação decimal é infinita e não periódica, e estimar a localização de alguns deles na reta numérica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números irracionais: reconhecimento e localização de alguns na reta numérica",
+      "palavras_chave": [
+        "irracional",
+        "raiz de 2",
+        "números reais",
+        "decimal infinito não periódico"
+      ],
+      "pre_requisitos": [
+        "EF08MA05",
+        "EF09MA01"
+      ],
+      "nivel": 19,
+      "ordem": 225
+    },
+    "EF09MA03": {
+      "nome": "Cálculos com números reais e potências de expoente fracionário",
+      "descricao_bncc": "Efetuar cálculos com números reais, inclusive potências com expoentes fracionários.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Potências com expoentes negativos e fracionários",
+      "palavras_chave": [
+        "números reais",
+        "radicais",
+        "potências",
+        "expoente fracionário"
+      ],
+      "pre_requisitos": [
+        "EF09MA02"
+      ],
+      "nivel": 20,
+      "ordem": 226
+    },
+    "EF09MA04": {
+      "nome": "Problemas com números reais e notação científica",
+      "descricao_bncc": "Resolver e elaborar problemas com números reais, inclusive em notação científica, envolvendo diferentes operações.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Números reais: notação científica e problemas",
+      "palavras_chave": [
+        "notação científica",
+        "números reais",
+        "problemas"
+      ],
+      "pre_requisitos": [
+        "EF09MA03"
+      ],
+      "nivel": 21,
+      "ordem": 227
+    },
+    "EF09MA05": {
+      "nome": "Percentuais sucessivos e taxas",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam porcentagens, com a ideia de aplicação de percentuais sucessivos e a determinação das taxas percentuais, preferencialmente com o uso de tecnologias digitais, no contexto da educação financeira.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Números",
+      "objeto_conhecimento": "Porcentagens: problemas que envolvem cálculo de percentuais sucessivos",
+      "palavras_chave": [
+        "juros compostos",
+        "aumentos sucessivos",
+        "taxa percentual",
+        "educação financeira"
+      ],
+      "pre_requisitos": [
+        "EF07MA11",
+        "EF08MA04"
+      ],
+      "nivel": 18,
+      "ordem": 228
+    },
+    "EF09MA06": {
+      "nome": "Funções: representações numérica, algébrica e gráfica",
+      "descricao_bncc": "Compreender as funções como relações de dependência unívoca entre duas variáveis e suas representações numérica, algébrica e gráfica e utilizar esse conceito para analisar situações que envolvam relações funcionais entre duas variáveis.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Funções: representações numérica, algébrica e gráfica",
+      "palavras_chave": [
+        "função",
+        "gráfico de função",
+        "variável dependente",
+        "variável independente"
+      ],
+      "pre_requisitos": [
+        "EF08MA06",
+        "EF08MA07",
+        "EF08MA12"
+      ],
+      "nivel": 20,
+      "ordem": 229
+    },
+    "EF09MA07": {
+      "nome": "Razão entre grandezas de espécies diferentes",
+      "descricao_bncc": "Resolver problemas que envolvam a razão entre duas grandezas de espécies diferentes, como velocidade e densidade demográfica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Razão entre grandezas de espécies diferentes",
+      "palavras_chave": [
+        "velocidade",
+        "densidade demográfica",
+        "razão"
+      ],
+      "pre_requisitos": [
+        "EF08MA13"
+      ],
+      "nivel": 20,
+      "ordem": 230
+    },
+    "EF09MA08": {
+      "nome": "Proporcionalidade: escalas, divisão proporcional e taxa de variação",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam relações de proporcionalidade direta e inversa entre duas ou mais grandezas, inclusive escalas, divisão em partes proporcionais e taxa de variação, em contextos socioculturais, ambientais e de outras áreas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Grandezas diretamente proporcionais e grandezas inversamente proporcionais",
+      "palavras_chave": [
+        "escala",
+        "divisão em partes proporcionais",
+        "taxa de variação",
+        "proporcionalidade"
+      ],
+      "pre_requisitos": [
+        "EF09MA07"
+      ],
+      "nivel": 21,
+      "ordem": 231
+    },
+    "EF09MA09": {
+      "nome": "Fatoração, produtos notáveis e equações do 2º grau",
+      "descricao_bncc": "Compreender os processos de fatoração de expressões algébricas, com base em suas relações com os produtos notáveis, para resolver e elaborar problemas que possam ser representados por equações polinomiais do 2º grau.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Álgebra",
+      "objeto_conhecimento": "Expressões algébricas: fatoração e produtos notáveis",
+      "palavras_chave": [
+        "fatoração",
+        "produtos notáveis",
+        "equação do segundo grau",
+        "Bhaskara",
+        "trinômio"
+      ],
+      "pre_requisitos": [
+        "EF08MA06",
+        "EF08MA09"
+      ],
+      "nivel": 19,
+      "ordem": 232
+    },
+    "EF09MA10": {
+      "nome": "Demonstração de relações entre ângulos de paralelas e transversal",
+      "descricao_bncc": "Demonstrar relações simples entre os ângulos formados por retas paralelas cortadas por uma transversal.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Demonstrações de relações entre os ângulos formados por retas paralelas intersectadas por uma transversal",
+      "palavras_chave": [
+        "demonstração",
+        "ângulos",
+        "paralelas",
+        "transversal"
+      ],
+      "pre_requisitos": [
+        "EF07MA23",
+        "EF08MA14"
+      ],
+      "nivel": 12,
+      "ordem": 233
+    },
+    "EF09MA11": {
+      "nome": "Arcos, ângulos centrais e ângulos inscritos na circunferência",
+      "descricao_bncc": "Resolver problemas por meio do estabelecimento de relações entre arcos, ângulos centrais e ângulos inscritos na circunferência, fazendo uso, inclusive, de softwares de geometria dinâmica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Relações entre arcos e ângulos na circunferência de um círculo",
+      "palavras_chave": [
+        "ângulo inscrito",
+        "ângulo central",
+        "arco"
+      ],
+      "pre_requisitos": [
+        "EF07MA24"
+      ],
+      "nivel": 11,
+      "ordem": 234
+    },
+    "EF09MA12": {
+      "nome": "Semelhança de triângulos",
+      "descricao_bncc": "Reconhecer as condições necessárias e suficientes para que dois triângulos sejam semelhantes.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Semelhança de triângulos",
+      "palavras_chave": [
+        "semelhança",
+        "triângulos semelhantes",
+        "casos de semelhança"
+      ],
+      "pre_requisitos": [
+        "EF06MA21",
+        "EF07MA09",
+        "EF08MA14"
+      ],
+      "nivel": 18,
+      "ordem": 235
+    },
+    "EF09MA13": {
+      "nome": "Relações métricas no triângulo retângulo e teorema de Pitágoras",
+      "descricao_bncc": "Demonstrar relações métricas do triângulo retângulo, entre elas o teorema de Pitágoras, utilizando, inclusive, a semelhança de triângulos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Teorema de Pitágoras: verificações experimentais e demonstração",
+      "palavras_chave": [
+        "Pitágoras",
+        "hipotenusa",
+        "catetos",
+        "triângulo retângulo",
+        "relações métricas"
+      ],
+      "pre_requisitos": [
+        "EF08MA09",
+        "EF09MA12"
+      ],
+      "nivel": 19,
+      "ordem": 236
+    },
+    "EF09MA14": {
+      "nome": "Problemas com Pitágoras e retas paralelas cortadas por secantes (Tales)",
+      "descricao_bncc": "Resolver e elaborar problemas de aplicação do teorema de Pitágoras ou das relações de proporcionalidade envolvendo retas paralelas cortadas por secantes.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Retas paralelas cortadas por transversais: teoremas de proporcionalidade e verificações experimentais",
+      "palavras_chave": [
+        "Tales",
+        "Pitágoras",
+        "proporcionalidade",
+        "secantes"
+      ],
+      "pre_requisitos": [
+        "EF09MA10",
+        "EF09MA13"
+      ],
+      "nivel": 20,
+      "ordem": 237
+    },
+    "EF09MA15": {
+      "nome": "Algoritmo para construir polígono regular com régua e compasso",
+      "descricao_bncc": "Descrever, por escrito e por meio de um fluxograma, um algoritmo para a construção de um polígono regular cuja medida do lado é conhecida, utilizando régua e compasso, como também softwares.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Polígonos regulares",
+      "palavras_chave": [
+        "fluxograma",
+        "polígono regular",
+        "régua e compasso"
+      ],
+      "pre_requisitos": [
+        "EF08MA16"
+      ],
+      "nivel": 18,
+      "ordem": 238
+    },
+    "EF09MA16": {
+      "nome": "Ponto médio e distância entre pontos no plano cartesiano",
+      "descricao_bncc": "Determinar o ponto médio de um segmento de reta e a distância entre dois pontos quaisquer, dadas as coordenadas desses pontos no plano cartesiano, sem o uso de fórmulas, e utilizar esse conhecimento para calcular, por exemplo, medidas de perímetros e áreas de figuras planas construídas no plano.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Distância entre pontos no plano cartesiano",
+      "palavras_chave": [
+        "distância entre pontos",
+        "ponto médio",
+        "plano cartesiano"
+      ],
+      "pre_requisitos": [
+        "EF07MA20",
+        "EF09MA13"
+      ],
+      "nivel": 20,
+      "ordem": 239
+    },
+    "EF09MA17": {
+      "nome": "Vistas ortogonais e desenho em perspectiva",
+      "descricao_bncc": "Reconhecer vistas ortogonais de figuras espaciais e aplicar esse conhecimento para desenhar objetos em perspectiva.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Geometria",
+      "objeto_conhecimento": "Vistas ortogonais de figuras espaciais",
+      "palavras_chave": [
+        "vista frontal",
+        "vista lateral",
+        "perspectiva",
+        "vistas ortogonais"
+      ],
+      "pre_requisitos": [
+        "EF06MA17",
+        "EF06MA28"
+      ],
+      "nivel": 15,
+      "ordem": 240
+    },
+    "EF09MA18": {
+      "nome": "Unidades para medidas muito grandes ou muito pequenas",
+      "descricao_bncc": "Reconhecer e empregar unidades usadas para expressar medidas muito grandes ou muito pequenas, tais como distância entre planetas e sistemas solares, tamanho de vírus ou de células, capacidade de armazenamento de computadores, entre outros.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Unidades de medida para medir distâncias muito grandes e muito pequenas",
+      "palavras_chave": [
+        "ano-luz",
+        "nanômetro",
+        "gigabyte",
+        "bytes",
+        "unidades astronômicas"
+      ],
+      "pre_requisitos": [
+        "EF05MA19",
+        "EF09MA04"
+      ],
+      "nivel": 22,
+      "ordem": 241
+    },
+    "EF09MA19": {
+      "nome": "Volume de prismas e cilindros",
+      "descricao_bncc": "Resolver e elaborar problemas que envolvam medidas de volumes de prismas e de cilindros retos, inclusive com uso de expressões de cálculo, em situações cotidianas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Grandezas e medidas",
+      "objeto_conhecimento": "Volume de prismas e cilindros",
+      "palavras_chave": [
+        "volume do cilindro",
+        "volume do prisma",
+        "área da base vezes altura"
+      ],
+      "pre_requisitos": [
+        "EF08MA19",
+        "EF08MA21"
+      ],
+      "nivel": 20,
+      "ordem": 242
+    },
+    "EF09MA20": {
+      "nome": "Eventos dependentes e independentes",
+      "descricao_bncc": "Reconhecer, em experimentos aleatórios, eventos independentes e dependentes e calcular a probabilidade de sua ocorrência, nos dois casos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Análise de probabilidade de eventos aleatórios: eventos dependentes e independentes",
+      "palavras_chave": [
+        "eventos independentes",
+        "eventos dependentes",
+        "probabilidade"
+      ],
+      "pre_requisitos": [
+        "EF08MA22"
+      ],
+      "nivel": 18,
+      "ordem": 243
+    },
+    "EF09MA21": {
+      "nome": "Gráficos que induzem a erros de leitura",
+      "descricao_bncc": "Analisar e identificar, em gráficos divulgados pela mídia, os elementos que podem induzir, às vezes propositadamente, erros de leitura, como escalas inapropriadas, legendas não explicitadas corretamente, omissão de informações importantes (fontes e datas), entre outros.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Análise de gráficos divulgados pela mídia: elementos que podem induzir a erros de leitura ou de interpretação",
+      "palavras_chave": [
+        "gráficos enganosos",
+        "escala inadequada",
+        "desinformação"
+      ],
+      "pre_requisitos": [
+        "EF08MA23"
+      ],
+      "nivel": 18,
+      "ordem": 244
+    },
+    "EF09MA22": {
+      "nome": "Escolha e construção do gráfico mais adequado",
+      "descricao_bncc": "Escolher e construir o gráfico mais adequado (colunas, setores, linhas), com ou sem uso de planilhas eletrônicas, para apresentar um determinado conjunto de dados, destacando aspectos como as medidas de tendência central.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Leitura, interpretação e representação de dados de pesquisa expressos em tabelas de dupla entrada, gráficos de colunas simples e agrupadas, gráficos de barras e de setores e gráficos pictóricos",
+      "palavras_chave": [
+        "construir gráfico",
+        "planilha",
+        "tendência central"
+      ],
+      "pre_requisitos": [
+        "EF08MA23",
+        "EF08MA25"
+      ],
+      "nivel": 18,
+      "ordem": 245
+    },
+    "EF09MA23": {
+      "nome": "Pesquisa amostral com relatório e planilhas",
+      "descricao_bncc": "Planejar e executar pesquisa amostral envolvendo tema da realidade social e comunicar os resultados por meio de relatório contendo avaliação de medidas de tendência central e da amplitude, tabelas e gráficos adequados, construídos com o apoio de planilhas eletrônicas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Probabilidade e estatística",
+      "objeto_conhecimento": "Planejamento e execução de pesquisa amostral e apresentação de relatório",
+      "palavras_chave": [
+        "pesquisa",
+        "relatório",
+        "planilha eletrônica"
+      ],
+      "pre_requisitos": [
+        "EF08MA27",
+        "EF09MA22"
+      ],
+      "nivel": 19,
+      "ordem": 246
+    }
+  }
+}

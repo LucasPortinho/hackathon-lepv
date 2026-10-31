@@ -23,6 +23,7 @@ export async function createDatabase() {
     { id: 'st-novo', subjectId: 'mat', name: 'Tópico sem nota fixa', short: 'Novo', position: 2 },
     { id: 'st-plano', subjectId: 'fis', name: 'Plano inclinado', short: 'Plano', position: 0 },
   ]).run();
+  db.insert(schema.subtopicPrerequisites).values([{ subtopicId: 'st-cossenos', prerequisiteId: 'st-senos' }]).run();
   db.insert(schema.periods).values([{ id: 'b2', name: '2º bimestre', position: 1 }, { id: 'b3', name: '3º bimestre', position: 2 }]).run();
   db.insert(schema.needs).values([
     { id: 'daltonismo', label: 'Daltonismo', hint: 'h' }, { id: 'tdah', label: 'TDAH', hint: 'h' }, { id: 'tea', label: 'TEA', hint: 'h' },

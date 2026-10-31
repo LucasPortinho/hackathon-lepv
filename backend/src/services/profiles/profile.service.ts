@@ -11,7 +11,7 @@ import * as scoreRepository from '../../repositories/score.repository';
 import * as studentRepository from '../../repositories/student.repository';
 import type { EvolutionPoint, PedagogicalProfile, Student, StudentDetail, StudentSummary, Subtopic } from '../../types/domain';
 import { analyzeStudent, type AnalysisInput } from '../agents/pedagogical.agent';
-import { buildProfile } from '../agents/pedagogical.rules';
+import { buildProfile, prerequisiteLabel } from '../agents/pedagogical.rules';
 import { recordRun } from '../agent-runs/agent-run.service';
 import { needLabeler, periodWindow } from '../catalog/catalog.service';
 import { loadClassScores, type ClassScores } from '../shared/class-scores';
@@ -24,10 +24,16 @@ const HISTORY_LIMIT = 3;
 function loadProfileInputs(student: Student, subjectId: string) {
   const { current, previous } = periodWindow();
   const scoreOf = scoreLookup(scoreRepository.listByStudent(student.id));
-  return catalogRepository.listSubtopics(subjectId).map((subtopic) => ({
+  const latest = (subtopicId: string) => scoreOf(student.id, subtopicId, current.id) ?? (previous && scoreOf(student.id, subtopicId, previous.id));
+  const scored = catalogRepository.listSubtopics(subjectId).map((subtopic) => ({
     subtopic,
     value: scoreOf(student.id, subtopic.id, current.id),
     previous: previous && scoreOf(student.id, subtopic.id, previous.id),
+  })).filter((input) => input.value !== null || input.previous !== null);
+  const prerequisites = catalogRepository.listPrerequisites(scored.map((s) => s.subtopic.id));
+  return scored.map((input) => ({
+    ...input,
+    prerequisites: (prerequisites.get(input.subtopic.id) ?? []).map((subtopic) => ({ subtopic, value: latest(subtopic.id) })),
   }));
 }
 
@@ -45,10 +51,12 @@ export const ensureProfile = (student: Student, subjectId: string) =>
 function loadAnalysisInput(student: Student, subjectId: string): AnalysisInput {
   const { average } = loadClassScores(student.classId);
   const { current } = periodWindow();
-  const scores = loadProfileInputs(student, subjectId).map(({ subtopic, value, previous }) =>
+  const inputs = loadProfileInputs(student, subjectId);
+  const scores = inputs.map(({ subtopic, value, previous }) =>
     ({ subtopicId: subtopic.id, subtopic: subtopic.name, value, previous, classAverage: average(subtopic.id, current.id) }));
+  const prerequisites = Object.fromEntries(inputs.map((i) => [i.subtopic.id, i.prerequisites.map((p) => prerequisiteLabel(p.subtopic))]));
   return {
-    student, scores, subject: requireSubject(subjectId).name, needLabel: needLabeler(),
+    student, scores, prerequisites, subject: requireSubject(subjectId).name, needLabel: needLabeler(),
     evidence: evidenceRepository.listByStudent(student.id, subjectId, EVIDENCE_LIMIT),
     history: profileRepository.listHistory(student.id, subjectId, HISTORY_LIMIT),
   };
@@ -103,7 +111,9 @@ function evolutionPoint(studentId: string, subtopics: Subtopic[], period: { id: 
 
 function buildCompetencies(studentId: string, subtopics: Subtopic[], { scoreOf, average }: ClassScores) {
   const periodId = periodWindow().current.id;
-  return subtopics.map((subtopic) => ({ subtopic, value: scoreOf(studentId, subtopic.id, periodId), classAverage: average(subtopic.id, periodId) }));
+  return subtopics
+    .map((subtopic) => ({ subtopic, value: scoreOf(studentId, subtopic.id, periodId), classAverage: average(subtopic.id, periodId) }))
+    .filter((c) => c.value !== null || c.classAverage > 0);
 }
 
 const listStudentAdaptations = (student: Student) =>

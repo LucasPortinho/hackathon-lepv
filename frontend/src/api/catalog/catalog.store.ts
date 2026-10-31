@@ -2,7 +2,7 @@ import type { Class, Need, NeedId, Period, Prefs, Subject, Subtopic, TeacherProf
 import { fetchClasses, fetchNeeds, fetchPeriods, fetchSubjects, fetchSubtopics, fetchTeacher } from './catalog.api';
 
 export const DEFAULT_SUBJECT_ID = 'mat';
-const DEFAULT_CLASS_ID = 'c-2b';
+const DEFAULT_CLASS_ID = 'c-9b';
 
 const DEFAULT_PREFS: Prefs = { motion: 'sistema', font: 'padrao', spacing: 'padrao', theme: 'claro', sidebarCollapsed: false };
 
@@ -38,8 +38,13 @@ export const listSubjects = () => loaded().subjects;
 export const listNeeds = () => loaded().needs;
 export const subjectName = (id: string) => loaded().subjects.find((s) => s.id === id)?.name ?? '';
 export const listSubtopics = (subjectId: string) => loaded().subtopics.filter((s) => s.subjectId === subjectId);
+/** Habilidades de um ano escolar; sem ano, toda a disciplina. */
+export const listSkills = (subjectId: string, grade: number | null) =>
+  listSubtopics(subjectId).filter((t) => grade === null || t.years.length === 0 || t.years.includes(grade));
 export const subtopicById = (id: string) => loaded().subtopics.find((s) => s.id === id)!;
 export const classById = (id: string) => loaded().classes.find((c) => c.id === id);
+/** Matemática é a disciplina da demo; as demais turmas abrem na primeira que tiverem. */
+export const defaultSubjectOf = (cls?: Class) => (cls && !cls.subjectIds.includes(DEFAULT_SUBJECT_ID) ? cls.subjectIds[0] : DEFAULT_SUBJECT_ID);
 /** A turma de exemplo da demo, ou a primeira que existir. Vazio se não houver turmas. */
 export const defaultClassId = () => (classById(DEFAULT_CLASS_ID) ?? loaded().classes[0])?.id ?? '';
 export const needLabel = (id: NeedId) => loaded().needs.find((n) => n.id === id)?.label ?? id;

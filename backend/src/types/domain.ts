@@ -14,7 +14,7 @@ export type SheetReadStatus = (typeof sheetReadStatuses)[number];
 
 export interface Teacher { id: ID; name: string; role: string; email: string }
 export interface Subject { id: ID; name: string }
-export interface Subtopic { id: ID; subjectId: ID; name: string; short: string }
+export interface Subtopic { id: ID; subjectId: ID; name: string; short: string; unit: string; years: number[]; description: string; keywords: string[] }
 export interface Period { id: ID; name: string }
 export interface Need { id: NeedId; label: string; hint: string }
 
@@ -24,6 +24,7 @@ export interface Class {
   level: string;
   school: string;
   year: number;
+  grade: number | null;
   subjectIds: ID[];
   studentCount: number;
 }

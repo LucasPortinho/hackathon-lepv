@@ -1,33 +1,18 @@
 import type { NeedId, Subtopic } from '../../types/domain';
 
-/** Sugestões da demo; um PED real pode fornecer outra competência de base. */
-export const PREREQUISITES: Record<string, string> = {
-  'st-razoes': 'Identificar hipotenusa, cateto oposto e cateto adjacente em relação a um ângulo.',
-  'st-ciclo': 'Converter graus e radianos e reconhecer os quadrantes do plano cartesiano.',
-  'st-senos': 'Resolver proporções e associar cada lado ao ângulo oposto.',
-  'st-cossenos': 'Calcular potências e identificar o ângulo compreendido entre dois lados.',
-  'st-funcoes': 'Interpretar coordenadas e transformações de gráficos de funções.',
-  'st-identidades': 'Manipular expressões algébricas e aplicar a identidade sen²(x) + cos²(x) = 1.',
-  'st-equacoes': 'Resolver equações algébricas e localizar ângulos no ciclo trigonométrico.',
-  'st-areas': 'Identificar base e altura e calcular a área de um triângulo.',
-  'st-vetores': 'Identificar as razões seno e cosseno em um triângulo retângulo.',
-  'st-plano': 'Representar forças e decompor vetores em componentes.',
-  'st-oblquo': 'Distinguir movimento uniforme de movimento uniformemente variado.',
-};
-
-// Textos do agente pedagógico por regras.
+// Textos do agente pedagógico por regras, para as habilidades avaliadas na demo. O pré-requisito vem do grafo da BNCC.
 export const TOPIC_NOTES: Record<string, { competency: string; note: (n: string) => string; suggestion: string }> = {
-  'st-razoes': { competency: 'Relacionar lados e ângulos no triângulo retângulo', note: (n) => `${n} identifica a razão, mas troca cateto oposto e adjacente em figuras giradas.`, suggestion: 'Propor triângulos em posições variadas antes do cálculo.' },
-  'st-ciclo': { competency: 'Localizar ângulos no ciclo', note: (n) => `${n} acerta o primeiro quadrante e ainda confunde os sinais nos demais.`, suggestion: 'Retomar a redução ao primeiro quadrante com o ciclo desenhado.' },
-  'st-senos': { competency: 'Aplicar a proporção entre lados e senos', note: (n) => `${n} monta a proporção, mas nem sempre relaciona o lado ao ângulo oposto.`, suggestion: 'Pedir que marque cada par lado e ângulo oposto antes de calcular.' },
-  'st-cossenos': { competency: 'Reconhecer o caso de dois lados e o ângulo entre eles', note: (n) => `${n} aplica bem a Lei dos Senos, mas ainda hesita ao escolher qual lei usar quando o enunciado traz dois lados e o ângulo entre eles.`, suggestion: 'Trabalhar a escolha da lei antes de resolver as contas.' },
-  'st-funcoes': { competency: 'Interpretar amplitude e período', note: (n) => `${n} esboça o gráfico, mas ainda não relaciona os coeficientes à forma da curva.`, suggestion: 'Comparar gráficos variando um coeficiente por vez.' },
-  'st-identidades': { competency: 'Manipular identidades', note: (n) => `${n} conhece a identidade fundamental e tem dificuldade para escolher a substituição.`, suggestion: 'Exercícios curtos de substituição guiada.' },
-  'st-equacoes': { competency: 'Encontrar todas as soluções no intervalo', note: (n) => `${n} encontra a primeira solução e esquece as demais do intervalo.`, suggestion: 'Usar o ciclo para listar as soluções antes de escrever a resposta.' },
-  'st-areas': { competency: 'Usar a fórmula da área com seno', note: (n) => `${n} tende a usar base vezes altura quando a altura não é dada.`, suggestion: 'Contrapor os dois casos em exercícios lado a lado.' },
-  'st-vetores': { competency: 'Decompor vetores em componentes', note: (n) => `${n} decompõe na horizontal e ainda oscila na vertical.`, suggestion: 'Relacionar as componentes às razões trigonométricas.' },
-  'st-plano': { competency: 'Identificar forças no plano inclinado', note: (n) => `${n} desenha as forças e confunde o ângulo usado na decomposição.`, suggestion: 'Partir do diagrama de corpo livre.' },
-  'st-oblquo': { competency: 'Separar movimentos horizontal e vertical', note: (n) => `${n} ainda mistura os dois movimentos.`, suggestion: 'Resolver um eixo por vez.' },
+  EF09MA03: { competency: 'Calcular com raízes e expoentes fracionários', note: (n) => `${n} resolve potências inteiras e ainda hesita ao converter expoente fracionário em raiz.`, suggestion: 'Alternar entre as formas de raiz e de potência antes de calcular.' },
+  EF09MA05: { competency: 'Aplicar percentuais sucessivos', note: (n) => `${n} calcula cada percentual, mas soma as taxas em vez de aplicá-las em sequência.`, suggestion: 'Usar uma tabela com o valor após cada etapa.' },
+  EF09MA06: { competency: 'Relacionar tabela, fórmula e gráfico de uma função', note: (n) => `${n} monta a tabela e ainda não relaciona os coeficientes à forma do gráfico.`, suggestion: 'Comparar gráficos variando um coeficiente por vez.' },
+  EF09MA09: { competency: 'Resolver equações do 2º grau por fatoração', note: (n) => `${n} reconhece a equação e tem dificuldade para escolher a fatoração.`, suggestion: 'Exercícios curtos de fatoração guiada antes das equações completas.' },
+  EF09MA12: { competency: 'Identificar lados correspondentes em triângulos semelhantes', note: (n) => `${n} monta a proporção, mas nem sempre relaciona os lados correspondentes.`, suggestion: 'Pedir que marque os ângulos iguais antes de escrever a proporção.' },
+  EF09MA13: { competency: 'Identificar hipotenusa e catetos para aplicar o teorema', note: (n) => `${n} conhece a fórmula do teorema de Pitágoras, mas ainda hesita em identificar a hipotenusa quando o triângulo aparece em outra posição.`, suggestion: 'Propor triângulos em posições variadas e marcar a hipotenusa antes das contas.' },
+  EF09MA14: { competency: 'Escolher entre Pitágoras e Tales em um problema', note: (n) => `${n} resolve cada teorema isolado e hesita ao decidir qual usar no problema.`, suggestion: 'Trabalhar a escolha do teorema antes de resolver as contas.' },
+  EF09MA16: { competency: 'Calcular distâncias no plano cartesiano', note: (n) => `${n} localiza os pontos e ainda não enxerga o triângulo retângulo entre eles.`, suggestion: 'Desenhar os catetos no plano antes de aplicar a fórmula.' },
+  EF09MA19: { competency: 'Calcular o volume de prismas e cilindros', note: (n) => `${n} confunde a área da base com o volume em problemas contextualizados.`, suggestion: 'Separar o cálculo da área da base e o da altura em exercícios lado a lado.' },
+  EF09MA20: { competency: 'Distinguir eventos dependentes e independentes', note: (n) => `${n} calcula a primeira retirada e esquece que o total muda sem reposição.`, suggestion: 'Simular as retiradas com um diagrama de árvore.' },
+  EF09MA22: { competency: 'Escolher o gráfico adequado aos dados', note: (n) => `${n} constrói o gráfico, mas nem sempre justifica a escolha do tipo.`, suggestion: 'Comparar o mesmo conjunto de dados em gráficos diferentes.' },
 };
 
 export const genericNotes = (subtopic: Subtopic) => ({

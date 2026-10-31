@@ -9,6 +9,10 @@ before(() => {
   // Banco antigo deliberadamente pequeno: comprova que o start migra sem reset/seed.
   db.$client.exec(`
     CREATE TABLE questions (id TEXT PRIMARY KEY, statement TEXT NOT NULL) STRICT;
+    CREATE TABLE subtopics (id TEXT PRIMARY KEY, name TEXT NOT NULL) STRICT;
+    INSERT INTO subtopics VALUES ('st-old', 'Subtópico preservado');
+    CREATE TABLE classes (id TEXT PRIMARY KEY, name TEXT NOT NULL) STRICT;
+    INSERT INTO classes VALUES ('c-old', 'Turma preservada');
     CREATE TABLE competency_gaps (id TEXT PRIMARY KEY, note TEXT NOT NULL) STRICT;
     CREATE TABLE diagnostic_items (id TEXT PRIMARY KEY, statement TEXT NOT NULL) STRICT;
     CREATE TABLE exam_questions (exam_id TEXT NOT NULL, question_id TEXT NOT NULL, PRIMARY KEY (exam_id, question_id)) STRICT;
@@ -30,7 +34,7 @@ before(() => {
 describe('migração aditiva da versão 1 para a atual', () => {
   it('migra no start, preserva os dados e permite repetir a inicialização', async () => {
     assert.equal(await ensureDemoDatabase(), false);
-    assert.equal(db.$client.pragma('user_version', { simple: true }), 4);
+    assert.equal(db.$client.pragma('user_version', { simple: true }), 5);
     const question = db.$client.prepare('SELECT * FROM questions').get() as Record<string, unknown>;
     assert.equal(question.id, 'q-old');
     assert.equal(question.statement, 'Enunciado preservado');
@@ -64,6 +68,15 @@ describe('migração aditiva da versão 1 para a atual', () => {
     assert.deepEqual(db.$client.pragma('foreign_key_check'), []);
     db.$client.pragma('user_version = 99');
     assert.throws(migrateSchema, /não suportada/);
-    db.$client.pragma('user_version = 4');
+    db.$client.pragma('user_version = 5');
+  });
+
+  it('abre subtópicos e turmas para a BNCC sem perder o que já existia', () => {
+    assert.deepEqual(db.$client.prepare('SELECT id, name, unit, years, keywords, level FROM subtopics').all(), [
+      { id: 'st-old', name: 'Subtópico preservado', unit: 'Outros conteúdos', years: '[]', keywords: '[]', level: 0 },
+    ]);
+    assert.deepEqual(db.$client.prepare('SELECT id, grade FROM classes').all(), [{ id: 'c-old', grade: null }]);
+    assert.throws(() => db.$client.exec('UPDATE classes SET grade = 10'), /CHECK/);
+    assert.throws(() => db.$client.exec("INSERT INTO subtopic_prerequisites VALUES ('st-old', 'st-old')"), /CHECK/);
   });
 });

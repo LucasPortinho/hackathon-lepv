@@ -86,6 +86,12 @@ export const subtopics = sqliteTable("subtopics", {
   name: text("name").notNull(),
   short: text("short").notNull(),
   position: integer("position").notNull().default(0),
+  unit: text("unit").notNull().default("Outros conteúdos"),
+  knowledgeObject: text("knowledge_object").notNull().default(""),
+  description: text("description").notNull().default(""),
+  years: text("years", { mode: "json" }).$type<number[]>().notNull().default(sql`'[]'`),
+  keywords: text("keywords", { mode: "json" }).$type<string[]>().notNull().default(sql`'[]'`),
+  level: integer("level").notNull().default(0),
 }, (table) => [
   unique("subtopics_id_subject_id_unique").on(table.id, table.subjectId),
   foreignKey({
@@ -94,7 +100,22 @@ export const subtopics = sqliteTable("subtopics", {
   }).onDelete("restrict"),
   check("subtopics_check_1", sql`length(trim(name)) > 0`),
   check("subtopics_check_2", sql`position >= 0`),
+  check("subtopics_unit_nonempty", sql`length(trim(unit)) > 0`),
+  check("subtopics_years_array", sql`CASE WHEN json_valid(years) THEN json_type(years) = 'array' ELSE 0 END`),
+  check("subtopics_keywords_array", sql`CASE WHEN json_valid(keywords) THEN json_type(keywords) = 'array' ELSE 0 END`),
+  check("subtopics_level_nonnegative", sql`level >= 0`),
   index("subtopics_subject_idx").on(table.subjectId, table.position),
+]);
+
+export const subtopicPrerequisites = sqliteTable("subtopic_prerequisites", {
+  subtopicId: text("subtopic_id").notNull(),
+  prerequisiteId: text("prerequisite_id").notNull(),
+}, (table) => [
+  primaryKey({ columns: [table.subtopicId, table.prerequisiteId] }),
+  foreignKey({ columns: [table.subtopicId], foreignColumns: [subtopics.id] }).onDelete("cascade"),
+  foreignKey({ columns: [table.prerequisiteId], foreignColumns: [subtopics.id] }).onDelete("cascade"),
+  check("subtopic_prerequisites_distinct", sql`subtopic_id != prerequisite_id`),
+  index("subtopic_prerequisites_prerequisite_idx").on(table.prerequisiteId),
 ]);
 
 export const periods = sqliteTable("periods", {
@@ -113,6 +134,8 @@ export const classes = sqliteTable("classes", {
   level: text("level").notNull(),
   school: text("school").notNull(),
   year: integer("year").notNull(),
+  /** Ano escolar (1 a 9): delimita as habilidades da BNCC. Sem valor, a turma vê toda a disciplina. */
+  grade: integer("grade"),
 }, (table) => [
   foreignKey({
     columns: [table.teacherId],
@@ -120,6 +143,7 @@ export const classes = sqliteTable("classes", {
   }).onDelete("restrict"),
   check("classes_check_1", sql`length(trim(name)) > 0`),
   check("classes_check_2", sql`year BETWEEN 1 AND 9999`),
+  check("classes_grade_range", sql`grade IS NULL OR grade BETWEEN 1 AND 9`),
   index("classes_teacher_idx").on(table.teacherId, table.year),
 ]);
 
@@ -867,7 +891,7 @@ FROM adaptations a JOIN exam_version_needs n ON n.exam_id = a.exam_id AND n.vers
 // Metadados descritivos: importar este arquivo não altera conexão nem banco.
 // Configure PRAGMA foreign_keys = ON em cada conexão SQLite.
 export const sqliteSchemaMetadata = {
-  userVersion: 4,
+  userVersion: 5,
   foreignKeys: true,
   tableMode: 'STRICT',
   strictTables: [
@@ -875,6 +899,7 @@ export const sqliteSchemaMetadata = {
     "teacher_preferences",
     "subjects",
     "subtopics",
+    "subtopic_prerequisites",
     "periods",
     "classes",
     "class_subjects",

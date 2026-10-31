@@ -1,14 +1,15 @@
 import { knownValues, mean } from '../../lib/score';
 import { firstName } from '../../lib/text';
 import type { CompetencyGap, GapReading, PedagogicalProfile, Student, Subtopic } from '../../types/domain';
-import { genericNotes, NEED_NOTES, PREREQUISITES, TOPIC_NOTES } from './pedagogical.notes';
+import { genericNotes, NEED_NOTES, TOPIC_NOTES } from './pedagogical.notes';
 
 // Regras do agente pedagógico: geram o rascunho determinístico que o modelo aprofunda.
 const WEAK_BELOW = 70;
 const MAX_GAPS = 2;
 const MAX_STRENGTHS = 2;
 
-interface ProfileInput { subtopic: Subtopic; value: number | null; previous: number | null }
+interface PrerequisiteInput { subtopic: Pick<Subtopic, 'id' | 'name'>; value: number | null }
+interface ProfileInput { subtopic: Subtopic; value: number | null; previous: number | null; prerequisites?: PrerequisiteInput[] }
 type ScoredInput = ProfileInput & { value: number };
 
 /** Único construtor de leitura: aluno sem necessidade declarada nunca recebe `necessidade`. */
@@ -17,16 +18,26 @@ function gapReading(student: Student, index: number): GapReading {
   return need && index === 0 ? { kind: 'necessidade', needId: need } : { kind: 'tecnica' };
 }
 
-function buildGap(student: Student, { subtopic }: ScoredInput, index: number): CompetencyGap {
+export const prerequisiteLabel = (subtopic: Pick<Subtopic, 'id' | 'name'>) => `${subtopic.id} · ${subtopic.name}`;
+
+/** A base mais fraca do grafo. Sem nota fraca, o pré-requisito ainda não medido, que é o mais próximo na ordem de estudo. */
+function basePrerequisite(prerequisites: PrerequisiteInput[]) {
+  const scored = prerequisites.filter((p): p is PrerequisiteInput & { value: number } => p.value !== null).sort((a, b) => a.value - b.value);
+  const weakest = scored[0]?.value < WEAK_BELOW ? scored[0] : undefined;
+  return weakest ?? prerequisites.filter((p) => p.value === null).at(-1) ?? scored[0];
+}
+
+function buildGap(student: Student, { subtopic, prerequisites = [] }: ScoredInput, index: number): CompetencyGap {
   const n = firstName(student.name);
   const topic = TOPIC_NOTES[subtopic.id] ?? genericNotes(subtopic);
   const reading = gapReading(student, index);
   const support = reading.kind === 'necessidade' ? NEED_NOTES[reading.needId] : null;
+  const base = basePrerequisite(prerequisites);
   return {
     id: `${student.id}-${subtopic.id}`,
     subtopicId: subtopic.id,
     competency: topic.competency,
-    prerequisite: PREREQUISITES[subtopic.id],
+    prerequisite: base && prerequisiteLabel(base.subtopic),
     reading,
     note: support ? support.note(n) : topic.note(n),
     suggestion: support ? support.suggestion : topic.suggestion,

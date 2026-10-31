@@ -11,26 +11,28 @@ import { refreshProfile } from '../../services/profiles/profile.service';
 import * as schema from '../schema';
 import { createSchema, dropSchema, migrateSchema } from '../setup';
 import { agentRuns, DIAGNOSTIC_CREATED_AT, notifications } from './data/activity';
-import { classes, DEMO_TEACHER_ID, needs, periods, subjects, subtopics, teacher } from './data/catalog';
+import { bnccPrerequisites, bnccSubjects, bnccSubtopics } from './data/bncc';
+import { classes, DEMO_TEACHER_ID, needs, periods, teacher } from './data/catalog';
 import { examGroups, exams, READ_EXAM_ID } from './data/exams';
 import { QUESTION_BANK } from './data/questions';
 import { scores } from './data/scores';
 import { students } from './data/students';
 
 export const DEFAULT_SUBJECT_ID = 'mat';
-const DIAGNOSTIC_ID = 'd-cossenos';
+const DIAGNOSTIC_ID = 'd-pitagoras';
 const AGENT_STAGES = 3;
 
 function seedCatalog() {
   db.insert(schema.teachers).values(teacher).run();
-  db.insert(schema.subjects).values(subjects).run();
-  db.insert(schema.subtopics).values(subtopics.map((s, position) => ({ ...s, position }))).run();
+  db.insert(schema.subjects).values(bnccSubjects).run();
+  db.insert(schema.subtopics).values(bnccSubtopics).run();
+  db.insert(schema.subtopicPrerequisites).values(bnccPrerequisites).run();
   db.insert(schema.periods).values(periods.map((p, position) => ({ ...p, position }))).run();
   db.insert(schema.needs).values(needs).run();
 }
 
 function seedClasses() {
-  db.insert(schema.classes).values(classes.map(({ id, name, level, school, year }) => ({ id, teacherId: DEMO_TEACHER_ID, name, level, school, year }))).run();
+  db.insert(schema.classes).values(classes.map(({ id, name, level, school, year, grade }) => ({ id, teacherId: DEMO_TEACHER_ID, name, level, school, year, grade }))).run();
   db.insert(schema.classSubjects).values(classes.flatMap((c) => c.subjectIds.map((subjectId) => ({ classId: c.id, subjectId })))).run();
 }
 
@@ -69,8 +71,8 @@ function seedReadSheets() {
 /** A avaliação de exemplo passa pelo pipeline real e fica parada na revisão do professor. */
 async function seedDiagnostic() {
   diagnosticRepository.insert({
-    id: DIAGNOSTIC_ID, title: 'Lei dos Cossenos', classId: 'c-2b', subjectId: DEFAULT_SUBJECT_ID,
-    subtopicIds: ['st-cossenos'], createdAt: DIAGNOSTIC_CREATED_AT(), steps: initialSteps(),
+    id: DIAGNOSTIC_ID, title: 'Teorema de Pitágoras', classId: 'c-9b', subjectId: DEFAULT_SUBJECT_ID,
+    subtopicIds: ['EF09MA13'], createdAt: DIAGNOSTIC_CREATED_AT(), steps: initialSteps(),
   });
   for (let i = 0; i < AGENT_STAGES; i++) await advanceDiagnostic(DEMO_TEACHER_ID, DIAGNOSTIC_ID, { useAgents: false });
 }

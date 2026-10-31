@@ -14,7 +14,14 @@
 .hm thead th.hm-corner { left: 0; z-index: 3; width: 12.5rem; text-align: left; padding: var(--s-2) var(--s-3); font-weight: var(--weight-strong); }
 .hm th:last-child { width: 4rem; }
 .hm-col { display: grid; place-items: center; width: 100%; height: 2.5rem; text-align: center; line-height: 1.1; padding: 0.25rem; font-weight: var(--weight-strong); overflow: hidden; }
-.hm-col:hover, th[data-active='true'] .hm-col { background: var(--ink); color: var(--paper); }
+.hm-col-label { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.hm th[data-kind='unit'] { width: 6.5rem; }
+.hm-unit { grid-template-columns: auto minmax(0, 1fr); gap: 0.15rem; align-items: center; }
+.hm-unit svg { width: 0.8rem; height: 0.8rem; }
+.hm-unit[aria-expanded='true'] svg { rotate: 90deg; }
+.hm-col[data-kind='skill'] { font-family: var(--font-data); font-weight: 600; }
+.hm td[data-kind='skill'], .hm th[data-kind='skill'] { border-right-style: dashed; }
+.hm-col:hover, th[data-active='true'] .hm-col, th[data-open='true'] .hm-col { background: var(--ink); color: var(--paper); }
 .hm-col:focus-visible, .hm-name button:focus-visible { outline-offset: -3px; }
 .hm-sort { position: absolute; right: 2px; bottom: 2px; display: grid; place-items: center; width: 1rem; height: 1rem; background: var(--paper); color: var(--ink); opacity: 0; }
 .hm-sort svg { width: 0.75rem; height: 0.75rem; }
@@ -60,7 +67,7 @@
 .hm[data-hc='11'] .hm-col[data-c='11'] { background: var(--ink); color: var(--paper); }
 
 /* The threshold takes colour away, leaving only what is below it. Values stay readable. */
-.hm-cell[data-faded='true'] { background: var(--paper); color: var(--gray-1); font-weight: 450; }
+.hm-cell[data-faded='true'] { background: var(--paper); color: var(--ink-soft); font-weight: 450; }
 
 /* Pattern overlays, so bands stay separable with no colour at all. */
 .hm[data-patterns='true'] .hm-cell[data-pattern='dots'] { background-image: radial-gradient(#000 1px, transparent 1.2px); background-size: 6px 6px; }
@@ -99,6 +106,8 @@
 .dash-filters .select-trigger { width: auto; min-width: 9rem; max-width: 16rem; }
 .review-note { margin-bottom: var(--s-5); font-weight: 600; }
 
+.insight-code { font-family: var(--font-data); font-size: var(--text-sm); font-weight: 600; padding-right: var(--s-8); }
+.insight-description { margin-top: var(--s-2); font-size: var(--text-sm); }
 .insight h2 { font-size: var(--text-xl); padding-right: var(--s-8); }
 .insight-stat { font-size: var(--text-4xl); font-weight: var(--weight-display); font-stretch: var(--width-display); letter-spacing: var(--tracking-tight); line-height: 1; margin: var(--s-4) 0 var(--s-1); }
 .insight section { margin-top: var(--s-6); }

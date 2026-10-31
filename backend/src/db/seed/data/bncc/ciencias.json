@@ -1,0 +1,2416 @@
+{
+  "disciplina": "Ciências",
+  "etapa": "Ensino Fundamental",
+  "versao": "1.0.0",
+  "gerado_em": "2026-10-31",
+  "fonte_habilidades": "bncc-mcp 0.1.0 (lista oficial de habilidades da BNCC)",
+  "notas": {
+    "ano": "'ano' é o primeiro ano em que a habilidade é trabalhada; 'anos' lista todos (códigos como EF15LP01 abrangem do 1º ao 5º).",
+    "pre_requisitos": "Apenas pré-requisitos DIRETOS. Os indiretos são obtidos percorrendo o grafo recursivamente.",
+    "nivel": "Profundidade no grafo: 0 = sem pré-requisitos; nível N = maior cadeia de pré-requisitos até a habilidade.",
+    "ordem": "Posição numa ordenação topológica (desempate por ano e código). Ordenar qualquer subconjunto por este campo dá uma sequência de estudo válida.",
+    "palavras_chave": "Termos usados por alunos e professores, para casar lacunas descritas em texto livre com códigos.",
+    "objeto_conhecimento": "O CSV de origem tem objetos de conhecimento desalinhados; estes códigos foram corrigidos conforme a BNCC oficial: EF01CI02, EF01CI03, EF02CI01, EF02CI02, EF02CI04, EF02CI07, EF03CI01, EF03CI02, EF03CI07, EF03CI08, EF04CI01, EF04CI04, EF04CI05, EF04CI09, EF04CI10, EF05CI01, EF05CI02, EF05CI03, EF05CI04, EF05CI05, EF05CI06, EF05CI08, EF05CI09, EF05CI10, EF05CI11, EF05CI12, EF06CI01, EF06CI02, EF06CI03, EF06CI04, EF06CI05, EF06CI06, EF06CI07, EF06CI09, EF06CI10, EF07CI01, EF07CI02, EF07CI03, EF07CI04, EF07CI07, EF07CI08, EF07CI12, EF07CI13, EF07CI14, EF07CI15, EF08CI01, EF08CI02, EF08CI03, EF08CI04, EF08CI07, EF08CI12, EF08CI13, EF09CI01, EF09CI02, EF09CI03, EF09CI08, EF09CI09, EF09CI10, EF09CI11, EF09CI15, EF09CI16"
+  },
+  "unidades_tematicas": [
+    "Matéria e energia",
+    "Terra e Universo",
+    "Vida e evolução"
+  ],
+  "total_habilidades": 111,
+  "habilidades": {
+    "EF01CI01": {
+      "nome": "Características, origem e descarte dos materiais",
+      "descricao_bncc": "Comparar características de diferentes materiais presentes em objetos de uso cotidiano, discutindo sua origem, os modos como são descartados e como podem ser usados de forma mais consciente.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Características dos materiais",
+      "palavras_chave": [
+        "materiais",
+        "plástico",
+        "vidro",
+        "metal",
+        "papel",
+        "descarte",
+        "lixo"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 0
+    },
+    "EF01CI02": {
+      "nome": "Partes do corpo humano e suas funções",
+      "descricao_bncc": "Localizar, nomear e representar graficamente (por meio de desenhos) partes do corpo humano e explicar suas funções.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Corpo humano",
+      "palavras_chave": [
+        "corpo humano",
+        "partes do corpo",
+        "órgãos dos sentidos",
+        "cabeça tronco membros"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 1
+    },
+    "EF01CI03": {
+      "nome": "Hábitos de higiene e saúde",
+      "descricao_bncc": "Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Corpo humano",
+      "palavras_chave": [
+        "higiene",
+        "lavar as mãos",
+        "escovar os dentes",
+        "saúde"
+      ],
+      "pre_requisitos": [
+        "EF01CI02"
+      ],
+      "nivel": 1,
+      "ordem": 2
+    },
+    "EF01CI04": {
+      "nome": "Diversidade de características físicas e respeito às diferenças",
+      "descricao_bncc": "Comparar características físicas entre os colegas, reconhecendo a diversidade e a importância da valorização, do acolhimento e do respeito às diferenças.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Respeito à diversidade",
+      "palavras_chave": [
+        "diversidade",
+        "diferenças",
+        "respeito",
+        "características físicas"
+      ],
+      "pre_requisitos": [
+        "EF01CI02"
+      ],
+      "nivel": 1,
+      "ordem": 3
+    },
+    "EF01CI05": {
+      "nome": "Escalas de tempo: períodos do dia, dias, semanas, meses e anos",
+      "descricao_bncc": "Identificar e nomear diferentes escalas de tempo: os períodos diários (manhã, tarde, noite) e a sucessão de dias, semanas, meses e anos.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Escalas de tempo",
+      "palavras_chave": [
+        "manhã",
+        "tarde",
+        "noite",
+        "dia",
+        "semana",
+        "mês",
+        "ano",
+        "tempo"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 4
+    },
+    "EF01CI06": {
+      "nome": "Dia e noite e o ritmo de atividades dos seres vivos",
+      "descricao_bncc": "Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos.",
+      "ano": 1,
+      "anos": [
+        1
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Escalas de tempo",
+      "palavras_chave": [
+        "dia e noite",
+        "animais noturnos",
+        "rotina",
+        "ritmo diário"
+      ],
+      "pre_requisitos": [
+        "EF01CI05"
+      ],
+      "nivel": 1,
+      "ordem": 5
+    },
+    "EF02CI01": {
+      "nome": "Materiais dos objetos do cotidiano, hoje e no passado",
+      "descricao_bncc": "Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Propriedades e usos dos materiais",
+      "palavras_chave": [
+        "metal",
+        "madeira",
+        "vidro",
+        "materiais",
+        "objetos antigos"
+      ],
+      "pre_requisitos": [
+        "EF01CI01"
+      ],
+      "nivel": 1,
+      "ordem": 6
+    },
+    "EF02CI02": {
+      "nome": "Propriedades dos materiais e seu uso em objetos",
+      "descricao_bncc": "Propor o uso de diferentes materiais para a construção de objetos de uso cotidiano, tendo em vista algumas propriedades desses materiais (flexibilidade, dureza, transparência etc.).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Propriedades e usos dos materiais",
+      "palavras_chave": [
+        "flexibilidade",
+        "dureza",
+        "transparência",
+        "propriedades dos materiais"
+      ],
+      "pre_requisitos": [
+        "EF02CI01"
+      ],
+      "nivel": 2,
+      "ordem": 7
+    },
+    "EF02CI03": {
+      "nome": "Prevenção de acidentes domésticos",
+      "descricao_bncc": "Discutir os cuidados necessários à prevenção de acidentes domésticos (objetos cortantes e inflamáveis, eletricidade, produtos de limpeza, medicamentos etc.).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Prevenção de acidentes domésticos",
+      "palavras_chave": [
+        "acidentes domésticos",
+        "segurança",
+        "produtos de limpeza",
+        "eletricidade",
+        "objetos cortantes",
+        "medicamentos"
+      ],
+      "pre_requisitos": [
+        "EF02CI02"
+      ],
+      "nivel": 3,
+      "ordem": 8
+    },
+    "EF02CI04": {
+      "nome": "Características de plantas e animais e o ambiente em que vivem",
+      "descricao_bncc": "Descrever características de plantas e animais (tamanho, forma, cor, fase da vida, local onde se desenvolvem etc.) que fazem parte de seu cotidiano e relacioná-las ao ambiente em que eles vivem.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Seres vivos no ambiente",
+      "palavras_chave": [
+        "seres vivos",
+        "plantas",
+        "animais",
+        "ambiente",
+        "habitat"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 9
+    },
+    "EF02CI05": {
+      "nome": "Importância da água e da luz para as plantas",
+      "descricao_bncc": "Investigar a importância da água e da luz para a manutenção da vida de plantas em geral.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Plantas",
+      "palavras_chave": [
+        "água",
+        "luz",
+        "plantas",
+        "crescimento das plantas"
+      ],
+      "pre_requisitos": [
+        "EF02CI04"
+      ],
+      "nivel": 1,
+      "ordem": 10
+    },
+    "EF02CI06": {
+      "nome": "Partes da planta e suas funções",
+      "descricao_bncc": "Identificar as principais partes de uma planta (raiz, caule, folhas, flores e frutos) e a função desempenhada por cada uma delas, e analisar as relações entre as plantas, o ambiente e os demais seres vivos.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Plantas",
+      "palavras_chave": [
+        "raiz",
+        "caule",
+        "folha",
+        "flor",
+        "fruto",
+        "partes da planta"
+      ],
+      "pre_requisitos": [
+        "EF02CI05"
+      ],
+      "nivel": 2,
+      "ordem": 11
+    },
+    "EF02CI07": {
+      "nome": "Posição do Sol ao longo do dia e tamanho da sombra",
+      "descricao_bncc": "Descrever as posições do Sol em diversos horários do dia e associá-las ao tamanho da sombra projetada.",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Movimento aparente do Sol no céu",
+      "palavras_chave": [
+        "sombra",
+        "posição do Sol",
+        "movimento aparente do Sol"
+      ],
+      "pre_requisitos": [
+        "EF01CI05"
+      ],
+      "nivel": 1,
+      "ordem": 12
+    },
+    "EF02CI08": {
+      "nome": "Efeito da radiação solar em diferentes superfícies",
+      "descricao_bncc": "Comparar o efeito da radiação solar (aquecimento e reflexão) em diferentes tipos de superfície (água, areia, solo, superfícies escura, clara e metálica etc.).",
+      "ano": 2,
+      "anos": [
+        2
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "O Sol como fonte de luz e calor",
+      "palavras_chave": [
+        "radiação solar",
+        "calor",
+        "aquecimento",
+        "superfície escura",
+        "superfície clara",
+        "reflexão"
+      ],
+      "pre_requisitos": [
+        "EF02CI01",
+        "EF02CI07"
+      ],
+      "nivel": 2,
+      "ordem": 13
+    },
+    "EF03CI01": {
+      "nome": "Produção de sons pela vibração de objetos",
+      "descricao_bncc": "Produzir diferentes sons a partir da vibração de variados objetos e identificar variáveis que influem nesse fenômeno.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Produção de som",
+      "palavras_chave": [
+        "som",
+        "vibração",
+        "instrumentos musicais",
+        "volume",
+        "altura do som"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 14
+    },
+    "EF03CI02": {
+      "nome": "Comportamento da luz: transparência, reflexão e opacidade",
+      "descricao_bncc": "Experimentar e relatar o que ocorre com a passagem da luz através de objetos transparentes (copos, janelas de vidro, lentes, prismas, água etc.), no contato com superfícies polidas (espelhos) e na intersecção com objetos opacos (paredes, pratos, pessoas e outros objetos de uso cotidiano).",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Efeitos da luz nos materiais",
+      "palavras_chave": [
+        "luz",
+        "transparente",
+        "opaco",
+        "espelho",
+        "reflexão",
+        "lentes"
+      ],
+      "pre_requisitos": [
+        "EF02CI02",
+        "EF02CI08"
+      ],
+      "nivel": 3,
+      "ordem": 15
+    },
+    "EF03CI03": {
+      "nome": "Saúde auditiva e visual",
+      "descricao_bncc": "Discutir hábitos necessários para a manutenção da saúde auditiva e visual considerando as condições do ambiente em termos de som e luz.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Saúde auditiva e visual",
+      "palavras_chave": [
+        "audição",
+        "visão",
+        "ruído",
+        "poluição sonora",
+        "cuidados com os olhos"
+      ],
+      "pre_requisitos": [
+        "EF01CI03",
+        "EF03CI01",
+        "EF03CI02"
+      ],
+      "nivel": 4,
+      "ordem": 16
+    },
+    "EF03CI04": {
+      "nome": "Modo de vida dos animais",
+      "descricao_bncc": "Identificar características sobre o modo de vida (o que comem, como se reproduzem, como se deslocam etc.) dos animais mais comuns no ambiente próximo.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Características e desenvolvimento dos animais",
+      "palavras_chave": [
+        "alimentação dos animais",
+        "reprodução",
+        "locomoção",
+        "animais"
+      ],
+      "pre_requisitos": [
+        "EF02CI04"
+      ],
+      "nivel": 1,
+      "ordem": 17
+    },
+    "EF03CI05": {
+      "nome": "Desenvolvimento dos animais desde o nascimento",
+      "descricao_bncc": "Descrever e comunicar as alterações que ocorrem desde o nascimento em animais de diferentes meios terrestres ou aquáticos, inclusive o homem.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Características e desenvolvimento dos animais",
+      "palavras_chave": [
+        "ciclo de vida",
+        "crescimento",
+        "metamorfose",
+        "desenvolvimento"
+      ],
+      "pre_requisitos": [
+        "EF03CI04"
+      ],
+      "nivel": 2,
+      "ordem": 18
+    },
+    "EF03CI06": {
+      "nome": "Classificação de animais por características externas",
+      "descricao_bncc": "Comparar alguns animais e organizar grupos com base em características externas comuns (presença de penas, pelos, escamas, bico, garras, antenas, patas etc.).",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Características e desenvolvimento dos animais",
+      "palavras_chave": [
+        "classificar animais",
+        "penas",
+        "pelos",
+        "escamas",
+        "grupos de animais"
+      ],
+      "pre_requisitos": [
+        "EF03CI04"
+      ],
+      "nivel": 2,
+      "ordem": 19
+    },
+    "EF03CI07": {
+      "nome": "Características da Terra e suas representações",
+      "descricao_bncc": "Identificar características da Terra (como seu formato esférico, a presença de água, solo etc.), com base na observação, manipulação e comparação de diferentes formas de representação do planeta (mapas, globos, fotografias etc.).",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Características da Terra",
+      "palavras_chave": [
+        "formato da Terra",
+        "globo terrestre",
+        "mapa",
+        "planeta Terra"
+      ],
+      "pre_requisitos": [],
+      "nivel": 0,
+      "ordem": 20
+    },
+    "EF03CI08": {
+      "nome": "Astros visíveis no céu de dia e de noite",
+      "descricao_bncc": "Observar, identificar e registrar os períodos diários (dia e/ou noite) em que o Sol, demais estrelas, Lua e planetas estão visíveis no céu.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Observação do céu",
+      "palavras_chave": [
+        "Sol",
+        "Lua",
+        "estrelas",
+        "planetas",
+        "observação do céu"
+      ],
+      "pre_requisitos": [
+        "EF01CI06",
+        "EF02CI07"
+      ],
+      "nivel": 2,
+      "ordem": 21
+    },
+    "EF03CI09": {
+      "nome": "Comparação de amostras de solo",
+      "descricao_bncc": "Comparar diferentes amostras de solo do entorno da escola com base em características como cor, textura, cheiro, tamanho das partículas, permeabilidade etc.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Usos do solo",
+      "palavras_chave": [
+        "solo",
+        "textura",
+        "permeabilidade",
+        "tipos de solo"
+      ],
+      "pre_requisitos": [
+        "EF03CI07"
+      ],
+      "nivel": 1,
+      "ordem": 22
+    },
+    "EF03CI10": {
+      "nome": "Usos do solo e sua importância para a agricultura",
+      "descricao_bncc": "Identificar os diferentes usos do solo (plantação e extração de materiais, dentre outras possibilidades), reconhecendo a importância do solo para a agricultura e para a vida.",
+      "ano": 3,
+      "anos": [
+        3
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Usos do solo",
+      "palavras_chave": [
+        "agricultura",
+        "uso do solo",
+        "extração",
+        "plantação"
+      ],
+      "pre_requisitos": [
+        "EF03CI09"
+      ],
+      "nivel": 2,
+      "ordem": 23
+    },
+    "EF04CI01": {
+      "nome": "Misturas no cotidiano e seus componentes",
+      "descricao_bncc": "Identificar misturas na vida diária, com base em suas propriedades físicas observáveis, reconhecendo sua composição.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Misturas",
+      "palavras_chave": [
+        "misturas",
+        "componentes",
+        "composição"
+      ],
+      "pre_requisitos": [
+        "EF02CI02"
+      ],
+      "nivel": 3,
+      "ordem": 24
+    },
+    "EF04CI02": {
+      "nome": "Transformações dos materiais por aquecimento, resfriamento, luz e umidade",
+      "descricao_bncc": "Testar e relatar transformações nos materiais do dia a dia quando expostos a diferentes condições (aquecimento, resfriamento, luz e umidade).",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Transformações reversíveis e não reversíveis",
+      "palavras_chave": [
+        "aquecimento",
+        "resfriamento",
+        "transformação dos materiais",
+        "derreter"
+      ],
+      "pre_requisitos": [
+        "EF04CI01"
+      ],
+      "nivel": 4,
+      "ordem": 25
+    },
+    "EF04CI03": {
+      "nome": "Transformações reversíveis e irreversíveis",
+      "descricao_bncc": "Concluir que algumas mudanças causadas por aquecimento ou resfriamento são reversíveis (como as mudanças de estado físico da água) e outras não (como o cozimento do ovo, a queima do papel etc.).",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Transformações reversíveis e não reversíveis",
+      "palavras_chave": [
+        "reversível",
+        "irreversível",
+        "mudanças de estado físico",
+        "estados físicos da água",
+        "queima"
+      ],
+      "pre_requisitos": [
+        "EF04CI02"
+      ],
+      "nivel": 5,
+      "ordem": 26
+    },
+    "EF04CI04": {
+      "nome": "Cadeias alimentares e o Sol como fonte de energia",
+      "descricao_bncc": "Analisar e construir cadeias alimentares simples, reconhecendo a posição ocupada pelos seres vivos nessas cadeias e o papel do Sol como fonte primária de energia na produção de alimentos.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Cadeias alimentares simples",
+      "palavras_chave": [
+        "cadeia alimentar",
+        "produtores",
+        "consumidores",
+        "fotossíntese"
+      ],
+      "pre_requisitos": [
+        "EF02CI06",
+        "EF03CI04"
+      ],
+      "nivel": 3,
+      "ordem": 27
+    },
+    "EF04CI05": {
+      "nome": "Ciclo da matéria e fluxo de energia nos ecossistemas",
+      "descricao_bncc": "Descrever e destacar semelhanças e diferenças entre o ciclo da matéria e o fluxo de energia entre os componentes vivos e não vivos de um ecossistema.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Cadeias alimentares simples",
+      "palavras_chave": [
+        "ciclo da matéria",
+        "fluxo de energia",
+        "ecossistema"
+      ],
+      "pre_requisitos": [
+        "EF04CI04"
+      ],
+      "nivel": 4,
+      "ordem": 28
+    },
+    "EF04CI06": {
+      "nome": "Decomposição por fungos e bactérias",
+      "descricao_bncc": "Relacionar a participação de fungos e bactérias no processo de decomposição, reconhecendo a importância ambiental desse processo.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Microrganismos",
+      "palavras_chave": [
+        "decompositores",
+        "fungos",
+        "bactérias",
+        "decomposição"
+      ],
+      "pre_requisitos": [
+        "EF04CI05"
+      ],
+      "nivel": 5,
+      "ordem": 29
+    },
+    "EF04CI07": {
+      "nome": "Microrganismos na produção de alimentos, combustíveis e medicamentos",
+      "descricao_bncc": "Verificar a participação de microrganismos na produção de alimentos, combustíveis, medicamentos, entre outros.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Microrganismos",
+      "palavras_chave": [
+        "fermentação",
+        "microrganismos",
+        "iogurte",
+        "pão",
+        "antibiótico"
+      ],
+      "pre_requisitos": [
+        "EF04CI06"
+      ],
+      "nivel": 6,
+      "ordem": 30
+    },
+    "EF04CI08": {
+      "nome": "Transmissão e prevenção de doenças causadas por microrganismos",
+      "descricao_bncc": "Propor, a partir do conhecimento das formas de transmissão de alguns microrganismos (vírus, bactérias e protozoários), atitudes e medidas adequadas para prevenção de doenças a eles associadas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Microrganismos",
+      "palavras_chave": [
+        "vírus",
+        "bactérias",
+        "protozoários",
+        "doenças",
+        "prevenção",
+        "contágio"
+      ],
+      "pre_requisitos": [
+        "EF01CI03",
+        "EF04CI06"
+      ],
+      "nivel": 6,
+      "ordem": 31
+    },
+    "EF04CI09": {
+      "nome": "Pontos cardeais pela posição do Sol e da sombra (gnômon)",
+      "descricao_bncc": "Identificar os pontos cardeais, com base no registro de diferentes posições relativas do Sol e da sombra de uma vara (gnômon).",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Pontos cardeais",
+      "palavras_chave": [
+        "pontos cardeais",
+        "norte",
+        "sul",
+        "leste",
+        "oeste",
+        "gnômon"
+      ],
+      "pre_requisitos": [
+        "EF02CI07"
+      ],
+      "nivel": 2,
+      "ordem": 32
+    },
+    "EF04CI10": {
+      "nome": "Pontos cardeais com o uso da bússola",
+      "descricao_bncc": "Comparar as indicações dos pontos cardeais resultantes da observação das sombras de uma vara (gnômon) com aquelas obtidas por meio de uma bússola.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Pontos cardeais",
+      "palavras_chave": [
+        "bússola",
+        "ímã",
+        "orientação"
+      ],
+      "pre_requisitos": [
+        "EF04CI09"
+      ],
+      "nivel": 3,
+      "ordem": 33
+    },
+    "EF04CI11": {
+      "nome": "Movimentos da Lua e da Terra e a construção de calendários",
+      "descricao_bncc": "Associar os movimentos cíclicos da Lua e da Terra a períodos de tempo regulares e ao uso desse conhecimento para a construção de calendários em diferentes culturas.",
+      "ano": 4,
+      "anos": [
+        4
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Calendários, fenômenos cíclicos e cultura",
+      "palavras_chave": [
+        "calendário",
+        "ciclos da Lua",
+        "ano",
+        "mês",
+        "fenômenos cíclicos"
+      ],
+      "pre_requisitos": [
+        "EF03CI08"
+      ],
+      "nivel": 3,
+      "ordem": 34
+    },
+    "EF05CI01": {
+      "nome": "Propriedades físicas dos materiais",
+      "descricao_bncc": "Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais – como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Propriedades físicas dos materiais",
+      "palavras_chave": [
+        "densidade",
+        "condutividade térmica",
+        "condutividade elétrica",
+        "magnetismo",
+        "solubilidade",
+        "elasticidade"
+      ],
+      "pre_requisitos": [
+        "EF03CI02",
+        "EF04CI01"
+      ],
+      "nivel": 4,
+      "ordem": 35
+    },
+    "EF05CI02": {
+      "nome": "Ciclo hidrológico (ciclo da água)",
+      "descricao_bncc": "Aplicar os conhecimentos sobre as mudanças de estado físico da água para explicar o ciclo hidrológico e analisar suas implicações na agricultura, no clima, na geração de energia elétrica, no provimento de água potável e no equilíbrio dos ecossistemas regionais (ou locais).",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Ciclo hidrológico",
+      "palavras_chave": [
+        "ciclo da água",
+        "evaporação",
+        "condensação",
+        "chuva",
+        "precipitação"
+      ],
+      "pre_requisitos": [
+        "EF04CI03"
+      ],
+      "nivel": 6,
+      "ordem": 36
+    },
+    "EF05CI03": {
+      "nome": "Cobertura vegetal, ciclo da água e conservação dos solos",
+      "descricao_bncc": "Selecionar argumentos que justifiquem a importância da cobertura vegetal para a manutenção do ciclo da água, a conservação dos solos, dos cursos de água e da qualidade do ar atmosférico.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Ciclo hidrológico",
+      "palavras_chave": [
+        "vegetação",
+        "desmatamento",
+        "erosão",
+        "mata ciliar"
+      ],
+      "pre_requisitos": [
+        "EF03CI10",
+        "EF05CI02"
+      ],
+      "nivel": 7,
+      "ordem": 37
+    },
+    "EF05CI04": {
+      "nome": "Usos sustentáveis da água e de outros materiais",
+      "descricao_bncc": "Identificar os principais usos da água e de outros materiais nas atividades cotidianas para discutir e propor formas sustentáveis de utilização desses recursos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Consumo consciente",
+      "palavras_chave": [
+        "economia de água",
+        "sustentabilidade",
+        "recursos naturais"
+      ],
+      "pre_requisitos": [
+        "EF05CI02"
+      ],
+      "nivel": 7,
+      "ordem": 38
+    },
+    "EF05CI05": {
+      "nome": "Consumo consciente, reutilização e reciclagem",
+      "descricao_bncc": "Construir propostas coletivas para um consumo mais consciente e criar soluções tecnológicas para o descarte adequado e a reutilização ou reciclagem de materiais consumidos na escola e/ou na vida cotidiana.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Reciclagem",
+      "palavras_chave": [
+        "reciclagem",
+        "consumo consciente",
+        "lixo",
+        "reutilização",
+        "3Rs"
+      ],
+      "pre_requisitos": [
+        "EF05CI04"
+      ],
+      "nivel": 8,
+      "ordem": 39
+    },
+    "EF05CI06": {
+      "nome": "Sistemas digestório e respiratório na nutrição",
+      "descricao_bncc": "Selecionar argumentos que justifiquem por que os sistemas digestório e respiratório são considerados corresponsáveis pelo processo de nutrição do organismo, com base na identificação das funções desses sistemas.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Nutrição do organismo",
+      "palavras_chave": [
+        "digestão",
+        "respiração",
+        "sistema digestório",
+        "sistema respiratório",
+        "nutrição"
+      ],
+      "pre_requisitos": [
+        "EF01CI02"
+      ],
+      "nivel": 1,
+      "ordem": 40
+    },
+    "EF05CI07": {
+      "nome": "Sistema circulatório: distribuição de nutrientes e eliminação de resíduos",
+      "descricao_bncc": "Justificar a relação entre o funcionamento do sistema circulatório, a distribuição dos nutrientes pelo organismo e a eliminação dos resíduos produzidos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Integração entre os sistemas digestório, respiratório e circulatório",
+      "palavras_chave": [
+        "sistema circulatório",
+        "sangue",
+        "coração",
+        "excreção"
+      ],
+      "pre_requisitos": [
+        "EF05CI06"
+      ],
+      "nivel": 2,
+      "ordem": 41
+    },
+    "EF05CI08": {
+      "nome": "Cardápio equilibrado e grupos alimentares",
+      "descricao_bncc": "Organizar um cardápio equilibrado com base nas características dos grupos alimentares (nutrientes e calorias) e nas necessidades individuais (atividades realizadas, idade, sexo etc.) para a manutenção da saúde do organismo.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Hábitos alimentares",
+      "palavras_chave": [
+        "alimentação saudável",
+        "nutrientes",
+        "calorias",
+        "cardápio",
+        "grupos alimentares"
+      ],
+      "pre_requisitos": [
+        "EF05CI06"
+      ],
+      "nivel": 2,
+      "ordem": 42
+    },
+    "EF05CI09": {
+      "nome": "Distúrbios nutricionais",
+      "descricao_bncc": "Discutir a ocorrência de distúrbios nutricionais (como obesidade, subnutrição etc.) entre crianças e jovens a partir da análise de seus hábitos (tipos e quantidade de alimento ingerido, prática de atividade física etc.).",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Hábitos alimentares",
+      "palavras_chave": [
+        "obesidade",
+        "desnutrição",
+        "hábitos alimentares",
+        "atividade física"
+      ],
+      "pre_requisitos": [
+        "EF05CI08"
+      ],
+      "nivel": 3,
+      "ordem": 43
+    },
+    "EF05CI10": {
+      "nome": "Constelações e mapas celestes",
+      "descricao_bncc": "Identificar algumas constelações no céu, com o apoio de recursos (como mapas celestes e aplicativos digitais, entre outros), e os períodos do ano em que elas são visíveis no início da noite.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Constelações e mapas celestes",
+      "palavras_chave": [
+        "constelações",
+        "estrelas",
+        "mapa celeste"
+      ],
+      "pre_requisitos": [
+        "EF03CI08"
+      ],
+      "nivel": 3,
+      "ordem": 44
+    },
+    "EF05CI11": {
+      "nome": "Rotação da Terra e movimento aparente do Sol e das estrelas",
+      "descricao_bncc": "Associar o movimento diário do Sol e das demais estrelas no céu ao movimento de rotação da Terra.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Movimento de rotação da Terra",
+      "palavras_chave": [
+        "rotação",
+        "dia e noite",
+        "movimento aparente",
+        "movimento da Terra"
+      ],
+      "pre_requisitos": [
+        "EF03CI07",
+        "EF04CI09",
+        "EF05CI10"
+      ],
+      "nivel": 4,
+      "ordem": 45
+    },
+    "EF05CI12": {
+      "nome": "Periodicidade das fases da Lua",
+      "descricao_bncc": "Concluir sobre a periodicidade das fases da Lua, com base na observação e no registro das formas aparentes da Lua no céu ao longo de, pelo menos, dois meses.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Periodicidade das fases da Lua",
+      "palavras_chave": [
+        "fases da Lua",
+        "lua cheia",
+        "lua nova",
+        "crescente",
+        "minguante"
+      ],
+      "pre_requisitos": [
+        "EF04CI11"
+      ],
+      "nivel": 4,
+      "ordem": 46
+    },
+    "EF05CI13": {
+      "nome": "Instrumentos ópticos",
+      "descricao_bncc": "Projetar e construir dispositivos para observação à distância (luneta, periscópio etc.), para observação ampliada de objetos (lupas, microscópios) ou para registro de imagens (máquinas fotográficas) e discutir usos sociais desses dispositivos.",
+      "ano": 5,
+      "anos": [
+        5
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Instrumentos óticos",
+      "palavras_chave": [
+        "luneta",
+        "lupa",
+        "microscópio",
+        "periscópio",
+        "câmera fotográfica"
+      ],
+      "pre_requisitos": [
+        "EF03CI02"
+      ],
+      "nivel": 4,
+      "ordem": 47
+    },
+    "EF06CI01": {
+      "nome": "Misturas homogêneas e heterogêneas",
+      "descricao_bncc": "Classificar como homogênea ou heterogênea a mistura de dois ou mais materiais (água e sal, água e óleo, água e areia etc.).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Misturas homogêneas e heterogêneas",
+      "palavras_chave": [
+        "mistura homogênea",
+        "mistura heterogênea",
+        "fases"
+      ],
+      "pre_requisitos": [
+        "EF05CI01"
+      ],
+      "nivel": 5,
+      "ordem": 48
+    },
+    "EF06CI02": {
+      "nome": "Evidências de transformações químicas",
+      "descricao_bncc": "Identificar evidências de transformações químicas a partir do resultado de misturas de materiais que originam produtos diferentes dos que foram misturados (mistura de ingredientes para fazer um bolo, mistura de vinagre com bicarbonato de sódio etc.).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Transformações químicas",
+      "palavras_chave": [
+        "reação química",
+        "transformação química",
+        "bicarbonato",
+        "vinagre"
+      ],
+      "pre_requisitos": [
+        "EF04CI03",
+        "EF06CI01"
+      ],
+      "nivel": 6,
+      "ordem": 49
+    },
+    "EF06CI03": {
+      "nome": "Métodos de separação de misturas",
+      "descricao_bncc": "Selecionar métodos mais adequados para a separação de diferentes sistemas heterogêneos a partir da identificação de processos de separação de materiais (como a produção de sal de cozinha, a destilação de petróleo, entre outros).",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Separação de materiais",
+      "palavras_chave": [
+        "filtração",
+        "decantação",
+        "destilação",
+        "evaporação",
+        "separação de misturas"
+      ],
+      "pre_requisitos": [
+        "EF06CI01"
+      ],
+      "nivel": 6,
+      "ordem": 50
+    },
+    "EF06CI04": {
+      "nome": "Materiais sintéticos e medicamentos",
+      "descricao_bncc": "Associar a produção de medicamentos e outros materiais sintéticos ao desenvolvimento científico e tecnológico, reconhecendo benefícios e avaliando impactos socioambientais.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Materiais sintéticos",
+      "palavras_chave": [
+        "plástico",
+        "materiais sintéticos",
+        "medicamentos",
+        "tecnologia"
+      ],
+      "pre_requisitos": [
+        "EF06CI02"
+      ],
+      "nivel": 7,
+      "ordem": 51
+    },
+    "EF06CI05": {
+      "nome": "Célula como unidade estrutural e funcional da vida",
+      "descricao_bncc": "Explicar a organização básica das células e seu papel como unidade estrutural e funcional dos seres vivos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Célula como unidade da vida",
+      "palavras_chave": [
+        "célula",
+        "núcleo",
+        "membrana",
+        "citoplasma",
+        "unidade da vida"
+      ],
+      "pre_requisitos": [
+        "EF05CI13"
+      ],
+      "nivel": 5,
+      "ordem": 52
+    },
+    "EF06CI06": {
+      "nome": "Níveis de organização dos organismos",
+      "descricao_bncc": "Concluir, com base na análise de ilustrações e/ou modelos (físicos ou digitais), que os organismos são um complexo arranjo de sistemas com diferentes níveis de organização.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Célula como unidade da vida",
+      "palavras_chave": [
+        "tecidos",
+        "órgãos",
+        "sistemas",
+        "níveis de organização"
+      ],
+      "pre_requisitos": [
+        "EF05CI07",
+        "EF06CI05"
+      ],
+      "nivel": 6,
+      "ordem": 53
+    },
+    "EF06CI07": {
+      "nome": "Sistema nervoso e coordenação do corpo",
+      "descricao_bncc": "Justificar o papel do sistema nervoso na coordenação das ações motoras e sensoriais do corpo, com base na análise de suas estruturas básicas e respectivas funções.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Interação entre os sistemas locomotor e nervoso",
+      "palavras_chave": [
+        "sistema nervoso",
+        "cérebro",
+        "neurônio",
+        "reflexos"
+      ],
+      "pre_requisitos": [
+        "EF06CI06"
+      ],
+      "nivel": 7,
+      "ordem": 54
+    },
+    "EF06CI08": {
+      "nome": "Visão, olho humano e lentes corretivas",
+      "descricao_bncc": "Explicar a importância da visão (captação e interpretação das imagens) na interação do organismo com o meio e, com base no funcionamento do olho humano, selecionar lentes adequadas para a correção de diferentes defeitos da visão.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Lentes corretivas",
+      "palavras_chave": [
+        "olho",
+        "miopia",
+        "hipermetropia",
+        "lentes",
+        "óculos"
+      ],
+      "pre_requisitos": [
+        "EF03CI03",
+        "EF06CI07"
+      ],
+      "nivel": 8,
+      "ordem": 55
+    },
+    "EF06CI09": {
+      "nome": "Sistemas muscular, ósseo e nervoso na movimentação",
+      "descricao_bncc": "Deduzir que a estrutura, a sustentação e a movimentação dos animais resultam da interação entre os sistemas muscular, ósseo e nervoso.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Interação entre os sistemas locomotor e nervoso",
+      "palavras_chave": [
+        "músculos",
+        "ossos",
+        "esqueleto",
+        "locomoção"
+      ],
+      "pre_requisitos": [
+        "EF06CI07"
+      ],
+      "nivel": 8,
+      "ordem": 56
+    },
+    "EF06CI10": {
+      "nome": "Substâncias psicoativas e o sistema nervoso",
+      "descricao_bncc": "Explicar como o funcionamento do sistema nervoso pode ser afetado por substâncias psicoativas.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Interação entre os sistemas locomotor e nervoso",
+      "palavras_chave": [
+        "drogas",
+        "álcool",
+        "substâncias psicoativas"
+      ],
+      "pre_requisitos": [
+        "EF06CI07"
+      ],
+      "nivel": 8,
+      "ordem": 57
+    },
+    "EF06CI11": {
+      "nome": "Camadas da Terra",
+      "descricao_bncc": "Identificar as diferentes camadas que estruturam o planeta Terra (da estrutura interna à atmosfera) e suas principais características.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Forma, estrutura e movimentos da Terra",
+      "palavras_chave": [
+        "crosta",
+        "manto",
+        "núcleo",
+        "atmosfera",
+        "camadas da Terra"
+      ],
+      "pre_requisitos": [
+        "EF03CI07"
+      ],
+      "nivel": 1,
+      "ordem": 58
+    },
+    "EF06CI12": {
+      "nome": "Tipos de rochas e formação de fósseis",
+      "descricao_bncc": "Identificar diferentes tipos de rocha, relacionando a formação de fósseis a rochas sedimentares em diferentes períodos geológicos.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Forma, estrutura e movimentos da Terra",
+      "palavras_chave": [
+        "rochas",
+        "ígneas",
+        "sedimentares",
+        "metamórficas",
+        "fósseis"
+      ],
+      "pre_requisitos": [
+        "EF03CI09",
+        "EF06CI11"
+      ],
+      "nivel": 2,
+      "ordem": 59
+    },
+    "EF06CI13": {
+      "nome": "Evidências da esfericidade da Terra",
+      "descricao_bncc": "Selecionar argumentos e evidências que demonstrem a esfericidade da Terra.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Forma, estrutura e movimentos da Terra",
+      "palavras_chave": [
+        "Terra redonda",
+        "esfericidade",
+        "evidências"
+      ],
+      "pre_requisitos": [
+        "EF03CI07"
+      ],
+      "nivel": 1,
+      "ordem": 60
+    },
+    "EF06CI14": {
+      "nome": "Rotação, translação e inclinação do eixo da Terra pela sombra",
+      "descricao_bncc": "Inferir que as mudanças na sombra de uma vara (gnômon) ao longo do dia em diferentes períodos do ano são uma evidência dos movimentos relativos entre a Terra e o Sol, que podem ser explicados por meio dos movimentos de rotação e translação da Terra e da inclinação de seu eixo de rotação em relação ao plano de sua órbita em torno do Sol.",
+      "ano": 6,
+      "anos": [
+        6
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Forma, estrutura e movimentos da Terra",
+      "palavras_chave": [
+        "rotação",
+        "translação",
+        "eixo da Terra",
+        "gnômon",
+        "sombra"
+      ],
+      "pre_requisitos": [
+        "EF05CI11",
+        "EF06CI13"
+      ],
+      "nivel": 5,
+      "ordem": 61
+    },
+    "EF07CI01": {
+      "nome": "Máquinas simples",
+      "descricao_bncc": "Discutir a aplicação, ao longo da história, das máquinas simples e propor soluções e invenções para a realização de tarefas mecânicas cotidianas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Máquinas simples",
+      "palavras_chave": [
+        "alavanca",
+        "roldana",
+        "plano inclinado",
+        "máquinas simples"
+      ],
+      "pre_requisitos": [
+        "EF05CI01"
+      ],
+      "nivel": 5,
+      "ordem": 62
+    },
+    "EF07CI02": {
+      "nome": "Temperatura, calor e sensação térmica",
+      "descricao_bncc": "Diferenciar temperatura, calor e sensação térmica nas diferentes situações de equilíbrio termodinâmico cotidianas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Formas de propagação do calor",
+      "palavras_chave": [
+        "temperatura",
+        "calor",
+        "sensação térmica",
+        "equilíbrio térmico"
+      ],
+      "pre_requisitos": [
+        "EF04CI02",
+        "EF05CI01"
+      ],
+      "nivel": 5,
+      "ordem": 63
+    },
+    "EF07CI03": {
+      "nome": "Propagação do calor: condutores e isolantes",
+      "descricao_bncc": "Utilizar o conhecimento das formas de propagação do calor para justificar a utilização de determinados materiais (condutores e isolantes) na vida cotidiana, explicar o princípio de funcionamento de alguns equipamentos (garrafa térmica, coletor solar etc.) e/ou construir soluções tecnológicas a partir desse conhecimento.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Formas de propagação do calor",
+      "palavras_chave": [
+        "condução",
+        "convecção",
+        "irradiação",
+        "condutor térmico",
+        "isolante térmico"
+      ],
+      "pre_requisitos": [
+        "EF07CI02"
+      ],
+      "nivel": 6,
+      "ordem": 64
+    },
+    "EF07CI04": {
+      "nome": "Equilíbrio termodinâmico, vida na Terra e máquinas térmicas",
+      "descricao_bncc": "Avaliar o papel do equilíbrio termodinâmico para a manutenção da vida na Terra, para o funcionamento de máquinas térmicas e em outras situações cotidianas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Equilíbrio termodinâmico e vida na Terra",
+      "palavras_chave": [
+        "equilíbrio termodinâmico",
+        "máquina térmica"
+      ],
+      "pre_requisitos": [
+        "EF07CI03"
+      ],
+      "nivel": 7,
+      "ordem": 65
+    },
+    "EF07CI05": {
+      "nome": "Combustíveis e máquinas térmicas ao longo da história",
+      "descricao_bncc": "Discutir o uso de diferentes tipos de combustível e máquinas térmicas ao longo do tempo, para avaliar avanços, questões econômicas e problemas socioambientais causados pela produção e uso desses materiais e máquinas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "História dos combustíveis e das máquinas térmicas",
+      "palavras_chave": [
+        "combustíveis",
+        "motor",
+        "petróleo",
+        "máquina a vapor"
+      ],
+      "pre_requisitos": [
+        "EF07CI01",
+        "EF07CI04"
+      ],
+      "nivel": 8,
+      "ordem": 66
+    },
+    "EF07CI06": {
+      "nome": "Novos materiais e tecnologias e seus impactos sociais",
+      "descricao_bncc": "Discutir e avaliar mudanças econômicas, culturais e sociais, tanto na vida cotidiana quanto no mundo do trabalho, decorrentes do desenvolvimento de novos materiais e tecnologias (como automação e informatização).",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "História dos combustíveis e das máquinas térmicas",
+      "palavras_chave": [
+        "automação",
+        "informatização",
+        "tecnologia",
+        "mundo do trabalho"
+      ],
+      "pre_requisitos": [
+        "EF06CI04",
+        "EF07CI05"
+      ],
+      "nivel": 9,
+      "ordem": 67
+    },
+    "EF07CI07": {
+      "nome": "Ecossistemas brasileiros",
+      "descricao_bncc": "Caracterizar os principais ecossistemas brasileiros quanto à paisagem, à quantidade de água, ao tipo de solo, à disponibilidade de luz solar, à temperatura etc., correlacionando essas características à flora e fauna específicas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Diversidade de ecossistemas",
+      "palavras_chave": [
+        "biomas",
+        "Amazônia",
+        "Cerrado",
+        "Caatinga",
+        "Mata Atlântica",
+        "Pantanal",
+        "ecossistemas"
+      ],
+      "pre_requisitos": [
+        "EF03CI10",
+        "EF04CI05"
+      ],
+      "nivel": 5,
+      "ordem": 68
+    },
+    "EF07CI08": {
+      "nome": "Impactos ambientais em ecossistemas e suas populações",
+      "descricao_bncc": "Avaliar como os impactos provocados por catástrofes naturais ou mudanças nos componentes físicos, biológicos ou sociais de um ecossistema afetam suas populações, podendo ameaçar ou provocar a extinção de espécies, alteração de hábitos, migração etc.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Fenômenos naturais e impactos ambientais",
+      "palavras_chave": [
+        "extinção",
+        "catástrofes naturais",
+        "desequilíbrio ambiental",
+        "migração"
+      ],
+      "pre_requisitos": [
+        "EF07CI07"
+      ],
+      "nivel": 6,
+      "ordem": 69
+    },
+    "EF07CI09": {
+      "nome": "Indicadores de saúde pública",
+      "descricao_bncc": "Interpretar as condições de saúde da comunidade, cidade ou estado, com base na análise e comparação de indicadores de saúde (como taxa de mortalidade infantil, cobertura de saneamento básico e incidência de doenças de veiculação hídrica, atmosférica entre outras) e dos resultados de políticas públicas destinadas à saúde.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Programas e indicadores de saúde pública",
+      "palavras_chave": [
+        "saneamento básico",
+        "mortalidade infantil",
+        "saúde pública",
+        "indicadores de saúde"
+      ],
+      "pre_requisitos": [
+        "EF04CI08"
+      ],
+      "nivel": 7,
+      "ordem": 70
+    },
+    "EF07CI10": {
+      "nome": "Vacinação e saúde pública",
+      "descricao_bncc": "Argumentar sobre a importância da vacinação para a saúde pública, com base em informações sobre a maneira como a vacina atua no organismo e o papel histórico da vacinação para a manutenção da saúde individual e coletiva e para a erradicação de doenças.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Programas e indicadores de saúde pública",
+      "palavras_chave": [
+        "vacina",
+        "imunização",
+        "sistema imunológico",
+        "erradicação de doenças"
+      ],
+      "pre_requisitos": [
+        "EF07CI09"
+      ],
+      "nivel": 8,
+      "ordem": 71
+    },
+    "EF07CI11": {
+      "nome": "Tecnologia e qualidade de vida",
+      "descricao_bncc": "Analisar historicamente o uso da tecnologia, incluindo a digital, nas diferentes dimensões da vida humana, considerando indicadores ambientais e de qualidade de vida.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Programas e indicadores de saúde pública",
+      "palavras_chave": [
+        "tecnologia digital",
+        "qualidade de vida",
+        "indicadores ambientais"
+      ],
+      "pre_requisitos": [
+        "EF07CI06"
+      ],
+      "nivel": 10,
+      "ordem": 72
+    },
+    "EF07CI12": {
+      "nome": "Composição do ar",
+      "descricao_bncc": "Demonstrar que o ar é uma mistura de gases, identificando sua composição, e discutir fenômenos naturais ou antrópicos que podem alterar essa composição.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Composição do ar",
+      "palavras_chave": [
+        "ar",
+        "gases",
+        "oxigênio",
+        "nitrogênio",
+        "gás carbônico",
+        "poluição do ar"
+      ],
+      "pre_requisitos": [
+        "EF06CI01",
+        "EF06CI11"
+      ],
+      "nivel": 6,
+      "ordem": 73
+    },
+    "EF07CI13": {
+      "nome": "Efeito estufa",
+      "descricao_bncc": "Descrever o mecanismo natural do efeito estufa, seu papel fundamental para o desenvolvimento da vida na Terra, discutir as ações humanas responsáveis pelo seu aumento artificial (queima dos combustíveis fósseis, desmatamento, queimadas etc.) e selecionar e implementar propostas para a reversão ou controle desse quadro.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Efeito estufa",
+      "palavras_chave": [
+        "efeito estufa",
+        "aquecimento global",
+        "gases de efeito estufa"
+      ],
+      "pre_requisitos": [
+        "EF07CI05",
+        "EF07CI12"
+      ],
+      "nivel": 9,
+      "ordem": 74
+    },
+    "EF07CI14": {
+      "nome": "Camada de ozônio",
+      "descricao_bncc": "Justificar a importância da camada de ozônio para a vida na Terra, identificando os fatores que aumentam ou diminuem sua presença na atmosfera, e discutir propostas individuais e coletivas para sua preservação.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Camada de ozônio",
+      "palavras_chave": [
+        "ozônio",
+        "raios ultravioleta",
+        "CFC"
+      ],
+      "pre_requisitos": [
+        "EF07CI12"
+      ],
+      "nivel": 7,
+      "ordem": 75
+    },
+    "EF07CI15": {
+      "nome": "Vulcões, terremotos e tsunamis e as placas tectônicas",
+      "descricao_bncc": "Interpretar fenômenos naturais (como vulcões, terremotos e tsunamis) e justificar a rara ocorrência desses fenômenos no Brasil, com base no modelo das placas tectônicas.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Fenômenos naturais (vulcões, terremotos e tsunamis)",
+      "palavras_chave": [
+        "vulcões",
+        "terremotos",
+        "tsunamis",
+        "placas tectônicas"
+      ],
+      "pre_requisitos": [
+        "EF06CI11"
+      ],
+      "nivel": 2,
+      "ordem": 76
+    },
+    "EF07CI16": {
+      "nome": "Deriva continental",
+      "descricao_bncc": "Justificar o formato das costas brasileira e africana com base na teoria da deriva dos continentes.",
+      "ano": 7,
+      "anos": [
+        7
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Placas tectônicas e deriva continental",
+      "palavras_chave": [
+        "deriva continental",
+        "Pangeia",
+        "continentes"
+      ],
+      "pre_requisitos": [
+        "EF07CI15"
+      ],
+      "nivel": 3,
+      "ordem": 77
+    },
+    "EF08CI01": {
+      "nome": "Fontes e tipos de energia",
+      "descricao_bncc": "Identificar e classificar diferentes fontes (renováveis e não renováveis) e tipos de energia utilizados em residências, comunidades ou cidades.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Fontes e tipos de energia",
+      "palavras_chave": [
+        "energia renovável",
+        "energia não renovável",
+        "fontes de energia"
+      ],
+      "pre_requisitos": [
+        "EF07CI05"
+      ],
+      "nivel": 9,
+      "ordem": 78
+    },
+    "EF08CI02": {
+      "nome": "Circuitos elétricos",
+      "descricao_bncc": "Construir circuitos elétricos com pilha/bateria, fios e lâmpada ou outros dispositivos e compará-los a circuitos elétricos residenciais.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Circuitos elétricos",
+      "palavras_chave": [
+        "circuito elétrico",
+        "pilha",
+        "lâmpada",
+        "fios",
+        "corrente elétrica"
+      ],
+      "pre_requisitos": [
+        "EF05CI01"
+      ],
+      "nivel": 5,
+      "ordem": 79
+    },
+    "EF08CI03": {
+      "nome": "Transformações de energia em equipamentos elétricos",
+      "descricao_bncc": "Classificar equipamentos elétricos residenciais (chuveiro, ferro, lâmpadas, TV, rádio, geladeira etc.) de acordo com o tipo de transformação de energia (da energia elétrica para a térmica, luminosa, sonora e mecânica, por exemplo).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Transformação de energia",
+      "palavras_chave": [
+        "transformação de energia",
+        "energia elétrica",
+        "energia térmica",
+        "energia luminosa"
+      ],
+      "pre_requisitos": [
+        "EF08CI01",
+        "EF08CI02"
+      ],
+      "nivel": 10,
+      "ordem": 80
+    },
+    "EF08CI04": {
+      "nome": "Cálculo do consumo de energia elétrica",
+      "descricao_bncc": "Calcular o consumo de eletrodomésticos a partir dos dados de potência (descritos no próprio equipamento) e tempo médio de uso para avaliar o impacto de cada equipamento no consumo doméstico mensal.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Cálculo de consumo de energia elétrica",
+      "palavras_chave": [
+        "consumo de energia",
+        "potência",
+        "kWh",
+        "conta de luz"
+      ],
+      "pre_requisitos": [
+        "EF08CI03"
+      ],
+      "nivel": 11,
+      "ordem": 81
+    },
+    "EF08CI05": {
+      "nome": "Uso consciente de energia elétrica",
+      "descricao_bncc": "Propor ações coletivas para otimizar o uso de energia elétrica em sua escola e/ou comunidade, com base na seleção de equipamentos segundo critérios de sustentabilidade (consumo de energia e eficiência energética) e hábitos de consumo responsável.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Uso consciente de energia elétrica",
+      "palavras_chave": [
+        "economia de energia",
+        "eficiência energética"
+      ],
+      "pre_requisitos": [
+        "EF08CI04"
+      ],
+      "nivel": 12,
+      "ordem": 82
+    },
+    "EF08CI06": {
+      "nome": "Usinas de geração de energia elétrica",
+      "descricao_bncc": "Discutir e avaliar usinas de geração de energia elétrica (termelétricas, hidrelétricas, eólicas etc.), suas semelhanças e diferenças, seus impactos socioambientais, e como essa energia chega e é usada em sua cidade, comunidade, casa ou escola.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Uso consciente de energia elétrica",
+      "palavras_chave": [
+        "hidrelétrica",
+        "termelétrica",
+        "eólica",
+        "usinas",
+        "energia solar"
+      ],
+      "pre_requisitos": [
+        "EF08CI03"
+      ],
+      "nivel": 11,
+      "ordem": 83
+    },
+    "EF08CI07": {
+      "nome": "Processos reprodutivos de plantas e animais",
+      "descricao_bncc": "Comparar diferentes processos reprodutivos em plantas e animais em relação aos mecanismos adaptativos e evolutivos.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Mecanismos reprodutivos",
+      "palavras_chave": [
+        "reprodução sexuada",
+        "reprodução assexuada",
+        "polinização"
+      ],
+      "pre_requisitos": [
+        "EF02CI06",
+        "EF03CI05",
+        "EF06CI05"
+      ],
+      "nivel": 6,
+      "ordem": 84
+    },
+    "EF08CI08": {
+      "nome": "Puberdade e hormônios sexuais",
+      "descricao_bncc": "Analisar e explicar as transformações que ocorrem na puberdade considerando a atuação dos hormônios sexuais e do sistema nervoso.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Sexualidade",
+      "palavras_chave": [
+        "puberdade",
+        "hormônios",
+        "adolescência"
+      ],
+      "pre_requisitos": [
+        "EF06CI07",
+        "EF08CI07"
+      ],
+      "nivel": 8,
+      "ordem": 85
+    },
+    "EF08CI09": {
+      "nome": "Métodos contraceptivos",
+      "descricao_bncc": "Comparar o modo de ação e a eficácia dos diversos métodos contraceptivos e justificar a necessidade de compartilhar a responsabilidade na escolha e na utilização do método mais adequado à prevenção da gravidez precoce e indesejada e de Doenças Sexualmente Transmissíveis (DST).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Sexualidade",
+      "palavras_chave": [
+        "contracepção",
+        "camisinha",
+        "gravidez",
+        "anticoncepcional"
+      ],
+      "pre_requisitos": [
+        "EF08CI08"
+      ],
+      "nivel": 9,
+      "ordem": 86
+    },
+    "EF08CI10": {
+      "nome": "Infecções sexualmente transmissíveis (IST/DST)",
+      "descricao_bncc": "Identificar os principais sintomas, modos de transmissão e tratamento de algumas DST (com ênfase na AIDS), e discutir estratégias e métodos de prevenção.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Sexualidade",
+      "palavras_chave": [
+        "IST",
+        "DST",
+        "AIDS",
+        "HIV",
+        "prevenção"
+      ],
+      "pre_requisitos": [
+        "EF04CI08",
+        "EF08CI09"
+      ],
+      "nivel": 10,
+      "ordem": 87
+    },
+    "EF08CI11": {
+      "nome": "Dimensões da sexualidade humana",
+      "descricao_bncc": "Selecionar argumentos que evidenciem as múltiplas dimensões da sexualidade humana (biológica, sociocultural, afetiva e ética).",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Sexualidade",
+      "palavras_chave": [
+        "sexualidade",
+        "afetividade",
+        "ética"
+      ],
+      "pre_requisitos": [
+        "EF08CI08"
+      ],
+      "nivel": 9,
+      "ordem": 88
+    },
+    "EF08CI12": {
+      "nome": "Fases da Lua e eclipses",
+      "descricao_bncc": "Justificar, por meio da construção de modelos e da observação da Lua no céu, a ocorrência das fases da Lua e dos eclipses, com base nas posições relativas entre Sol, Terra e Lua.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Sistema Sol, Terra e Lua",
+      "palavras_chave": [
+        "eclipse",
+        "fases da Lua",
+        "Sol Terra Lua"
+      ],
+      "pre_requisitos": [
+        "EF05CI12",
+        "EF06CI14"
+      ],
+      "nivel": 6,
+      "ordem": 89
+    },
+    "EF08CI13": {
+      "nome": "Estações do ano",
+      "descricao_bncc": "Representar os movimentos de rotação e translação da Terra e analisar o papel da inclinação do eixo de rotação da Terra em relação à sua órbita na ocorrência das estações do ano, com a utilização de modelos tridimensionais.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Sistema Sol, Terra e Lua",
+      "palavras_chave": [
+        "estações do ano",
+        "translação",
+        "inclinação do eixo",
+        "verão",
+        "inverno"
+      ],
+      "pre_requisitos": [
+        "EF06CI14"
+      ],
+      "nivel": 6,
+      "ordem": 90
+    },
+    "EF08CI14": {
+      "nome": "Climas e circulação atmosférica e oceânica",
+      "descricao_bncc": "Relacionar climas regionais aos padrões de circulação atmosférica e oceânica e ao aquecimento desigual causado pela forma e pelos movimentos da Terra.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Clima",
+      "palavras_chave": [
+        "clima",
+        "correntes marítimas",
+        "ventos",
+        "circulação atmosférica"
+      ],
+      "pre_requisitos": [
+        "EF07CI03",
+        "EF08CI13"
+      ],
+      "nivel": 7,
+      "ordem": 91
+    },
+    "EF08CI15": {
+      "nome": "Previsão do tempo",
+      "descricao_bncc": "Identificar as principais variáveis envolvidas na previsão do tempo e simular situações nas quais elas possam ser medidas.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Clima",
+      "palavras_chave": [
+        "previsão do tempo",
+        "umidade",
+        "pressão atmosférica",
+        "temperatura"
+      ],
+      "pre_requisitos": [
+        "EF08CI14"
+      ],
+      "nivel": 8,
+      "ordem": 92
+    },
+    "EF08CI16": {
+      "nome": "Alterações climáticas e equilíbrio ambiental",
+      "descricao_bncc": "Discutir iniciativas que contribuam para restabelecer o equilíbrio ambiental a partir da identificação de alterações climáticas regionais e globais provocadas pela intervenção humana.",
+      "ano": 8,
+      "anos": [
+        8
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Clima",
+      "palavras_chave": [
+        "mudanças climáticas",
+        "ação humana",
+        "equilíbrio ambiental"
+      ],
+      "pre_requisitos": [
+        "EF07CI13",
+        "EF08CI14"
+      ],
+      "nivel": 10,
+      "ordem": 93
+    },
+    "EF09CI01": {
+      "nome": "Mudanças de estado físico e o modelo de partículas",
+      "descricao_bncc": "Investigar as mudanças de estado físico da matéria e explicar essas transformações com base no modelo de constituição submicroscópica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Estrutura da matéria",
+      "palavras_chave": [
+        "estados físicos",
+        "partículas",
+        "sólido líquido gasoso",
+        "mudança de estado"
+      ],
+      "pre_requisitos": [
+        "EF05CI02"
+      ],
+      "nivel": 7,
+      "ordem": 94
+    },
+    "EF09CI02": {
+      "nome": "Proporção entre massas de reagentes e produtos",
+      "descricao_bncc": "Comparar quantidades de reagentes e produtos envolvidos em transformações químicas, estabelecendo a proporção entre as suas massas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Aspectos quantitativos das transformações químicas",
+      "palavras_chave": [
+        "reagentes",
+        "produtos",
+        "conservação da massa",
+        "Lavoisier",
+        "proporção"
+      ],
+      "pre_requisitos": [
+        "EF06CI02",
+        "EF09CI03"
+      ],
+      "nivel": 9,
+      "ordem": 96
+    },
+    "EF09CI03": {
+      "nome": "Modelos atômicos e moléculas",
+      "descricao_bncc": "Identificar modelos que descrevem a estrutura da matéria (constituição do átomo e composição de moléculas simples) e reconhecer sua evolução histórica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Estrutura da matéria",
+      "palavras_chave": [
+        "átomo",
+        "modelo atômico",
+        "Dalton",
+        "Thomson",
+        "Rutherford",
+        "Bohr",
+        "moléculas"
+      ],
+      "pre_requisitos": [
+        "EF09CI01"
+      ],
+      "nivel": 8,
+      "ordem": 95
+    },
+    "EF09CI04": {
+      "nome": "Cores da luz e cores primárias",
+      "descricao_bncc": "Planejar e executar experimentos que evidenciem que todas as cores de luz podem ser formadas pela composição das três cores primárias da luz e que a cor de um objeto está relacionada também à cor da luz que o ilumina.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Radiações e suas aplicações na saúde",
+      "palavras_chave": [
+        "cores primárias",
+        "luz",
+        "cor dos objetos",
+        "RGB"
+      ],
+      "pre_requisitos": [
+        "EF03CI02"
+      ],
+      "nivel": 4,
+      "ordem": 97
+    },
+    "EF09CI05": {
+      "nome": "Transmissão e recepção de imagem e som",
+      "descricao_bncc": "Investigar os principais mecanismos envolvidos na transmissão e recepção de imagem e som que revolucionaram os sistemas de comunicação humana.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Radiações e suas aplicações na saúde",
+      "palavras_chave": [
+        "rádio",
+        "televisão",
+        "comunicação",
+        "ondas"
+      ],
+      "pre_requisitos": [
+        "EF03CI01",
+        "EF09CI06"
+      ],
+      "nivel": 6,
+      "ordem": 99
+    },
+    "EF09CI06": {
+      "nome": "Radiações eletromagnéticas: frequências e aplicações",
+      "descricao_bncc": "Classificar as radiações eletromagnéticas por suas frequências, fontes e aplicações, discutindo e avaliando as implicações de seu uso em controle remoto, telefone celular, raio X, forno de micro-ondas, fotocélulas etc.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Radiações e suas aplicações na saúde",
+      "palavras_chave": [
+        "ondas eletromagnéticas",
+        "frequência",
+        "micro-ondas",
+        "raio X",
+        "espectro"
+      ],
+      "pre_requisitos": [
+        "EF09CI04"
+      ],
+      "nivel": 5,
+      "ordem": 98
+    },
+    "EF09CI07": {
+      "nome": "Radiações na medicina",
+      "descricao_bncc": "Discutir o papel do avanço tecnológico na aplicação das radiações na medicina diagnóstica (raio X, ultrassom, ressonância nuclear magnética) e no tratamento de doenças (radioterapia, cirurgia ótica a laser, infravermelho, ultravioleta etc.).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Matéria e energia",
+      "objeto_conhecimento": "Radiações e suas aplicações na saúde",
+      "palavras_chave": [
+        "raio X",
+        "radioterapia",
+        "ultrassom",
+        "ressonância magnética",
+        "laser"
+      ],
+      "pre_requisitos": [
+        "EF09CI06"
+      ],
+      "nivel": 6,
+      "ordem": 100
+    },
+    "EF09CI08": {
+      "nome": "Gametas e transmissão de características hereditárias",
+      "descricao_bncc": "Associar os gametas à transmissão das características hereditárias, estabelecendo relações entre ancestrais e descendentes.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Hereditariedade",
+      "palavras_chave": [
+        "gametas",
+        "hereditariedade",
+        "herança",
+        "DNA"
+      ],
+      "pre_requisitos": [
+        "EF08CI07"
+      ],
+      "nivel": 7,
+      "ordem": 101
+    },
+    "EF09CI09": {
+      "nome": "Ideias de Mendel sobre hereditariedade",
+      "descricao_bncc": "Discutir as ideias de Mendel sobre hereditariedade (fatores hereditários, segregação, gametas, fecundação), considerando-as para resolver problemas envolvendo a transmissão de características hereditárias em diferentes organismos.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Hereditariedade",
+      "palavras_chave": [
+        "Mendel",
+        "genética",
+        "dominante",
+        "recessivo",
+        "segregação"
+      ],
+      "pre_requisitos": [
+        "EF09CI08"
+      ],
+      "nivel": 8,
+      "ordem": 102
+    },
+    "EF09CI10": {
+      "nome": "Ideias evolucionistas de Lamarck e Darwin",
+      "descricao_bncc": "Comparar as ideias evolucionistas de Lamarck e Darwin apresentadas em textos científicos e históricos, identificando semelhanças e diferenças entre essas ideias e sua importância para explicar a diversidade biológica.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Ideias evolucionistas",
+      "palavras_chave": [
+        "evolução",
+        "Lamarck",
+        "Darwin",
+        "evolucionismo"
+      ],
+      "pre_requisitos": [
+        "EF06CI12",
+        "EF09CI08"
+      ],
+      "nivel": 8,
+      "ordem": 103
+    },
+    "EF09CI11": {
+      "nome": "Seleção natural e diversidade das espécies",
+      "descricao_bncc": "Discutir a evolução e a diversidade das espécies com base na atuação da seleção natural sobre as variantes de uma mesma espécie, resultantes de processo reprodutivo.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Ideias evolucionistas",
+      "palavras_chave": [
+        "seleção natural",
+        "variabilidade",
+        "adaptação",
+        "espécies"
+      ],
+      "pre_requisitos": [
+        "EF09CI09",
+        "EF09CI10"
+      ],
+      "nivel": 9,
+      "ordem": 104
+    },
+    "EF09CI12": {
+      "nome": "Unidades de conservação e biodiversidade",
+      "descricao_bncc": "Justificar a importância das unidades de conservação para a preservação da biodiversidade e do patrimônio nacional, considerando os diferentes tipos de unidades (parques, reservas e florestas nacionais), as populações humanas e as atividades a eles relacionados.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Preservação da biodiversidade",
+      "palavras_chave": [
+        "unidades de conservação",
+        "parques nacionais",
+        "biodiversidade",
+        "reservas"
+      ],
+      "pre_requisitos": [
+        "EF07CI08"
+      ],
+      "nivel": 7,
+      "ordem": 105
+    },
+    "EF09CI13": {
+      "nome": "Soluções para problemas ambientais locais",
+      "descricao_bncc": "Propor iniciativas individuais e coletivas para a solução de problemas ambientais da cidade ou da comunidade, com base na análise de ações de consumo consciente e de sustentabilidade bem-sucedidas.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Vida e evolução",
+      "objeto_conhecimento": "Preservação da biodiversidade",
+      "palavras_chave": [
+        "sustentabilidade",
+        "problemas ambientais",
+        "consumo consciente"
+      ],
+      "pre_requisitos": [
+        "EF05CI05",
+        "EF08CI16",
+        "EF09CI12"
+      ],
+      "nivel": 11,
+      "ordem": 106
+    },
+    "EF09CI14": {
+      "nome": "Sistema Solar e sua localização no Universo",
+      "descricao_bncc": "Descrever a composição e a estrutura do Sistema Solar (Sol, planetas rochosos, planetas gigantes gasosos e corpos menores), assim como a localização do Sistema Solar na nossa Galáxia (a Via Láctea) e dela no Universo (apenas uma galáxia dentre bilhões).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Composição, estrutura e localização do Sistema Solar no Universo",
+      "palavras_chave": [
+        "Sistema Solar",
+        "planetas",
+        "Via Láctea",
+        "galáxia",
+        "Universo"
+      ],
+      "pre_requisitos": [
+        "EF05CI10",
+        "EF06CI13"
+      ],
+      "nivel": 4,
+      "ordem": 107
+    },
+    "EF09CI15": {
+      "nome": "Astronomia e cultura: leituras do céu",
+      "descricao_bncc": "Relacionar diferentes leituras do céu e explicações sobre a origem da Terra, do Sol ou do Sistema Solar às necessidades de distintas culturas (agricultura, caça, mito, orientação espacial e temporal etc.).",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Astronomia e cultura",
+      "palavras_chave": [
+        "astronomia",
+        "culturas",
+        "mitos",
+        "origem da Terra"
+      ],
+      "pre_requisitos": [
+        "EF04CI11",
+        "EF09CI14"
+      ],
+      "nivel": 5,
+      "ordem": 108
+    },
+    "EF09CI16": {
+      "nome": "Viabilidade da vida humana fora da Terra",
+      "descricao_bncc": "Selecionar argumentos sobre a viabilidade da sobrevivência humana fora da Terra, com base nas condições necessárias à vida, nas características dos planetas e nas distâncias e nos tempos envolvidos em viagens interplanetárias e interestelares.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Vida humana fora da Terra",
+      "palavras_chave": [
+        "viagem espacial",
+        "exoplanetas",
+        "condições para a vida"
+      ],
+      "pre_requisitos": [
+        "EF09CI14"
+      ],
+      "nivel": 5,
+      "ordem": 109
+    },
+    "EF09CI17": {
+      "nome": "Evolução estelar e o ciclo de vida do Sol",
+      "descricao_bncc": "Analisar o ciclo evolutivo do Sol (nascimento, vida e morte) baseado no conhecimento das etapas de evolução de estrelas de diferentes dimensões e os efeitos desse processo no nosso planeta.",
+      "ano": 9,
+      "anos": [
+        9
+      ],
+      "unidade_tematica": "Terra e Universo",
+      "objeto_conhecimento": "Evolução estelar",
+      "palavras_chave": [
+        "estrelas",
+        "evolução estelar",
+        "gigante vermelha",
+        "ciclo de vida do Sol"
+      ],
+      "pre_requisitos": [
+        "EF09CI03",
+        "EF09CI14"
+      ],
+      "nivel": 9,
+      "ordem": 110
+    }
+  }
+}

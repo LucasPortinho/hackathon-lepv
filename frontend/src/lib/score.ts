@@ -1,59 +1,52 @@
 /**
- * The score scale: the only colour in the product. 0 is blue, 100 is red.
- * Interpolated in OKLCH along the short hue arc, with lightness rising evenly and chroma
- * held, so midpoints stay vivid and the order survives greyscale and colour-vision differences.
+ * The score scale: the conventional heatmap, red for low, yellow in the middle, green for high.
+ * Yellow sits on 60, the score below which the product flags a student. Below 30 stays red and above 90 stays green.
+ * Red and green can look alike with colour-vision differences: the "padrões" option and the printed values cover that.
  */
-export const SCALE = {
-  from: { l: 0.3, c: 0.18, h: 264 }, // blue
-  to: { l: 0.68, c: 0.21, h: 393 }, // red (33 + 360, so hue travels through magenta)
-};
+const STOPS: { at: number; hex: string }[] = [
+  { at: 30, hex: '#d73027' },
+  { at: 45, hex: '#fc8d59' },
+  { at: 60, hex: '#fee08b' },
+  { at: 75, hex: '#a6d96a' },
+  { at: 90, hex: '#1a9850' },
+];
 
 export const SCALE_TICKS = [0, 25, 50, 75, 100];
 
 type Rgb = [number, number, number];
 
-function oklchToLinear(l: number, c: number, h: number): Rgb {
-  const a = c * Math.cos((h * Math.PI) / 180);
-  const b = c * Math.sin((h * Math.PI) / 180);
-  const L = (l + 0.3963377774 * a + 0.2158037573 * b) ** 3;
-  const M = (l - 0.1055613458 * a - 0.0638541728 * b) ** 3;
-  const S = (l - 0.0894841775 * a - 1.291485548 * b) ** 3;
-  return [
-    4.0767416621 * L - 3.3077115913 * M + 0.2309699292 * S,
-    -1.2684380046 * L + 2.6097574011 * M - 0.3413193965 * S,
-    -0.0041960863 * L - 0.7034186147 * M + 1.707614701 * S,
-  ];
+const toLinear = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+const toGamma = (c: number) => (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055);
+const linearOf = (hex: string) => [1, 3, 5].map((i) => toLinear(parseInt(hex.slice(i, i + 2), 16) / 255)) as Rgb;
+const luminance = (rgb: Rgb) => 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+const contrast = (a: number, b: number) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+
+/** Mixed in linear light, so each stop lands exactly on its colour. */
+function linearAt(v: number): Rgb {
+  const next = STOPS.findIndex((s) => v <= s.at);
+  if (next === 0) return linearOf(STOPS[0].hex);
+  if (next === -1) return linearOf(STOPS[STOPS.length - 1].hex);
+  const from = STOPS[next - 1], to = STOPS[next];
+  const t = (v - from.at) / (to.at - from.at);
+  const [a, b] = [linearOf(from.hex), linearOf(to.hex)];
+  return a.map((c, i) => c + (b[i] - c) * t) as Rgb;
 }
 
-const at = (v: number) => {
-  const t = Math.max(0, Math.min(100, v)) / 100;
-  const { from, to } = SCALE;
-  return { l: from.l + (to.l - from.l) * t, c: from.c + (to.c - from.c) * t, h: from.h + (to.h - from.h) * t };
-};
+const toCss = (rgb: Rgb) => `rgb(${rgb.map((c) => Math.round(toGamma(c) * 255)).join(' ')})`;
 
-const luminance = (rgb: Rgb) => 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
-const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
-
-export const scoreLinear = (v: number): Rgb => {
-  const { l, c, h } = at(v);
-  return oklchToLinear(l, c, h).map(clamp01) as Rgb;
-};
-
-const COLORS = Array.from({ length: 101 }, (_, v) => {
-  const { l, c, h } = at(v);
-  return `oklch(${l.toFixed(3)} ${c.toFixed(3)} ${(h % 360).toFixed(1)})`;
-});
+const LINEAR = Array.from({ length: 101 }, (_, v) => linearAt(v));
+const COLORS = LINEAR.map(toCss);
 /** Black or white, whichever reads better on this score. Both clear 4.5:1 across the whole scale. */
-const INKS = Array.from({ length: 101 }, (_, v) => {
-  const y = luminance(scoreLinear(v));
-  return (y + 0.05) / 0.05 >= 1.05 / (y + 0.05) ? '#000000' : '#ffffff';
+const INKS = LINEAR.map((rgb) => {
+  const y = luminance(rgb);
+  return contrast(y, 0) >= contrast(y, 1) ? '#000000' : '#ffffff';
 });
 
 export const scoreColor = (v: number) => COLORS[Math.round(Math.max(0, Math.min(100, v)))];
 export const scoreInk = (v: number) => INKS[Math.round(Math.max(0, Math.min(100, v)))];
 
 /** Sampled rather than left to the browser, so the legend is exactly the colours in the cells. */
-export const scoreGradient = () => `linear-gradient(90deg, ${SCALE_TICKS.concat([12, 37, 62, 87]).sort((a, b) => a - b).map((v) => `${scoreColor(v)} ${v}%`).join(', ')})`;
+export const scoreGradient = () => `linear-gradient(90deg, ${[...new Set([...SCALE_TICKS, ...STOPS.map((s) => s.at)])].sort((a, b) => a - b).map((v) => `${scoreColor(v)} ${v}%`).join(', ')})`;
 
 /** Bins for the insight histogram and the optional no-colour patterns. */
 export interface Band { min: number; label: string; mid: number; pattern?: 'dots' | 'lines' | 'cross' }
