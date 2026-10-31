@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { diagnosticStages, needIds, sheetReadStatuses } from '../db/schema';
+import { adaptationDecisions, diagnosticStages, fontOptions, motionOptions, needIds, sheetReadStatuses, spacingOptions, themeOptions } from '../db/schema';
 import { isCalendarDate } from '../lib/time';
 
 export const id = z.string().trim().min(1).max(200);
@@ -31,10 +31,25 @@ export const newExamBody = z.union([
     .transform(({ questionIds, ...fields }) => ({ ...fields, questions: questionIds.map((id) => ({ id })) })),
 ]);
 export const groupBody = z.object({ name: z.string().trim().min(1).max(200) }).strict();
+export const moveExamBody = z.object({ groupId: id.nullable() }).strict();
+export const adaptationBody = z.union([
+  z.object({ decision: z.enum(adaptationDecisions) }).strict(),
+  z.object({ adapted: text }).strict(),
+]);
 export const adaptBody = z.object({ needs: z.array(z.enum(needIds)).min(1).max(5) }).strict();
 
 // Título e disciplina são derivados pelos services a partir dos subtópicos.
 export const newDiagnosticBody = z.object({ classId: id, subtopicIds: z.array(id).min(1).max(100) }).strict();
+export const approvalBody = z.object({ approved: z.boolean() }).strict();
+export const profileReviewBody = z.discriminatedUnion('reviewStatus', [
+  z.object({ reviewStatus: z.literal('aprovado') }).strict(),
+  z.object({ reviewStatus: z.literal('rascunho') }).strict(),
+  z.object({ reviewStatus: z.literal('editado'), summary: text, gapNotes: z.record(id, z.string().max(20000)).default({}) }).strict(),
+]);
+export const preferencesBody = z.object({
+  motion: z.enum(motionOptions).optional(), font: z.enum(fontOptions).optional(), spacing: z.enum(spacingOptions).optional(),
+  theme: z.enum(themeOptions).optional(), sidebarCollapsed: z.boolean().optional(),
+}).strict();
 export const runAgentBody = z.object({ stage: z.enum(diagnosticStages).optional() }).strict().default({});
 
 const file = z.object({

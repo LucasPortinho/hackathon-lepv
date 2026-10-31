@@ -58,6 +58,8 @@ export interface ExamVersion {
   studentIds: ID[];
 }
 
+export interface Need { id: NeedId; label: string; hint: string }
+
 export interface Exam {
   id: ID;
   title: string;
@@ -71,6 +73,8 @@ export interface Exam {
   /** Answer sheets the reading agent could only read in part and the teacher should check. */
   partialReads?: number;
 }
+
+export interface ExamWithClass extends Exam { className: string; groupName: string | null }
 
 export type AdaptationDecision = 'pendente' | 'aceita' | 'rejeitada';
 
@@ -88,7 +92,7 @@ export interface Adaptation {
 
 /**
  * A gap's likely reason. The `necessidade` branch can only be built from a need the
- * student has declared: see `gapReading` in mocks/profiles.ts.
+ * student has declared: see `gapReading` in the backend's pedagogical agent.
  */
 export type GapReading = { kind: 'tecnica' } | { kind: 'necessidade'; needId: NeedId };
 
@@ -176,6 +180,16 @@ export interface AppNotification {
 
 export interface Teacher { id: ID; name: string; role: string; email: string }
 
+export interface Prefs {
+  motion: 'sistema' | 'reduzir' | 'completo';
+  font: 'padrao' | 'leitura';
+  spacing: 'padrao' | 'confortavel';
+  theme: 'claro' | 'escuro';
+  sidebarCollapsed: boolean;
+}
+
+export interface TeacherProfile extends Teacher { preferences: Prefs }
+
 export interface DashboardRow { student: Student; scores: Record<ID, number | null>; average: number | null }
 
 export interface DashboardData {
@@ -200,11 +214,14 @@ export interface StudentSummary { student: Student; className: string; average: 
 export interface StudentDetail {
   student: Student;
   className: string;
+  subjectId: ID;
   subjectName: string;
   profile: PedagogicalProfile;
   competencies: { subtopic: Subtopic; value: number | null; classAverage: number }[];
   evolution: EvolutionPoint[];
   adaptations: { examTitle: string; versionLabel: string; examId: ID }[];
 }
+
+export interface UploadSummary { sheets: number; partial: { name: string; reason: string }[]; profiles: number; subtopics: number }
 
 export interface SearchResult { id: string; kind: 'pagina' | 'aluno' | 'turma' | 'prova'; label: string; hint?: string; to: string }

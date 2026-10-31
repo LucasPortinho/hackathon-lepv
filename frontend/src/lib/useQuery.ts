@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type DependencyList } from 'react';
-import { subscribe } from '@/mocks/db';
+import { subscribe } from '@/api/client/invalidation';
 
 export interface QueryState<T> { data: T | undefined; loading: boolean; error: Error | null; reload: () => void }
 

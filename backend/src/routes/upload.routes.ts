@@ -4,3 +4,4 @@ import * as uploads from '../controllers/upload.controller';
 export const uploadRouter = Router();
 uploadRouter.post('/batch', uploads.createBatch);
 uploadRouter.post('/batch/:id/sheets', uploads.recordSheets);
+uploadRouter.post('/batch/:id/process', uploads.process);

@@ -1,6 +1,6 @@
 import { asc, eq, inArray } from 'drizzle-orm';
 import { db } from '../db';
-import { needs, periods, subjects, subtopics } from '../db/schema';
+import { needIds, needs, periods, subjects, subtopics } from '../db/schema';
 import type { Need, Period, Subject, Subtopic } from '../types/domain';
 
 const subtopicColumns = { id: subtopics.id, subjectId: subtopics.subjectId, name: subtopics.name, short: subtopics.short };
@@ -18,4 +18,5 @@ export const findSubtopicsByIds = (ids: string[]): Subtopic[] =>
 export const listPeriods = (): Period[] =>
   db.select({ id: periods.id, name: periods.name }).from(periods).orderBy(asc(periods.position)).all();
 
-export const listNeeds = (): Need[] => db.select().from(needs).all();
+export const listNeeds = (): Need[] =>
+  db.select().from(needs).all().sort((a, b) => needIds.indexOf(a.id) - needIds.indexOf(b.id));

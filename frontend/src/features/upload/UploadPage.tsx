@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
 import { Badge, Button, ButtonLink, Card, Counter, Select, toast } from '@/components/ui';
+import { listExams } from '@/api/exams/exam.api';
 import { fileSize } from '@/lib/format';
 import { springs } from '@/lib/motion';
-import { finishProcessing, type UploadSummary } from '@/services/activity';
+import { useQuery } from '@/lib/useQuery';
+import { createBatch, processBatch } from '@/api/uploads/upload.api';
+import type { UploadSummary } from '@/types/domain';
 import { StageTrack } from './StageTrack';
 import './upload.css';
 
@@ -30,6 +33,9 @@ export function UploadPage() {
   const [stage, setStage] = useState(0);
   const [summary, setSummary] = useState<UploadSummary | null>(null);
   const [exam, setExam] = useState('e-leis');
+  const exams = useQuery(listExams, []);
+  const options = (exams.data ?? []).filter((e) => e.status !== 'em_adaptacao').map((e) => ({ value: e.id, label: `${e.title} · ${e.className}` }));
+  const examId = options.some((o) => o.value === exam) ? exam : (options[0]?.value ?? '');
   const timers = useRef<number[]>([]);
   useEffect(() => () => timers.current.forEach(clearInterval), []);
 
@@ -51,13 +57,19 @@ export function UploadPage() {
 
   const start = async () => {
     setPhase('processando');
-    for (let i = 0; i < STAGES.length; i++) {
-      setStage(i);
-      await new Promise((r) => setTimeout(r, 1100));
+    try {
+      const batch = await createBatch(examId, ready.map(({ name, size, kind }) => ({ name, size, kind })));
+      for (let i = 0; i < STAGES.length; i++) {
+        setStage(i);
+        await new Promise((r) => setTimeout(r, 1100));
+      }
+      setSummary(await processBatch(batch.id));
+      setPhase('resultado');
+      toast('Perfis prontos para revisão');
+    } catch (error) {
+      setPhase('envio');
+      throw error;
     }
-    setSummary(await finishProcessing(ready.length));
-    setPhase('resultado');
-    toast('Perfis prontos para revisão');
   };
 
   return (
@@ -67,7 +79,7 @@ export function UploadPage() {
         {phase === 'envio' && (
           <motion.div key="envio" className="up-grid" exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
             <div style={{ display: 'grid', gap: 'var(--s-3)' }}>
-              <Select label="A qual prova estes arquivos pertencem?" value={exam} onChange={setExam} options={[{ value: 'e-leis', label: 'Lei dos Senos e Lei dos Cossenos · 2º ano B' }, { value: 'e-rec', label: 'Recuperação de trigonometria · 2º ano B' }]} />
+              <Select label="A qual prova estes arquivos pertencem?" value={examId} onChange={setExam} options={options} />
               <label className="drop" data-over={over} onDragOver={(e) => { e.preventDefault(); setOver(true); }} onDragLeave={() => setOver(false)} onDrop={(e) => { e.preventDefault(); setOver(false); fromFiles(e.dataTransfer.files); }}>
                 <input className="sr-only" type="file" multiple accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => fromFiles(e.target.files)} />
                 <FileUp aria-hidden />

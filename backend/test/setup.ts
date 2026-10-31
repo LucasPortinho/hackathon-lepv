@@ -1,8 +1,7 @@
 import './env';
-import { generateSQLiteDrizzleJson, generateSQLiteMigration } from 'drizzle-kit/api';
-import { sql } from 'drizzle-orm';
 import { db } from '../src/db';
 import * as schema from '../src/db/schema';
+import { createSchema } from '../src/db/setup';
 
 const scores = (studentId: string, values: Record<string, [number | null, number | null]>) =>
   Object.entries(values).flatMap(([subtopicId, [b2, b3]]) => [
@@ -11,9 +10,7 @@ const scores = (studentId: string, values: Record<string, [number | null, number
   ]);
 
 export async function createDatabase() {
-  const statements = await generateSQLiteMigration(await generateSQLiteDrizzleJson({}), await generateSQLiteDrizzleJson(schema));
-  statements.forEach((s) => db.run(sql.raw(s)));
-  schema.sqliteTriggers.forEach((t) => db.run(t.statement));
+  await createSchema();
 
   db.insert(schema.teachers).values([
     { id: 't1', name: 'Renata Dias', role: 'Professora', email: 'renata@exemplo.edu.br' },

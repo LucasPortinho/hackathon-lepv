@@ -17,7 +17,7 @@ const STEPS: Omit<DiagnosticStep, 'status'>[] = [
   { id: 'devolutiva', title: 'Devolutiva', description: 'Os resultados voltam aos perfis e ao painel.' },
 ];
 
-const initialSteps = (): DiagnosticStep[] => STEPS.map((s, i) => ({ ...s, status: i === 0 ? 'executando' : 'pendente' }));
+export const initialSteps = (): DiagnosticStep[] => STEPS.map((s, i) => ({ ...s, status: i === 0 ? 'executando' : 'pendente' }));
 
 export const listDiagnostics = (teacherId: string) => diagnosticRepository.listByTeacher(teacherId);
 

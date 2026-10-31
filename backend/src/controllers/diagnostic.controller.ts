@@ -1,8 +1,10 @@
 import { z } from 'zod';
 import { controller } from '../http/controller';
-import { empty, id, idParams, newDiagnosticBody, noQuery, read, request, runAgentBody } from '../http/schemas';
+import { approvalBody, empty, id, idParams, newDiagnosticBody, noQuery, read, request, runAgentBody, studentParams } from '../http/schemas';
 import * as diagnostics from '../services/diagnostics/diagnostic.service';
 import { advanceDiagnostic } from '../services/diagnostics/diagnostic-agent.service';
+import { receiveAnswers } from '../services/diagnostics/diagnostic-results.service';
+import * as review from '../services/diagnostics/diagnostic-review.service';
 import { ConflictError } from '../services/shared/errors';
 
 export const list = controller(read(empty, noQuery), (_input, teacherId) => diagnostics.listDiagnostics(teacherId));
@@ -17,3 +19,8 @@ export const runAgent = controller(request(idParams, noQuery, runAgentBody), ({ 
   }
   return advanceDiagnostic(teacherId, params.id);
 });
+export const approveStudent = controller(request(idParams.extend(studentParams.shape), noQuery, approvalBody), ({ params, body }, teacherId) =>
+  review.approveForStudent(teacherId, params.id, params.studentId, body.approved), 204);
+export const approveAll = controller(read(idParams, noQuery), ({ params }, teacherId) => review.approveAll(teacherId, params.id), 204);
+export const publish = controller(read(idParams, noQuery), ({ params }, teacherId) => review.publishDiagnostic(teacherId, params.id), 204);
+export const answers = controller(read(idParams, noQuery), ({ params }, teacherId) => receiveAnswers(teacherId, params.id), 204);

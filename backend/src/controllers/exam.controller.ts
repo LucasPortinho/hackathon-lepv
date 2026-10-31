@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { controller } from '../http/controller';
-import { empty, id, idParams, newExamBody, noQuery, read, request } from '../http/schemas';
+import { empty, id, idParams, moveExamBody, newExamBody, noQuery, read, request } from '../http/schemas';
 import * as exams from '../services/exams/exam.service';
 
 export const list = controller(read(empty, z.object({ classId: id.optional(), groupId: id.optional() }).strict()), ({ query }, teacherId) => {
@@ -10,3 +10,5 @@ export const list = controller(read(empty, z.object({ classId: id.optional(), gr
 export const bank = controller(read(empty, noQuery), () => exams.listBank());
 export const detail = controller(read(idParams, noQuery), ({ params }, teacherId) => exams.getExam(teacherId, params.id));
 export const create = controller(request(empty, noQuery, newExamBody), ({ body }, teacherId) => exams.createExam(teacherId, body), 201);
+export const move = controller(request(idParams, noQuery, moveExamBody), ({ params, body }, teacherId) =>
+  exams.moveExam(teacherId, params.id, body.groupId), 204);

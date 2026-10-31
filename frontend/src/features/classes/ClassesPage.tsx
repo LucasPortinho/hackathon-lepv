@@ -8,7 +8,7 @@ import { Async, Card, EmptyState, Segmented, Skeleton } from '@/components/ui';
 import { plural } from '@/lib/format';
 import { variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { listClasses } from '@/services/catalog';
+import { listClasses } from '@/api/classes/class.api';
 import './classes.css';
 
 export function ClassesPage() {

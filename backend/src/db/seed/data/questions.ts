@@ -1,4 +1,4 @@
-import type { Question } from '@/types/domain';
+import type { Question } from '../../../types/domain';
 
 /** Generic question bank. Authored adaptations cover the seeded demo exam. */
 export const QUESTION_BANK: Question[] = [

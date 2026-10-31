@@ -9,3 +9,5 @@ examRouter.get('/:id', exams.detail);
 examRouter.get('/:id/need-counts', adaptations.needs);
 examRouter.get('/:id/adaptations', adaptations.list);
 examRouter.post('/:id/adapt', adaptations.generate);
+examRouter.patch('/:id/group', exams.move);
+examRouter.post('/:id/adaptations/finish', adaptations.finish);

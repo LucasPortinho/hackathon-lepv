@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui';
 import { relativeTime } from '@/lib/format';
 import { useQuery } from '@/lib/useQuery';
-import { listNotifications, markAllRead, markRead } from '@/services/activity';
+import { listNotifications, markAllRead, markRead } from '@/api/notifications/notification.api';
 import { Breadcrumbs } from './Crumbs';
 
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform);

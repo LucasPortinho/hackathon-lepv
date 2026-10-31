@@ -1,24 +1,8 @@
 import { MotionConfig } from 'motion/react';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-
-export interface Prefs {
-  motion: 'sistema' | 'reduzir' | 'completo';
-  font: 'padrao' | 'leitura';
-  spacing: 'padrao' | 'confortavel';
-  theme: 'claro' | 'escuro';
-  sidebarCollapsed: boolean;
-}
-
-const DEFAULTS: Prefs = { motion: 'sistema', font: 'padrao', spacing: 'padrao', theme: 'claro', sidebarCollapsed: false };
-const KEY = 'aula.prefs';
-
-const load = (): Prefs => {
-  try {
-    return { ...DEFAULTS, ...JSON.parse(localStorage.getItem(KEY) ?? '{}') };
-  } catch {
-    return DEFAULTS;
-  }
-};
+import { getPreferences } from '@/api/catalog/catalog.store';
+import { updatePreferences } from '@/api/teachers/teacher.api';
+import type { Prefs } from '@/types/domain';
 
 const Ctx = createContext<{ prefs: Prefs; set: <K extends keyof Prefs>(k: K, v: Prefs[K]) => void; reduced: boolean } | null>(null);
 
@@ -34,12 +18,11 @@ function useSystemReduced() {
 }
 
 export function PrefsProvider({ children }: { children: ReactNode }) {
-  const [prefs, setPrefs] = useState(load);
+  const [prefs, setPrefs] = useState(getPreferences);
   const system = useSystemReduced();
   const reduced = prefs.motion === 'reduzir' || (prefs.motion === 'sistema' && system);
 
   useEffect(() => {
-    localStorage.setItem(KEY, JSON.stringify(prefs));
     const d = document.documentElement.dataset;
     d.font = prefs.font === 'leitura' ? 'reading' : 'default';
     d.spacing = prefs.spacing === 'confortavel' ? 'comfortable' : 'default';
@@ -47,7 +30,10 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
     d.motion = reduced ? 'reduce' : 'full';
   }, [prefs, reduced]);
 
-  const value = useMemo(() => ({ prefs, reduced, set: <K extends keyof Prefs>(k: K, v: Prefs[K]) => setPrefs((p) => ({ ...p, [k]: v })) }), [prefs, reduced]);
+  const value = useMemo(() => ({ prefs, reduced, set: <K extends keyof Prefs>(k: K, v: Prefs[K]) => {
+    setPrefs((p) => ({ ...p, [k]: v }));
+    void updatePreferences({ [k]: v });
+  } }), [prefs, reduced]);
   return (
     <Ctx.Provider value={value}>
       <MotionConfig reducedMotion={reduced ? 'always' : 'never'}>{children}</MotionConfig>

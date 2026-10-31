@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { demoTeacherContext } from '../http/context';
 import { activityRouter } from './activity.routes';
+import { adaptationRouter } from './adaptation.routes';
 import { catalogRouter } from './catalog.routes';
 import { classRouter } from './class.routes';
 import { dashboardRouter } from './dashboard.routes';
@@ -20,6 +21,7 @@ export function createApiRouter(options: { teacherId: string }) {
   router.use('/students', studentRouter);
   router.use('/dashboard', dashboardRouter);
   router.use('/exams', examRouter);
+  router.use('/adaptations', adaptationRouter);
   router.use('/diagnostics', diagnosticRouter);
   router.use('/uploads', uploadRouter);
   router.use(activityRouter);

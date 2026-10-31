@@ -9,6 +9,7 @@ import type { AnswerSheet } from '../../repositories/upload.repository';
 import type { Exam, Student, UploadSummary } from '../../types/domain';
 import type { NewFile, ReadSheet } from '../../types/inputs';
 import { recordRun } from '../agent-runs/agent-run.service';
+import { readSheets } from '../agents/correction.agent';
 import { notify } from '../notifications/notification.service';
 import { refreshProfile } from '../profiles/profile.service';
 import { ConflictError, ValidationError } from '../shared/errors';
@@ -75,6 +76,13 @@ function announceResult(teacherId: string, exam: Exam, batchId: string, summary:
     link: { label: 'Abrir painel', to: '/dashboard' },
   });
   notify(teacherId, { title: 'Perfis atualizados', body: `A IA leu ${summary.sheets} folhas. Os perfis aguardam a sua revisão.`, to: '/dashboard' });
+}
+
+/** Executa o agente de correção sobre a turma da prova e fecha o lote. */
+export function processBatch(teacherId: string, batchId: string) {
+  const { exam } = requireOpenBatch(teacherId, batchId);
+  recordSheets(teacherId, batchId, readSheets(studentRepository.listByClass(exam.classId)));
+  return finishProcessing(teacherId, batchId);
 }
 
 export function finishProcessing(teacherId: string, batchId: string): UploadSummary {

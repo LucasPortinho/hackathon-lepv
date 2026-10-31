@@ -5,8 +5,8 @@ import { PageHeader } from '@/components/shell/PageHeader';
 import { Async, Badge, Button, ButtonLink, Card, Skeleton, toast } from '@/components/ui';
 import { formatDateLong, plural } from '@/lib/format';
 import { useQuery } from '@/lib/useQuery';
-import { subtopicById } from '@/services/catalog';
-import { getExam } from '@/services/exams';
+import { subtopicById } from '@/api/catalog/catalog.store';
+import { getExam } from '@/api/exams/exam.api';
 import { StatusBadge } from './StatusBadge';
 import './exams.css';
 

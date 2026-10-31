@@ -5,8 +5,8 @@ import { CompetencyBars } from '@/components/charts/CompetencyBars';
 import { EvolutionChart } from '@/components/charts/EvolutionChart';
 import { Badge, Button, Dialog, Field, Skeleton, toast } from '@/components/ui';
 import { firstName } from '@/lib/format';
-import { needLabel } from '@/mocks/needs';
-import { approveProfile, reopenProfile, saveProfileEdit } from '@/services/profiles';
+import { needLabel } from '@/api/catalog/catalog.store';
+import { approveProfile, reopenProfile, saveProfileEdit } from '@/api/profiles/profile-review.api';
 import type { StudentDetail } from '@/types/domain';
 import './profile.css';
 
@@ -90,7 +90,7 @@ export function StudentProfileBody({ detail }: { detail: StudentDetail }) {
 }
 
 export function ReviewActions({ detail }: { detail: StudentDetail }) {
-  const { student, profile } = detail;
+  const { student, profile, subjectId } = detail;
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [summary, setSummary] = useState(profile.summary);
@@ -98,13 +98,16 @@ export function ReviewActions({ detail }: { detail: StudentDetail }) {
 
   const approve = async () => {
     setBusy(true);
-    await approveProfile(student.id);
-    setBusy(false);
-    toast(`Perfil de ${firstName(student.name)} aprovado`, { label: 'Desfazer', run: () => reopenProfile(student.id) });
+    try {
+      await approveProfile(student.id, subjectId);
+      toast(`Perfil de ${firstName(student.name)} aprovado`, { label: 'Desfazer', run: () => reopenProfile(student.id, subjectId) });
+    } finally {
+      setBusy(false);
+    }
   };
 
   if (profile.review === 'aprovado') {
-    return <Button variant="ghost" onClick={() => reopenProfile(student.id)}><RotateCcw />Reabrir revisão</Button>;
+    return <Button variant="ghost" onClick={() => reopenProfile(student.id, subjectId)}><RotateCcw />Reabrir revisão</Button>;
   }
   return (
     <>
@@ -114,7 +117,7 @@ export function ReviewActions({ detail }: { detail: StudentDetail }) {
         open={editing} onOpenChange={setEditing} title="Editar leitura pedagógica" description="A sua versão substitui a da IA."
         footer={<>
           <Button variant="ghost" onClick={() => setEditing(false)}>Cancelar</Button>
-          <Button variant="primary" onClick={async () => { await saveProfileEdit(student.id, summary, notes); setEditing(false); toast('Alterações salvas'); }}>Salvar alterações</Button>
+          <Button variant="primary" onClick={async () => { await saveProfileEdit(student.id, subjectId, summary, notes); setEditing(false); toast('Alterações salvas'); }}>Salvar alterações</Button>
         </>}
       >
         <div style={{ display: 'grid', gap: 'var(--s-4)' }}>
