@@ -74,3 +74,5 @@ export const findGroup = (groupId: string): ExamGroup | undefined =>
   db.select().from(examGroups).where(eq(examGroups.id, groupId)).get();
 
 export const insertGroup = (group: ExamGroup) => db.insert(examGroups).values(group).run();
+
+export const removeByClass = (classId: string) => db.delete(exams).where(eq(exams.classId, classId)).run();

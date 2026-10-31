@@ -1,6 +1,6 @@
-import { and, eq } from 'drizzle-orm';
+import { and, eq, inArray, or } from 'drizzle-orm';
 import { db } from '../db';
-import { diagnosticAnswers, diagnosticAnswerSheets, examAnswers, examAnswerSheets, uploadBatches, uploadFiles } from '../db/schema';
+import { diagnosticAnswers, diagnosticAnswerSheets, diagnostics, examAnswers, examAnswerSheets, exams, uploadBatches, uploadFiles } from '../db/schema';
 import { nowIso } from '../lib/time';
 
 export type UploadFile = Omit<typeof uploadFiles.$inferInsert, 'batchId'>;
@@ -40,3 +40,10 @@ export const insertDiagnosticAnswers = (rows: (typeof diagnosticAnswers.$inferIn
 
 export const complete = (id: string, counts: { sheetsCount: number; profilesCount: number; subtopicsCount: number }) =>
   db.update(uploadBatches).set({ ...counts, phase: 'resultado', stageIndex: 3, completedAt: nowIso() }).where(eq(uploadBatches.id, id)).run();
+
+/** Lotes das provas e diagnósticos da turma; folhas e arquivos saem por CASCADE. */
+export const removeByClass = (classId: string) =>
+  db.delete(uploadBatches).where(or(
+    inArray(uploadBatches.examId, db.select({ id: exams.id }).from(exams).where(eq(exams.classId, classId))),
+    inArray(uploadBatches.diagnosticId, db.select({ id: diagnostics.id }).from(diagnostics).where(eq(diagnostics.classId, classId))),
+  )).run();

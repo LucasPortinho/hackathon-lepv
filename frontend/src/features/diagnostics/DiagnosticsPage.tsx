@@ -8,7 +8,7 @@ import { Async, Badge, Button, Card, Checkbox, Dialog, EmptyState, Select, Skele
 import { formatDate, plural } from '@/lib/format';
 import { variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { classById } from '@/api/catalog/catalog.store';
+import { classById, defaultClassId } from '@/api/catalog/catalog.store';
 import { listClasses } from '@/api/classes/class.api';
 import { createDiagnostic, listDiagnostics, suggestSubtopics } from '@/api/diagnostics/diagnostic.api';
 import type { DiagnosticStage } from '@/types/domain';
@@ -22,7 +22,7 @@ export const STAGE_LABEL: Record<DiagnosticStage, { label: string; tone?: 'accen
 function NewDialog({ open, onOpenChange, preset }: { open: boolean; onOpenChange: (v: boolean) => void; preset?: string }) {
   const nav = useNavigate();
   const classes = useQuery(listClasses, []);
-  const [classId, setClassId] = useState('c-2b');
+  const [classId, setClassId] = useState(defaultClassId);
   const q = useQuery(() => suggestSubtopics(classId), [classId]);
   const [sel, setSel] = useState<string[]>(preset ? [preset] : ['st-cossenos']);
   const [busy, setBusy] = useState(false);

@@ -175,6 +175,23 @@ prova e de diagnóstico usam a mesma rota. Antes dele, envie cada arquivo:
 | `POST /uploads/batch` | `{ "examId": "e1", "files": [...] }` ou `{ "diagnosticId": "d1", "files": [...] }` | `201`, lote com o `id` de cada arquivo |
 | `PUT /uploads/batch/:id/files/:fileId/content` | Bytes do arquivo, até 25 MB | `204` |
 
+## Turmas, alunos e recusas
+
+| Método e caminho | Corpo JSON | Retorno |
+| --- | --- | --- |
+| `POST /classes` | `{ "name", "level", "school", "year", "subjectIds": ["mat"] }` | `201`, `Class` |
+| `PUT /classes/:classId` | Mesmo corpo | `200`, `Class`; `409` ao tirar disciplina em uso |
+| `DELETE /classes/:classId` | Sem corpo | `204` |
+| `POST /students` | `{ "name", "classId", "declaredNeeds": ["tdah"] }` | `201`, `Student` |
+| `PUT /students/:studentId` | Mesmo corpo | `200`, `Student`; `409` ao trocar de turma com provas ou diagnósticos |
+| `DELETE /students/:studentId` | Sem corpo | `204` |
+| `DELETE /diagnostics/:id` | Sem corpo | `204`; só em revisão, descarta a avaliação |
+| `DELETE /diagnostics/:id/students/:studentId` | Sem corpo | `204`; só em revisão, tira o aluno da avaliação |
+
+Excluir uma turma é definitivo e apaga junto alunos, notas, perfis, provas, pastas,
+diagnósticos e folhas dela. Excluir um aluno apaga as notas, o perfil e as folhas dele.
+Ao remover uma necessidade declarada, lacunas e itens que a citavam deixam de citá-la.
+
 ## Agentes
 
 Os agentes usam o modelo de `FEATHERLESS_MODEL` (`backend/.env`). Sem chave, ou com

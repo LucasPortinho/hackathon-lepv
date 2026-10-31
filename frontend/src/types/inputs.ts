@@ -1,5 +1,9 @@
 // Entradas da API. Espelham backend/src/types/inputs.ts.
-import type { Question } from './domain';
+import type { NeedId, Question } from './domain';
+
+export interface ClassInput { name: string; level: string; school: string; year: number; subjectIds: string[] }
+
+export interface StudentInput { name: string; classId: string; declaredNeeds: NeedId[] }
 
 export interface DashboardQuery { classId: string; subjectId: string; periodId: string }
 

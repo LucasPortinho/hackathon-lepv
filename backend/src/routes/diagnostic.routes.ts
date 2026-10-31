@@ -13,3 +13,5 @@ diagnosticRouter.post('/:id/approve-all', diagnostics.approveAll);
 diagnosticRouter.post('/:id/publish', diagnostics.publish);
 diagnosticRouter.post('/:id/answers', diagnostics.answers);
 diagnosticRouter.patch('/:id/students/:studentId/approve', diagnostics.approveStudent);
+diagnosticRouter.delete('/:id', diagnostics.reject);
+diagnosticRouter.delete('/:id/students/:studentId', diagnostics.rejectStudent);

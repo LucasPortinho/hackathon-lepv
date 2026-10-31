@@ -51,6 +51,8 @@ const isDraft = (studentId: string, subjectId: string) =>
 /** Leitura do agente pedagógico. Sem modelo ou em falha, fica o rascunho das regras; a revisão humana nunca é sobrescrita. */
 export async function refreshWithAgent(student: Student, subjectId: string) {
   if (!agentsEnabled() || !isDraft(student.id, subjectId)) return false;
+  // Sem nenhuma nota não há o que interpretar.
+  if (loadProfileInputs(student, subjectId).every((input) => input.value === null)) return false;
   try {
     const draft = buildProfile(student, loadProfileInputs(student, subjectId));
     const profile = await analyzeStudent(loadAnalysisInput(student, subjectId), draft);

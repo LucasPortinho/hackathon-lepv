@@ -1,10 +1,10 @@
-import { Check, Circle, Download, MinusCircle, Upload } from 'lucide-react';
+import { Check, Circle, Download, MinusCircle, Pencil, Trash2, Upload, X } from 'lucide-react';
 import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
-import { Async, Badge, Button, ButtonLink, Card, Skeleton, toast } from '@/components/ui';
+import { Async, Badge, Button, ButtonLink, Card, ConfirmDialog, Dialog, Field, Skeleton, toast } from '@/components/ui';
 import { Ticks, useSettle } from '@/components/ui/Sheet';
 import { firstName, plural } from '@/lib/format';
 import { springs } from '@/lib/motion';
@@ -12,10 +12,10 @@ import { useQuery } from '@/lib/useQuery';
 import { needLabel, subtopicById } from '@/api/catalog/catalog.store';
 import { advanceDiagnostic } from '@/api/diagnostics/diagnostic-agent.api';
 import { receiveAnswers } from '@/api/diagnostics/diagnostic-results.api';
-import { approveAll, approveForStudent, publishDiagnostic } from '@/api/diagnostics/diagnostic-review.api';
+import { approveAll, approveForStudent, publishDiagnostic, rejectDiagnostic, rejectForStudent, saveItems } from '@/api/diagnostics/diagnostic-review.api';
 import { getDiagnostic } from '@/api/diagnostics/diagnostic.api';
 import { processBatch, uploadFiles } from '@/api/uploads/upload.api';
-import type { Diagnostic, DiagnosticForStudent, DiagnosticStep, Student } from '@/types/domain';
+import type { Diagnostic, DiagnosticForStudent, DiagnosticItem, DiagnosticStep, Student } from '@/types/domain';
 import { STAGE_LABEL } from './DiagnosticsPage';
 import './diagnostics.css';
 
@@ -38,8 +38,53 @@ function StepCard({ step }: { step: DiagnosticStep }) {
   );
 }
 
-function StudentSheet({ diagnosticId, item, student }: { diagnosticId: string; item: DiagnosticForStudent; student: Student }) {
+const lines = (text: string) => text.split('\n').map((line) => line.trim()).filter(Boolean);
+
+function ItemDialog({ item, canRemove, onSave, onRemove, onClose }: { item: DiagnosticItem; canRemove: boolean; onSave: (item: DiagnosticItem) => Promise<void>; onRemove: () => Promise<void>; onClose: () => void }) {
+  const [statement, setStatement] = useState(item.statement);
+  const [alternatives, setAlternatives] = useState((item.alternatives ?? []).join('\n'));
+  const [answerKey, setAnswerKey] = useState(item.answerKey ?? '');
+  const [solution, setSolution] = useState(item.solution ?? '');
+  const [busy, setBusy] = useState(false);
+  const run = async (action: () => Promise<void>) => {
+    setBusy(true);
+    try {
+      await action();
+      onClose();
+    } finally {
+      setBusy(false);
+    }
+  };
+  // O texto mudou: a conferência automática do gabarito deixa de valer.
+  const save = () => onSave({ ...item, statement: statement.trim(), alternatives: lines(alternatives), answerKey: answerKey.trim() || undefined, solution: solution.trim() || undefined, checkResult: 'nao_verificavel' });
+  return (
+    <Dialog
+      open onOpenChange={(open) => !open && onClose()} title="Editar questão" description="Ao salvar, a avaliação deste aluno volta a aguardar aprovação."
+      footer={<>
+        {canRemove && <Button variant="ghost" disabled={busy} onClick={() => run(onRemove)}><Trash2 />Remover questão</Button>}
+        <Button variant="ghost" onClick={onClose}>Cancelar</Button>
+        <Button variant="primary" loading={busy} disabled={!statement.trim()} onClick={() => run(save)}>Salvar questão</Button>
+      </>}
+    >
+      <div style={{ display: 'grid', gap: 'var(--s-4)' }}>
+        <Field label="Enunciado" htmlFor={`it-s-${item.id}`}><textarea id={`it-s-${item.id}`} className="textarea" value={statement} onChange={(e) => setStatement(e.target.value)} /></Field>
+        <Field label="Alternativas" hint="Uma por linha. Deixe vazio para questão discursiva." htmlFor={`it-a-${item.id}`}><textarea id={`it-a-${item.id}`} className="textarea" value={alternatives} onChange={(e) => setAlternatives(e.target.value)} /></Field>
+        <Field label="Gabarito" htmlFor={`it-k-${item.id}`}><input id={`it-k-${item.id}`} className="input" value={answerKey} onChange={(e) => setAnswerKey(e.target.value)} /></Field>
+        <Field label="Resolução" htmlFor={`it-r-${item.id}`}><textarea id={`it-r-${item.id}`} className="textarea" value={solution} onChange={(e) => setSolution(e.target.value)} /></Field>
+      </div>
+    </Dialog>
+  );
+}
+
+function StudentSheet({ diagnosticId, item, student, canReject }: { diagnosticId: string; item: DiagnosticForStudent; student: Student; canReject: boolean }) {
   const controls = useSettle(!item.approved);
+  const [editing, setEditing] = useState<DiagnosticItem | null>(null);
+  const [rejecting, setRejecting] = useState(false);
+  const saveQuestions = (items: DiagnosticItem[]) => saveItems(diagnosticId, item.studentId, items);
+  const reject = async () => {
+    await rejectForStudent(diagnosticId, item.studentId);
+    toast(`${student.name} saiu desta avaliação`);
+  };
   return (
     <motion.div className="ad-sheet" data-draft={!item.approved} animate={controls}>
       <Ticks show={!item.approved} />
@@ -55,10 +100,23 @@ function StudentSheet({ diagnosticId, item, student }: { diagnosticId: string; i
             {q.prerequisite && <Badge>Pré-requisito: {q.prerequisite}</Badge>}
             {q.adaptedFor && <Badge>Formato: {needLabel(q.adaptedFor)}</Badge>}
             {q.checkResult === 'divergente' && <Badge tone="danger">Confira o gabarito</Badge>}
+            <Button variant="ghost" size="sm" onClick={() => setEditing(q)}><Pencil />Editar</Button>
           </div>
         </div>
       ))}
+      {editing && (
+        <ItemDialog
+          key={editing.id} item={editing} canRemove={item.items.length > 1} onClose={() => setEditing(null)}
+          onSave={(edited) => saveQuestions(item.items.map((q) => (q.id === edited.id ? edited : q)))}
+          onRemove={() => saveQuestions(item.items.filter((q) => q.id !== editing.id))}
+        />
+      )}
+      <ConfirmDialog
+        open={rejecting} onOpenChange={setRejecting} title={`Recusar a avaliação de ${student.name}?`} confirmLabel="Recusar" onConfirm={reject}
+        description="O aluno sai desta avaliação e as questões dele são descartadas. Os demais continuam em revisão."
+      />
       <div className="ad-sheet-foot">
+        {canReject && <Button variant="ghost" onClick={() => setRejecting(true)}><X />Recusar</Button>}
         {item.approved
           ? <Button variant="ghost" size="sm" onClick={() => approveForStudent(diagnosticId, item.studentId, false)}>Reabrir</Button>
           : <Button variant="primary" onClick={() => approveForStudent(diagnosticId, item.studentId, true)}><Check />Aprovar avaliação</Button>}
@@ -105,6 +163,13 @@ export function DiagnosticDetailPage() {
   const q = useQuery(() => getDiagnostic(diagnosticId), [diagnosticId]);
   const [selected, setSelected] = useState<string | null>(null);
   const d = q.data?.diagnostic;
+  const [discarding, setDiscarding] = useState(false);
+  const nav = useNavigate();
+  const discard = async () => {
+    await rejectDiagnostic(diagnosticId);
+    toast('Avaliação recusada');
+    nav('/diagnosticas');
+  };
   useCrumbs([{ label: 'Avaliações Diagnósticas', to: '/diagnosticas' }, { label: d?.title ?? 'Avaliação' }]);
 
   const running = d && ['pedagogico', 'adaptacao', 'criador'].includes(d.stage);
@@ -122,6 +187,10 @@ export function DiagnosticDetailPage() {
         return (
           <>
             <PageHeader title={x.title} description={className} actions={<Badge tone={STAGE_LABEL[x.stage].tone}>{STAGE_LABEL[x.stage].label}</Badge>} />
+            <ConfirmDialog
+              open={discarding} onOpenChange={setDiscarding} title="Recusar esta avaliação?" confirmLabel="Recusar avaliação" onConfirm={discard}
+              description={`A avaliação é descartada para ${plural(x.perStudent.length, 'aluno', 'alunos')}. Isso não pode ser desfeito.`}
+            />
             <LayoutGroup>
               <ol className="pipeline" aria-label="Etapas dos agentes" aria-live="polite">
                 {x.steps.map((s) => <StepCard key={s.id} step={s} />)}
@@ -141,7 +210,7 @@ export function DiagnosticDetailPage() {
                   </Card>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div key={current.studentId} initial={{ opacity: 0, x: 8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
-                      <StudentSheet diagnosticId={x.id} item={current} student={students.get(current.studentId)!} />
+                      <StudentSheet diagnosticId={x.id} item={current} student={students.get(current.studentId)!} canReject={x.perStudent.length > 1} />
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -149,6 +218,7 @@ export function DiagnosticDetailPage() {
                   <p className="muted" role="status">{pending ? `Faltam ${plural(pending, 'avaliação', 'avaliações')} para revisar` : 'Todas revisadas.'}</p>
                   <div className="page-actions">
                     {pending > 0 && <Button variant="secondary" onClick={() => approveAll(x.id)}>Aprovar todas</Button>}
+                    <Button variant="ghost" onClick={() => setDiscarding(true)}><Trash2 />Recusar avaliação</Button>
                     <Button variant="primary" disabled={pending > 0} onClick={() => { publishDiagnostic(x.id); toast('Avaliação publicada para impressão'); }}>Publicar</Button>
                   </div>
                 </div>

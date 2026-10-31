@@ -38,6 +38,11 @@ export const newExamBody = z.union([
   z.object({ ...examFields, questionIds: z.array(id).min(1).max(500) }).strict()
     .transform(({ questionIds, ...fields }) => ({ ...fields, questions: questionIds.map((id) => ({ id })) })),
 ]);
+const shortText = z.string().trim().min(1).max(200);
+export const classBody = z.object({
+  name: shortText, level: shortText, school: shortText, year: z.number().int().min(1).max(9999), subjectIds: z.array(id).min(1).max(50),
+}).strict();
+export const studentBody = z.object({ name: shortText, classId: id, declaredNeeds: z.array(z.enum(needIds)).max(5) }).strict();
 export const groupBody = z.object({ name: z.string().trim().min(1).max(200) }).strict();
 export const moveExamBody = z.object({ groupId: id.nullable() }).strict();
 export const adaptationBody = z.union([

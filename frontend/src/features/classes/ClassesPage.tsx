@@ -1,26 +1,32 @@
-import { GraduationCap, LayoutGrid, List } from 'lucide-react';
+import { GraduationCap, LayoutGrid, List, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
-import { Async, Card, EmptyState, Segmented, Skeleton } from '@/components/ui';
+import { Async, Button, Card, EmptyState, Segmented, Skeleton } from '@/components/ui';
 import { plural } from '@/lib/format';
 import { variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
 import { listClasses } from '@/api/classes/class.api';
+import { ClassDialog } from './ClassDialog';
 import './classes.css';
 
 export function ClassesPage() {
   useCrumbs([{ label: 'Turmas' }]);
   const q = useQuery(listClasses, []);
   const [view, setView] = useState<'grade' | 'lista'>('grade');
+  const [creating, setCreating] = useState(false);
   return (
     <>
-      <PageHeader title="Turmas" actions={<Segmented label="Modo de exibição" value={view} onChange={setView} options={[{ value: 'grade', label: 'Grade', icon: <LayoutGrid />, hideLabel: true }, { value: 'lista', label: 'Lista', icon: <List />, hideLabel: true }]} />} />
+      <PageHeader title="Turmas" actions={<>
+        <Segmented label="Modo de exibição" value={view} onChange={setView} options={[{ value: 'grade', label: 'Grade', icon: <LayoutGrid />, hideLabel: true }, { value: 'lista', label: 'Lista', icon: <List />, hideLabel: true }]} />
+        <Button variant="primary" onClick={() => setCreating(true)}><Plus />Nova turma</Button>
+      </>} />
+      {creating && <ClassDialog onClose={() => setCreating(false)} />}
       <Async
         query={q} isEmpty={(d) => d.length === 0}
-        empty={<Card><EmptyState icon={<GraduationCap />} title="Nenhuma turma por aqui">As turmas da sua escola aparecem aqui assim que forem vinculadas ao seu perfil.</EmptyState></Card>}
+        empty={<Card><EmptyState icon={<GraduationCap />} title="Nenhuma turma por aqui" actions={<Button variant="primary" onClick={() => setCreating(true)}><Plus />Criar primeira turma</Button>}>Crie uma turma para cadastrar alunos e provas.</EmptyState></Card>}
         skeleton={<div className="class-grid">{[0, 1, 2, 3].map((i) => <Skeleton key={i} h="9rem" r="var(--r-lg)" />)}</div>}
       >
         {(d) => view === 'grade' ? (

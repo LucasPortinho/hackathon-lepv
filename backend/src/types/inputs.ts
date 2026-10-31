@@ -1,5 +1,9 @@
 // Entradas dos services: base dos DTOs combinados com os controllers.
-import type { QuestionMetadata, SheetReadStatus } from './domain';
+import type { NeedId, QuestionMetadata, SheetReadStatus } from './domain';
+
+export interface ClassInput { name: string; level: string; school: string; year: number; subjectIds: string[] }
+
+export interface StudentInput { name: string; classId: string; declaredNeeds: NeedId[] }
 
 export interface DashboardQuery { classId: string; subjectId: string; periodId: string }
 

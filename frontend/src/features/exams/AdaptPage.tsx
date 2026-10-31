@@ -93,7 +93,7 @@ function DiffRow({ a, index, marks }: { a: Adaptation; index: number; marks: boo
         <div className="diff-actions">
           {a.decision === 'pendente' ? (
             <>
-              <Button size="sm" variant="ghost" onClick={() => decideAdaptation(a.id, 'rejeitada')}><X />Manter original</Button>
+              <Button size="sm" variant="ghost" onClick={() => decideAdaptation(a.id, 'rejeitada')}><X />Recusar</Button>
               <Button size="sm" variant="ghost" onClick={() => setEditing(true)}><Pencil />Editar</Button>
               <Button size="sm" variant="primary" onClick={() => decideAdaptation(a.id, 'aceita')}><Check />Aceitar</Button>
             </>

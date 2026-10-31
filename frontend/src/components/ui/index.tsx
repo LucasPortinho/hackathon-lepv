@@ -87,6 +87,26 @@ export function Tabs<T extends string>({ value, onChange, options, label, panelI
   );
 }
 
+/** Para ações sem volta: só fecha quando a operação termina, e a falha vira aviso da API. */
+export function ConfirmDialog({ open, onOpenChange, title, description, confirmLabel, onConfirm }: { open: boolean; onOpenChange: (v: boolean) => void; title: string; description: string; confirmLabel: string; onConfirm: () => Promise<void> }) {
+  const [busy, setBusy] = useState(false);
+  const confirm = async () => {
+    setBusy(true);
+    try {
+      await onConfirm();
+      onOpenChange(false);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <Dialog
+      open={open} onOpenChange={onOpenChange} title={title} description={description}
+      footer={<><Button variant="ghost" onClick={() => onOpenChange(false)}>Cancelar</Button><Button variant="danger" loading={busy} onClick={confirm}>{confirmLabel}</Button></>}
+    />
+  );
+}
+
 export function EmptyState({ icon, title, children, actions }: { icon: ReactNode; title: string; children?: ReactNode; actions?: ReactNode }) {
   return (
     <div className="empty">

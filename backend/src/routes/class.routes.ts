@@ -8,3 +8,6 @@ classRouter.get('/:classId/students', classes.students);
 classRouter.get('/:classId/exams', classes.listExams);
 classRouter.get('/:classId/groups', classes.listGroups);
 classRouter.post('/:classId/groups', classes.createGroup);
+classRouter.post('/', classes.create);
+classRouter.put('/:classId', classes.update);
+classRouter.delete('/:classId', classes.remove);
