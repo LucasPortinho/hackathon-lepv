@@ -29,5 +29,4 @@ INSERT INTO upload_files_v3 (id, batch_id, name, size, kind, progress, storage_p
 DROP TABLE upload_files;
 ALTER TABLE upload_files_v3 RENAME TO upload_files;
 CREATE INDEX upload_files_batch_idx ON upload_files (batch_id);
-PRAGMA user_version = 3;
 `;

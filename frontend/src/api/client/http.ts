@@ -1,7 +1,7 @@
 import { changed } from './invalidation';
 import { getScenario, SLOW_MS } from './scenario';
 
-const BASE = '/api/v1';
+export const BASE = '/api/v1';
 const GENERIC_ERROR = 'Não foi possível concluir a operação.';
 
 export class ApiError extends Error {

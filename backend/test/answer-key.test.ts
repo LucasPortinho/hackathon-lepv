@@ -8,9 +8,10 @@ import { profileHistory } from '../src/db/schema';
 import * as profileRepository from '../src/repositories/profile.repository';
 import * as studentRepository from '../src/repositories/student.repository';
 import * as answerKeys from '../src/services/exams/answer-key.service';
+import * as corrections from '../src/services/exams/exam-corrections.service';
 import * as exams from '../src/services/exams/exam.service';
 import * as profiles from '../src/services/profiles/profile.service';
-import { ConflictError, ValidationError } from '../src/services/shared/errors';
+import { ConflictError, NotFoundError, ValidationError } from '../src/services/shared/errors';
 import * as uploads from '../src/services/uploads/upload.service';
 
 const T = 't1';
@@ -109,6 +110,19 @@ describe('da correção às competências', () => {
     assert.equal((await uploads.processBatch(T, batch.id)).profiles, 1);
     assert.match(prompts.grade, /gabarito-do-professor/);
     assert.throws(() => answerKeys.setQuestionKey(T, exam.id, 'q1', { answerKey: 'X', solution: null }), ConflictError);
+
+    const { sheets, questions, maxPoints } = corrections.listCorrections(T, exam.id);
+    assert.equal(maxPoints, questions.reduce((sum, q) => sum + q.points, 0));
+    assert.equal(questions[0].answerKey, 'gabarito-do-professor');
+    assert.equal(sheets[0].student?.name, 'Ana Moreira');
+    assert.equal(sheets[0].hasImage, true);
+    assert.equal(sheets[0].earned, 1);
+    assert.equal(sheets[0].answers[0].feedback, 'Trocou o sinal');
+    assert.deepEqual(await corrections.readSheetImage(T, exam.id, sheets[0].id), png);
+    assert.throws(() => corrections.listCorrections('t2', exam.id), NotFoundError);
+    await assert.rejects(corrections.readSheetImage('t2', exam.id, sheets[0].id), NotFoundError);
+    const other = exams.createExam(T, newExam);
+    await assert.rejects(corrections.readSheetImage(T, other.id, sheets[0].id), NotFoundError);
 
     const ana = studentRepository.listByClass('c1').find((s) => s.id === 'ana')!;
     await profiles.refreshWithAgent(ana, 'mat');

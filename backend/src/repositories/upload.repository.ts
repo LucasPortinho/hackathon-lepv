@@ -21,6 +21,12 @@ export const insertSheets = (sheets: AnswerSheet[]) => {
 export const listSheets = (batchId: string) =>
   db.select().from(examAnswerSheets).where(eq(examAnswerSheets.batchId, batchId)).all();
 
+export const listExamSheets = (examId: string) =>
+  db.select().from(examAnswerSheets).where(eq(examAnswerSheets.examId, examId)).all();
+
+export const listExamAnswers = (examId: string) =>
+  db.select().from(examAnswers).where(eq(examAnswers.examId, examId)).all();
+
 export const listFiles = (batchId: string) =>
   db.select().from(uploadFiles).where(eq(uploadFiles.batchId, batchId)).all();
 

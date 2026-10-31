@@ -12,6 +12,8 @@ before(() => {
     CREATE TABLE competency_gaps (id TEXT PRIMARY KEY, note TEXT NOT NULL) STRICT;
     CREATE TABLE diagnostic_items (id TEXT PRIMARY KEY, statement TEXT NOT NULL) STRICT;
     CREATE TABLE exam_questions (exam_id TEXT NOT NULL, question_id TEXT NOT NULL, PRIMARY KEY (exam_id, question_id)) STRICT;
+    CREATE TABLE exam_answer_sheets (id TEXT PRIMARY KEY) STRICT;
+    INSERT INTO exam_answer_sheets VALUES ('s-old');
     CREATE TABLE upload_batches (id TEXT PRIMARY KEY) STRICT;
     INSERT INTO upload_batches VALUES ('b-old');
     CREATE TABLE upload_files (id TEXT PRIMARY KEY, batch_id TEXT NOT NULL, name TEXT NOT NULL, size INTEGER NOT NULL, kind TEXT NOT NULL, progress REAL NOT NULL DEFAULT 0, storage_path TEXT, error TEXT) STRICT;
@@ -28,7 +30,7 @@ before(() => {
 describe('migração aditiva da versão 1 para a atual', () => {
   it('migra no start, preserva os dados e permite repetir a inicialização', async () => {
     assert.equal(await ensureDemoDatabase(), false);
-    assert.equal(db.$client.pragma('user_version', { simple: true }), 3);
+    assert.equal(db.$client.pragma('user_version', { simple: true }), 4);
     const question = db.$client.prepare('SELECT * FROM questions').get() as Record<string, unknown>;
     assert.equal(question.id, 'q-old');
     assert.equal(question.statement, 'Enunciado preservado');
@@ -49,6 +51,7 @@ describe('migração aditiva da versão 1 para a atual', () => {
     assert.throws(() => db.$client.exec("UPDATE upload_files SET kind = 'gabarito'"), /CHECK/);
     assert.throws(() => db.$client.exec("UPDATE exam_questions SET key_source = 'outro'"), /CHECK/);
     assert.equal((db.$client.prepare('SELECT answer_key FROM exam_questions').get() as { answer_key: null }).answer_key, null);
+    assert.deepEqual(db.$client.prepare('SELECT id, image_path FROM exam_answer_sheets').all(), [{ id: 's-old', image_path: null }]);
   });
 
   it('valida JSON, dificuldade, checagem e pré-requisito no SQLite', () => {
@@ -61,6 +64,6 @@ describe('migração aditiva da versão 1 para a atual', () => {
     assert.deepEqual(db.$client.pragma('foreign_key_check'), []);
     db.$client.pragma('user_version = 99');
     assert.throws(migrateSchema, /não suportada/);
-    db.$client.pragma('user_version = 3');
+    db.$client.pragma('user_version = 4');
   });
 });

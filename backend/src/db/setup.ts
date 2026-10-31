@@ -3,6 +3,10 @@ import { db } from '.';
 import * as schema from './schema';
 import { creatorMetadataMigration } from './migrations/0002-creator-metadata';
 import { examAnswerKeysMigration } from './migrations/0003-exam-answer-keys';
+import { sheetImagesMigration } from './migrations/0004-sheet-images';
+
+// Na ordem das versões: o índice 0 leva da versão 1 para a 2.
+const MIGRATIONS = [creatorMetadataMigration, examAnswerKeysMigration, sheetImagesMigration];
 
 // `sqliteTable` não declara STRICT nem triggers: esta é a migração explícita pedida em schema.md.
 const withStrict = (statement: string) =>
@@ -38,11 +42,9 @@ export const hasSchema = () => db.$client.pragma('user_version', { simple: true 
 export function migrateSchema() {
   const version = Number(db.$client.pragma('user_version', { simple: true }));
   if (version === schema.sqliteSchemaMetadata.userVersion) return true;
-  if (version === 1 || version === 2) {
-    db.$client.transaction(() => {
-      if (version === 1) db.$client.exec(creatorMetadataMigration);
-      db.$client.exec(examAnswerKeysMigration);
-    })();
+  if (version >= 1 && version < schema.sqliteSchemaMetadata.userVersion) {
+    db.$client.transaction(() => MIGRATIONS.slice(version - 1).forEach((migration) => db.$client.exec(migration)))();
+    db.$client.pragma(`user_version = ${schema.sqliteSchemaMetadata.userVersion}`);
     return true;
   }
   if (version !== 0) throw new Error(`Versão de banco não suportada: ${version}.`);

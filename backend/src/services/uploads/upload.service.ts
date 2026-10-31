@@ -1,6 +1,6 @@
 import { extname } from 'node:path';
 import { transaction } from '../../db';
-import { singleFlight } from '../../lib/async';
+import { AGENT_CONCURRENCY, mapLimit, singleFlight } from '../../lib/async';
 import { unique } from '../../lib/collections';
 import { newId } from '../../lib/ids';
 import { agentsEnabled } from '../../lib/llm';
@@ -81,11 +81,18 @@ export function recordSheets(teacherId: string, batchId: string, sheets: ReadShe
   transaction(() => uploadRepository.insertSheets(rows));
 }
 
-function saveCorrectedSheet(batchId: string, exam: Exam, page: PageResult<Student>) {
+interface StoredPage { id: string; page: PageResult<Student>; imagePath: string | null }
+
+/** A imagem fica guardada para o professor conferir a folha, mesmo sem aluno identificado. */
+async function storePage(batchId: string, page: PageResult<Student>): Promise<StoredPage> {
   const id = newId('s');
+  return { id, page, imagePath: page.image && await saveFile(batchId, `folhas/${id}.png`, page.image) };
+}
+
+function saveCorrectedSheet(batchId: string, exam: Exam, { id, page, imagePath }: StoredPage) {
   const studentId = page.student?.id;
   const { readStatus, partialReason, extractedText, studentName } = page;
-  uploadRepository.insertSheets([{ id, batchId, examId: exam.id, studentId, versionId: versionOf(exam, studentId), studentName, readStatus, partialReason, extractedText }]);
+  uploadRepository.insertSheets([{ id, batchId, examId: exam.id, studentId, versionId: versionOf(exam, studentId), studentName, readStatus, partialReason, extractedText, imagePath }]);
   uploadRepository.insertExamAnswers(page.answers.map((a) => ({ ...a, sheetId: id, examId: exam.id })));
 }
 
@@ -114,8 +121,9 @@ function saveScores(pages: PageResult<Student>[], questions: Question[], classId
 async function correctExamSheets(batchId: string, exam: Exam) {
   const questions = orderedQuestions(exam);
   const pages = await correctPages(await loadAnswerPages(batchId), studentRepository.listByClass(exam.classId), () => questions);
+  const stored = await mapLimit(pages, AGENT_CONCURRENCY, (page) => storePage(batchId, page));
   transaction(() => {
-    pages.forEach((page) => saveCorrectedSheet(batchId, exam, page));
+    stored.forEach((sheet) => saveCorrectedSheet(batchId, exam, sheet));
     saveScores(pages, questions, exam.classId);
   });
 }

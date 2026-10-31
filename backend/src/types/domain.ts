@@ -76,6 +76,22 @@ export interface Evidence { source: string; date: string; subtopic: string; stat
 /** Perfil revisado pelo professor em um momento anterior. */
 export interface ProfileMemory { overall: number; summary: string; competencies: string[]; review: ReviewStatus; recordedAt: string }
 
+export interface CorrectedAnswer { questionId: ID; answer: string | null; awardedPoints: number | null; feedback: string | null }
+
+/** Folha corrigida; `student` é nulo quando a leitura não encontrou o aluno na turma. */
+export interface CorrectedSheet {
+  id: ID;
+  student: { id: ID; name: string } | null;
+  readName: string | null;
+  readStatus: SheetReadStatus;
+  partialReason: string | null;
+  hasImage: boolean;
+  earned: number;
+  answers: CorrectedAnswer[];
+}
+
+export interface ExamCorrections { questions: ExamQuestion[]; maxPoints: number; sheets: CorrectedSheet[] }
+
 export interface ExamVersion {
   id: ID;
   label: string;

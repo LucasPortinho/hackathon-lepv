@@ -75,6 +75,7 @@ export const batchBody = z.union([
   z.object({ diagnosticId: id, files }).strict(),
 ]);
 export const fileParams = idParams.extend({ fileId: id });
+export const sheetParams = idParams.extend({ sheetId: id });
 export const questionKeyParams = idParams.extend({ questionId: id });
 export const questionKeyBody = z.object({ answerKey: text.nullable(), solution: text.nullable() }).strict();
 export const fileNameQuery = z.object({ name: z.string().trim().min(1).max(255) }).strict();

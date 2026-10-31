@@ -1,4 +1,4 @@
-import { Download, Upload, Wand2 } from 'lucide-react';
+import { ClipboardCheck, Download, Upload, Wand2 } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
@@ -49,7 +49,10 @@ export function ExamDetailPage() {
               <Card>
                 <div className="section-bar"><h2>Correção</h2></div>
                 <p className="muted" style={{ marginBottom: 'var(--s-3)' }}>Depois de aplicar a prova, envie o que os alunos responderam. A IA corrige pelo seu gabarito e define as competências de cada aluno.</p>
-                <ButtonLink variant="primary" to={`/provas/enviar?prova=${exam.id}`}><Upload />Enviar provas dos alunos</ButtonLink>
+                <div className="key-actions">
+                  {exam.status === 'corrigida' && <ButtonLink variant="primary" to={`/provas/${exam.id}/correcoes`}><ClipboardCheck />Ver correções</ButtonLink>}
+                  <ButtonLink variant={exam.status === 'corrigida' ? 'secondary' : 'primary'} to={`/provas/enviar?prova=${exam.id}`}><Upload />Enviar provas dos alunos</ButtonLink>
+                </div>
               </Card>
             )}
             <Card>

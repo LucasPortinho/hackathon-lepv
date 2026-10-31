@@ -1,6 +1,9 @@
+import type { RequestHandler } from 'express';
 import { z } from 'zod';
+import { teacherId } from '../http/context';
 import { controller } from '../http/controller';
-import { empty, fileContent, fileNameQuery, id, idParams, moveExamBody, newExamBody, noQuery, questionKeyBody, questionKeyParams, read, request } from '../http/schemas';
+import { empty, fileContent, fileNameQuery, id, idParams, moveExamBody, newExamBody, noQuery, questionKeyBody, questionKeyParams, read, request, sheetParams } from '../http/schemas';
+import * as corrections from '../services/exams/exam-corrections.service';
 import * as answerKeys from '../services/exams/answer-key.service';
 import * as exams from '../services/exams/exam.service';
 
@@ -17,3 +20,14 @@ export const setKey = controller(request(questionKeyParams, noQuery, questionKey
   answerKeys.setQuestionKey(teacherId, params.id, params.questionId, body), 204);
 export const uploadSolution = controller(request(idParams, fileNameQuery, fileContent), ({ params, query, body }, teacherId) =>
   answerKeys.uploadSolution(teacherId, params.id, query.name, body));
+export const listCorrections = controller(read(idParams, noQuery), ({ params }, teacher) => corrections.listCorrections(teacher, params.id));
+
+/** Devolve o PNG da folha, e não JSON como os demais controllers. */
+export const sheetImage: RequestHandler = async (req, res, next) => {
+  try {
+    const { params } = read(sheetParams, noQuery).parse({ params: req.params, query: req.query, body: req.body });
+    res.type('png').send(await corrections.readSheetImage(teacherId(res), params.id, params.sheetId));
+  } catch (error) {
+    next(error);
+  }
+};

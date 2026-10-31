@@ -55,6 +55,22 @@ export type KeySource = 'professor' | 'resolucao' | 'banco';
 
 export interface ExamQuestion extends Question { keySource?: KeySource }
 
+export interface CorrectedAnswer { questionId: ID; answer: string | null; awardedPoints: number | null; feedback: string | null }
+
+export interface CorrectedSheet {
+  id: ID;
+  /** Vazio quando a leitura não encontrou o aluno na turma. */
+  student: { id: ID; name: string } | null;
+  readName: string | null;
+  readStatus: 'pendente' | 'completa' | 'parcial' | 'erro';
+  partialReason: string | null;
+  hasImage: boolean;
+  earned: number;
+  answers: CorrectedAnswer[];
+}
+
+export interface ExamCorrections { questions: ExamQuestion[]; maxPoints: number; sheets: CorrectedSheet[] }
+
 export interface SolutionReadResult { read: number; total: number; kept: number; failedPages: number }
 
 export type ExamStatus = 'rascunho' | 'em_adaptacao' | 'pronta' | 'corrigida';
