@@ -678,6 +678,7 @@ export const examAnswerSheets = sqliteTable("exam_answer_sheets", {
   readStatus: text("read_status", { enum: sheetReadStatuses }).notNull().default("pendente"),
   partialReason: text("partial_reason"),
   extractedText: text("extracted_text"),
+  imagePath: text("image_path"),
   reviewedAt: text("reviewed_at"),
   reviewedBy: text("reviewed_by"),
 }, (table) => [
@@ -866,7 +867,7 @@ FROM adaptations a JOIN exam_version_needs n ON n.exam_id = a.exam_id AND n.vers
 // Metadados descritivos: importar este arquivo não altera conexão nem banco.
 // Configure PRAGMA foreign_keys = ON em cada conexão SQLite.
 export const sqliteSchemaMetadata = {
-  userVersion: 3,
+  userVersion: 4,
   foreignKeys: true,
   tableMode: 'STRICT',
   strictTables: [

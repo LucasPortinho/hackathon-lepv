@@ -294,3 +294,10 @@ reset explícito da demo continua disponível separadamente.
 
 Depois da correção as duas rotas respondem 409. Sem IA ativa, a resolução escaneada também responde 409.
 `GET /exams/:id` devolve em cada questão o gabarito que vale para a prova e `keySource` (`professor`, `resolucao` ou `banco`).
+
+## Correções da prova
+
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| `GET` | `/exams/:id/corrections` | Questões com gabarito, `maxPoints` e `sheets`: aluno, situação da leitura, pontos e, por questão, resposta lida, pontos e comentário. |
+| `GET` | `/exams/:id/sheets/:sheetId/image` | PNG da folha. Responde 404 para folhas corrigidas antes da versão 4 do banco, que não guardavam imagem. |

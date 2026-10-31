@@ -7,6 +7,7 @@ import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { DiagnosticDetailPage } from '@/features/diagnostics/DiagnosticDetailPage';
 import { DiagnosticsPage } from '@/features/diagnostics/DiagnosticsPage';
 import { AdaptPage } from '@/features/exams/AdaptPage';
+import { CorrectionsPage } from '@/features/exams/CorrectionsPage';
 import { ExamBuilderPage } from '@/features/exams/ExamBuilderPage';
 import { ExamDetailPage } from '@/features/exams/ExamDetailPage';
 import { ExamsPage } from '@/features/exams/ExamsPage';
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: 'provas/enviar', element: <UploadPage /> },
       { path: 'provas/:examId', element: <ExamDetailPage /> },
       { path: 'provas/:examId/adaptar', element: <AdaptPage /> },
+      { path: 'provas/:examId/correcoes', element: <CorrectionsPage /> },
       { path: 'diagnosticas', element: <DiagnosticsPage /> },
       { path: 'diagnosticas/:diagnosticId', element: <DiagnosticDetailPage /> },
       { path: 'alunos', element: <StudentsPage /> },

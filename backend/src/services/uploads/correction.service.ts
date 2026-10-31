@@ -12,7 +12,10 @@ const UPLOAD_DIR = process.env.UPLOAD_DIR ?? 'uploads';
 const UNREADABLE = 'Não foi possível ler esta folha.';
 const UNIDENTIFIED = 'Aluno não identificado.';
 
+type PageReading<S> = Omit<PageResult<S>, 'image'>;
+
 export interface PageResult<S> {
+  image: Buffer | null;
   student: S | null;
   studentName: string | null;
   readStatus: SheetReadStatus;
@@ -44,10 +47,10 @@ export async function loadAnswerPages(batchId: string) {
   return (await mapLimit(files, AGENT_CONCURRENCY, (f) => pagesOf(f.storagePath!))).flat();
 }
 
-const failedPage = <S>(reason: string): PageResult<S> =>
+const failedPage = <S>(reason: string): PageReading<S> =>
   ({ student: null, studentName: null, readStatus: 'erro', partialReason: reason, extractedText: null, answers: [] });
 
-function gradedPage<S>(student: S | null, studentName: string | null, answers: GradedAnswer[]): PageResult<S> {
+function gradedPage<S>(student: S | null, studentName: string | null, answers: GradedAnswer[]): PageReading<S> {
   const illegible = answers.filter((a) => a.awardedPoints === null).length;
   const reason = !student ? UNIDENTIFIED : illegible ? `${illegible} ${illegible === 1 ? 'questão ilegível' : 'questões ilegíveis'}` : null;
   return {
@@ -57,7 +60,7 @@ function gradedPage<S>(student: S | null, studentName: string | null, answers: G
   };
 }
 
-async function correctPage<S extends { name: string }>(png: Buffer, students: S[], questionsFor: (student: S | null) => GradableQuestion[] | null): Promise<PageResult<S>> {
+async function correctPage<S extends { name: string }>(png: Buffer, students: S[], questionsFor: (student: S | null) => GradableQuestion[] | null): Promise<PageReading<S>> {
   try {
     const identity = await identifySheet(png, students.map((s) => s.name));
     if (!identity.legible) return failedPage(identity.reason ?? UNREADABLE);
@@ -72,5 +75,5 @@ async function correctPage<S extends { name: string }>(png: Buffer, students: S[
 }
 
 /** Falha de leitura vira folha sinalizada: a correção nunca inventa uma nota. */
-export const correctPages = <S extends { name: string }>(pages: (Buffer | null)[], students: S[], questionsFor: (student: S | null) => GradableQuestion[] | null) =>
-  mapLimit(pages, AGENT_CONCURRENCY, (png) => (png ? correctPage(png, students, questionsFor) : Promise.resolve(failedPage<S>(UNREADABLE))));
+export const correctPages = <S extends { name: string }>(pages: (Buffer | null)[], students: S[], questionsFor: (student: S | null) => GradableQuestion[] | null): Promise<PageResult<S>[]> =>
+  mapLimit(pages, AGENT_CONCURRENCY, async (png) => ({ ...(png ? await correctPage(png, students, questionsFor) : failedPage<S>(UNREADABLE)), image: png }));

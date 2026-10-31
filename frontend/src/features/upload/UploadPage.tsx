@@ -1,4 +1,4 @@
-import { FileUp, LayoutGrid, Trash2 } from 'lucide-react';
+import { ClipboardCheck, FileUp, LayoutGrid, Trash2 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -135,7 +135,10 @@ export function UploadPage() {
               <ul style={{ display: 'grid', gap: 'var(--s-1)', marginBottom: 'var(--s-5)' }}>
                 {summary.partial.map((p) => <li key={p.name}><b style={{ fontWeight: 600 }}>{p.name}</b> <span className="muted">· {p.reason}</span></li>)}
               </ul>
-              <ButtonLink variant="primary" to="/dashboard"><LayoutGrid />Abrir o painel da turma</ButtonLink>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--s-2)' }}>
+                <ButtonLink variant="primary" to={`/provas/${examId}/correcoes`}><ClipboardCheck />Ver correções</ButtonLink>
+                <ButtonLink variant="secondary" to="/dashboard"><LayoutGrid />Abrir o painel da turma</ButtonLink>
+              </div>
             </Card>
           </motion.div>
         )}

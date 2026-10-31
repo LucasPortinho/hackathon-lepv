@@ -1,6 +1,6 @@
-import type { ExamGroup, ExamQuestion, ExamWithClass, Question, SolutionReadResult } from '@/types/domain';
+import type { ExamCorrections, ExamGroup, ExamQuestion, ExamWithClass, Question, SolutionReadResult } from '@/types/domain';
 import type { NewExam } from '@/types/inputs';
-import { get, mutate, sendFile } from '../client/http';
+import { BASE, get, mutate, sendFile } from '../client/http';
 import { changed } from '../client/invalidation';
 
 export const listExams = () => get<ExamWithClass[]>('/exams', { empty: [] });
@@ -8,6 +8,9 @@ export const listClassExams = (classId: string) => get<ExamWithClass[]>(`/classe
 export const listGroups = (classId: string) => get<ExamGroup[]>(`/classes/${classId}/groups`, { empty: [] });
 export const listBank = () => get<Question[]>('/questions/bank', { empty: [] });
 export const getExam = (id: string) => get<{ exam: ExamWithClass; questions: ExamQuestion[] }>(`/exams/${id}`);
+
+export const listCorrections = (examId: string) => get<ExamCorrections>(`/exams/${examId}/corrections`);
+export const sheetImageUrl = (examId: string, sheetId: string) => `${BASE}/exams/${examId}/sheets/${sheetId}/image`;
 
 export const moveExam = (examId: string, groupId: string | null) => mutate('PATCH', `/exams/${examId}/group`, { groupId });
 export const createGroup = (classId: string, name: string) => mutate<ExamGroup>('POST', `/classes/${classId}/groups`, { name });
