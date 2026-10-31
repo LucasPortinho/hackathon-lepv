@@ -1,8 +1,9 @@
 import { FileText, GraduationCap, LayoutGrid, Search, User } from 'lucide-react';
 import { Dialog as RDialog } from 'radix-ui';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { search } from '@/services/activity';
+import { search } from '@/api/search/search.api';
+import { useQuery } from '@/lib/useQuery';
 
 const ICONS = { pagina: LayoutGrid, aluno: User, turma: GraduationCap, prova: FileText };
 
@@ -10,7 +11,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
   const [q, setQ] = useState('');
   const [i, setI] = useState(0);
   const nav = useNavigate();
-  const results = useMemo(() => search(q), [q]);
+  const { data: results = [], loading } = useQuery(() => search(q), [q]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -60,7 +61,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
                 );
               })}
             </ul>
-          ) : <p className="palette-empty">Nada encontrado para "{q}".</p>}
+          ) : !loading && <p className="palette-empty">Nada encontrado para "{q}".</p>}
         </RDialog.Content>
       </RDialog.Portal>
     </RDialog.Root>

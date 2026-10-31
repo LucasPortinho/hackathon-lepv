@@ -6,7 +6,7 @@ import { PageHeader } from '@/components/shell/PageHeader';
 import { Async, Badge, ButtonLink, Card, EmptyState, Select, Skeleton } from '@/components/ui';
 import { formatDate, normalize, plural } from '@/lib/format';
 import { useQuery } from '@/lib/useQuery';
-import { listExams } from '@/services/exams';
+import { listExams } from '@/api/exams/exam.api';
 import { STATUS_LABEL, StatusBadge } from './StatusBadge';
 import '@/features/classes/classes.css';
 

@@ -3,7 +3,8 @@ import { Async, ButtonLink, Skeleton } from '@/components/ui';
 import { plural } from '@/lib/format';
 import { BANDS, scoreColor } from '@/lib/score';
 import { useQuery } from '@/lib/useQuery';
-import { getSubtopicInsight, type DashboardQuery } from '@/services/dashboard';
+import { getSubtopicInsight } from '@/api/dashboard/dashboard.api';
+import type { DashboardQuery } from '@/types/inputs';
 import '@/components/charts/charts.css';
 
 export function SubtopicInsightPanel({ query, subtopicId, onOpenStudent }: { query: DashboardQuery; subtopicId: string; onOpenStudent: (id: string) => void }) {

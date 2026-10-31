@@ -8,8 +8,9 @@ import { Async, Badge, Button, Card, Checkbox, Dialog, EmptyState, Select, Skele
 import { formatDate, plural } from '@/lib/format';
 import { variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { classById, listClasses } from '@/services/catalog';
-import { createDiagnostic, listDiagnostics, suggestSubtopics } from '@/services/diagnostics';
+import { classById } from '@/api/catalog/catalog.store';
+import { listClasses } from '@/api/classes/class.api';
+import { createDiagnostic, listDiagnostics, suggestSubtopics } from '@/api/diagnostics/diagnostic.api';
 import type { DiagnosticStage } from '@/types/domain';
 import './diagnostics.css';
 
@@ -27,10 +28,13 @@ function NewDialog({ open, onOpenChange, preset }: { open: boolean; onOpenChange
   const [busy, setBusy] = useState(false);
   const start = async () => {
     setBusy(true);
-    const d = await createDiagnostic(classId, sel);
-    setBusy(false);
-    onOpenChange(false);
-    nav(`/diagnosticas/${d.id}`);
+    try {
+      const d = await createDiagnostic(classId, sel);
+      onOpenChange(false);
+      nav(`/diagnosticas/${d.id}`);
+    } finally {
+      setBusy(false);
+    }
   };
   return (
     <Dialog

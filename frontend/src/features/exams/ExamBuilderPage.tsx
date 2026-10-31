@@ -8,8 +8,10 @@ import { Async, Badge, Button, Card, Checkbox, EmptyState, Field, Select, Skelet
 import { plural } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { listClasses, listSubtopics, subtopicById } from '@/services/catalog';
-import { createExam, listBank, listGroups, type NewExam } from '@/services/exams';
+import { listSubtopics, subtopicById } from '@/api/catalog/catalog.store';
+import { listClasses } from '@/api/classes/class.api';
+import { createExam, listBank, listGroups } from '@/api/exams/exam.api';
+import type { NewExam } from '@/types/inputs';
 import type { Question } from '@/types/domain';
 import './exams.css';
 
@@ -56,9 +58,13 @@ export function ExamBuilderPage() {
     setTouched(true);
     if (!title.trim() || items.length === 0) return;
     setSaving(true);
-    const exam = await createExam({ title: title.trim(), classId, subjectId: 'mat', groupId: groupId === 'nenhuma' ? null : groupId, date, questions: items });
-    toast('Prova criada');
-    nav(`/provas/${exam.id}`);
+    try {
+      const exam = await createExam({ title: title.trim(), classId, subjectId: 'mat', groupId: groupId === 'nenhuma' ? null : groupId, date, questions: items });
+      toast('Prova criada');
+      nav(`/provas/${exam.id}`);
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (

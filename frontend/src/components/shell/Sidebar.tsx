@@ -6,7 +6,7 @@ import { Button, Tooltip } from '@/components/ui';
 import { initials } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { usePrefs } from '@/lib/prefs';
-import { getTeacher } from '@/services/catalog';
+import { getTeacher } from '@/api/catalog/catalog.store';
 import { APP_NAME, NAV } from './nav';
 
 const label = { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.12 } };

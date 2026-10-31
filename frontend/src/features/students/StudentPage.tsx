@@ -4,7 +4,7 @@ import { useCrumbs } from '@/components/shell/Crumbs';
 import { Async, Card } from '@/components/ui';
 import { Ticks, useSettle } from '@/components/ui/Sheet';
 import { useQuery } from '@/lib/useQuery';
-import { getStudentDetail } from '@/services/profiles';
+import { getStudentDetail } from '@/api/profiles/profile.api';
 import { ProfileSkeleton, ReviewActions, StudentProfileBody } from './StudentProfile';
 
 /** The same document as the dashboard sheet, for arriving from Alunos or a shared link. */

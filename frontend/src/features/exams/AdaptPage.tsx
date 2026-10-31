@@ -9,8 +9,9 @@ import { Ticks, useSettle } from '@/components/ui/Sheet';
 import { firstName, plural } from '@/lib/format';
 import { springs, variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { NEEDS } from '@/mocks/needs';
-import { decideAdaptation, editAdaptation, finishAdaptation, generateAdaptations, getAdaptations, getExam, getNeedCounts } from '@/services/exams';
+import { decideAdaptation, editAdaptation, finishAdaptation, generateAdaptations, getAdaptations, getNeedCounts } from '@/api/adaptations/adaptation.api';
+import { listNeeds } from '@/api/catalog/catalog.store';
+import { getExam } from '@/api/exams/exam.api';
 import type { Adaptation, NeedId } from '@/types/domain';
 import { StageTrack } from '@/features/upload/StageTrack';
 import { coalesce, diffWords } from './diff';
@@ -50,11 +51,11 @@ function ChooseNeeds({ examId, onGenerate }: { examId: string; onGenerate: (need
     <Card>
       <h2 style={{ fontSize: 'var(--text-lg)' }}>Para quais necessidades adaptar?</h2>
       <p className="muted">Já marcamos as necessidades declaradas pela escola nesta turma.</p>
-      <Async query={q} skeleton={<div className="need-grid">{NEEDS.map((n) => <Skeleton key={n.id} h="5rem" r="var(--r-lg)" />)}</div>}>
+      <Async query={q} skeleton={<div className="need-grid">{listNeeds().map((n) => <Skeleton key={n.id} h="5rem" r="var(--r-lg)" />)}</div>}>
         {(counts) => (
           <>
             <div className="need-grid">
-              {NEEDS.map((n) => (
+              {listNeeds().map((n) => (
                 <label key={n.id} className="need">
                   <Checkbox checked={sel?.has(n.id) ?? false} onChange={() => toggle(n.id)} label={n.label} />
                   <span><strong>{n.label}</strong><small>{n.hint}</small><small>{counts[n.id] ? plural(counts[n.id], 'aluno com necessidade declarada', 'alunos com necessidade declarada') : 'Nenhuma declaração nesta turma'}</small></span>
@@ -148,7 +149,7 @@ function Review({ examId, onDone }: { examId: string; onDone: () => void }) {
             </div>
             <div className="adapt-foot" style={{ marginTop: 'var(--s-5)' }}>
               <p className="muted" role="status">{pending ? `${plural(pending, 'adaptação aguarda', 'adaptações aguardam')} a sua decisão` : 'Tudo revisado.'}</p>
-              <Button variant="primary" disabled={pending > 0} loading={finishing} onClick={async () => { setFinishing(true); await finishAdaptation(examId); onDone(); }}>Concluir revisão</Button>
+              <Button variant="primary" disabled={pending > 0} loading={finishing} onClick={async () => { setFinishing(true); try { await finishAdaptation(examId); onDone(); } finally { setFinishing(false); } }}>Concluir revisão</Button>
             </div>
           </>
         );
@@ -199,7 +200,12 @@ export function AdaptPage() {
     setStage(0);
     await new Promise((r) => setTimeout(r, 800));
     setStage(1);
-    await generateAdaptations(examId, needs);
+    try {
+      await generateAdaptations(examId, needs);
+    } catch (error) {
+      setStep('necessidades');
+      throw error;
+    }
     await new Promise((r) => setTimeout(r, 800));
     setStage(2);
     await new Promise((r) => setTimeout(r, 700));

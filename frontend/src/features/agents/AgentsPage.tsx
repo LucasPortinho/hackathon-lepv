@@ -8,7 +8,7 @@ import { Async, Badge, Card, EmptyState, Segmented, Skeleton } from '@/component
 import { relativeTime } from '@/lib/format';
 import { springs, variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { listRuns } from '@/services/activity';
+import { listRuns } from '@/api/agent-runs/agent-run.api';
 import type { AgentId } from '@/types/domain';
 import './agents.css';
 

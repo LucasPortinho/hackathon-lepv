@@ -3,8 +3,8 @@ import { useCrumbs } from '@/components/shell/Crumbs';
 import { PageHeader } from '@/components/shell/PageHeader';
 import { Card, Segmented, Select } from '@/components/ui';
 import { usePrefs } from '@/lib/prefs';
-import { getTeacher } from '@/services/catalog';
-import { getScenario, setScenario, type Scenario } from '@/services/client';
+import { getTeacher } from '@/api/catalog/catalog.store';
+import { getScenario, setScenario, type Scenario } from '@/api/client/scenario';
 import './settings.css';
 
 function Row({ title, hint, children }: { title: string; hint: string; children: React.ReactNode }) {
@@ -41,11 +41,11 @@ export function SettingsPage() {
         </Card>
         <Card>
           <h2>Demonstração</h2>
-          <Row title="Cenário dos dados" hint="Mostra os estados das telas. &quot;Dados parciais&quot; afeta Dashboard, Provas e Alunos. Recarrega a página ao mudar.">
+          <Row title="Cenário dos dados" hint="Mostra os estados das telas sem alterar os dados da API. Recarrega a página ao mudar.">
             <Select
               hideLabel label="Cenário dos dados" value={scenario} style={{ width: '13rem' }}
               onChange={(v) => { setS(v as Scenario); setScenario(v as Scenario); location.reload(); }}
-              options={[{ value: 'normal', label: 'Normal' }, { value: 'lento', label: 'Conexão lenta' }, { value: 'parcial', label: 'Dados parciais' }, { value: 'vazio', label: 'Sem dados' }, { value: 'erro', label: 'Erro ao carregar' }]}
+              options={[{ value: 'normal', label: 'Normal' }, { value: 'lento', label: 'Conexão lenta' }, { value: 'vazio', label: 'Sem dados' }, { value: 'erro', label: 'Erro ao carregar' }]}
             />
           </Row>
         </Card>

@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Async, Button, Crossfade, Sheet, Tooltip } from '@/components/ui';
 import { useQuery } from '@/lib/useQuery';
-import { getStudentDetail } from '@/services/profiles';
+import { getStudentDetail } from '@/api/profiles/profile.api';
 import { ProfileSkeleton, ReviewActions, StudentProfileBody } from './StudentProfile';
 
 interface Props { studentId: string; subjectId: string; onClose: () => void; onStep: (dir: 1 | -1) => void; morphing?: boolean }

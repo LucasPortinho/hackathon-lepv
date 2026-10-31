@@ -10,8 +10,9 @@ import { Async, Badge, Button, ButtonLink, Card, Dialog, EmptyState, ErrorState,
 import { formatDate, plural } from '@/lib/format';
 import { springs, variants } from '@/lib/motion';
 import { useQuery } from '@/lib/useQuery';
-import { classById } from '@/services/catalog';
-import { createGroup, listClassExams, listGroups, moveExam, type ExamWithClass } from '@/services/exams';
+import { classById } from '@/api/catalog/catalog.store';
+import { createGroup, listClassExams, listGroups, moveExam } from '@/api/exams/exam.api';
+import type { ExamWithClass } from '@/types/domain';
 import type { ExamGroup } from '@/types/domain';
 import { StatusBadge } from '@/features/exams/StatusBadge';
 import './classes.css';

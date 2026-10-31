@@ -7,8 +7,8 @@ import { Async, Badge, Card, EmptyState, Select } from '@/components/ui';
 import { TableSkeleton } from '@/features/exams/ExamsPage';
 import { normalize } from '@/lib/format';
 import { useQuery } from '@/lib/useQuery';
-import { listClasses } from '@/services/catalog';
-import { listStudents } from '@/services/profiles';
+import { listClasses } from '@/api/classes/class.api';
+import { listStudents } from '@/api/profiles/profile.api';
 import type { ReviewStatus } from '@/types/domain';
 import '@/features/classes/classes.css';
 
