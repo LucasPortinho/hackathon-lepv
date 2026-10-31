@@ -4,8 +4,8 @@ Alunos e prova já existem na demonstração: **Lei dos Senos e Lei dos Cossenos
 
 ## Como testar
 
-1. Abra a prova e, em "Resolução escaneada", envie `resolucao-do-professor.png`. As 5 questões ficam com gabarito.
-2. Clique em "Enviar provas dos alunos" e envie **ou** `turma-todas-as-folhas.pdf` **ou** os arquivos de `folhas-individuais/`.
+1. Abra a prova e, em "Resolução escaneada", envie [resolucao-do-professor.png](../provas-alunos/resolucao-do-professor.png). As 5 questões ficam com gabarito.
+2. Clique em "Enviar provas dos alunos" e envie **ou** [turma-todas-as-folhas.pdf](../provas-alunos/turma-todas-as-folhas.pdf) **ou** os arquivos de [folhas-individuais/](../provas-alunos/folhas-individuais/).
    Enviar os dois corrige cada aluno duas vezes.
 3. Clique em "Ver correções" para abrir a prova de cada aluno com a correção por questão.
 4. Veja os perfis em Alunos.

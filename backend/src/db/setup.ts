@@ -9,7 +9,7 @@ import { bnccSkillsMigration } from './migrations/0005-bncc-skills';
 // Na ordem das versões: o índice 0 leva da versão 1 para a 2.
 const MIGRATIONS = [creatorMetadataMigration, examAnswerKeysMigration, sheetImagesMigration, bnccSkillsMigration];
 
-// `sqliteTable` não declara STRICT nem triggers: esta é a migração explícita pedida em schema.md.
+// `sqliteTable` não declara STRICT nem triggers: esta é a migração explícita pedida em ../../../manuals/schema.md.
 const withStrict = (statement: string) =>
   statement.startsWith('CREATE TABLE') ? statement.trimEnd().replace(/;?$/, ' STRICT;') : statement;
 

@@ -1,6 +1,6 @@
 # Estrutura de dados
 
-Referência humana de `schema.db`, baseada nas estruturas e fluxos do frontend. O banco contém **36 tabelas, 3 views e 6 triggers**, com `PRAGMA user_version = 2`. O mapeamento Drizzle está em [src/db/schema.ts](src/db/schema.ts).
+Referência humana de `schema.db`, baseada nas estruturas e fluxos do frontend. O banco contém **36 tabelas, 3 views e 6 triggers**, com `PRAGMA user_version = 2`. O mapeamento Drizzle está em [src/db/schema.ts](../backend/src/db/schema.ts).
 
 ## Convenções
 

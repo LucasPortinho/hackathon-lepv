@@ -1,4 +1,4 @@
-// Estrutura de schema.db (user_version = 2). Veja ../../schema.md.
+// Estrutura de schema.db (user_version = 2). Veja ../../../manuals/schema.md.
 // STRICT e triggers não são aplicados por sqliteTable; os metadados/SQL
 // complementares estão ao final deste arquivo e exigem migração explícita.
 import { desc, sql } from 'drizzle-orm';
