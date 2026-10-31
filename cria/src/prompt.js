@@ -10,12 +10,6 @@ Regras:
 - Adeque a dificuldade ao score (1 a 100): score baixo = comece fácil e suba aos poucos;
   score alto = questões mais desafiadoras.
 - Se houver "contexto" do aluno (região, interesses), use-o nos enunciados de forma natural.
-- Se houver neurodivergência, adapte a forma:
-  - TDAH: enunciados curtos, um passo por questão.
-  - TEA: linguagem literal e direta, sem ironia nem metáforas.
-  - dislexia: frases curtas e vocabulário simples.
-  - discalculia: números pequenos no início e apoio passo a passo.
-  - daltonismo: nunca dependa de cor para entender a questão.
 - Escreva em português do Brasil.
 - Cada questão tem resolução curta, para o professor conferir o gabarito.
 

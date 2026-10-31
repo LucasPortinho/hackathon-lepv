@@ -6,18 +6,7 @@
     "score": 40,
     "causa": "tecnica",
     "prerequisito": "operações com frações",
-    "neurodivergencia": null,
     "contexto": "Mora em Manaus; gosta de futebol"
-  },
-  {
-    "aluno": "Bruno",
-    "materia": "Matemática",
-    "competencia": "lei dos senos",
-    "score": 55,
-    "causa": "neurodivergencia",
-    "prerequisito": null,
-    "neurodivergencia": "TDAH",
-    "contexto": null
   },
   {
     "aluno": "Carla",
@@ -26,17 +15,6 @@
     "score": 82,
     "causa": "tecnica",
     "prerequisito": "lei dos senos",
-    "neurodivergencia": null,
     "contexto": "Mora em Porto Alegre"
-  },
-  {
-    "aluno": "Diego",
-    "materia": "Matemática",
-    "competencia": "interpretação de gráficos",
-    "score": 35,
-    "causa": "neurodivergencia",
-    "prerequisito": null,
-    "neurodivergencia": "daltonismo",
-    "contexto": null
   }
 ]

@@ -27,14 +27,13 @@ Não há dependências para instalar.
   "score": 40,
   "causa": "tecnica",
   "prerequisito": "operações com frações",
-  "neurodivergencia": null,
   "contexto": "Mora em Manaus; gosta de futebol"
 }
 ```
 
 - `score`: de 1 a 100.
-- `causa`: `"tecnica"` ou `"neurodivergencia"`.
-- `prerequisito`, `neurodivergencia`, `contexto`: opcionais (`null`).
+- `causa`: `"tecnica"` ou `"neurodivergencia"`. O CRIA só volta ao pré-requisito quando é `"tecnica"`.
+- `prerequisito` e `contexto`: opcionais.
 
 ## Saída
 
