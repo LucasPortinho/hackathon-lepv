@@ -1,7 +1,11 @@
 .shell { display: flex; height: 100dvh; overflow: hidden; }
 .sidebar { flex: none; background: var(--bg-shell); display: flex; flex-direction: column; padding: var(--s-4) var(--s-3); overflow: hidden; border-right: var(--bw-heavy) solid var(--ink); }
 .brand { display: flex; align-items: center; justify-content: space-between; height: 2.5rem; padding-left: var(--s-3); margin-bottom: var(--s-5); }
-.brand strong { font-size: var(--text-xl); font-weight: var(--weight-display); font-stretch: var(--width-display); letter-spacing: var(--tracking-tight); }
+.brand[data-collapsed='true'] { flex-direction: column; justify-content: center; gap: var(--s-2); height: auto; padding-left: 0; }
+.brand-logo { display: flex; align-items: center; gap: var(--s-2); }
+.brand-logo img { display: block; width: auto; height: 2rem; }
+/* The wordmark is a mask, so it follows --ink into the dark theme. */
+.brand-word { display: block; width: 5.25rem; height: 1.2rem; background: var(--ink); mask: url('../../assets/crayon-wordmark.png') center / contain no-repeat; }
 .nav { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-1); }
 .nav-item { position: relative; display: flex; align-items: center; gap: var(--s-3); height: 2.625rem; padding: 0 0.8125rem; color: var(--ink); font-weight: 600; white-space: nowrap; overflow: hidden; }
 .nav-item:focus-visible { outline-offset: -3px; }

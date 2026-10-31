@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { APP_NAME } from './nav';
 
 export interface Crumb { label: string; to?: string }
 
@@ -16,7 +17,7 @@ export function useCrumbs(crumbs: Crumb[]) {
   const key = crumbs.map((c) => c.label).join('/');
   useEffect(() => {
     set(crumbs);
-    document.title = `${crumbs.at(-1)?.label ?? ''} · Aula`;
+    document.title = `${crumbs.at(-1)?.label ?? ''} · ${APP_NAME}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 }

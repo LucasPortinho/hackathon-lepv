@@ -7,6 +7,7 @@ import { initials } from '@/lib/format';
 import { springs } from '@/lib/motion';
 import { usePrefs } from '@/lib/prefs';
 import { getTeacher } from '@/api/catalog/catalog.store';
+import crayonMark from '@/assets/crayon-mark.png';
 import { APP_NAME, NAV } from './nav';
 
 const label = { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.12 } };
@@ -27,8 +28,11 @@ export function Sidebar() {
 
   return (
     <motion.nav className="sidebar" aria-label="Principal" initial={false} animate={{ width: collapsed ? 72 : 256 }} transition={springs.snappy}>
-      <div className="brand" style={collapsed ? { paddingLeft: 0, justifyContent: 'center' } : undefined}>
-        {!collapsed && <strong>{APP_NAME}</strong>}
+      <div className="brand" data-collapsed={collapsed}>
+        <span className="brand-logo" role="img" aria-label={APP_NAME}>
+          <img src={crayonMark} alt="" />
+          {!collapsed && <i className="brand-word" />}
+        </span>
         {!narrow && (
           <Tooltip label={toggleLabel} side="right">
             <Button variant="ghost" size="sm" icon aria-label={toggleLabel} aria-expanded={!collapsed} onClick={() => set('sidebarCollapsed', !prefs.sidebarCollapsed)}>

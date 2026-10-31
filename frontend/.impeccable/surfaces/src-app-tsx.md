@@ -5,10 +5,10 @@ primary_target: "src/App.tsx"
 related_targets: []
 ---
 
-# Surface: Aula app (whole frontend)
+# Surface: Crayon app (whole frontend)
 
 Mode: Operate. Audience, job and constraints live in PRODUCT.md (frontend/.impeccable/PRODUCT.md).
-Working name "Aula" is a placeholder until the product is named.
+The product is named Crayon; the logo lives in src/assets.
 
 ## Decisions confirmed by the user
 - AD answers: print/export, then upload; no student UI.
