@@ -4,7 +4,7 @@ import * as diagnosticRepository from '../../repositories/diagnostic.repository'
 import * as examRepository from '../../repositories/exam.repository';
 import * as notificationRepository from '../../repositories/notification.repository';
 import * as uploadRepository from '../../repositories/upload.repository';
-import { readSheets } from '../../services/agents/correction.agent';
+import { readSheets } from '../../services/agents/correction.rules';
 import { advanceDiagnostic } from '../../services/diagnostics/diagnostic-agent.service';
 import { initialSteps } from '../../services/diagnostics/diagnostic.service';
 import { refreshProfile } from '../../services/profiles/profile.service';
@@ -17,7 +17,7 @@ import { QUESTION_BANK } from './data/questions';
 import { scores } from './data/scores';
 import { students } from './data/students';
 
-const DEFAULT_SUBJECT_ID = 'mat';
+export const DEFAULT_SUBJECT_ID = 'mat';
 const DIAGNOSTIC_ID = 'd-cossenos';
 const AGENT_STAGES = 3;
 
@@ -67,12 +67,12 @@ function seedReadSheets() {
 }
 
 /** A avaliação de exemplo passa pelo pipeline real e fica parada na revisão do professor. */
-function seedDiagnostic() {
+async function seedDiagnostic() {
   diagnosticRepository.insert({
     id: DIAGNOSTIC_ID, title: 'Lei dos Cossenos', classId: 'c-2b', subjectId: DEFAULT_SUBJECT_ID,
     subtopicIds: ['st-cossenos'], createdAt: DIAGNOSTIC_CREATED_AT(), steps: initialSteps(),
   });
-  for (let i = 0; i < AGENT_STAGES; i++) advanceDiagnostic(DEMO_TEACHER_ID, DIAGNOSTIC_ID);
+  for (let i = 0; i < AGENT_STAGES; i++) await advanceDiagnostic(DEMO_TEACHER_ID, DIAGNOSTIC_ID, { useAgents: false });
 }
 
 function seedActivity() {
@@ -80,7 +80,7 @@ function seedActivity() {
   notifications().forEach((notification) => notificationRepository.insert({ ...notification, teacherId: DEMO_TEACHER_ID }));
 }
 
-export function seedDemo() {
+export async function seedDemo() {
   transaction(() => {
     seedCatalog();
     seedClasses();
@@ -89,15 +89,15 @@ export function seedDemo() {
     seedExams();
     seedReadSheets();
     students.forEach((student) => refreshProfile(student, DEFAULT_SUBJECT_ID));
-    seedDiagnostic();
     seedActivity();
   });
+  await seedDiagnostic();
 }
 
 export async function resetDemoDatabase() {
   dropSchema();
   await createSchema();
-  seedDemo();
+  await seedDemo();
 }
 
 /** Prepara o banco no primeiro start e preserva os dados nos seguintes. */

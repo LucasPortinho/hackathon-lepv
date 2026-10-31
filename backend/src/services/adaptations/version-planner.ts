@@ -1,7 +1,7 @@
 import { needIds } from '../../db/schema';
 import { newId } from '../../lib/ids';
 import type { Adaptation, ExamVersion, NeedId, Question, Student } from '../../types/domain';
-import { adaptQuestion } from '../agents/adaptation.agent';
+import { adaptQuestion } from '../agents/adaptation.rules';
 
 type Labeler = (id: NeedId) => string;
 
@@ -26,10 +26,13 @@ export function planVersions(students: Student[], chosen: NeedId[], needLabel: L
   return [...versions.values()];
 }
 
-function adaptForVersion(examId: string, version: ExamVersion, question: Question, needLabel: Labeler) {
-  const result = adaptQuestion(question, version.needs, needLabel);
-  return result ? [{ id: newId('a'), examId, questionId: question.id, versionId: version.id, original: question.statement, adapted: result.text, rationale: result.why }] : [];
-}
+export type AdaptationRow = Omit<Adaptation, 'needs' | 'decision'>;
 
-export const buildAdaptations = (examId: string, versions: ExamVersion[], questions: Question[], needLabel: Labeler): Omit<Adaptation, 'needs' | 'decision'>[] =>
-  versions.flatMap((v) => questions.flatMap((q) => adaptForVersion(examId, v, q, needLabel)));
+export const toAdaptationRow = (examId: string, version: ExamVersion, question: Question, result: { text: string; why: string }): AdaptationRow =>
+  ({ id: newId('a'), examId, questionId: question.id, versionId: version.id, original: question.statement, adapted: result.text, rationale: result.why });
+
+export const ruleAdaptations = (examId: string, version: ExamVersion, questions: Question[], needLabel: Labeler) =>
+  questions.flatMap((q) => {
+    const result = adaptQuestion(q, version.needs, needLabel);
+    return result ? [toAdaptationRow(examId, version, q, result)] : [];
+  });

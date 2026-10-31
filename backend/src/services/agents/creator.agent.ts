@@ -1,4 +1,4 @@
-import { callModel, type ModelFn } from '../../lib/llm';
+import { callModel, parseJson, type ModelFn } from '../../lib/llm';
 import type { GapReading } from '../../types/domain';
 import { ValidationError } from '../shared/errors';
 import { buildUserMessage, SYSTEM_PROMPT } from './creator.prompt';
@@ -54,12 +54,8 @@ function validateInput(input: CreatorInput) {
 
 interface RawQuestion { enunciado?: string; tipo?: string; alternativas?: string[]; gabarito?: string; resolucao?: string; dificuldade?: string }
 
-/** O modelo às vezes cerca o JSON com ``` ou escreve texto antes: extraímos só o JSON. */
 function parseQuestions(text: string): CreatedQuestion[] {
-  const start = text.indexOf('{');
-  const end = text.lastIndexOf('}');
-  if (start === -1 || end === -1) throw new Error('A resposta não contém JSON.');
-  const raw = (JSON.parse(text.slice(start, end + 1)) as { questoes?: RawQuestion[] }).questoes;
+  const raw = parseJson<{ questoes?: RawQuestion[] }>(text).questoes;
   if (!Array.isArray(raw) || raw.length === 0) throw new Error('Resposta sem lista de questões.');
   return raw.map((q) => {
     if (!q.enunciado || !q.tipo || !q.gabarito || !q.resolucao || !q.dificuldade) throw new Error('Questão incompleta.');

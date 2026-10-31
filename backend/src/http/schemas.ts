@@ -64,7 +64,13 @@ const file = z.object({
   name: z.string().trim().min(1).max(255), size: z.number().int().nonnegative().safe(),
   kind: z.enum(['prova', 'gabarito']), storagePath: z.string().min(1).max(2048).optional(),
 }).strict();
-export const batchBody = z.object({ examId: id, files: z.array(file).min(1).max(100) }).strict();
+const files = z.array(file).min(1).max(100);
+export const batchBody = z.union([
+  z.object({ examId: id, files }).strict(),
+  z.object({ diagnosticId: id, files }).strict(),
+]);
+export const fileParams = idParams.extend({ fileId: id });
+export const fileContent = z.custom<Buffer>((value) => Buffer.isBuffer(value) && value.length > 0, 'Envie o conteúdo do arquivo.');
 const sheet = z.object({
   studentId: id.optional(), studentName: z.string().trim().min(1).max(500).optional(),
   readStatus: z.enum(sheetReadStatuses), partialReason: z.string().max(20000).optional(),

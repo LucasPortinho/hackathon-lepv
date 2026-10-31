@@ -18,6 +18,10 @@ export const listByTeacher = (teacherId: string): Score[] =>
     .innerJoin(classes, eq(classes.id, students.classId))
     .where(eq(classes.teacherId, teacherId)).all();
 
+export const upsert = (score: Score & { value: number }) =>
+  db.insert(scores).values({ ...score, updatedAt: nowIso() })
+    .onConflictDoUpdate({ target: [scores.studentId, scores.subtopicId, scores.periodId], set: { value: score.value, updatedAt: nowIso() } }).run();
+
 export const updateValue = (score: Score & { value: number }) =>
   db.update(scores).set({ value: score.value, updatedAt: nowIso() })
     .where(and(eq(scores.studentId, score.studentId), eq(scores.subtopicId, score.subtopicId), eq(scores.periodId, score.periodId))).run();

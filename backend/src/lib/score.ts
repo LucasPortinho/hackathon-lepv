@@ -13,6 +13,9 @@ export function meanOrNull(values: (number | null)[]) {
   return known.length ? mean(known) : null;
 }
 
+/** Uma avaliação isolada entra pela média com a nota anterior: não apaga o histórico do aluno. */
+export const blendScore = (previous: number | null, result: number) => (previous === null ? result : mean([previous, result]));
+
 export type ScoreLookup = (studentId: string, subtopicId: string, periodId: string) => number | null;
 
 const scoreKey = (studentId: string, subtopicId: string, periodId: string) => `${studentId}:${subtopicId}:${periodId}`;

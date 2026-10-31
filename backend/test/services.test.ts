@@ -129,15 +129,15 @@ describe('provas e adaptações', () => {
     assert.throws(() => exams.getExam('t2', exam.id), NotFoundError);
   });
 
-  it('percorre geração, revisão e conclusão', () => {
+  it('percorre geração, revisão e conclusão', async () => {
     const exam = exams.createExam(T, newExam);
     assert.deepEqual(adaptations.getNeedCounts(T, exam.id), { dislexia: 1, tdah: 2 });
 
-    const versions = adaptations.generateAdaptations(T, exam.id, ['tdah', 'dislexia']);
+    const versions = await adaptations.generateAdaptations(T, exam.id, ['tdah', 'dislexia']);
     assert.deepEqual(versions.map((v) => v.id), ['v-tdah', 'v-dislexia', 'v-tdah+dislexia']);
     assert.deepEqual(versions[2].studentIds, ['ana']);
 
-    adaptations.generateAdaptations(T, exam.id, ['tdah', 'dislexia']);
+    await adaptations.generateAdaptations(T, exam.id, ['tdah', 'dislexia']);
     const data = adaptations.getAdaptations(T, exam.id);
     assert.equal(data.exam.status, 'em_adaptacao');
     assert.equal(data.studentNames.ana, 'Ana Moreira');
@@ -159,7 +159,7 @@ describe('provas e adaptações', () => {
     assert.equal(done.status, 'pronta');
     assert.deepEqual(done.versions[0], { id: 'v-original', label: 'Original', needs: [], studentIds: ['carla', 'dani'] });
     assert.equal(done.versions.length, 4);
-    assert.throws(() => adaptations.generateAdaptations(T, exam.id, ['tdah']), ConflictError);
+    await assert.rejects(adaptations.generateAdaptations(T, exam.id, ['tdah']), ConflictError);
     assert.throws(() => adaptations.decideAdaptation(T, first.id, 'aceita'), ConflictError);
     assert.throws(() => adaptations.decideAdaptation('t2', first.id, 'aceita'), NotFoundError);
 
@@ -180,22 +180,22 @@ describe('avaliações diagnósticas', () => {
     assert.deepEqual(diagnostics.suggestSubtopics(T, 'c1', 'mat').map((s) => s.subtopic.id), ['st-cossenos', 'st-novo', 'st-senos']);
   });
 
-  it('percorre o fluxo completo e devolve os perfis para revisão', () => {
+  it('percorre o fluxo completo e devolve os perfis para revisão', async () => {
     profileReview.approveProfile(T, 'bruno', 'mat');
     const created = diagnostics.createDiagnostic(T, 'c1', ['st-cossenos']);
     assert.equal(created.title, 'Lei dos Cossenos');
     assert.equal(created.steps[0].status, 'executando');
     assert.throws(() => diagnosticReview.approveAll(T, created.id), ConflictError);
 
-    const adapted = diagnosticAgent.advanceDiagnostic(T, created.id);
-    assert.equal(adapted.stage, 'adaptacao');
+    const adapted = await diagnosticAgent.advanceDiagnostic(T, created.id);
+    assert.equal(adapted.stage, 'criador');
     assert.deepEqual(adapted.perStudent.map((p) => p.studentId), ['ana', 'bruno', 'dani']);
     assert.equal(adapted.perStudent[0].items[0].adaptedFor, 'dislexia');
     assert.equal(adapted.perStudent[2].items[0].adaptedFor, undefined);
 
-    assert.equal(diagnosticAgent.advanceDiagnostic(T, created.id).stage, 'criador');
-    assert.equal(diagnosticAgent.advanceDiagnostic(T, created.id).stage, 'revisao');
-    assert.throws(() => diagnosticAgent.advanceDiagnostic(T, created.id), ConflictError);
+    assert.equal((await diagnosticAgent.advanceDiagnostic(T, created.id)).stage, 'adaptacao');
+    assert.equal((await diagnosticAgent.advanceDiagnostic(T, created.id)).stage, 'revisao');
+    await assert.rejects(diagnosticAgent.advanceDiagnostic(T, created.id), ConflictError);
     assert.throws(() => diagnosticReview.publishDiagnostic(T, created.id), ConflictError);
     assert.throws(() => diagnosticReview.approveForStudent(T, created.id, 'carla', true), ValidationError);
 
@@ -218,19 +218,21 @@ describe('avaliações diagnósticas', () => {
     assert.ok(notifications.listNotifications(T).some((n) => n.title === 'Avaliação pronta para revisão'));
   });
 
-  it('pula a adaptação quando o grupo não tem necessidades declaradas', () => {
+  it('pula a adaptação quando o grupo não tem necessidades declaradas', async () => {
     const d = diagnostics.createDiagnostic(T, 'c1', ['st-senos']);
-    const next = diagnosticAgent.advanceDiagnostic(T, d.id);
-    assert.equal(next.stage, 'criador');
-    assert.deepEqual(next.perStudent.map((p) => p.studentId), ['dani']);
-    assert.equal(next.steps[1].status, 'ignorado');
+    const created = await diagnosticAgent.advanceDiagnostic(T, d.id);
+    assert.equal(created.stage, 'criador');
+    assert.deepEqual(created.perStudent.map((p) => p.studentId), ['dani']);
+    const next = await diagnosticAgent.advanceDiagnostic(T, d.id);
+    assert.equal(next.stage, 'revisao');
+    assert.equal(next.steps.find((s) => s.id === 'adaptacao')?.status, 'ignorado');
   });
 });
 
 describe('envios', () => {
-  it('rejeita prova em revisão de adaptações', () => {
+  it('rejeita prova em revisão de adaptações', async () => {
     const exam = exams.createExam(T, newExam);
-    adaptations.generateAdaptations(T, exam.id, ['tdah']);
+    await adaptations.generateAdaptations(T, exam.id, ['tdah']);
     assert.throws(() => uploads.createBatch(T, exam.id, [{ name: 'a.pdf', size: 1, kind: 'gabarito' }]), ConflictError);
   });
 

@@ -100,9 +100,7 @@ existente de gerar e salvar um perfil quando ainda não há um.
 | `POST /uploads/batch/:id/sheets` | `{ "sheets": [...] }` | `204`, sem corpo |
 
 Esses POSTs delegam aos services atuais. A geração de adaptações e o avanço dos
-agentes executam seus efeitos existentes no banco, como criar versões, registrar
-atividades e avançar etapas. Não há jobs em background: responder `202` daria a
-entender um processamento assíncrono que os services não implementam.
+agentes aguardam o modelo e respondem ao terminar, o que pode levar minutos em turmas grandes.
 
 Uma prova aceita questões existentes e manuais na mesma lista, como no frontend:
 
@@ -136,10 +134,7 @@ Metadados de arquivo:
 { "name": "respostas.pdf", "size": 2048, "kind": "gabarito", "storagePath": "demo/respostas.pdf" }
 ```
 
-`storagePath` é opcional. O serviço existente registra metadados e valida a
-extensão do nome; não recebe nem grava os bytes de um arquivo. `progress = 100`
-nessa resposta é o comportamento do service da demo, não uma confirmação de
-upload binário. `kind` aceita `prova` ou `gabarito`.
+`storagePath` é opcional. `kind` aceita `prova` ou `gabarito`; apenas os arquivos `gabarito` são corrigidos.
 
 Folha já interpretada:
 
@@ -153,7 +148,7 @@ Folha já interpretada:
 ```
 
 `readStatus` aceita `pendente`, `completa`, `parcial` e `erro`.
-Não há OCR ou inferência de respostas na camada HTTP.
+Essa rota registra folhas já interpretadas por outro sistema; ela não chama o agente.
 
 ## Atualizações
 
@@ -172,15 +167,39 @@ Não há OCR ou inferência de respostas na camada HTTP.
 | `PATCH /notifications/:id/read` | Sem corpo | `204` |
 | `PATCH /notifications/read` | Sem corpo | `204`; marca todas como lidas |
 
-`process` executa o agente de correção simulado (`services/agents/correction.agent.ts`):
-os bytes dos arquivos não são enviados nem lidos, e o resultado é uma folha por aluno
-da turma, com leituras parciais determinísticas.
+`process` lê as folhas enviadas com o agente de correção e devolve o resumo. Lotes de
+prova e de diagnóstico usam a mesma rota. Antes dele, envie cada arquivo:
+
+| Método e caminho | Corpo | Retorno |
+| --- | --- | --- |
+| `POST /uploads/batch` | `{ "examId": "e1", "files": [...] }` ou `{ "diagnosticId": "d1", "files": [...] }` | `201`, lote com o `id` de cada arquivo |
+| `PUT /uploads/batch/:id/files/:fileId/content` | Bytes do arquivo, até 25 MB | `204` |
+
+## Agentes
+
+Os agentes usam o modelo de `FEATHERLESS_MODEL` (`backend/.env`). Sem chave, ou com
+`AGENTS_MODE=regras`, usam regras locais. Chamadas ao modelo nunca ficam dentro de
+transações, e pedidos repetidos reaproveitam a execução em andamento.
+
+| Agente | Quando roda | Se o modelo falhar |
+| --- | --- | --- |
+| Pedagógico | Etapa do diagnóstico; em segundo plano no start, após correções e devolutivas | Mantém o rascunho das regras |
+| Criador | Etapa do diagnóstico, um conjunto de questões por aluno | Mantém as questões do banco |
+| Adaptação | `POST /exams/:id/adapt` e etapa do diagnóstico | Usa as regras de adaptação |
+| Correção | `POST /uploads/batch/:id/process` | Marca a folha como erro; nunca inventa nota |
+
+Nota, variação e quais lacunas existem são calculadas em código. Uma necessidade só é
+citada se tiver sido declarada, e uma nota só vai para o aluno com correspondência
+única de nome. O diagnóstico passa por Pedagógico, Criador e Adaptação, nessa ordem,
+porque só se adapta o que já existe. Cada página enviada é a folha de um aluno, e o
+resultado entra na nota do período atual pela média com a nota anterior.
+
+`npm run demo:sheets [provaId] [diagnosticoId]` gera folhas fictícias em `demo-sheets/`.
 
 ## Fora do escopo da demonstração
 
-Login, cadastro de turmas e alunos, gravação manual de notas, inclusão de lacunas,
-inclusão de arquivos em um lote existente, consulta de status por HTTP e envio de
-arquivos de diagnósticos.
+Login, cadastro de turmas e alunos, gravação manual de notas, inclusão de lacunas e
+consulta de status do lote por HTTP.
 
 ## Verificação
 

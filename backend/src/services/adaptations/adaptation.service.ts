@@ -1,17 +1,21 @@
 import { transaction } from '../../db';
 import { adaptationDecisions, needIds } from '../../db/schema';
+import { AGENT_CONCURRENCY, mapLimit, singleFlight } from '../../lib/async';
 import { unique } from '../../lib/collections';
+import { agentsEnabled } from '../../lib/llm';
 import * as adaptationRepository from '../../repositories/adaptation.repository';
+import * as catalogRepository from '../../repositories/catalog.repository';
 import * as examRepository from '../../repositories/exam.repository';
 import * as questionRepository from '../../repositories/question.repository';
 import * as studentRepository from '../../repositories/student.repository';
-import type { AdaptationDecision, Exam, ExamVersion, NeedId } from '../../types/domain';
+import type { AdaptationDecision, Exam, ExamVersion, Need, NeedId, Question } from '../../types/domain';
+import { adaptQuestions } from '../agents/adaptation.agent';
 import { recordRun } from '../agent-runs/agent-run.service';
 import { needLabeler } from '../catalog/catalog.service';
 import { notify } from '../notifications/notification.service';
 import { ConflictError, NotFoundError, ValidationError } from '../shared/errors';
 import { requireExam } from '../shared/guards';
-import { buildAdaptations, needsLabel, planVersions } from './version-planner';
+import { needsLabel, planVersions, ruleAdaptations, toAdaptationRow, type AdaptationRow } from './version-planner';
 
 // As versões adaptadas começam na posição 1: a original entra na 0 ao concluir a revisão.
 const ORIGINAL_POSITION = 0;
@@ -39,27 +43,53 @@ function replaceVersions(examId: string, versions: ExamVersion[]) {
   versions.forEach((v, i) => examRepository.insertVersion(examId, v, FIRST_ADAPTED_POSITION + i));
 }
 
-export function generateAdaptations(teacherId: string, examId: string, needs: NeedId[]) {
+const FALLBACK_NOTE = ' Parte do texto veio das regras de reserva, porque o modelo não respondeu.';
+
+interface VersionResult { rows: AdaptationRow[]; usedRules: boolean }
+
+async function adaptVersion(examId: string, version: ExamVersion, questions: Question[], catalog: Need[]): Promise<VersionResult> {
+  const needLabel = needLabeler();
+  // Versão sem aluno não justifica uma chamada ao modelo.
+  if (!agentsEnabled() || !version.studentIds.length) return { rows: ruleAdaptations(examId, version, questions, needLabel), usedRules: false };
+  try {
+    const needs = catalog.filter((n) => version.needs.includes(n.id));
+    const adapted = await adaptQuestions(questions, needs);
+    return { rows: questions.flatMap((q, i) => (adapted[i] ? [toAdaptationRow(examId, version, q, adapted[i])] : [])), usedRules: false };
+  } catch (error) {
+    console.error('Agente de adaptação falhou:', error);
+    return { rows: ruleAdaptations(examId, version, questions, needLabel), usedRules: true };
+  }
+}
+
+function saveAdaptations(teacherId: string, exam: Exam, versions: ExamVersion[], results: VersionResult[], summary: string) {
+  const fallback = results.some((r) => r.usedRules);
+  transaction(() => {
+    replaceVersions(exam.id, versions);
+    adaptationRepository.insertMany(results.flatMap((r) => r.rows));
+    examRepository.setStatus(exam.id, 'em_adaptacao');
+    recordRun({
+      teacherId, examId: exam.id, agent: 'adaptacao', status: 'atencao', summary,
+      detail: `Aguardando a sua revisão.${fallback ? FALLBACK_NOTE : ''}`,
+      link: { label: 'Revisar', to: `/provas/${exam.id}/adaptar` },
+    });
+  });
+}
+
+async function runAdaptation(teacherId: string, exam: Exam, chosen: NeedId[]) {
+  const versions = planVersions(studentRepository.listByClass(exam.classId), chosen, needLabeler());
+  const questions = questionRepository.findByIds(exam.questionIds);
+  const catalog = catalogRepository.listNeeds();
+  const results = await mapLimit(versions, AGENT_CONCURRENCY, (v) => adaptVersion(exam.id, v, questions, catalog));
+  requireGeneratable(requireExam(teacherId, exam.id));
+  saveAdaptations(teacherId, exam, versions, results, `Adaptou "${exam.title}" para ${needsLabel(chosen, needLabeler())}`);
+  return versions;
+}
+
+export async function generateAdaptations(teacherId: string, examId: string, needs: NeedId[]) {
   const exam = requireExam(teacherId, examId);
   requireGeneratable(exam);
   validateNeeds(needs);
-
-  const chosen = unique(needs);
-  const needLabel = needLabeler();
-  const versions = planVersions(studentRepository.listByClass(exam.classId), chosen, needLabel);
-  const adaptations = buildAdaptations(examId, versions, questionRepository.findByIds(exam.questionIds), needLabel);
-
-  transaction(() => {
-    replaceVersions(examId, versions);
-    adaptationRepository.insertMany(adaptations);
-    examRepository.setStatus(examId, 'em_adaptacao');
-    recordRun({
-      teacherId, examId, agent: 'adaptacao', status: 'atencao',
-      summary: `Adaptou "${exam.title}" para ${needsLabel(chosen, needLabel)}`, detail: 'Aguardando a sua revisão.',
-      link: { label: 'Revisar', to: `/provas/${examId}/adaptar` },
-    });
-  });
-  return versions;
+  return singleFlight(`adaptation:${examId}`, () => runAdaptation(teacherId, exam, unique(needs)));
 }
 
 export function getAdaptations(teacherId: string, examId: string) {

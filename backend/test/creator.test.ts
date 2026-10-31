@@ -41,7 +41,7 @@ describe('metadados do CRIA e pré-requisitos do PED', () => {
     }), ValidationError);
   });
 
-  it('preserva a informação do PED até o contexto e os itens do CRIA', () => {
+  it('preserva a informação do PED até o contexto e os itens do CRIA', async () => {
     const profile = profiles.getStudentDetail(T, 'ana', 'mat').profile;
     const gap = profile.gaps.find((gap) => gap.subtopicId === 'st-cossenos')!;
     assert.ok(gap.prerequisite);
@@ -52,11 +52,11 @@ describe('metadados do CRIA e pré-requisitos do PED', () => {
     db.update(questions).set(metadata).where(eq(questions.id, 'q1')).run();
     const diagnostic = diagnostics.createDiagnostic(T, 'c1', ['st-cossenos']);
     assert.throws(() => saveCreatorItems(T, diagnostic.id, 'ana', []), ConflictError);
-    const pedagogical = advanceDiagnostic(T, diagnostic.id);
+    const pedagogical = await advanceDiagnostic(T, diagnostic.id);
     assert.equal(pedagogical.perStudent.find((plan) => plan.studentId === 'ana')!.items[0].prerequisite, gap.prerequisite);
     assert.equal(pedagogical.perStudent.find((plan) => plan.studentId === 'dani')!.items.find((item) => item.id === 'dani-q1')!.checkResult, 'ok');
     assert.equal(pedagogical.perStudent.find((plan) => plan.studentId === 'ana')!.items.find((item) => item.id === 'ana-q1')!.checkResult, 'nao_verificavel');
-    advanceDiagnostic(T, diagnostic.id);
+    await advanceDiagnostic(T, diagnostic.id);
     const context = getCreatorContext(T, diagnostic.id);
     assert.equal(context.students.find((row) => row.student.id === 'ana')!.gaps[0].prerequisite, gap.prerequisite);
     const item = { id: 'cria-1', subtopicId: 'st-cossenos', statement: 'Resolva x + 2 = 4.', ...metadata };
@@ -64,7 +64,7 @@ describe('metadados do CRIA e pré-requisitos do PED', () => {
     assert.equal(saved.items[0].prerequisite, gap.prerequisite);
     assert.deepEqual(saved.items[0].alternatives, metadata.alternatives);
     assert.equal(saved.items[0].checkResult, 'ok');
-    advanceDiagnostic(T, diagnostic.id);
+    await advanceDiagnostic(T, diagnostic.id);
     approveForStudent(T, diagnostic.id, 'ana', true);
     assert.equal(saveCreatorItems(T, diagnostic.id, 'ana', [{ ...item, checkResult: 'divergente' }]).approved, false);
     assert.equal(diagnostics.getDiagnostic(T, diagnostic.id).diagnostic.perStudent.find((plan) => plan.studentId === 'ana')!.items[0].checkResult, 'divergente');

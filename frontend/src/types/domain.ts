@@ -147,6 +147,13 @@ export interface DiagnosticItem {
   subtopicId: ID;
   statement: string;
   adaptedFor?: NeedId;
+  alternatives?: string[];
+  answerKey?: string;
+  solution?: string;
+  difficulty?: 'facil' | 'media' | 'dificil';
+  /** Conferência automática do gabarito pelo agente criador. */
+  checkResult?: 'ok' | 'divergente' | 'nao_verificavel';
+  prerequisite?: string;
 }
 
 export interface DiagnosticForStudent {

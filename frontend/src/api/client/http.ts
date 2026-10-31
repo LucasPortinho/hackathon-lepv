@@ -36,6 +36,12 @@ export async function send<T>(method: Method, path: string, body?: unknown): Pro
   return (response.status === 204 ? undefined : await response.json()) as T;
 }
 
+export async function sendFile(path: string, file: File) {
+  const response = await fetch(BASE + path, { method: 'PUT', headers: { 'Content-Type': file.type || 'application/octet-stream' }, body: file })
+    .catch(() => { throw new ApiError('Não foi possível enviar o arquivo.', 0, 'NETWORK_ERROR'); });
+  if (!response.ok) throw await toApiError(response);
+}
+
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /** Leitura das telas. Os cenários mostram carregamento, erro e vazio sob demanda. */
