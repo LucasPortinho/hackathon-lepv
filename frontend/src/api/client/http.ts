@@ -36,10 +36,11 @@ export async function send<T>(method: Method, path: string, body?: unknown): Pro
   return (response.status === 204 ? undefined : await response.json()) as T;
 }
 
-export async function sendFile(path: string, file: File) {
+export async function sendFile<T = void>(path: string, file: File): Promise<T> {
   const response = await fetch(BASE + path, { method: 'PUT', headers: { 'Content-Type': file.type || 'application/octet-stream' }, body: file })
     .catch(() => { throw new ApiError('Não foi possível enviar o arquivo.', 0, 'NETWORK_ERROR'); });
   if (!response.ok) throw await toApiError(response);
+  return (response.status === 204 ? undefined : await response.json()) as T;
 }
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

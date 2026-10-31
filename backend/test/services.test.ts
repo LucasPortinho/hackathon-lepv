@@ -233,12 +233,12 @@ describe('envios', () => {
   it('rejeita prova em revisão de adaptações', async () => {
     const exam = exams.createExam(T, newExam);
     await adaptations.generateAdaptations(T, exam.id, ['tdah']);
-    assert.throws(() => uploads.createBatch(T, exam.id, [{ name: 'a.pdf', size: 1, kind: 'gabarito' }]), ConflictError);
+    assert.throws(() => uploads.createBatch(T, exam.id, [{ name: 'a.pdf', size: 1, kind: 'respostas' }]), ConflictError);
   });
 
   it('conta folhas reais, marca a prova como corrigida e refaz os perfis', () => {
     const exam = exams.createExam(T, newExam);
-    const batch = uploads.createBatch(T, exam.id, [{ name: 'a.pdf', size: 10, kind: 'gabarito' }, { name: 'b.exe', size: 1, kind: 'prova' }]);
+    const batch = uploads.createBatch(T, exam.id, [{ name: 'a.pdf', size: 10, kind: 'respostas' }, { name: 'b.exe', size: 1, kind: 'prova' }]);
     assert.equal(batch.files[1].error, 'Formato não aceito. Use PDF, PNG ou JPG.');
     assert.throws(() => uploads.recordSheets(T, batch.id, [{ studentId: 'edu', readStatus: 'completa' }]), NotFoundError);
 

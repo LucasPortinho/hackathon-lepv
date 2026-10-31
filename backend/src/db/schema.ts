@@ -23,7 +23,8 @@ export const diagnosticStages = ["pedagogico", "adaptacao", "criador", "revisao"
 export const diagnosticStepIds = ["pedagogico", "adaptacao", "criador", "respostas", "devolutiva"] as const;
 export const stepStatuses = ["pendente", "executando", "concluido", "ignorado"] as const;
 export const uploadPhases = ["envio", "processando", "resultado"] as const;
-export const uploadFileKinds = ["prova", "gabarito"] as const;
+export const uploadFileKinds = ["prova", "respostas"] as const;
+export const examKeySources = ["professor", "resolucao"] as const;
 export const sheetReadStatuses = ["pendente", "completa", "parcial", "erro"] as const;
 export const agentIds = ["pedagogico", "adaptacao", "criador", "correcao"] as const;
 export const agentRunStatuses = ["pendente", "executando", "concluido", "atencao"] as const;
@@ -290,6 +291,10 @@ export const examQuestions = sqliteTable("exam_questions", {
   examId: text("exam_id").notNull(),
   questionId: text("question_id").notNull(),
   position: integer("position").notNull(),
+  // Gabarito desta prova: a questão do banco é compartilhada e não recebe o que o professor informa aqui.
+  answerKey: text("answer_key"),
+  solution: text("solution"),
+  keySource: text("key_source", { enum: examKeySources }),
 }, (table) => [
   primaryKey({ columns: [table.examId, table.questionId] }),
   unique("exam_questions_exam_id_position_unique").on(table.examId, table.position),
@@ -302,6 +307,7 @@ export const examQuestions = sqliteTable("exam_questions", {
     foreignColumns: [exams.id],
   }).onDelete("cascade"),
   check("exam_questions_check_1", sql`position >= 0`),
+  check("exam_questions_key_source_valid", sql`key_source IN ('professor', 'resolucao')`),
   index("exam_questions_question_idx").on(table.questionId),
 ]);
 
@@ -423,6 +429,29 @@ export const profileStrengths = sqliteTable("profile_strengths", {
     foreignColumns: [studentPedagogicalProfiles.studentId, studentPedagogicalProfiles.subjectId],
   }).onDelete("cascade"),
   check("profile_strengths_check_1", sql`position >= 0`),
+]);
+
+// Memória do perfil: guarda o que o professor revisou antes de um novo resultado substituir o perfil atual.
+export const profileHistory = sqliteTable("profile_history", {
+  id: text("id").primaryKey().notNull(),
+  studentId: text("student_id").notNull(),
+  subjectId: text("subject_id").notNull(),
+  overall: real("overall").notNull(),
+  summary: text("summary").notNull(),
+  competencies: text("competencies", { mode: "json" }).$type<string[]>().notNull(),
+  review: text("review", { enum: reviewStatuses }).notNull(),
+  recordedAt: text("recorded_at").notNull(),
+}, (table) => [
+  foreignKey({
+    columns: [table.subjectId],
+    foreignColumns: [subjects.id],
+  }).onDelete("restrict"),
+  foreignKey({
+    columns: [table.studentId],
+    foreignColumns: [students.id],
+  }).onDelete("cascade"),
+  check("profile_history_review_valid", sql`review IN ('aprovado', 'editado')`),
+  index("profile_history_student_idx").on(table.studentId, table.subjectId, table.recordedAt),
 ]);
 
 export const competencyGaps = sqliteTable("competency_gaps", {
@@ -634,7 +663,7 @@ export const uploadFiles = sqliteTable("upload_files", {
     foreignColumns: [uploadBatches.id],
   }).onDelete("cascade"),
   check("upload_files_check_1", sql`size >= 0`),
-  check("upload_files_check_2", sql`kind IN ('prova', 'gabarito')`),
+  check("upload_files_check_2", sql`kind IN ('prova', 'respostas')`),
   check("upload_files_check_3", sql`progress BETWEEN 0 AND 100`),
   index("upload_files_batch_idx").on(table.batchId),
 ]);
@@ -837,7 +866,7 @@ FROM adaptations a JOIN exam_version_needs n ON n.exam_id = a.exam_id AND n.vers
 // Metadados descritivos: importar este arquivo não altera conexão nem banco.
 // Configure PRAGMA foreign_keys = ON em cada conexão SQLite.
 export const sqliteSchemaMetadata = {
-  userVersion: 2,
+  userVersion: 3,
   foreignKeys: true,
   tableMode: 'STRICT',
   strictTables: [
@@ -863,6 +892,7 @@ export const sqliteSchemaMetadata = {
     "adaptations",
     "student_pedagogical_profiles",
     "profile_strengths",
+    "profile_history",
     "competency_gaps",
     "diagnostics",
     "diagnostic_subtopics",

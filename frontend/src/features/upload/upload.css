@@ -28,3 +28,5 @@
 .processing h2 { font-size: var(--text-xl); }
 .result-grid { display: flex; gap: var(--s-10); flex-wrap: wrap; margin-block: var(--s-5); }
 @media (max-width: 64rem) { .up-grid { grid-template-columns: minmax(0, 1fr); } }
+.key-warning { font-size: var(--text-sm); }
+.key-warning a { text-decoration: underline; }

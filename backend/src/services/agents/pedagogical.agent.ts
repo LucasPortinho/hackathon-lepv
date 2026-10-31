@@ -1,18 +1,21 @@
 import { callModel, parseJson, type ModelFn } from '../../lib/llm';
 import { firstName } from '../../lib/text';
-import type { CompetencyGap, GapReading, NeedId, PedagogicalProfile, Student } from '../../types/domain';
+import type { CompetencyGap, Evidence, GapReading, NeedId, PedagogicalProfile, ProfileMemory, Student } from '../../types/domain';
 
 // Agente pedagógico (PED): aprofunda o rascunho das regras. Nota, variação e quais lacunas existem
 // continuam calculadas em código; o modelo interpreta. Recebe dados puros e não acessa o banco.
 export interface ScoreLine { subtopicId: string; subtopic: string; value: number | null; previous: number | null; classAverage: number }
-export interface AnalysisInput { student: Student; subject: string; scores: ScoreLine[]; needLabel: (id: NeedId) => string }
+export interface AnalysisInput { student: Student; subject: string; scores: ScoreLine[]; needLabel: (id: NeedId) => string; evidence?: Evidence[]; history?: ProfileMemory[] }
 
 const SYSTEM_PROMPT = `Você é o PED, agente pedagógico de uma plataforma para professores.
-Você recebe as notas de um aluno por subtópico (1 a 100), a média da turma e as lacunas já identificadas.
+Você recebe as notas de um aluno por subtópico (1 a 100), a média da turma, as lacunas já identificadas,
+as respostas corrigidas em "evidencias" e, em "perfis_revisados", leituras anteriores que o professor aprovou ou editou.
 Escreva uma leitura pedagógica para o professor, que revisa tudo antes de usar.
 
 Regras:
 - Baseie-se somente nos dados recebidos. Não invente provas, comportamentos ou fatos sobre o aluno.
+- Defina a competência pelo que o aluno errou em "evidencias", citando a dificuldade observada, e não só pelo nome do subtópico.
+- Compare com "perfis_revisados": diga o que evoluiu, o que persiste, e mantenha a linha do professor quando os dados a sustentarem.
 - Para cada lacuna, indique o pré-requisito de base: o conteúdo anterior cuja falta explicaria a dificuldade.
 - "leitura" é "tecnica", ou "necessidade" SOMENTE se uma necessidade da lista "necessidades_declaradas" puder se relacionar à lacuna.
 - Nunca sugira diagnóstico nem necessidade que não esteja declarada. Use linguagem de hipótese ("pode se relacionar").
@@ -43,7 +46,7 @@ function mergeGap(gap: CompetencyGap, raw: RawGap | undefined, student: Student)
   };
 }
 
-function buildPrompt({ student, subject, scores, needLabel }: AnalysisInput, draft: PedagogicalProfile) {
+function buildPrompt({ student, subject, scores, needLabel, evidence = [], history = [] }: AnalysisInput, draft: PedagogicalProfile) {
   return JSON.stringify({
     aluno: firstName(student.name),
     disciplina: subject,
@@ -52,6 +55,8 @@ function buildPrompt({ student, subject, scores, needLabel }: AnalysisInput, dra
     variacao: draft.delta,
     notas: scores.map(({ subtopic, value, previous, classAverage }) => ({ subtopico: subtopic, nota: value, nota_anterior: previous, media_turma: classAverage })),
     lacunas: draft.gaps.map((g) => ({ subtopico_id: g.subtopicId, competencia: g.competency })),
+    evidencias: evidence.map((e) => ({ prova: e.source, data: e.date, subtopico: e.subtopic, enunciado: e.statement, resposta: e.answer, pontos: e.earned, valor: e.max, comentario: e.feedback })),
+    perfis_revisados: history.map((h) => ({ data: h.recordedAt, nota_geral: h.overall, leitura: h.summary, competencias: h.competencies })),
   }, null, 2);
 }
 

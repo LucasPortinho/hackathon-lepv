@@ -1,4 +1,4 @@
-import type { adaptationDecisions, agentIds, agentRunStatuses, diagnosticStages, diagnosticStepIds, examStatuses, needIds, questionSources, questionDifficulties, questionCheckResults, reviewStatuses, sheetReadStatuses, stepStatuses } from '../db/schema';
+import type { adaptationDecisions, agentIds, agentRunStatuses, diagnosticStages, diagnosticStepIds, examKeySources, examStatuses, needIds, questionSources, questionDifficulties, questionCheckResults, reviewStatuses, sheetReadStatuses, stepStatuses } from '../db/schema';
 
 export type ID = string;
 export type NeedId = (typeof needIds)[number];
@@ -61,6 +61,20 @@ export interface Question extends QuestionMetadata {
   figure?: string;
   authored?: Partial<Record<NeedId, { text: string; why: string }>>;
 }
+
+/** De onde veio o gabarito: digitado, lido da resolução escaneada ou já presente na questão do banco. */
+export type KeySource = (typeof examKeySources)[number] | 'banco';
+
+/** Questão como ela vale nesta prova: o gabarito informado aqui tem prioridade sobre o da questão. */
+export interface ExamQuestion extends Question { keySource?: KeySource }
+
+export interface SolutionReadResult { read: number; total: number; kept: number; failedPages: number }
+
+/** O que uma correção mostrou sobre o aluno, para o PED definir competências a partir do erro real. */
+export interface Evidence { source: string; date: string; subtopic: string; statement: string; answer: string | null; earned: number; max: number; feedback: string | null }
+
+/** Perfil revisado pelo professor em um momento anterior. */
+export interface ProfileMemory { overall: number; summary: string; competencies: string[]; review: ReviewStatus; recordedAt: string }
 
 export interface ExamVersion {
   id: ID;

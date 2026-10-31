@@ -2,7 +2,7 @@ import { transaction } from '../../db';
 import { newId } from '../../lib/ids';
 import * as examRepository from '../../repositories/exam.repository';
 import * as questionRepository from '../../repositories/question.repository';
-import type { ExamGroup } from '../../types/domain';
+import type { Exam, ExamGroup, ExamQuestion, KeySource, Question } from '../../types/domain';
 import type { NewExam } from '../../types/inputs';
 import { ValidationError } from '../shared/errors';
 import { requireClass, requireExam } from '../shared/guards';
@@ -21,10 +21,30 @@ export function listGroups(teacherId: string, classId: string) {
   return examRepository.listGroups(classId);
 }
 
+const originalSource = (q: Question): KeySource | undefined => {
+  if (!q.answerKey && !q.solution) return undefined;
+  return q.source === 'manual' ? 'professor' : 'banco';
+};
+
+/** Questões na ordem da prova, com o gabarito que vale para ela. */
+export function orderedQuestions(exam: Exam): ExamQuestion[] {
+  const questions = new Map(questionRepository.findByIds(exam.questionIds).map((q) => [q.id, q]));
+  const keys = new Map(examRepository.listQuestionKeys(exam.id).map((k) => [k.questionId, k]));
+  return exam.questionIds.map((id) => {
+    const question = questions.get(id)!;
+    const key = keys.get(id);
+    return {
+      ...question,
+      answerKey: key?.answerKey ?? question.answerKey,
+      solution: key?.solution ?? question.solution,
+      keySource: key?.keySource ?? originalSource(question),
+    };
+  });
+}
+
 export function getExam(teacherId: string, examId: string) {
   const exam = requireExam(teacherId, examId);
-  const questions = new Map(questionRepository.findByIds(exam.questionIds).map((q) => [q.id, q]));
-  return { exam, questions: exam.questionIds.map((id) => questions.get(id)!) };
+  return { exam, questions: orderedQuestions(exam) };
 }
 
 export function moveExam(teacherId: string, examId: string, groupId: string | null) {

@@ -19,6 +19,6 @@ export interface NewExam {
   questions: ({ id: string } | ManualQuestion)[];
 }
 
-export interface NewFile { name: string; size: number; kind: 'prova' | 'gabarito'; storagePath?: string }
+export interface NewFile { name: string; size: number; kind: 'prova' | 'respostas'; storagePath?: string }
 
 export interface ReadSheet { studentId?: string; studentName?: string; readStatus: SheetReadStatus; partialReason?: string; extractedText?: string }

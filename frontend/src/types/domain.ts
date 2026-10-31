@@ -46,7 +46,16 @@ export interface Question {
   figure?: string;
   /** Hand-authored adaptation by need. Anything absent falls back to the mock agent's rules. */
   authored?: Partial<Record<NeedId, { text: string; why: string }>>;
+  answerKey?: string;
+  solution?: string;
 }
+
+/** Digitado pelo professor, lido da resolução escaneada ou herdado da questão do banco. */
+export type KeySource = 'professor' | 'resolucao' | 'banco';
+
+export interface ExamQuestion extends Question { keySource?: KeySource }
+
+export interface SolutionReadResult { read: number; total: number; kept: number; failedPages: number }
 
 export type ExamStatus = 'rascunho' | 'em_adaptacao' | 'pronta' | 'corrigida';
 

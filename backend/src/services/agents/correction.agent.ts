@@ -2,7 +2,7 @@ import { callModel, imagePart, parseJson, type ChatMessage, type ModelFn } from 
 import { normalize } from '../../lib/text';
 
 // Agente de correção: lê a imagem de uma folha, identifica o aluno e pontua as respostas.
-export interface GradableQuestion { id: string; statement: string; points: number; answerKey?: string; solution?: string }
+export interface GradableQuestion { id: string; statement: string; points: number; alternatives?: string[]; answerKey?: string; solution?: string }
 export interface GradedAnswer { questionId: string; answer: string | null; awardedPoints: number | null; feedback: string | null }
 export interface SheetIdentity { name: string | null; legible: boolean; reason: string | null }
 
@@ -15,7 +15,7 @@ const GRADE_PROMPT = `Você corrige uma folha de resposta digitalizada. O profes
 Para cada questão recebida, transcreva a resposta do aluno e atribua pontos entre 0 e "pontos", aceitando frações.
 Regras:
 - Transcreva o que está escrito; não complete nem corrija a resposta do aluno.
-- Se houver "gabarito", use-o como referência; se não houver, resolva a questão para corrigir.
+- "gabarito" e "resolucao" vêm do professor e são a referência oficial: não os contradiga. Só resolva a questão se nenhum dos dois vier.
 - Valorize raciocínio correto mesmo com erro de conta, de forma proporcional.
 - Resposta em branco vale 0. Se o trecho estiver ilegível, use "ilegivel": true e "pontos": null.
 Responda SOMENTE com JSON: {"respostas":[{"indice":0,"resposta":"texto ou null","pontos":1.5,"ilegivel":false,"comentario":"devolutiva curta"}]}`;
@@ -54,7 +54,7 @@ function toGraded(question: GradableQuestion, raw: RawAnswer | undefined): Grade
 }
 
 export async function gradeSheet(png: Buffer, questions: GradableQuestion[], model: ModelFn = callModel): Promise<GradedAnswer[]> {
-  const list = questions.map((q, indice) => ({ indice, enunciado: q.statement, pontos: q.points, gabarito: q.answerKey, resolucao: q.solution }));
+  const list = questions.map((q, indice) => ({ indice, enunciado: q.statement, alternativas: q.alternatives, pontos: q.points, gabarito: q.answerKey, resolucao: q.solution }));
   const { respostas } = parseJson<{ respostas?: RawAnswer[] }>(await model(imageMessage(GRADE_PROMPT, `Questões:\n${JSON.stringify(list, null, 2)}`, png)));
   if (!Array.isArray(respostas)) throw new Error('Resposta sem lista de correções.');
   return questions.map((q, i) => toGraded(q, respostas.find((r) => r.indice === i)));

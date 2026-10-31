@@ -17,7 +17,7 @@ before(() => ensureDemoDatabase());
 
 describe('seed da demonstração', () => {
   it('cria tabelas STRICT, triggers e user_version', () => {
-    assert.equal(db.$client.pragma('user_version', { simple: true }), 2);
+    assert.equal(db.$client.pragma('user_version', { simple: true }), 3);
     const sql = db.$client.prepare<[], { sql: string }>("SELECT sql FROM sqlite_master WHERE name = 'teachers'").get()!.sql;
     assert.match(sql, /STRICT$/);
     assert.equal(db.$client.prepare("SELECT count(*) AS n FROM sqlite_master WHERE type = 'trigger'").pluck().get(), 6);
@@ -48,7 +48,7 @@ describe('seed da demonstração', () => {
   });
 
   it('simula a correção de um envio com folhas parciais', async () => {
-    const batch = createBatch(T, 'e-leis', [{ name: 'respostas.pdf', size: 10, kind: 'gabarito' }]);
+    const batch = createBatch(T, 'e-leis', [{ name: 'respostas.pdf', size: 10, kind: 'respostas' }]);
     const summary = await processBatch(T, batch.id);
     assert.equal(summary.sheets, 34);
     assert.deepEqual(summary.partial.map((p) => p.name), ['Felipe Araújo', 'Nicole Teixeira']);

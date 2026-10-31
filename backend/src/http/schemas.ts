@@ -67,7 +67,7 @@ export const runAgentBody = z.object({ stage: z.enum(diagnosticStages).optional(
 
 const file = z.object({
   name: z.string().trim().min(1).max(255), size: z.number().int().nonnegative().safe(),
-  kind: z.enum(['prova', 'gabarito']), storagePath: z.string().min(1).max(2048).optional(),
+  kind: z.enum(['prova', 'respostas']), storagePath: z.string().min(1).max(2048).optional(),
 }).strict();
 const files = z.array(file).min(1).max(100);
 export const batchBody = z.union([
@@ -75,6 +75,9 @@ export const batchBody = z.union([
   z.object({ diagnosticId: id, files }).strict(),
 ]);
 export const fileParams = idParams.extend({ fileId: id });
+export const questionKeyParams = idParams.extend({ questionId: id });
+export const questionKeyBody = z.object({ answerKey: text.nullable(), solution: text.nullable() }).strict();
+export const fileNameQuery = z.object({ name: z.string().trim().min(1).max(255) }).strict();
 export const fileContent = z.custom<Buffer>((value) => Buffer.isBuffer(value) && value.length > 0, 'Envie o conteúdo do arquivo.');
 const sheet = z.object({
   studentId: id.optional(), studentName: z.string().trim().min(1).max(500).optional(),

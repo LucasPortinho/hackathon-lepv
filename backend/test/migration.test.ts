@@ -11,6 +11,12 @@ before(() => {
     CREATE TABLE questions (id TEXT PRIMARY KEY, statement TEXT NOT NULL) STRICT;
     CREATE TABLE competency_gaps (id TEXT PRIMARY KEY, note TEXT NOT NULL) STRICT;
     CREATE TABLE diagnostic_items (id TEXT PRIMARY KEY, statement TEXT NOT NULL) STRICT;
+    CREATE TABLE exam_questions (exam_id TEXT NOT NULL, question_id TEXT NOT NULL, PRIMARY KEY (exam_id, question_id)) STRICT;
+    CREATE TABLE upload_batches (id TEXT PRIMARY KEY) STRICT;
+    INSERT INTO upload_batches VALUES ('b-old');
+    CREATE TABLE upload_files (id TEXT PRIMARY KEY, batch_id TEXT NOT NULL, name TEXT NOT NULL, size INTEGER NOT NULL, kind TEXT NOT NULL, progress REAL NOT NULL DEFAULT 0, storage_path TEXT, error TEXT) STRICT;
+    INSERT INTO exam_questions VALUES ('e-old', 'q-old');
+    INSERT INTO upload_files (id, batch_id, name, size, kind) VALUES ('f-old', 'b-old', 'folhas.pdf', 10, 'gabarito'), ('f-prova', 'b-old', 'prova.pdf', 10, 'prova');
     INSERT INTO questions VALUES ('q-old', 'Enunciado preservado');
     INSERT INTO competency_gaps VALUES ('gap-old', 'Observação preservada');
     INSERT INTO diagnostic_items VALUES ('item-old', 'Item preservado');
@@ -19,10 +25,10 @@ before(() => {
   `);
 });
 
-describe('migração aditiva da versão 1 para 2', () => {
+describe('migração aditiva da versão 1 para a atual', () => {
   it('migra no start, preserva os dados e permite repetir a inicialização', async () => {
     assert.equal(await ensureDemoDatabase(), false);
-    assert.equal(db.$client.pragma('user_version', { simple: true }), 2);
+    assert.equal(db.$client.pragma('user_version', { simple: true }), 3);
     const question = db.$client.prepare('SELECT * FROM questions').get() as Record<string, unknown>;
     assert.equal(question.id, 'q-old');
     assert.equal(question.statement, 'Enunciado preservado');
@@ -37,6 +43,14 @@ describe('migração aditiva da versão 1 para 2', () => {
     assert.equal(migrateSchema(), true);
   });
 
+  it('dá às folhas de resposta o nome certo e abre o gabarito por prova', () => {
+    const kinds = db.$client.prepare('SELECT id, kind FROM upload_files ORDER BY id').all();
+    assert.deepEqual(kinds, [{ id: 'f-old', kind: 'respostas' }, { id: 'f-prova', kind: 'prova' }]);
+    assert.throws(() => db.$client.exec("UPDATE upload_files SET kind = 'gabarito'"), /CHECK/);
+    assert.throws(() => db.$client.exec("UPDATE exam_questions SET key_source = 'outro'"), /CHECK/);
+    assert.equal((db.$client.prepare('SELECT answer_key FROM exam_questions').get() as { answer_key: null }).answer_key, null);
+  });
+
   it('valida JSON, dificuldade, checagem e pré-requisito no SQLite', () => {
     for (const table of ['questions', 'diagnostic_items']) {
       for (const assignment of ["alternatives = 'invalid'", "alternatives = '{}'", "difficulty = 'extrema'", "check_result = 'unknown'"]) {
@@ -47,6 +61,6 @@ describe('migração aditiva da versão 1 para 2', () => {
     assert.deepEqual(db.$client.pragma('foreign_key_check'), []);
     db.$client.pragma('user_version = 99');
     assert.throws(migrateSchema, /não suportada/);
-    db.$client.pragma('user_version = 2');
+    db.$client.pragma('user_version = 3');
   });
 });

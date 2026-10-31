@@ -9,7 +9,7 @@ const PAGES: SearchResult[] = [
   { id: 'p-t', kind: 'pagina', label: 'Turmas', to: '/turmas' },
   { id: 'p-p', kind: 'pagina', label: 'Provas', to: '/provas' },
   { id: 'p-n', kind: 'pagina', label: 'Nova prova', to: '/provas/nova' },
-  { id: 'p-u', kind: 'pagina', label: 'Enviar provas corrigidas', to: '/provas/enviar' },
+  { id: 'p-u', kind: 'pagina', label: 'Enviar provas dos alunos', to: '/provas/enviar' },
   { id: 'p-ad', kind: 'pagina', label: 'Avaliações Diagnósticas', to: '/diagnosticas' },
   { id: 'p-a', kind: 'pagina', label: 'Alunos', to: '/alunos' },
   { id: 'p-c', kind: 'pagina', label: 'Configurações', to: '/configuracoes' },

@@ -18,17 +18,16 @@ import type { GradedAnswer } from '../agents/correction.agent';
 import { readSheets } from '../agents/correction.rules';
 import { periodWindow } from '../catalog/catalog.service';
 import { processDiagnosticBatch } from '../diagnostics/diagnostic-results.service';
+import { orderedQuestions } from '../exams/exam.service';
 import { notify } from '../notifications/notification.service';
 import { enrichProfiles, refreshProfile } from '../profiles/profile.service';
 import { loadClassScores } from '../shared/class-scores';
 import { ConflictError, ValidationError } from '../shared/errors';
 import { requireDiagnostic, requireExam, requireFound, requireStudent } from '../shared/guards';
-import { correctPages, loadAnswerPages, saveFile, type PageResult } from './correction.service';
-
-const ACCEPTED = /\.(pdf|png|jpe?g)$/i;
+import { ACCEPTED_FILES, correctPages, loadAnswerPages, saveFile, type PageResult } from './correction.service';
 
 function toFileRow(file: NewFile) {
-  const accepted = ACCEPTED.test(file.name);
+  const accepted = ACCEPTED_FILES.test(file.name);
   return { ...file, id: newId('f'), progress: 0, error: accepted ? null : 'Formato não aceito. Use PDF, PNG ou JPG.' };
 }
 
@@ -81,11 +80,6 @@ export function recordSheets(teacherId: string, batchId: string, sheets: ReadShe
   const rows = sheets.map((s) => ({ ...s, id: newId('s'), batchId, examId: exam.id, versionId: versionOf(exam, s.studentId) }));
   transaction(() => uploadRepository.insertSheets(rows));
 }
-
-const orderedQuestions = (exam: Exam) => {
-  const questions = new Map(questionRepository.findByIds(exam.questionIds).map((q) => [q.id, q]));
-  return exam.questionIds.map((id) => questions.get(id)!);
-};
 
 function saveCorrectedSheet(batchId: string, exam: Exam, page: PageResult<Student>) {
   const id = newId('s');

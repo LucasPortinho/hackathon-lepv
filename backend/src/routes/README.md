@@ -131,10 +131,10 @@ revisão, novas chamadas de geração retornam `409`.
 Metadados de arquivo:
 
 ```json
-{ "name": "respostas.pdf", "size": 2048, "kind": "gabarito", "storagePath": "demo/respostas.pdf" }
+{ "name": "respostas.pdf", "size": 2048, "kind": "respostas", "storagePath": "demo/respostas.pdf" }
 ```
 
-`storagePath` é opcional. `kind` aceita `prova` ou `gabarito`; apenas os arquivos `gabarito` são corrigidos.
+`storagePath` é opcional. `kind` aceita `prova` ou `respostas`; apenas os arquivos `respostas`, com as provas dos alunos, são corrigidos.
 
 Folha já interpretada:
 
@@ -284,3 +284,13 @@ configurado na demo e não mudam a camada de frontend.
 
 A inicialização migra bancos na versão 1 para a versão 2 sem recriar os dados. O
 reset explícito da demo continua disponível separadamente.
+
+## Gabarito da prova
+
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| `PUT` | `/exams/:id/questions/:questionId/key` | Informa `answerKey` e `solution` da questão nesta prova; `null` limpa. Devolve 204. |
+| `PUT` | `/exams/:id/solution?name=resolucao.pdf` | Corpo binário com a resolução escaneada. A IA preenche o gabarito das questões e devolve `{ read, kept, total, failedPages }`. |
+
+Depois da correção as duas rotas respondem 409. Sem IA ativa, a resolução escaneada também responde 409.
+`GET /exams/:id` devolve em cada questão o gabarito que vale para a prova e `keySource` (`professor`, `resolucao` ou `banco`).

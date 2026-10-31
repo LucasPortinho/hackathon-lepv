@@ -101,7 +101,7 @@ export function DashboardPage() {
         empty={
           <div className="card">
             <EmptyState icon={<LayoutGrid />} title={cls && cls.studentCount === 0 ? `${cls.name} ainda não tem alunos` : 'Ainda não há resultados para este filtro'} actions={<ButtonLink variant="primary" to="/provas/enviar"><Upload />Enviar provas corrigidas</ButtonLink>}>
-              O mapa da turma aparece aqui assim que as primeiras provas corrigidas forem enviadas.
+              O mapa da turma aparece aqui assim que as primeiras provas dos alunos forem corrigidas.
             </EmptyState>
           </div>
         }

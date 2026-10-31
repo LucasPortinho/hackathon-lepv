@@ -1,8 +1,9 @@
-import { and, asc, eq, inArray } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray } from 'drizzle-orm';
 import { db } from '../db';
-import { competencyGaps, profileStrengths, studentPedagogicalProfiles as profiles } from '../db/schema';
+import { competencyGaps, profileHistory, profileStrengths, studentPedagogicalProfiles as profiles } from '../db/schema';
+import { newId } from '../lib/ids';
 import { nowIso } from '../lib/time';
-import type { CompetencyGap, NeedId, PedagogicalProfile, ReviewStatus } from '../types/domain';
+import type { CompetencyGap, NeedId, PedagogicalProfile, ProfileMemory, ReviewStatus } from '../types/domain';
 
 const isProfile = (studentId: string, subjectId: string) => and(eq(profiles.studentId, studentId), eq(profiles.subjectId, subjectId));
 const isStrengthOf = (studentId: string, subjectId: string) => and(eq(profileStrengths.studentId, studentId), eq(profileStrengths.subjectId, subjectId));
@@ -67,8 +68,23 @@ function replaceGaps(studentId: string, subjectId: string, gaps: CompetencyGap[]
   if (gaps.length) db.insert(competencyGaps).values(gaps.map((g, position) => toGapRow(g, studentId, subjectId, position))).run();
 }
 
-/** Substitui o perfil atual: há um único perfil por aluno e disciplina, sem histórico. */
+function rememberReviewed(studentId: string, subjectId: string) {
+  const current = find(studentId, subjectId);
+  if (!current || current.review === 'rascunho') return;
+  db.insert(profileHistory).values({
+    id: newId('ph'), studentId, subjectId, overall: current.overall, summary: current.summary,
+    competencies: current.gaps.map((g) => g.competency), review: current.review, recordedAt: nowIso(),
+  }).run();
+}
+
+/** Revisões anteriores, da mais recente para a mais antiga. */
+export const listHistory = (studentId: string, subjectId: string, limit: number): ProfileMemory[] =>
+  db.select().from(profileHistory).where(and(eq(profileHistory.studentId, studentId), eq(profileHistory.subjectId, subjectId)))
+    .orderBy(desc(profileHistory.recordedAt)).limit(limit).all();
+
+/** Substitui o perfil atual; a versão que o professor revisou fica na memória do aluno. */
 export function save(profile: PedagogicalProfile, subjectId: string, periodId: string) {
+  rememberReviewed(profile.studentId, subjectId);
   upsertProfile(profile, subjectId, periodId);
   replaceStrengths(profile.studentId, subjectId, profile.strengths);
   replaceGaps(profile.studentId, subjectId, profile.gaps);

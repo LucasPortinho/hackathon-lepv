@@ -12,5 +12,4 @@ ALTER TABLE diagnostic_items ADD COLUMN solution TEXT;
 ALTER TABLE diagnostic_items ADD COLUMN difficulty TEXT CHECK (difficulty IN ('facil', 'media', 'dificil'));
 ALTER TABLE diagnostic_items ADD COLUMN check_result TEXT NOT NULL DEFAULT 'nao_verificavel' CHECK (check_result IN ('ok', 'divergente', 'nao_verificavel'));
 ALTER TABLE diagnostic_items ADD COLUMN prerequisite TEXT CHECK (prerequisite IS NULL OR length(trim(prerequisite)) > 0);
-PRAGMA user_version = 2;
 `;
