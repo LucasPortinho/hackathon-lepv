@@ -168,6 +168,7 @@ export interface StudentSummary { student: Student; className: string; average: 
 export interface StudentDetail {
   student: Student;
   className: string;
+  subjectId: ID;
   subjectName: string;
   profile: PedagogicalProfile;
   competencies: { subtopic: Subtopic; value: number | null; classAverage: number }[];

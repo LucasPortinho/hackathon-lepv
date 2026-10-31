@@ -41,7 +41,7 @@ async function request(path: string, options: { method?: string; body?: unknown;
 }
 
 describe('contratos HTTP da demonstração', () => {
-  it('usa o professor configurado sem login e não expõe endpoints PUT/PATCH', async () => {
+  it('usa o professor configurado sem login', async () => {
     const me = await request('/teachers/me');
     assert.equal(me.status, 200);
     assert.equal(me.body.id, 't1');
@@ -49,9 +49,6 @@ describe('contratos HTTP da demonstração', () => {
     assert.equal(me.headers.get('cache-control'), 'no-store');
     assert.equal((await request('/teachers/me', { teacher: 't2' })).body.id, 't2');
     assert.equal((await request('/auth/login', { method: 'POST', body: {} })).status, 404);
-    assert.equal((await request('/teachers/me/preferences', { method: 'PUT', body: { theme: 'escuro' } })).status, 404);
-    assert.equal((await request('/students/ana/profile?subjectId=mat', { method: 'PATCH', body: { summary: 'Alterado' } })).status, 404);
-    assert.equal((await request('/notifications/n1/read', { method: 'PATCH' })).status, 404);
     assert.throws(() => createApp({ teacherId: '' }), /teacherId/);
   });
 
@@ -162,7 +159,6 @@ describe('criação de provas e geração de adaptações', () => {
     assert.equal(result.body.studentNames.ana, 'Ana Moreira');
     assert.ok(result.body.adaptations.length > 0);
     assert.equal((await request(path + '/adapt', { method: 'POST', body: { needs: ['unknown'] } })).status, 400);
-    assert.equal((await request('/adaptations/' + result.body.adaptations[0].id, { method: 'PATCH', body: { decision: 'aceita' } })).status, 404);
   });
 });
 
@@ -213,5 +209,72 @@ describe('atividade, busca e notificações', () => {
     const results = await request('/search?q=Ana');
     assert.ok(results.body.some((row: { id: string }) => row.id === 'ana'));
     assert.ok(!(await request('/search?q=Edu')).body.some((row: { id: string }) => row.id === 'edu'));
+  });
+
+  it('atualiza preferências sem aceitar valores fora do enum', async () => {
+    const saved = await request('/teachers/me/preferences', { method: 'PUT', teacher: 't2', body: { theme: 'escuro', sidebarCollapsed: true } });
+    assert.equal(saved.status, 200);
+    assert.equal(saved.body.theme, 'escuro');
+    assert.equal((await request('/teachers/me', { teacher: 't2' })).body.preferences.sidebarCollapsed, true);
+    assert.equal((await request('/teachers/me', { teacher: 't1' })).body.preferences.theme, 'claro');
+    assert.equal((await request('/teachers/me/preferences', { method: 'PUT', body: { theme: 'azul' } })).status, 400);
+  });
+
+  it('move a prova e percorre revisão de adaptações', async () => {
+    const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const group = (await request('/classes/c1/groups', { method: 'POST', body: { name: 'Pasta HTTP' } })).body;
+    assert.equal((await request(`/exams/${exam.id}/group`, { method: 'PATCH', body: { groupId: group.id } })).status, 204);
+    assert.equal((await request(`/exams/${exam.id}`)).body.exam.groupId, group.id);
+    assert.equal((await request(`/exams/${exam.id}/group`, { method: 'PATCH', body: { groupId: 'outra' } })).status, 400);
+
+    await request(`/exams/${exam.id}/adapt`, { method: 'POST', body: { needs: ['tdah'] } });
+    const [first, ...rest] = (await request(`/exams/${exam.id}/adaptations`)).body.adaptations;
+    assert.equal((await request(`/exams/${exam.id}/adaptations/finish`, { method: 'POST' })).status, 409);
+    assert.equal((await request('/adaptations/' + first.id, { method: 'PATCH', body: { adapted: 'Texto editado' } })).status, 204);
+    assert.equal((await request('/adaptations/' + first.id, { method: 'PATCH', body: { decision: 'talvez' } })).status, 400);
+    assert.equal((await request('/adaptations/' + first.id, { method: 'PATCH', teacher: 't2', body: { decision: 'aceita' } })).status, 404);
+    for (const a of rest) await request('/adaptations/' + a.id, { method: 'PATCH', body: { decision: 'rejeitada' } });
+    assert.equal((await request(`/exams/${exam.id}/adaptations/finish`, { method: 'POST' })).status, 204);
+    assert.equal((await request(`/exams/${exam.id}`)).body.exam.status, 'pronta');
+  });
+
+  it('revisa o perfil pelo estado pedido', async () => {
+    const path = '/students/ana/profile';
+    const review = (body: unknown) => request(path + '/review?subjectId=mat', { method: 'PATCH', body });
+    assert.equal((await review({ reviewStatus: 'aprovado' })).status, 204);
+    assert.equal((await request(path + '?subjectId=mat')).body.review, 'aprovado');
+    assert.equal((await review({ reviewStatus: 'editado', summary: 'Novo resumo' })).status, 204);
+    assert.equal((await request(path + '?subjectId=mat')).body.summary, 'Novo resumo');
+    assert.equal((await review({ reviewStatus: 'rascunho' })).status, 204);
+    assert.equal((await review({ reviewStatus: 'editado' })).status, 400);
+    assert.equal((await review({ reviewStatus: 'outro' })).status, 400);
+  });
+
+  it('aprova, publica e devolve o diagnóstico', async () => {
+    const d = (await request('/diagnostics', { method: 'POST', body: { classId: 'c1', subtopicIds: ['st-cossenos'] } })).body;
+    let current = d;
+    while (current.stage !== 'revisao') current = (await request(`/diagnostics/${d.id}/run-agent`, { method: 'POST' })).body;
+    assert.equal((await request(`/diagnostics/${d.id}/publish`, { method: 'POST' })).status, 409);
+    assert.equal((await request(`/diagnostics/${d.id}/students/${current.perStudent[0].studentId}/approve`, { method: 'PATCH', body: { approved: true } })).status, 204);
+    assert.equal((await request(`/diagnostics/${d.id}/approve-all`, { method: 'POST' })).status, 204);
+    assert.equal((await request(`/diagnostics/${d.id}/publish`, { method: 'POST' })).status, 204);
+    assert.equal((await request(`/diagnostics/${d.id}/answers`, { method: 'POST' })).status, 204);
+    assert.equal((await request(`/diagnostics/${d.id}`)).body.diagnostic.stage, 'concluida');
+  });
+
+  it('processa o lote com o agente simulado e marca notificações', async () => {
+    const exam = (await request('/exams', { method: 'POST', body: examInput })).body;
+    const batch = (await request('/uploads/batch', { method: 'POST', body: { examId: exam.id, files: [{ name: 'a.pdf', size: 1, kind: 'gabarito' }] } })).body;
+    const processed = await request(`/uploads/batch/${batch.id}/process`, { method: 'POST' });
+    assert.equal(processed.status, 200);
+    assert.equal(processed.body.sheets, 4);
+    assert.equal((await request(`/uploads/batch/${batch.id}/process`, { method: 'POST' })).status, 409);
+    assert.equal((await request(`/exams/${exam.id}`)).body.exam.status, 'corrigida');
+
+    const [first] = (await request('/notifications?unreadOnly=true')).body;
+    assert.equal((await request(`/notifications/${first.id}/read`, { method: 'PATCH' })).status, 204);
+    assert.equal((await request('/notifications/missing/read', { method: 'PATCH' })).status, 404);
+    assert.equal((await request('/notifications/read', { method: 'PATCH' })).status, 204);
+    assert.equal((await request('/notifications?unreadOnly=true')).body.length, 0);
   });
 });

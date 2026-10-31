@@ -1,45 +1,29 @@
 # API da demonstração
 
-Base: `/api/v1`. A camada HTTP usa os services existentes e não altera o frontend,
-os repositories, os services ou a estrutura do banco. Não há login nem endpoints
-`PUT`/`PATCH` nesta entrega, conforme o escopo da demonstração.
+Base: `/api/v1`. A camada HTTP usa os services existentes. A demonstração é de um
+único usuário: não há login, e o professor é fixado no servidor. O consumo fica em
+`frontend/src/api`, organizado pelos mesmos domínios.
 
-## Montagem
+## Execução
 
-```ts
-import { createApp } from '../app';
-
-const app = createApp({
-  teacherId: 't1', // ID existente nos dados artificiais do backend
-  corsOrigin: 'http://localhost:5173',
-});
-
-app.listen(3000);
+```bash
+npm run dev       # sobe a API em http://localhost:3333 e cria o banco no primeiro start
+npm run db:reset  # apaga os dados e recria a seed
 ```
 
-Também é possível montar `createApiRouter({ teacherId: 't1' })` em uma aplicação
-Express existente, sob `/api/v1`. Nesse caso, configure `express.json()` antes do
-roteador e os middlewares `notFound` e `errorHandler` de `src/http/errors.ts` depois.
-
-O professor é fixado na configuração do backend; headers, query strings e corpos
-de requisição não selecionam outro professor. Nenhum token é exigido na demo.
-`createApp` não abre uma porta automaticamente.
-
-Os imports dos services utilizam a conexão de `src/db/index.ts`. Defina
-`DATABASE_PATH` antes de importar a aplicação para usar o banco artificial
-preenchido desejado; o padrão existente é `sqlite.db`. A camada HTTP não cria
-tabelas nem popula o banco. As consultas que dependem de perfis e notas precisam
-dos catálogos de disciplinas, subtópicos e períodos já cadastrados.
+`src/server.ts` monta `createApp({ teacherId: DEMO_TEACHER_ID })`. Headers, query
+strings e corpos de requisição não selecionam outro professor. `DATABASE_PATH` e
+`PORT` são opcionais; os padrões são `sqlite.db` e `3333`. `src/db/setup.ts` cria
+as tabelas `STRICT`, os triggers e o `user_version`; a seed fica em `src/db/seed`.
 
 ## Formato das respostas
 
 As respostas de sucesso retornam diretamente os DTOs de `src/types/domain.ts`,
-sem envelope `data`. Assim, os métodos de `frontend/src/services` poderão consumir
-os resultados ao serem conectados à API.
+sem envelope `data`. Os módulos de `frontend/src/api` consomem esses DTOs.
 
 - `200`: consulta ou geração síncrona concluída.
 - `201`: prova, pasta, diagnóstico ou lote criado.
-- `204`: folhas registradas, sem corpo de resposta.
+- `204`: atualização concluída, sem corpo de resposta.
 - `400`: parâmetros, corpo ou regra de entrada inválidos.
 - `404`: rota/recurso inexistente ou recurso de outro professor.
 - `409`: operação incompatível com o estado atual do fluxo.
@@ -94,9 +78,8 @@ Falhas de leitura do corpo usam `INVALID_REQUEST` ou `PAYLOAD_TOO_LARGE`.
 | `GET /agent-runs` | `agent` opcional | `AgentRun[]` |
 | `GET /search` | `q` opcional | `SearchResult[]` |
 
-`studentNames` e `students` nos detalhes são objetos JSON indexados pelo ID, e não
-`Map`s. Quando a integração do frontend for realizada, os métodos que atualmente
-devolvem `Map` podem reconstruí-lo com `new Map(Object.entries(resultado))`.
+`studentNames` e `students` nos detalhes são objetos JSON indexados pelo ID.
+`frontend/src/api` os reconstrói como `Map`.
 
 O endpoint de alunos da turma reutiliza a consulta de alunos do service de perfis;
 por isso também depende de haver um período letivo cadastrado. O `subjectId`
@@ -172,18 +155,32 @@ Folha já interpretada:
 `readStatus` aceita `pendente`, `completa`, `parcial` e `erro`.
 Não há OCR ou inferência de respostas na camada HTTP.
 
-## Escopo escolhido para a demo
+## Atualizações
 
-Não foram criados services ausentes, autenticação, armazenamento de senhas ou
-endpoints para criar turmas/alunos, gravar notas ou incluir lacunas. Também não
-foram expostos endpoints de edição, movimentação, aprovação, publicação ou marcação
-de leitura, incluindo alternativas POST para essas atualizações.
+| Método e caminho | Corpo JSON | Retorno |
+| --- | --- | --- |
+| `PUT /teachers/me/preferences` | Qualquer subconjunto de `motion`, `font`, `spacing`, `theme`, `sidebarCollapsed` | `200`, preferências |
+| `PATCH /exams/:id/group` | `{ "groupId": "g1" }` ou `{ "groupId": null }` | `204` |
+| `POST /exams/:id/adaptations/finish` | Sem corpo | `204`; `409` com adaptações pendentes |
+| `PATCH /adaptations/:id` | `{ "decision": "aceita" }` ou `{ "adapted": "Texto" }` | `204` |
+| `PATCH /students/:studentId/profile/review?subjectId=` | `{ "reviewStatus": "aprovado" }`, `{ "reviewStatus": "rascunho" }` ou `{ "reviewStatus": "editado", "summary": "...", "gapNotes": {} }` | `204` |
+| `PATCH /diagnostics/:id/students/:studentId/approve` | `{ "approved": true }` | `204` |
+| `POST /diagnostics/:id/approve-all` | Sem corpo | `204` |
+| `POST /diagnostics/:id/publish` | Sem corpo | `204`; `409` sem aprovação de todos |
+| `POST /diagnostics/:id/answers` | Sem corpo | `204`; simula as respostas recebidas |
+| `POST /uploads/batch/:id/process` | Sem corpo | `200`, `UploadSummary` |
+| `PATCH /notifications/:id/read` | Sem corpo | `204` |
+| `PATCH /notifications/read` | Sem corpo | `204`; marca todas como lidas |
 
-O upload atual recebe os arquivos junto com a criação do lote e só atende provas
-regulares. Adicionar arquivos a um lote existente, consultar seu status por HTTP
-ou enviar arquivos de diagnósticos depende de serviços adicionais. Esses endpoints
-do planejamento não foram simulados nesta camada. O frontend permanece com seus
-mocks atuais até a integração ser solicitada.
+`process` executa o agente de correção simulado (`services/agents/correction.agent.ts`):
+os bytes dos arquivos não são enviados nem lidos, e o resultado é uma folha por aluno
+da turma, com leituras parciais determinísticas.
+
+## Fora do escopo da demonstração
+
+Login, cadastro de turmas e alunos, gravação manual de notas, inclusão de lacunas,
+inclusão de arquivos em um lote existente, consulta de status por HTTP e envio de
+arquivos de diagnósticos.
 
 ## Verificação
 

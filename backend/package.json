@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "db:reset": "tsx src/db/seed/run.ts",
     "test": "tsx --test test/*.test.ts"
   },
   "keywords": [],

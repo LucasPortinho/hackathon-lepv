@@ -59,6 +59,7 @@ export function getStudentDetail(teacherId: string, studentId: string, subjectId
   return {
     student,
     className: requireClass(teacherId, student.classId).name,
+    subjectId: subject.id,
     subjectName: subject.name,
     profile: ensureProfile(student, subjectId),
     competencies: buildCompetencies(studentId, subtopics, scores),

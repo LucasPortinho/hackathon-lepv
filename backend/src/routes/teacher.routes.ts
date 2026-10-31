@@ -3,3 +3,4 @@ import * as teachers from '../controllers/teacher.controller';
 
 export const teacherRouter = Router();
 teacherRouter.get('/me', teachers.me);
+teacherRouter.put('/me/preferences', teachers.updatePreferences);
