@@ -118,19 +118,6 @@ export interface PedagogicalProfile {
   reviewedAt?: string;
 }
 
-export type AgentId = 'pedagogico' | 'adaptacao' | 'criador' | 'correcao';
-export type AgentRunStatus = 'pendente' | 'executando' | 'concluido' | 'atencao';
-
-export interface AgentRun {
-  id: ID;
-  agent: AgentId;
-  summary: string;
-  detail?: string;
-  status: AgentRunStatus;
-  at: string;
-  link?: { label: string; to: string };
-}
-
 export type DiagnosticStage = 'pedagogico' | 'adaptacao' | 'criador' | 'revisao' | 'respostas' | 'devolutiva' | 'concluida';
 export type StepStatus = 'pendente' | 'executando' | 'concluido' | 'ignorado';
 
