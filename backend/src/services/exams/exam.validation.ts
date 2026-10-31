@@ -6,12 +6,14 @@ import * as questionRepository from '../../repositories/question.repository';
 import type { Class } from '../../types/domain';
 import type { ManualQuestion, NewExam } from '../../types/inputs';
 import { ValidationError } from '../shared/errors';
+import { validateQuestionMetadata } from '../questions/question.validation';
 
 export function requireGroupOfClass(groupId: string, classId: string) {
   if (examRepository.findGroup(groupId)?.classId !== classId) throw new ValidationError('A pasta não pertence à turma da prova.');
 }
 
 function validateManualQuestion(q: ManualQuestion) {
+  validateQuestionMetadata(q);
   if (!q.statement.trim()) throw new ValidationError('Informe o enunciado da questão.');
   if (!(q.points > 0)) throw new ValidationError('A pontuação da questão deve ser maior que zero.');
 }

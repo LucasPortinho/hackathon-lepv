@@ -187,3 +187,64 @@ arquivos de diagnósticos.
 `npm test` inclui testes HTTP com banco SQLite isolado em memória e dados artificiais,
 além dos testes existentes dos services. A compilação pode ser verificada com
 `npx tsc --noEmit`.
+
+
+## Metadados de criação e contrato PED → CRIA
+
+Questões manuais em `POST /exams` aceitam estes campos opcionais adicionais:
+
+```json
+{
+  "statement": "Quanto é 2 + 2?",
+  "subtopicId": "st-cossenos",
+  "points": 1,
+  "alternatives": ["A: 2", "B: 4"],
+  "answerKey": "B",
+  "solution": "Somando duas unidades a duas unidades, obtemos quatro.",
+  "difficulty": "facil",
+  "checkResult": "ok"
+}
+```
+
+`difficulty` aceita `facil`, `media` e `dificil`; `checkResult` aceita `ok`,
+`divergente` e `nao_verificavel`. Quando omitidos, a dificuldade fica ausente e a
+checagem fica `nao_verificavel`. Alternativas omitidas ficam como `[]`.
+O resultado de checagem é recebido do agente; a API não executa uma verificação
+matemática automática. As rotas de leitura de questões, provas e diagnósticos
+retornam os novos campos sem remover os campos existentes do frontend.
+
+| Método e caminho | Uso | Resposta |
+| --- | --- | --- |
+| `GET /diagnostics/:id/creator-context` | Entrada do CRIA após a seleção do PED | `{ diagnosticId, classId, subjectId, students: [{ student, focus, gaps, items }] }` |
+| `POST /diagnostics/:id/students/:studentId/items` | Persiste o conjunto de itens produzido pelo CRIA para um aluno selecionado | `200`, `DiagnosticForStudent` |
+
+Cada lacuna em `gaps` pode conter `prerequisite`, o pré-requisito textual informado
+pelo PED. Os itens também aceitam `prerequisite`. Se omitido, o service usa o
+pré-requisito da lacuna correspondente ao subtópico, quando disponível.
+
+Corpo do registro de itens:
+
+```json
+{
+  "items": [{
+    "id": "cria-1",
+    "subtopicId": "st-cossenos",
+    "statement": "Resolva x + 2 = 4.",
+    "alternatives": ["A: x = 2", "B: x = 4"],
+    "answerKey": "A",
+    "solution": "Subtraindo 2 dos dois lados, temos x = 2.",
+    "difficulty": "facil",
+    "checkResult": "ok",
+    "prerequisite": "Resolver equações de primeiro grau."
+  }]
+}
+```
+
+O POST substitui atomicamente o conjunto anterior do aluno e remove a aprovação
+anterior, pois o conteúdo foi alterado. Exige a etapa `criador` ou `revisao`,
+antes da publicação. IDs repetidos, subtópicos não selecionados e adaptações para
+necessidades não declaradas são rejeitados. Os endpoints respeitam o professor
+configurado na demo e não mudam a camada de frontend.
+
+A inicialização migra bancos na versão 1 para a versão 2 sem recriar os dados. O
+reset explícito da demo continua disponível separadamente.

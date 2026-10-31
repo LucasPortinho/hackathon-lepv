@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { adaptationDecisions, diagnosticStages, fontOptions, motionOptions, needIds, sheetReadStatuses, spacingOptions, themeOptions } from '../db/schema';
+import { adaptationDecisions, diagnosticStages, fontOptions, motionOptions, needIds, questionCheckResults, questionDifficulties, sheetReadStatuses, spacingOptions, themeOptions } from '../db/schema';
 import { isCalendarDate } from '../lib/time';
 
 export const id = z.string().trim().min(1).max(200);
@@ -18,7 +18,15 @@ export const queryBoolean = z.enum(['true', 'false']).transform((value) => value
 export const year = z.string().regex(/^\d{1,4}$/).transform(Number).pipe(z.number().int().min(1).max(9999));
 export const dashboardQuery = z.object({ classId: id, subjectId: id, periodId: id }).strict();
 
-const manualQuestion = z.object({ statement: text, subtopicId: id, points: z.number().positive().finite() });
+export const questionMetadataFields = {
+  alternatives: z.array(text).max(20).optional(), answerKey: text.optional(), solution: text.optional(),
+  difficulty: z.enum(questionDifficulties).optional(), checkResult: z.enum(questionCheckResults).optional(),
+};
+const manualQuestion = z.object({ statement: text, subtopicId: id, points: z.number().positive().finite(), ...questionMetadataFields });
+export const creatorItemsBody = z.object({ items: z.array(z.object({
+  id, subtopicId: id, statement: text, adaptedFor: z.enum(needIds).optional(),
+  prerequisite: text.optional(), ...questionMetadataFields,
+}).strict()).min(1).max(500) }).strict();
 // Objetos Question completos do frontend são aceitos; só o id chega ao service.
 const existingQuestion = z.object({ id });
 const examFields = {

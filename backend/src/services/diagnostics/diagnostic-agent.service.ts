@@ -6,6 +6,7 @@ import type { Diagnostic, DiagnosticForStudent, DiagnosticStage, DiagnosticStepI
 import { adaptQuestion } from '../agents/adaptation.agent';
 import { needLabeler, periodWindow } from '../catalog/catalog.service';
 import { notify } from '../notifications/notification.service';
+import { ensureProfile } from '../profiles/profile.service';
 import { loadClassScores, type ClassScores } from '../shared/class-scores';
 import { ConflictError } from '../shared/errors';
 import { requireDiagnostic } from '../shared/guards';
@@ -16,6 +17,7 @@ const ITEMS_PER_STUDENT = 3;
 const NO_SCORE = 100;
 
 interface PlanContext {
+  subjectId: string;
   scores: ClassScores;
   periodId: string;
   subtopics: Subtopic[];
@@ -25,6 +27,7 @@ interface PlanContext {
 
 function loadPlanContext(d: Diagnostic): PlanContext {
   return {
+    subjectId: d.subjectId,
     scores: loadClassScores(d.classId),
     periodId: periodWindow().current.id,
     subtopics: catalogRepository.findSubtopicsByIds(d.subtopicIds),
@@ -39,21 +42,31 @@ const scoreIn = (student: Student, subtopicId: string, ctx: PlanContext) =>
 const selectTargets = (ctx: PlanContext) =>
   ctx.scores.students.filter((s) => ctx.subtopics.some((t) => scoreIn(s, t.id, ctx) < TARGET_BELOW));
 
-function buildItem(student: Student, question: Question, ctx: PlanContext) {
+function buildItem(student: Student, question: Question, ctx: PlanContext, prerequisite?: string) {
   const need = student.declaredNeeds[0];
   const adapted = need ? adaptQuestion(question, [need], ctx.needLabel) : null;
-  return { id: `${student.id}-${question.id}`, subtopicId: question.subtopicId, statement: adapted?.text ?? question.statement, adaptedFor: adapted ? need : undefined };
+  return {
+    id: `${student.id}-${question.id}`, subtopicId: question.subtopicId,
+    statement: adapted?.text ?? question.statement, adaptedFor: adapted ? need : undefined,
+    alternatives: question.alternatives ?? [], answerKey: question.answerKey, solution: question.solution,
+    difficulty: question.difficulty,
+    // Alterar o enunciado invalida a checagem anterior; não se presume nova verificação.
+    checkResult: adapted ? 'nao_verificavel' as const : question.checkResult ?? 'nao_verificavel' as const,
+    prerequisite,
+  };
 }
 
 const weakestSubtopic = (student: Student, ctx: PlanContext) =>
   [...ctx.subtopics].sort((a, b) => scoreIn(student, a.id, ctx) - scoreIn(student, b.id, ctx))[0];
 
-const planFor = (student: Student, ctx: PlanContext): DiagnosticForStudent => ({
-  studentId: student.id,
-  focus: weakestSubtopic(student, ctx).name,
-  items: ctx.questions.map((q) => buildItem(student, q, ctx)),
-  approved: false,
-});
+function planFor(student: Student, ctx: PlanContext): DiagnosticForStudent {
+  const profile = ensureProfile(student, ctx.subjectId);
+  return {
+    studentId: student.id, focus: weakestSubtopic(student, ctx).name,
+    items: ctx.questions.map((q) => buildItem(student, q, ctx, profile.gaps.find((gap) => gap.subtopicId === q.subtopicId)?.prerequisite)),
+    approved: false,
+  };
+}
 
 const startStep = (id: string, step: DiagnosticStepId) =>
   diagnosticRepository.updateStep(id, step, { status: 'executando' });

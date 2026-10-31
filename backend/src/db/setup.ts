@@ -2,6 +2,7 @@ import { generateSQLiteDrizzleJson, generateSQLiteMigration } from 'drizzle-kit/
 import { sql } from 'drizzle-orm';
 import { db } from '.';
 import * as schema from './schema';
+import { creatorMetadataMigration } from './migrations/0002-creator-metadata';
 
 // `sqliteTable` não declara STRICT nem triggers: esta é a migração explícita pedida em schema.md.
 const withStrict = (statement: string) =>
@@ -28,3 +29,15 @@ export function dropSchema() {
 }
 
 export const hasSchema = () => db.$client.pragma('user_version', { simple: true }) === schema.sqliteSchemaMetadata.userVersion;
+
+/** Atualiza o banco já preenchido, sem executar dropSchema nem seed. */
+export function migrateSchema() {
+  const version = Number(db.$client.pragma('user_version', { simple: true }));
+  if (version === schema.sqliteSchemaMetadata.userVersion) return true;
+  if (version === 1) {
+    db.$client.transaction(() => db.$client.exec(creatorMetadataMigration))();
+    return true;
+  }
+  if (version !== 0) throw new Error(`Versão de banco não suportada: ${version}.`);
+  return false;
+}

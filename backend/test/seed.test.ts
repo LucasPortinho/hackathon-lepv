@@ -17,7 +17,7 @@ before(() => ensureDemoDatabase());
 
 describe('seed da demonstração', () => {
   it('cria tabelas STRICT, triggers e user_version', () => {
-    assert.equal(db.$client.pragma('user_version', { simple: true }), 1);
+    assert.equal(db.$client.pragma('user_version', { simple: true }), 2);
     const sql = db.$client.prepare<[], { sql: string }>("SELECT sql FROM sqlite_master WHERE name = 'teachers'").get()!.sql;
     assert.match(sql, /STRICT$/);
     assert.equal(db.$client.prepare("SELECT count(*) AS n FROM sqlite_master WHERE type = 'trigger'").pluck().get(), 6);

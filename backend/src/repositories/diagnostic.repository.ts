@@ -24,7 +24,11 @@ const studentKey = (row: { diagnosticId: string; studentId: string }) => `${row.
 
 function loadItems(ids: string[]) {
   const rows = db.select().from(diagnosticItems).where(inArray(diagnosticItems.diagnosticId, ids)).orderBy(asc(diagnosticItems.position)).all();
-  return groupBy(rows, studentKey, (r): DiagnosticItem => ({ id: r.id, subtopicId: r.subtopicId, statement: r.statement, adaptedFor: r.adaptedFor ?? undefined }));
+  return groupBy(rows, studentKey, (r): DiagnosticItem => ({
+    id: r.id, subtopicId: r.subtopicId, statement: r.statement, adaptedFor: r.adaptedFor ?? undefined,
+    alternatives: r.alternatives, answerKey: r.answerKey ?? undefined, solution: r.solution ?? undefined,
+    difficulty: r.difficulty ?? undefined, checkResult: r.checkResult, prerequisite: r.prerequisite ?? undefined,
+  }));
 }
 
 function loadPerStudent(ids: string[]) {
@@ -71,6 +75,12 @@ function insertStudent(diagnosticId: string, plan: DiagnosticForStudent, positio
 
 export const insertStudents = (diagnosticId: string, plans: DiagnosticForStudent[]) =>
   plans.forEach((plan, position) => insertStudent(diagnosticId, plan, position));
+
+export function replaceStudentItems(diagnosticId: string, studentId: string, items: DiagnosticItem[]) {
+  db.delete(diagnosticItems).where(and(eq(diagnosticItems.diagnosticId, diagnosticId), eq(diagnosticItems.studentId, studentId))).run();
+  if (items.length) db.insert(diagnosticItems).values(items.map((item, position) => ({ ...item, diagnosticId, studentId, position }))).run();
+  setApproved(diagnosticId, studentId, false);
+}
 
 export const setApproved = (diagnosticId: string, studentId: string, approved: boolean) =>
   db.update(diagnosticStudents).set({ approved }).where(and(eq(diagnosticStudents.diagnosticId, diagnosticId), eq(diagnosticStudents.studentId, studentId))).run();

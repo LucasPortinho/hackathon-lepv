@@ -3,6 +3,7 @@ import { db } from '../db';
 import { questionAuthoredAdaptations, questions } from '../db/schema';
 import { groupBy } from '../lib/collections';
 import type { Question } from '../types/domain';
+import type { ManualQuestion } from '../types/inputs';
 
 type AuthoredRow = typeof questionAuthoredAdaptations.$inferSelect;
 
@@ -13,12 +14,16 @@ function query(where: SQL): Question[] {
   const rows = db.select().from(questions).where(where).orderBy(asc(questions.id)).all();
   const authored = db.select().from(questionAuthoredAdaptations).where(inArray(questionAuthoredAdaptations.questionId, rows.map((r) => r.id))).all();
   const byQuestion = groupBy(authored, (a) => a.questionId);
-  return rows.map(({ figure, ...r }) => ({ ...r, figure: figure ?? undefined, authored: toAuthored(byQuestion.get(r.id)) }));
+  return rows.map(({ figure, answerKey, solution, difficulty, ...r }) => ({
+    ...r, figure: figure ?? undefined, answerKey: answerKey ?? undefined,
+    solution: solution ?? undefined, difficulty: difficulty ?? undefined,
+    authored: toAuthored(byQuestion.get(r.id)),
+  }));
 }
 
 export const listBank = () => query(eq(questions.source, 'banco'));
 export const findByIds = (ids: string[]) => query(inArray(questions.id, ids));
 export const listBySubtopics = (subtopicIds: string[]) => query(inArray(questions.subtopicId, subtopicIds));
 
-export const insertManual = (question: { id: string; subtopicId: string; statement: string; points: number }) =>
+export const insertManual = (question: ManualQuestion & { id: string }) =>
   db.insert(questions).values({ ...question, source: 'manual' }).run();

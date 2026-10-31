@@ -1,4 +1,4 @@
-// Estrutura de schema.db (user_version = 1). Veja ../../schema.md.
+// Estrutura de schema.db (user_version = 2). Veja ../../schema.md.
 // STRICT e triggers não são aplicados por sqliteTable; os metadados/SQL
 // complementares estão ao final deste arquivo e exigem migração explícita.
 import { desc, sql } from 'drizzle-orm';
@@ -13,6 +13,8 @@ export const fontOptions = ["padrao", "leitura"] as const;
 export const spacingOptions = ["padrao", "confortavel"] as const;
 export const themeOptions = ["claro", "escuro"] as const;
 export const questionSources = ["banco", "manual"] as const;
+export const questionDifficulties = ['facil', 'media', 'dificil'] as const;
+export const questionCheckResults = ['ok', 'divergente', 'nao_verificavel'] as const;
 export const examStatuses = ["rascunho", "em_adaptacao", "pronta", "corrigida"] as const;
 export const adaptationDecisions = ["pendente", "aceita", "rejeitada"] as const;
 export const reviewStatuses = ["rascunho", "editado", "aprovado"] as const;
@@ -208,6 +210,11 @@ export const questions = sqliteTable("questions", {
   points: real("points").notNull(),
   source: text("source", { enum: questionSources }).notNull(),
   figure: text("figure"),
+  alternatives: text('alternatives', { mode: 'json' }).$type<string[]>().notNull().default(sql`'[]'`),
+  answerKey: text('answer_key'),
+  solution: text('solution'),
+  difficulty: text('difficulty', { enum: questionDifficulties }),
+  checkResult: text('check_result', { enum: questionCheckResults }).notNull().default('nao_verificavel'),
 }, (table) => [
   foreignKey({
     columns: [table.subtopicId],
@@ -216,6 +223,9 @@ export const questions = sqliteTable("questions", {
   check("questions_check_1", sql`length(trim(statement)) > 0`),
   check("questions_check_2", sql`points > 0`),
   check("questions_check_3", sql`source IN ('banco', 'manual')`),
+  check('questions_alternatives_array', sql`CASE WHEN json_valid(alternatives) THEN json_type(alternatives) = 'array' ELSE 0 END`),
+  check('questions_difficulty_valid', sql`difficulty IN ('facil', 'media', 'dificil')`),
+  check('questions_check_result_valid', sql`check_result IN ('ok', 'divergente', 'nao_verificavel')`),
   index("questions_subtopic_source_idx").on(table.subtopicId, table.source),
 ]);
 
@@ -421,6 +431,7 @@ export const competencyGaps = sqliteTable("competency_gaps", {
   subjectId: text("subject_id").notNull(),
   subtopicId: text("subtopic_id").notNull(),
   competency: text("competency").notNull(),
+  prerequisite: text('prerequisite'),
   readingKind: text("reading_kind", { enum: gapReadingKinds }).notNull(),
   needId: text("need_id", { enum: needIds }),
   note: text("note").notNull(),
@@ -443,6 +454,7 @@ export const competencyGaps = sqliteTable("competency_gaps", {
   check("competency_gaps_check_1", sql`reading_kind IN ('tecnica', 'necessidade')`),
   check("competency_gaps_check_2", sql`position >= 0`),
   check("competency_gaps_check_3", sql`(reading_kind = 'tecnica' AND need_id IS NULL) OR (reading_kind = 'necessidade' AND need_id IS NOT NULL)`),
+  check('competency_gaps_prerequisite_nonempty', sql`prerequisite IS NULL OR length(trim(prerequisite)) > 0`),
   index("gaps_declared_need_idx").on(table.studentId, table.needId),
   index("gaps_subtopic_subject_idx").on(table.subtopicId, table.subjectId),
 ]);
@@ -536,6 +548,12 @@ export const diagnosticItems = sqliteTable("diagnostic_items", {
   id: text("id").notNull(),
   subtopicId: text("subtopic_id").notNull(),
   statement: text("statement").notNull(),
+  alternatives: text('alternatives', { mode: 'json' }).$type<string[]>().notNull().default(sql`'[]'`),
+  answerKey: text('answer_key'),
+  solution: text('solution'),
+  difficulty: text('difficulty', { enum: questionDifficulties }),
+  checkResult: text('check_result', { enum: questionCheckResults }).notNull().default('nao_verificavel'),
+  prerequisite: text('prerequisite'),
   adaptedFor: text("adapted_for", { enum: needIds }),
   position: integer("position").notNull(),
 }, (table) => [
@@ -555,6 +573,10 @@ export const diagnosticItems = sqliteTable("diagnostic_items", {
   }).onDelete("cascade"),
   check("diagnostic_items_check_1", sql`length(trim(statement)) > 0`),
   check("diagnostic_items_check_2", sql`position >= 0`),
+  check('diagnostic_items_alternatives_array', sql`CASE WHEN json_valid(alternatives) THEN json_type(alternatives) = 'array' ELSE 0 END`),
+  check('diagnostic_items_difficulty_valid', sql`difficulty IN ('facil', 'media', 'dificil')`),
+  check('diagnostic_items_check_result_valid', sql`check_result IN ('ok', 'divergente', 'nao_verificavel')`),
+  check('diagnostic_items_prerequisite_nonempty', sql`prerequisite IS NULL OR length(trim(prerequisite)) > 0`),
   index("diagnostic_items_need_idx").on(table.studentId, table.adaptedFor),
   index("diagnostic_items_subtopic_idx").on(table.diagnosticId, table.subtopicId),
 ]);
@@ -815,7 +837,7 @@ FROM adaptations a JOIN exam_version_needs n ON n.exam_id = a.exam_id AND n.vers
 // Metadados descritivos: importar este arquivo não altera conexão nem banco.
 // Configure PRAGMA foreign_keys = ON em cada conexão SQLite.
 export const sqliteSchemaMetadata = {
-  userVersion: 1,
+  userVersion: 2,
   foreignKeys: true,
   tableMode: 'STRICT',
   strictTables: [

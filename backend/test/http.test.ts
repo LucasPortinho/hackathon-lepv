@@ -14,6 +14,41 @@ const examInput = {
   questions: [{ id: 'q1' }, { id: 'q2' }],
 };
 
+describe('metadados do CRIA por HTTP', () => {
+  it('recebe os campos da questão e entrega pré-requisitos no contexto PED → CRIA', async () => {
+    const metadata = { alternatives: ['2', '4'], answerKey: '4', solution: '2 + 2 = 4.', difficulty: 'facil', checkResult: 'ok' };
+    const created = await request('/exams', { method: 'POST', body: {
+      ...examInput, questions: [{ statement: 'Quanto é 2 + 2?', subtopicId: 'st-cossenos', points: 1, ...metadata }],
+    } });
+    assert.equal(created.status, 201);
+    const [question] = (await request('/exams/' + created.body.id)).body.questions;
+    for (const [key, value] of Object.entries(metadata)) assert.deepEqual(question[key], value);
+    const invalid = await request('/exams', { method: 'POST', body: {
+      ...examInput, questions: [{ statement: 'Q', subtopicId: 'st-cossenos', points: 1, checkResult: 'invalido' }],
+    } });
+    assert.equal(invalid.status, 400);
+
+    const diagnostic = (await request('/diagnostics', { method: 'POST', body: { classId: 'c1', subtopicIds: ['st-cossenos'] } })).body;
+    const path = '/diagnostics/' + diagnostic.id;
+    let current = (await request(path + '/run-agent', { method: 'POST' })).body;
+    if (current.stage === 'adaptacao') current = (await request(path + '/run-agent', { method: 'POST' })).body;
+    const context = await request(path + '/creator-context');
+    assert.equal(context.status, 200);
+    const target = context.body.students.find((row: { student: { id: string } }) => row.student.id === 'ana');
+    assert.ok(target.gaps[0].prerequisite);
+    const item = { id: 'cria-http', subtopicId: 'st-cossenos', statement: 'Calcule 2 + 2.', ...metadata };
+    const saved = await request(path + '/students/ana/items', { method: 'POST', body: { items: [item] } });
+    assert.equal(saved.status, 200);
+    assert.equal(saved.body.items[0].prerequisite, target.gaps[0].prerequisite);
+    assert.equal(saved.body.items[0].checkResult, 'ok');
+    assert.equal((await request(path + '/creator-context', { teacher: 't2' })).status, 404);
+    assert.equal((await request(path + '/students/ana/items', { method: 'POST', body: { items: [{ ...item, alternatives: [2] }] } })).status, 400);
+    assert.equal((await request(path + '/students/ana/items', { method: 'POST', body: { items: [{ ...item, difficulty: 'extrema' }] } })).status, 400);
+    const persisted = (await request(path)).body.diagnostic.perStudent.find((row: { studentId: string }) => row.studentId === 'ana').items[0];
+    assert.equal(persisted.solution, metadata.solution);
+  });
+});
+
 before(async () => {
   await createDatabase();
   for (const teacherId of ['t1', 't2']) {

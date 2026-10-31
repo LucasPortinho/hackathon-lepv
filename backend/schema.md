@@ -1,6 +1,6 @@
 # Estrutura de dados
 
-Referência humana de `schema.db`, baseada nas estruturas e fluxos do frontend. O banco contém **36 tabelas, 3 views e 6 triggers**, com `PRAGMA user_version = 1`. O mapeamento Drizzle está em [src/db/schema.ts](src/db/schema.ts).
+Referência humana de `schema.db`, baseada nas estruturas e fluxos do frontend. O banco contém **36 tabelas, 3 views e 6 triggers**, com `PRAGMA user_version = 2`. O mapeamento Drizzle está em [src/db/schema.ts](src/db/schema.ts).
 
 ## Convenções
 
@@ -255,6 +255,11 @@ Questões do banco ou escritas manualmente, com subtópico e pontuação.
 | `points` | `REAL` | Não | — | — | Valor máximo da questão; permite frações. |
 | `source` | `TEXT` | Não | — | — | Questão do banco ou criada manualmente. |
 | `figure` | `TEXT` | Sim | — | — | Referência ou descrição da figura mencionada no enunciado. |
+| `alternatives` | `TEXT` (JSON) | Não | `'[]'` | — | Lista ordenada de alternativas (`string[]` na API). |
+| `answer_key` | `TEXT` | Sim | — | — | Gabarito: rótulo da alternativa ou resposta textual esperada. |
+| `solution` | `TEXT` | Sim | — | — | Resolução explicada da questão. |
+| `difficulty` | `TEXT` | Sim | — | — | Dificuldade: `facil`, `media` ou `dificil`; NULL quando não informada. |
+| `check_result` | `TEXT` | Não | `'nao_verificavel'` | — | Resultado da checagem: `ok`, `divergente` ou `nao_verificavel`. |
 
 Chave primária: `id`.
 
@@ -263,6 +268,10 @@ Chave primária: `id`.
 - Validação: `points > 0`.
 - Validação: `source IN ('banco', 'manual')`.
 - Índice `questions_subtopic_source_idx`: `(subtopic_id, source)`.
+- Validação: `alternatives` contém JSON válido do tipo array; HTTP e services validam os elementos textuais.
+- Validação: `difficulty IN ('facil', 'media', 'dificil')` ou NULL.
+- Validação: `check_result IN ('ok', 'divergente', 'nao_verificavel')`.
+
 
 #### `question_authored_adaptations`
 
@@ -474,6 +483,7 @@ Lacunas identificadas no perfil: competência, leitura, observação e sugestão
 | `subject_id` | `TEXT` | Não | — | FK | Disciplina associada. |
 | `subtopic_id` | `TEXT` | Não | — | FK | Subtópico associado. |
 | `competency` | `TEXT` | Não | — | — | Descrição textual da competência a desenvolver. |
+| `prerequisite` | `TEXT` | Sim | — | — | Competência de base indicada pelo PED para orientar o CRIA. Não é uma FK. |
 | `reading_kind` | `TEXT` | Não | — | — | Leitura técnica ou relacionada a uma necessidade declarada. |
 | `need_id` | `TEXT` | Sim | — | FK | Necessidade já declarada pelo aluno; obrigatória apenas na leitura necessidade. |
 | `note` | `TEXT` | Não | — | — | Observação pedagógica editável. |
@@ -491,6 +501,8 @@ Chave primária: `id`.
 - Validação: `(reading_kind = 'tecnica' AND need_id IS NULL) OR (reading_kind = 'necessidade' AND need_id IS NOT NULL)`.
 - Índice `gaps_declared_need_idx`: `(student_id, need_id)`.
 - Índice `gaps_subtopic_subject_idx`: `(subtopic_id, subject_id)`.
+
+- Validação: `prerequisite` é NULL ou texto não vazio após `trim`.
 
 ### Avaliações diagnósticas
 
@@ -591,6 +603,12 @@ Questões individualizadas de cada aluno em cada diagnóstico.
 | `id` | `TEXT` | Não | — | PK | Identificador local ao par diagnóstico/aluno. |
 | `subtopic_id` | `TEXT` | Não | — | FK | Subtópico associado. |
 | `statement` | `TEXT` | Não | — | — | Enunciado da questão. |
+| `alternatives` | `TEXT` (JSON) | Não | `'[]'` | — | Lista ordenada de alternativas (`string[]` na API). |
+| `answer_key` | `TEXT` | Sim | — | — | Gabarito: rótulo da alternativa ou resposta textual esperada. |
+| `solution` | `TEXT` | Sim | — | — | Resolução explicada da questão. |
+| `difficulty` | `TEXT` | Sim | — | — | Dificuldade: `facil`, `media` ou `dificil`; NULL quando não informada. |
+| `check_result` | `TEXT` | Não | `'nao_verificavel'` | — | Resultado da checagem: `ok`, `divergente` ou `nao_verificavel`. |
+| `prerequisite` | `TEXT` | Sim | — | — | Competência de base indicada pelo PED para orientar o CRIA. Não é uma FK. |
 | `adapted_for` | `TEXT` | Sim | — | FK | Necessidade declarada para a qual o enunciado foi adaptado. |
 | `position` | `INTEGER` | Não | — | — | Posição na lista; ordenação começa em zero. |
 
@@ -604,6 +622,11 @@ Chave primária: `diagnostic_id, student_id, id`.
 - Validação: `position >= 0`.
 - Índice `diagnostic_items_need_idx`: `(student_id, adapted_for)`.
 - Índice `diagnostic_items_subtopic_idx`: `(diagnostic_id, subtopic_id)`.
+
+- Validação: `alternatives` contém JSON válido do tipo array; HTTP e services validam os elementos textuais.
+- Validação: `difficulty IN ('facil', 'media', 'dificil')` ou NULL.
+- Validação: `check_result IN ('ok', 'divergente', 'nao_verificavel')`.
+- Validação: `prerequisite` é NULL ou texto não vazio após `trim`.
 
 ### Envio, leitura e respostas
 
@@ -941,8 +964,39 @@ Esses triggers verificam a inserção ou alteração do vínculo. Eles não reva
 - As colunas, defaults, chaves, unicidades, índices, `CHECK`s e ações de exclusão estão representados declarativamente. Os nomes gerados das constraints podem diferir dos nomes internos automáticos do SQLite, preservando sua função.
 - `teachers.email` usa um `customType` com `text COLLATE NOCASE`, preservando a collation da coluna para comparação e unicidade. `NOCASE` do SQLite não equivale a normalização Unicode completa nem a validação de e-mail.
 - A versão instalada do Drizzle não oferece opções declarativas de `sqliteTable` para `STRICT` nem para criar triggers. `sqliteSchemaMetadata` registra o modo de tabela, o `user_version` e a necessidade de chaves estrangeiras; `sqliteTriggers` exporta o SQL exato dos seis triggers.
-- Importar esses exports não executa SQL. Ao criar outro banco com Drizzle Kit, uma migração explícita precisa manter `STRICT` nas instruções `CREATE TABLE`, aplicar os triggers e definir `PRAGMA user_version = 1`. A conexão precisa ativar `PRAGMA foreign_keys = ON` em cada abertura.
-- `drizzle.config.ts` atualmente aponta para `sqlite.db`; a referência deste documento é `schema.db`. A configuração e o banco não são alterados por esta atualização.
+- Importar esses exports não executa SQL. Ao criar outro banco com Drizzle Kit, uma migração explícita precisa manter `STRICT` nas instruções `CREATE TABLE`, aplicar os triggers e definir `PRAGMA user_version = 2`. A conexão precisa ativar `PRAGMA foreign_keys = ON` em cada abertura.
+- `drizzle.config.ts` aponta para `sqlite.db`; o banco de referência é `schema.db`. Ambos recebem a migração aditiva da versão 1 para 2 nesta atualização.
 - Os `CHECK`s de estados não implementam transições de workflow: por exemplo, não garantem que todas as avaliações individuais estejam aprovadas antes da publicação. A aplicação deve validar o fluxo.
 - A pontuação atribuída em `exam_answers` não é comparada automaticamente ao valor máximo da questão. O vínculo de notas/perfis com as disciplinas da turma e a autorização do professor em cada operação também precisam ser validados pela aplicação.
-- A competência da lacuna é texto descritivo. O modelo atual não contém catálogo ou árvore de pré-requisitos de competências.
+- A competência e o pré-requisito da lacuna são textos descritivos. O modelo atual não contém catálogo, FK ou árvore de pré-requisitos de competências.
+
+## Versão 2: integração PED → CRIA
+
+Os metadados de criação existem tanto em `questions` (banco de questões e questões
+manuais) quanto em `diagnostic_items` (questões individualizadas geradas pelo CRIA).
+Na API os nomes são `alternatives`, `answerKey`, `solution`, `difficulty` e
+`checkResult`. A lista de alternativas aceita até 20 textos não vazios; gabarito e
+resolução, quando informados, também não podem ser vazios. Uma questão discursiva
+pode manter `alternatives = []` e usar gabarito textual.
+
+`competency_gaps.prerequisite` é preenchido pelo PED e persistido junto com a
+lacuna. O contexto do CRIA entrega essa informação por aluno e subtópico. O item
+gerado pode preservar o pré-requisito em `diagnostic_items.prerequisite`; quando o
+CRIA não o informa, o service usa o pré-requisito da lacuna correspondente.
+
+Registros antigos recebem alternativas vazias, checagem `nao_verificavel` e os
+demais campos novos como NULL. Não são inventados gabaritos, resoluções,
+dificuldades ou pré-requisitos para esses registros. O PED da demo possui
+sugestões de pré-requisitos para os subtópicos conhecidos; subtópicos sem sugestão
+mantêm o campo ausente até o agente fornecer informação.
+
+A checagem é um resultado recebido do agente, não um cálculo ou prova matemática
+executado automaticamente pelo backend. Ao adaptar o enunciado de uma questão do
+banco, a checagem anterior não é herdada: o item passa a `nao_verificavel` até nova
+checagem. Substituir os itens do CRIA revoga a aprovação individual anterior e só
+é permitido na criação ou revisão, antes da publicação.
+
+A migração está em `src/db/migrations/0002-creator-metadata.ts`. O startup usa
+`migrateSchema()` para adicionar colunas em bancos da versão 1 sem reset ou seed,
+preservando os registros, views e triggers existentes. Novos bancos já nascem na
+versão 2. Versões desconhecidas diferentes de zero causam erro em vez de reset.

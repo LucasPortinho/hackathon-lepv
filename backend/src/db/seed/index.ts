@@ -9,7 +9,7 @@ import { advanceDiagnostic } from '../../services/diagnostics/diagnostic-agent.s
 import { initialSteps } from '../../services/diagnostics/diagnostic.service';
 import { refreshProfile } from '../../services/profiles/profile.service';
 import * as schema from '../schema';
-import { createSchema, dropSchema, hasSchema } from '../setup';
+import { createSchema, dropSchema, migrateSchema } from '../setup';
 import { agentRuns, DIAGNOSTIC_CREATED_AT, notifications } from './data/activity';
 import { classes, DEMO_TEACHER_ID, needs, periods, subjects, subtopics, teacher } from './data/catalog';
 import { examGroups, exams, READ_EXAM_ID } from './data/exams';
@@ -102,7 +102,7 @@ export async function resetDemoDatabase() {
 
 /** Prepara o banco no primeiro start e preserva os dados nos seguintes. */
 export async function ensureDemoDatabase() {
-  if (hasSchema()) return false;
+  if (migrateSchema()) return false;
   await resetDemoDatabase();
   return true;
 }

@@ -1,9 +1,9 @@
 // Entradas dos services: base dos DTOs combinados com os controllers.
-import type { SheetReadStatus } from './domain';
+import type { QuestionMetadata, SheetReadStatus } from './domain';
 
 export interface DashboardQuery { classId: string; subjectId: string; periodId: string }
 
-export interface ManualQuestion { statement: string; subtopicId: string; points: number }
+export interface ManualQuestion extends QuestionMetadata { statement: string; subtopicId: string; points: number }
 
 export interface NewExam {
   title: string;

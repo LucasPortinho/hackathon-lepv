@@ -1,7 +1,7 @@
 import { knownValues, mean } from '../../lib/score';
 import { firstName } from '../../lib/text';
 import type { CompetencyGap, GapReading, PedagogicalProfile, Student, Subtopic } from '../../types/domain';
-import { genericNotes, NEED_NOTES, TOPIC_NOTES } from './pedagogical.notes';
+import { genericNotes, NEED_NOTES, PREREQUISITES, TOPIC_NOTES } from './pedagogical.notes';
 
 // Agente pedagógico por regras, portado do mock do frontend. Um agente real entra por `buildProfile`.
 const WEAK_BELOW = 70;
@@ -26,6 +26,7 @@ function buildGap(student: Student, { subtopic }: ScoredInput, index: number): C
     id: `${student.id}-${subtopic.id}`,
     subtopicId: subtopic.id,
     competency: topic.competency,
+    prerequisite: PREREQUISITES[subtopic.id],
     reading,
     note: support ? support.note(n) : topic.note(n),
     suggestion: support ? support.suggestion : topic.suggestion,

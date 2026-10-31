@@ -1,5 +1,20 @@
 import type { NeedId, Subtopic } from '../../types/domain';
 
+/** Sugestões da demo; um PED real pode fornecer outra competência de base. */
+export const PREREQUISITES: Record<string, string> = {
+  'st-razoes': 'Identificar hipotenusa, cateto oposto e cateto adjacente em relação a um ângulo.',
+  'st-ciclo': 'Converter graus e radianos e reconhecer os quadrantes do plano cartesiano.',
+  'st-senos': 'Resolver proporções e associar cada lado ao ângulo oposto.',
+  'st-cossenos': 'Calcular potências e identificar o ângulo compreendido entre dois lados.',
+  'st-funcoes': 'Interpretar coordenadas e transformações de gráficos de funções.',
+  'st-identidades': 'Manipular expressões algébricas e aplicar a identidade sen²(x) + cos²(x) = 1.',
+  'st-equacoes': 'Resolver equações algébricas e localizar ângulos no ciclo trigonométrico.',
+  'st-areas': 'Identificar base e altura e calcular a área de um triângulo.',
+  'st-vetores': 'Identificar as razões seno e cosseno em um triângulo retângulo.',
+  'st-plano': 'Representar forças e decompor vetores em componentes.',
+  'st-oblquo': 'Distinguir movimento uniforme de movimento uniformemente variado.',
+};
+
 // Textos do agente pedagógico por regras.
 export const TOPIC_NOTES: Record<string, { competency: string; note: (n: string) => string; suggestion: string }> = {
   'st-razoes': { competency: 'Relacionar lados e ângulos no triângulo retângulo', note: (n) => `${n} identifica a razão, mas troca cateto oposto e adjacente em figuras giradas.`, suggestion: 'Propor triângulos em posições variadas antes do cálculo.' },

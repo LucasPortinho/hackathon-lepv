@@ -1,4 +1,4 @@
-import type { adaptationDecisions, agentIds, agentRunStatuses, diagnosticStages, diagnosticStepIds, examStatuses, needIds, questionSources, reviewStatuses, sheetReadStatuses, stepStatuses } from '../db/schema';
+import type { adaptationDecisions, agentIds, agentRunStatuses, diagnosticStages, diagnosticStepIds, examStatuses, needIds, questionSources, questionDifficulties, questionCheckResults, reviewStatuses, sheetReadStatuses, stepStatuses } from '../db/schema';
 
 export type ID = string;
 export type NeedId = (typeof needIds)[number];
@@ -40,7 +40,19 @@ export interface Student {
 
 export interface Score { studentId: ID; subtopicId: ID; periodId: ID; value: number | null }
 
-export interface Question {
+export type QuestionDifficulty = (typeof questionDifficulties)[number];
+export type QuestionCheckResult = (typeof questionCheckResults)[number];
+
+/** Campos opcionais na entrada para manter compatibilidade com questões anteriores. */
+export interface QuestionMetadata {
+  alternatives?: string[];
+  answerKey?: string;
+  solution?: string;
+  difficulty?: QuestionDifficulty;
+  checkResult?: QuestionCheckResult;
+}
+
+export interface Question extends QuestionMetadata {
   id: ID;
   subtopicId: ID;
   statement: string;
@@ -91,6 +103,8 @@ export interface CompetencyGap {
   id: ID;
   subtopicId: ID;
   competency: string;
+  /** Competência de base indicada pelo PED para orientar o CRIA. */
+  prerequisite?: string;
   reading: GapReading;
   note: string;
   suggestion: string;
@@ -125,7 +139,13 @@ export interface DiagnosticStep {
   result?: string;
 }
 
-export interface DiagnosticItem { id: ID; subtopicId: ID; statement: string; adaptedFor?: NeedId }
+export interface DiagnosticItem extends QuestionMetadata {
+  id: ID;
+  subtopicId: ID;
+  statement: string;
+  adaptedFor?: NeedId;
+  prerequisite?: string;
+}
 
 export interface DiagnosticForStudent { studentId: ID; focus: string; items: DiagnosticItem[]; approved: boolean }
 
